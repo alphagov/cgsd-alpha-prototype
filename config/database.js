@@ -27,12 +27,10 @@ module.exports = {
      * run "npm install --save waterline-sqlite3"
      */
 
-    /*
      dev: {
       adapter: require('waterline-sqlite3'),
       migrate: 'alter'
     }
-     */
   },
 
   models: {
