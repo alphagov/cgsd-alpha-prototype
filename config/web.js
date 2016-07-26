@@ -23,8 +23,6 @@ module.exports = {
    */
   middlewares: {
 
-    /*
-    //middlewares loading order
     order: [
       'addMethods',
       'cookieParser',
@@ -34,7 +32,7 @@ module.exports = {
       'router',
       '404',
       '500'
-    ]*/
+    ]
 
     /**
      * Middlewares to load for body parsing
