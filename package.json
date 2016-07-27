@@ -16,6 +16,8 @@
   ],
   "dependencies": {
     "express": "^4.14.0",
+    "govuk-elements-sass": "^1.2.1",
+    "govuk_frontend_toolkit": "^4.13.0",
     "govuk_template_jinja": "^0.17.3",
     "nunjucks": "^2.4.2",
     "trailpack-core": "^1.0.0-beta-3",
