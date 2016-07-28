@@ -10,6 +10,18 @@
 'use strict'
 
 module.exports = [
+  /**
+   * Serve GovUK static assets
+   */
+  {
+    method: 'GET',
+    path: '/govuk_modules',
+    handler: {
+      directory: {
+        path: 'govuk_modules'
+      }
+    }
+  },
 
   /**
    * Render the HelloWorld view
