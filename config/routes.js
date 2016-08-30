@@ -33,6 +33,15 @@ module.exports = [
   },
 
   /**
+   * Render the prototype-v0 home page
+   */
+  {
+    method: 'GET',
+    path: '/prototype-v0',
+    handler: 'ViewController.departmentVersionHome'
+  },
+
+  /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
   {

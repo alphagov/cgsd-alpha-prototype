@@ -25,3 +25,23 @@
 }
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+// Header banner (feel like this class should already exist somewhere else)
+
+.header-banner {
+  color: $white;
+  background-color: $govuk-blue;
+  width: 100%;
+  margin-top: -10px;
+
+  div {
+    max-width: 990px;
+    margin: 0 auto;
+  }
+
+  a {
+    color: $white;
+  }
+
+}
+

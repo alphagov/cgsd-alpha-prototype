@@ -10,4 +10,8 @@ module.exports = class ViewController extends Controller {
 
     res.render('index.html', { asset_path: 'govuk_modules/govuk_template/assets/', name: 'Hello world!' })
   }
+
+  departmentVersionHome(req, res) {
+    res.render('prototype-v0/index.html', { asset_path: 'govuk_modules/govuk_template/assets/', name: 'Hello world!' })
+  }
 }
