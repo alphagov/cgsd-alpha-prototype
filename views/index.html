@@ -1,11 +1,58 @@
 {% extends "layouts/layout.html" %}
 
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
 {% block content %}
-  <main id="content" role="main">
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <h1 class="heading-xlarge">{{ name | safe }}</h1>
-      </div>
-    </div>
-  </main>
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">Performance Platform Prototypes</h1>
+      <p class="lede">
+        Links to any prototypes created during development of the Performance Platform.
+      </p>
+
+      <h2 class="heading-medium">Discovery 🔍</h2>
+      <ul class="list list-bullet">
+				<li>
+					<a href="https://performance-prototype.herokuapp.com/">
+						Data download page
+					</a>
+					<p class="font-xsmall">
+					  For consumers of performance data
+					</p>
+				</li>
+				<li>
+					<a href="https://performance-prototype.herokuapp.com/performance/setup/transaction/new">
+						Characteristics Capture Form
+					</a>
+					<p class="font-xsmall">
+					  For people submitting new transactions
+					</p>
+				</li>
+			</ul>
+
+			<h2 class="heading-medium">Disco Alpha 🎉</h2>
+      <ul class="list list-bullet">
+				<li>
+					<a href="/prototype-v0">
+						Prototype v0
+					</a>
+					<p class="font-xsmall">
+					  With departments and agencies at top
+					</p>
+				</li>
+				<li>
+					<a href="/prototype-v0-alt">
+						Prototype v0 (alt)
+					</a>
+					<p class="font-xsmall">
+					  With topics and sub-topics at top
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</main>
 {% endblock %}

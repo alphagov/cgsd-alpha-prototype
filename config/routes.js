@@ -24,12 +24,12 @@ module.exports = [
   },
 
   /**
-   * Render the HelloWorld view
+   * Render the home page
    */
   {
     method: 'GET',
     path: '/',
-    handler: 'ViewController.helloWorld'
+    handler: 'ViewController.home'
   },
 
   /**
