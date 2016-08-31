@@ -1,0 +1,174 @@
+{% extends "layouts/layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">
+        <span class="heading-secondary">Performance data for</span>
+        Tax your vehicle
+      </h1>
+      <p>This service allows users to tax their vehicle so that it is legal to use. <a href="https://www.gov.uk/vehicle-tax">View start page on GOV.UK</a></p>
+      <div class="notice notice-spacing">
+        <i class="icon icon-file-download">
+          <span class="visuallyhidden">Download file</span>
+        </i>
+        <strong class="bold-small">
+          <a href="#">Download data (CSV, 10KB)</a>
+        </strong>
+      </div>
+    </div>
+
+    <div class="column-one-third">
+      <br><br>
+      <p class="font-xsmall">
+        <span class="bold-xsmall">Department</span><br>
+        <a href="../departments/department-for-transport">Department for Transport</a>
+      </p>
+      <p class="font-xsmall">
+        <span class="bold-xsmall">Agency</span><br>
+        <a href="../agencies/dvla">Driver and Vehicle Licensing Agency</a>
+      </p>
+      <p class="font-xsmall">
+        <span class="bold-xsmall">Topics</span><br>
+        <a href="../topics/driving">Driving</a>, <a href="#">Drive in the UK</a>, <a href="../sub-topics/pay-tax-on-a-vehicle">Pay tax on a vehicle</a>
+      </p>
+      <p class="font-xsmall">
+        <span class="bold-xsmall">Data provided by</span><br>
+        Department for Transport
+      </p>
+      <p class="font-xsmall">
+        <span class="bold-xsmall">Last updated</span><br>
+        31 June 2016
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="grid-row">
+    <div class= "column-full">
+      <div class="time-period-selector border-bottom border-top">
+        <ul>
+          <li>View data for past</li>
+          <li><a href="#">3 months</a></li> |
+          <li id="time-period-selected">1 year</li> |
+          <li><a href="#">2 years</a></li>
+        </ul> 
+      </div> 
+    </div> 
+  </div>
+
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      <h3 class="bold-medium" style="margin-bottom: 15px">Transactions</h3>
+      <div class="data">
+        <h2 class="bold-xlarge">46.9m</h2>
+        <p class="xsmall"><span class="data-increase-arrow">&#9650;</span> 1% increase</p>
+        <hr>
+      </div>
+      <h3 class="bold-medium" style="margin-bottom: 15px">Channel breakdown</h3>
+      <div class="data breakdown">
+        <h3 class="bold-large">70% <span class="lede">online</span></h3>
+        <h3 class="bold-large">21% <span class="lede">paper</span></h3>
+        <h3 class="bold-large">9% <span class="lede">phone</span></h3>
+      </div>
+      <br>
+    </div> 
+
+    <div class="column-two-thirds">
+      <h4 class="bold-medium">Transactions completed 1 July 2015 &ndash; 30 June 2016</h4>
+      <ul class="bar-chart-key font-xsmall">
+        <li>Online</li>
+        <li>Paper</li>
+        <li>Phone</li>
+      </ul>
+      <ul class="bar-chart">
+        <li>
+          <span>11,067,395</span>
+          <div class="bar paper" style="height:10%"></div>
+          <div class="bar phone" style="height:25%"></div>
+          <div class="bar" style="height:60%"></div>
+          <span>Jul&ndash;Sep</span>
+        </li>
+        <li>
+          <span>10,992,892</span>
+          <div class="bar paper" style="height:8%"></div>
+          <div class="bar phone" style="height:20%"></div>
+          <div class="bar" style="height:65%"></div>
+          <span>Oct&ndash;Dec</span>
+        </li>
+        <li>
+          <span>10,999,723</span>
+          <div class="bar paper" style="height:10%"></div>
+          <div class="bar phone" style="height:15%"></div>
+          <div class="bar" style="height:70%"></div>
+          <span>Jan&ndash;Mar</span>
+        </li>
+        <li>
+          <span>11,200,031</span>
+          <div class="bar paper" style="height:8%"></div>
+          <div class="bar phone" style="height:10%"></div>
+          <div class="bar" style="height:80%"></div>
+          <span>Apr&ndash;Jun</span>
+        </li>
+        
+      </ul>
+    </div>
+
+  </div> 
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <details>
+        <summary><span class="summary font-xsmall">How is this data calculated?</span></summary>
+        <div class="panel panel-border-narrow">
+          <p></p>
+        </div>
+      </details>
+    </div>
+  </div>  
+
+  <hr>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <h4 class="bold-medium">Related services</h4>
+    </div>
+    <div class="column-two-thirds">  
+      <ul class="list">
+        <li><a href="#">Amend vehicle tax details</a></li>
+        <li><a href="#">Vehicle tax refund</a></li>
+        <li><a href="#">Apply for a vehicle indentity check online</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="grid-row">  
+    <div class="column-one-third">
+      <h4 class="bold-medium">Service components</h4>
+    </div>
+    <div class="column-two-thirds">  
+      <ul class="list">
+        <li><a href="#">Notifications</a></li>
+        <li><a href="#">In-person appointment</a></li>
+        <li><a href="#">Eligibility check</a></li>
+      </ul>
+    </div>
+  </div> 
+
+
+
+</main>
+
+{% endblock %}

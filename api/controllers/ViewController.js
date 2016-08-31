@@ -8,10 +8,15 @@ module.exports = class ViewController extends Controller {
 
     this.app.orm.Department.query('SELECT * FROM department WHERE name = $1', [query], function(err, results) { console.log('**** ', results[0]) });
 
-    res.render('index.html', { asset_path: 'govuk_modules/govuk_template/assets/', name: 'Hello world!' })
+    res.render('index.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
   }
 
-  departmentVersionHome(req, res) {
-    res.render('prototype-v0/index.html', { asset_path: 'govuk_modules/govuk_template/assets/', name: 'Hello world!' })
+  prototypeV0Home(req, res) {
+    res.render('prototype-v0/index.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
+  }
+
+  transactionalView(req, res) {
+    console.log('*** ', req.params.dept_or_agency);
+    res.render('prototype-v0/transactions/index.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
   }
 }

@@ -38,7 +38,16 @@ module.exports = [
   {
     method: 'GET',
     path: '/prototype-v0',
-    handler: 'ViewController.departmentVersionHome'
+    handler: 'ViewController.prototypeV0Home'
+  },
+
+  /**
+   * Render a prototype-v0 transactional view
+   */
+  {
+    method: 'GET',
+    path: '/prototype-v0/:dept_or_agency/:transaction',
+    handler: 'ViewController.transactionalView'
   },
 
   /**
