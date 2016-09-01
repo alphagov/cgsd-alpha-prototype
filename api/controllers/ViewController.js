@@ -16,6 +16,8 @@ module.exports = class ViewController extends Controller {
   }
 
   transactionalView(req, res) {
+    this.app.orm.TransactionVolumeRecord.findOne(
+      { transaction_status: 'started' }).exec(function (err, record) { console.log(record); });
     console.log('*** ', req.params.dept_or_agency);
     res.render('prototype-v0/transactions/index.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
   }
