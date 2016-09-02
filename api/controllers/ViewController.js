@@ -1,5 +1,7 @@
 'use strict'
 
+const TransactionPerformanceSummary = require('./../models/TransactionPerformanceSummary.js');
+
 const Controller = require('trails-controller')
 
 module.exports = class ViewController extends Controller {
@@ -18,7 +20,16 @@ module.exports = class ViewController extends Controller {
   transactionalView(req, res) {
     this.app.orm.TransactionVolumeRecord.findOne(
       { transaction_status: 'started' }).exec(function (err, record) { console.log(record); });
-    console.log('*** ', req.params.dept_or_agency);
-    res.render('prototype-v0/transactions/index.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
+    this.app.orm.TransactionVolumeRecord.find(
+      { transaction_status: 'started' }).exec(
+        function (err, records) {
+          var tps = new TransactionPerformanceSummary(records);
+          res.render(
+            'prototype-v0/transactions/index.html',
+            { asset_path: '/govuk_modules/govuk_template/assets/',
+              object: tps
+            }
+          );
+        });
   }
 }
