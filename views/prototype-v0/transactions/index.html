@@ -13,7 +13,7 @@
     <div class="column-two-thirds">
       <h1 class="heading-xlarge">
         <span class="heading-secondary">Performance data for</span>
-        Tax your vehicle
+        {{ task.name }}
       </h1>
       <p>This service allows users to tax their vehicle so that it is legal to use. <a href="https://www.gov.uk/vehicle-tax">View start page on GOV.UK</a></p>
       <div class="notice notice-spacing">
@@ -71,7 +71,7 @@
     <div class="column-one-third">
       <h3 class="bold-medium" style="margin-bottom: 15px">Transactions</h3>
       <div class="data">
-        <h2 class="bold-xlarge">{{ object.total_volume }}m</h2>
+        <h2 class="bold-xlarge">{{ volume_summary.total_volume }}m</h2>
         <p class="xsmall"><span class="data-increase-arrow">&#9650;</span> 1% increase</p>
         <hr>
       </div>

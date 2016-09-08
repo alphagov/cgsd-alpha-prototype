@@ -18,18 +18,26 @@ module.exports = class ViewController extends Controller {
   }
 
   transactionalView(req, res) {
-    this.app.orm.TransactionVolumeRecord.findOne(
-      { transaction_status: 'started' }).exec(function (err, record) { console.log(record); });
-    this.app.orm.TransactionVolumeRecord.find(
-      { transaction_status: 'started' }).exec(
-        function (err, records) {
-          var tps = new TransactionPerformanceSummary(records);
-          res.render(
-            'prototype-v0/transactions/index.html',
-            { asset_path: '/govuk_modules/govuk_template/assets/',
-              object: tps
-            }
-          );
-        });
+    this.app.services.TaskService.getTaskByFriendlyId(req.params.transaction).then(
+        record => {
+          this.app.orm.TransactionVolumeRecord.find(
+            { task: record.id }).then(
+                records => {
+                  var tps = new TransactionPerformanceSummary(records);
+                  res.render(
+                    'prototype-v0/transactions/index.html',
+                    { asset_path: '/govuk_modules/govuk_template/assets/',
+                      task: record,
+                      volume_summary: tps
+                    }
+                  )
+                }
+              ).catch(err => {
+              // Handle no volume records found
+            })
+        }
+    ).catch(err => {
+      // Handle task not found
+    });
   }
 }

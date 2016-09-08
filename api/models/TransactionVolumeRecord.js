@@ -24,6 +24,10 @@ module.exports = class TransactionVolumeRecord extends Model {
       },
       count: {
         type: 'integer'
+      },
+      // associations
+      task: {
+        model: 'Task'
       }
     }
   }
