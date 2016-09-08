@@ -3,10 +3,10 @@
 const Model = require('trails-model')
 
 /**
- * @module TransactionVolumeRecord
- * @description GovUK Transaction Volume Record object
+ * @module TaskVolumeRecord
+ * @description GovUK Task Volume Record object
 */
-module.exports = class TransactionVolumeRecord extends Model {
+module.exports = class TaskVolumeRecord extends Model {
 
   static config () {
   }

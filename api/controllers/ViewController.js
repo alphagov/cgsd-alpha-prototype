@@ -1,6 +1,6 @@
 'use strict'
 
-const TransactionPerformanceSummary = require('./../models/TransactionPerformanceSummary.js');
+const TaskVolumeSummary = require('./../models/TaskVolumeSummary.js');
 
 const Controller = require('trails-controller')
 
@@ -17,18 +17,18 @@ module.exports = class ViewController extends Controller {
     res.render('prototype-v0/index.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
   }
 
-  transactionalView(req, res) {
-    this.app.services.TaskService.getTaskByFriendlyId(req.params.transaction).then(
+  taskView(req, res) {
+    this.app.services.TaskService.getTaskByFriendlyId(req.params.task).then(
         record => {
-          this.app.orm.TransactionVolumeRecord.find(
+          this.app.orm.TaskVolumeRecord.find(
             { task: record.id }).then(
                 records => {
-                  var tps = new TransactionPerformanceSummary(records);
+                  var volume_summary = new TaskVolumeSummary(records);
                   res.render(
-                    'prototype-v0/transactions/index.html',
+                    'prototype-v0/tasks/index.html',
                     { asset_path: '/govuk_modules/govuk_template/assets/',
                       task: record,
-                      volume_summary: tps
+                      volume_summary: volume_summary
                     }
                   )
                 }

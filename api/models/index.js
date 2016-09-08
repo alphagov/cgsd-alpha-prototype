@@ -1,4 +1,4 @@
 'use strict'
 exports.Department = require('./Department')
-exports.TransactionVolumeRecord = require('./TransactionVolumeRecord')
+exports.TaskVolumeRecord = require('./TaskVolumeRecord')
 exports.Task = require('./Task')

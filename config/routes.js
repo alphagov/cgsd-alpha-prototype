@@ -42,12 +42,12 @@ module.exports = [
   },
 
   /**
-   * Render a prototype-v0 transactional view
+   * Render a prototype-v0 task view
    */
   {
     method: 'GET',
-    path: '/prototype-v0/:dept_or_agency/:transaction',
-    handler: 'ViewController.transactionalView'
+    path: '/prototype-v0/:dept_or_agency/:task',
+    handler: 'ViewController.taskView'
   },
 
   /**

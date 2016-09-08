@@ -21,7 +21,7 @@ module.exports = class Task extends Model {
       },
       // associations
       transaction_volume_records: {
-        collection: 'TransactionVolumeRecord',
+        collection: 'TaskVolumeRecord',
         via: 'task'
       }
     }
