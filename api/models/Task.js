@@ -26,6 +26,9 @@ module.exports = class Task extends Model {
       task_volume_records: {
         collection: 'TaskVolumeRecord',
         via: 'task'
+      },
+      agency: {
+        model: 'Agency'
       }
     }
   }

@@ -34,7 +34,7 @@
       </p>
       <p class="font-xsmall">
         <span class="bold-xsmall">Agency</span><br>
-        <a href="../agencies/dvla">Driver and Vehicle Licensing Agency</a>
+        <a href={{ task.agency.url }}>{{ task.agency.name }}</a>
       </p>
       <p class="font-xsmall">
         <span class="bold-xsmall">Topics</span><br>
@@ -42,7 +42,7 @@
       </p>
       <p class="font-xsmall">
         <span class="bold-xsmall">Data provided by</span><br>
-        Department for Transport
+        {{ task.agency.name }}
       </p>
       <p class="font-xsmall">
         <span class="bold-xsmall">Last updated</span><br>
