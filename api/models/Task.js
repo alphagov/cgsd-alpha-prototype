@@ -19,6 +19,9 @@ module.exports = class Task extends Model {
       name: {
         type: 'string'
       },
+      description: {
+        type: 'text'
+      },
       // associations
       transaction_volume_records: {
         collection: 'TaskVolumeRecord',
