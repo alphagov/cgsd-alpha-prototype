@@ -71,21 +71,21 @@
     <div class="column-one-third">
       <h3 class="bold-medium" style="margin-bottom: 15px">Transactions</h3>
       <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.total_volume }}m</h2>
+        <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
         <p class="xsmall"><span class="data-increase-arrow">&#9650;</span> 1% increase</p>
         <hr>
       </div>
       <h3 class="bold-medium" style="margin-bottom: 15px">Channel breakdown</h3>
       <div class="data breakdown">
-        <h3 class="bold-large">70% <span class="lede">online</span></h3>
-        <h3 class="bold-large">21% <span class="lede">paper</span></h3>
-        <h3 class="bold-large">9% <span class="lede">phone</span></h3>
+        <h3 class="bold-large">{{volume_summary.received_online_pct_total }}% <span class="lede">online</span></h3>
+        <h3 class="bold-large">{{volume_summary.received_paper_pct_total }}% <span class="lede">paper</span></h3>
+        <h3 class="bold-large">{{volume_summary.received_phone_pct_total }}% <span class="lede">phone</span></h3>
       </div>
       <br>
     </div> 
 
     <div class="column-two-thirds">
-      <h4 class="bold-medium">Transactions completed 1 July 2015 &ndash; 30 June 2016</h4>
+      <h4 class="bold-medium">Transactions received 1 July 2015 &ndash; 30 June 2016</h4>
       <ul class="bar-chart-key font-xsmall">
         <li>Online</li>
         <li>Paper</li>
