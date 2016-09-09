@@ -22,6 +22,9 @@ module.exports = class Task extends Model {
       description: {
         type: 'text'
       },
+      url: {
+        type: 'string' // use for Start page URL or landing page
+      },
       // associations
       task_volume_records: {
         collection: 'TaskVolumeRecord',
