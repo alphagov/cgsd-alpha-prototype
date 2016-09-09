@@ -17,7 +17,7 @@ module.exports = class Department extends Model {
         type: 'string'
       },
       description: {
-        type: 'string'
+        type: 'text'
       }
     }
   }
