@@ -19,8 +19,12 @@ module.exports = class TaskVolumeRecord extends Model {
       month_end_date: {
         type: 'date'
       },
-      transaction_status: {
-        type: 'string'
+      channel: {       // channel through which an application was received:
+        type: 'string' // online, paper, phone, face-to-face,
+                       // other, null ('completed' stage)
+      },
+      stage: {
+        type: 'string' // received, completed
       },
       count: {
         type: 'integer'
