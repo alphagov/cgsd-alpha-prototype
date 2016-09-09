@@ -23,7 +23,7 @@ module.exports = class Task extends Model {
         type: 'text'
       },
       // associations
-      transaction_volume_records: {
+      task_volume_records: {
         collection: 'TaskVolumeRecord',
         via: 'task'
       }
