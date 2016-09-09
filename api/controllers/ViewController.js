@@ -18,7 +18,7 @@ module.exports = class ViewController extends Controller {
   }
 
   taskView(req, res) {
-    this.app.services.TaskService.getTaskByFriendlyId(req.params.task).populate('agency').then(
+    this.app.services.TaskService.getTaskByFriendlyId(req.params.task).then(
         record => {
           this.app.orm.TaskVolumeRecord.find(
             { task: record.id }).then(

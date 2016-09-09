@@ -29,6 +29,9 @@ module.exports = class Task extends Model {
       },
       agency: {
         model: 'Agency'
+      },
+      department: {
+        model: 'Department'
       }
     }
   }

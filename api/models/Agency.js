@@ -23,6 +23,9 @@ module.exports = class Agency extends Model {
         type: 'string'
       },
       // associations
+      department: {
+        model: 'Department'
+      },
       tasks: {
         collection: 'Task',
         via: 'agency'

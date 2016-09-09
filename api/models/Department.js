@@ -18,6 +18,18 @@ module.exports = class Department extends Model {
       },
       description: {
         type: 'text'
+      },
+      url: {
+        type: 'string'
+      },
+      // associations
+      agencies: {
+        collection: 'Agency',
+        via: 'department'
+      },
+      tasks: {
+        collection: 'Task',
+        via: 'department'
       }
     }
   }
