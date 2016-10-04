@@ -51,6 +51,15 @@ module.exports = [
   },
 
   /**
+   * Render performance data view
+   */
+  {
+    method: 'GET',
+    path: '/performance-data/:dept_or_agency',
+    handler: 'ViewController.performanceView'
+  },
+
+  /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
   {

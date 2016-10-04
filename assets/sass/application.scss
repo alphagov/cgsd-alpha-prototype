@@ -29,10 +29,14 @@
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
-.column-full {
-  width: 100%;
-  padding: 0 15px 30px;
-  display: block;
+strong {
+  font-weight: 700;
+}
+
+// Less spacing for headings after <hr> keylines
+
+hr + .grid-row .column-two-thirds h2 {
+  margin-top: 5px;
 }
 
 // Header banner (feel like this class should already exist somewhere else)
@@ -280,3 +284,105 @@ margin:-30px 0 0;
 #bar-chart-value-6-1 { height: 10%; }
 #bar-chart-value-6-2 { height: 8%; }
 
+// performance-data page styles
+
+.metadata {
+  @include core-16;
+
+  dt, dl {
+    float: left;
+    clear: left;
+    width: 8em;
+  }
+
+  dd {
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  dt {
+    width: auto;
+    min-width: 120px;
+    padding-right: 10px;
+  }
+}
+
+.date-range-selector {
+
+  .form-group {
+    float: none;
+    display: inline-block;
+    width: auto;
+
+    .form-control {
+      width: 250px;
+      margin-right: 10px;
+    }
+
+  }
+
+  input, a {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+}
+
+.initially-hidden {
+  display: none;
+}
+
+.data-box-alt {
+  color: $white!important;
+  background-color: $govuk-blue;
+  padding: 25px 25px 10px;
+  border: 2.5px solid $white;
+  min-height: 190px;
+  text-decoration: none;
+  margin-bottom: 30px;
+
+  p {
+    text-decoration: underline;
+  }
+
+}
+
+.data-box-alt:hover {
+  color: #e3f0f7!important;
+}
+
+.text-supporting {
+  @include core-16;
+  margin: -15px 0 30px;
+  color: $secondary-text-colour;
+}
+
+.spark-bar {
+  @include core-16;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin-bottom: $gutter-half;
+  height: $gutter-half;
+  color: $text-colour;
+
+  span {
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: visible;
+    background: $panel-colour;
+    color: $black;
+    padding: 3px 0 0;
+    margin: 0px 0 5px 0;
+
+    h4 {
+      padding-left: 5px;
+    }
+  }
+}

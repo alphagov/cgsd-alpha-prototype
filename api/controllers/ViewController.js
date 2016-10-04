@@ -40,4 +40,12 @@ module.exports = class ViewController extends Controller {
       // Handle task not found
     });
   }
+
+  performanceView(req, res) {
+    res.render(
+      'performance-data/show.html',
+      { asset_path: '/govuk_modules/govuk_template/assets/',
+      }
+    )
+  }
 }
