@@ -3,4 +3,7 @@ govuk_modules
 coverage
 views/layouts/govuk
 public
-.tmp
+.tmp/*
+!.tmp/dev.sqlite
+.tmp/log
+.tmp/sockets
