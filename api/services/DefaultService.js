@@ -32,4 +32,12 @@ module.exports = class DefaultService extends Service {
       trailpacks: trailpacks
     }
   }
+
+  organisationType(record) {
+    if (record.hasOwnProperty('department')) {
+      return 'agency'
+    } else {
+      return 'department'
+    }
+  }
 }
