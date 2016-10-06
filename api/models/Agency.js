@@ -13,6 +13,9 @@ module.exports = class Agency extends Model {
 
   static schema () {
     return {
+      friendly_id: {
+        type: 'string'
+      },
       name: {
         type: 'string'
       },

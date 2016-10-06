@@ -33,6 +33,15 @@ module.exports = [
   },
 
   /**
+   * Search
+   */
+  {
+    method: 'GET',
+    path: '/search',
+    handler: 'ViewController.search'
+  },
+
+  /**
    * Render the prototype-v0 home page
    */
   {

@@ -13,6 +13,9 @@ module.exports = class Department extends Model {
 
   static schema () {
     return {
+      friendly_id: {
+        type: 'string'
+      },
       name: {
         type: 'string'
       },

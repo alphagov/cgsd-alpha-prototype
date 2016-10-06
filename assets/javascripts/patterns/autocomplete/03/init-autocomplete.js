@@ -12,7 +12,7 @@ $('.typeahead').each(function applyTypeahead() {
       return;
       /*eslint consistent-return: 1*/
     }
-    return this.value;
+    return { text: $(this).text(), id: this.value };
   }).get();
 
   // remove the selectbox
@@ -28,36 +28,24 @@ $('.typeahead').each(function applyTypeahead() {
 
   $parent.append($input);
 
+  $('<input>').attr({
+    type: 'hidden',
+    id: 'selectedId',
+    name: 'selectedId'
+  }).appendTo($parent);
+
   $input.typeahead({
     hint: false
   }, {
+    display: 'text',
     source: new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.whitespace,
+      datumTokenizer: function (datum) { return Bloodhound.tokenizers.whitespace(datum.text); },
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: typeaheadList,
-      sorter: function sorter(a, b) {
-        var input = $input.val();
-        var startsWithInput = function startsWithInput(x) {
-          return (x.toLowerCase().substr(0, input.length) === input.toLowerCase()) ? -1 : 1;
-        };
-
-        var compareAlpha = function compareAlpha(x, y) {
-          var less = (x < y) ? -1 : 1;
-          return (x === y) ? 0 : less;
-        };
-
-        var compareStartsWithInput = function compareStartsWithInput(x, y) {
-          var startsWithFirst = startsWithInput(x);
-          var startsWithSecond = startsWithInput(y);
-
-          return (startsWithFirst === startsWithSecond) ? 0 : startsWithFirst;
-        };
-
-        var first = compareStartsWithInput(a, b);
-
-        return (first === 0) ? compareAlpha(a, b) : first;
-      }
-    }),
-    limit: 100
-  });
+      local: typeaheadList
+    })
+  }).on('typeahead:select', function(obj, datum, name) {
+       $("input#selectedId").val(datum.id);
+  }).on('typeahead:autocomplete', function(ev, datum, suggestion) {
+       $("input#selectedId").val(datum.id);
+  })
 });

@@ -28,35 +28,15 @@
 
   <div class="grid-row">
     <div class="column-two-thirds">
-      <form>
+      <form action="/search" autocomplete="off" method="get">
         <fieldset>
           <div class="form-group search">
             <div class="wrapper">
               <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true" placeholder="Search by department, agency, service or task">
                 <option value=""></option>
-                <!-- departments -->
-                <option value="Department for Education">Department for Education</option>
-                <option value="Department for Environment, Food & Rural Affairs">Department for Environment, Food &amp; Rural Affairs</option>
-                <option value="Department for Transport">Department for Transport</option>
-                <option value="Department for Work and Pensions">Department for Work and Pensions</option>
-                <option value="Department of Health">Department of Health</option>
-                <option value="HM Revenue & Customs">HM Revenue &amp; Customs</option>
-                <option value="Home Office">Home Office</option>
-                <option value="Ministry of Justice">Ministry of Justice</option>
-                <!-- agencies -->
-                <option value="Driver and Vehicle Licensing Agency DVLA">Driver and Vehicle Licensing Agency DVLA</option>
-                <option value="Driver and Vehicle Standards Agency DVSA">Driver and Vehicle Standards Agency DVSA</option>
-                <option value="Education Funding Agency EFA">Education Funding Agency EFA</option>
-                <option value="HM Courts & Tribunals Service">HM Courts &amp; Tribunals Service</option>
-                <option value="HM Prison Service">HM Prison Service</option>
-                <option value="Independent Police Complaints Commission IPCC">Independent Police Complaints Commission IPCC</option>
-                <option value="NHS England">NHS England</option>
-                <option value="NHS Blood and Transplant">NHS Blood and Transplant</option>
-                <option value="Ordnance Survey">Ordnance Survey</option>
-                <option value="Skills Funding Agency SFA">Skills Funding Agency SFA</option>
-                <option value="Student Loans Company SLC">Student Loans Company SLC</option>
-                <!-- services -->
-                <!-- tasks -->
+                {% for option in options %}
+                  <option value="{{ option.friendly_id }}">{{ option.name }}</option>
+                {% endfor %}
               </select>
             </div>
             <input class="submit" type="submit" value="search">
