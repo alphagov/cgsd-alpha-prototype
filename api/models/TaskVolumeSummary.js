@@ -24,7 +24,7 @@ module.exports = class TaskVolumeSummary {
   }
 
   get received_online_pct_total() {
-    return Math.ceil((this.received_online / this.total_received) * 100);
+    return Math.floor((this.received_online / this.total_received) * 100);
   }
 
   get received_paper() {
@@ -32,7 +32,7 @@ module.exports = class TaskVolumeSummary {
   }
 
   get received_paper_pct_total() {
-    return Math.ceil((this.received_paper / this.total_received) * 100);
+    return Math.floor((this.received_paper / this.total_received) * 100);
   }
 
   get received_phone() {
@@ -40,7 +40,7 @@ module.exports = class TaskVolumeSummary {
   }
 
   get received_phone_pct_total() {
-    return Math.ceil((this.received_phone / this.total_received) * 100);
+    return Math.floor((this.received_phone / this.total_received) * 100);
   }
 
   // private functions

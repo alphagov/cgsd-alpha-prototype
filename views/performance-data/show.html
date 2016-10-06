@@ -16,11 +16,15 @@
     <div class="column-two-thirds">
       <h1 class="heading-xlarge">
       	<span class="heading-secondary">Aggregated service data for</span>
-      	Department for Transport
+        {{ organisation.name }}
       </h1>
       <dl class="metadata">
         <dt>Includes:</dt>
-        <dd><a href="#orgs">12 agencies, 37 services, 88 tasks</a></dd>
+        <dd><a href="#orgs">
+          {% if organisation_type == 'department' %}
+            {{ organisation.agencies.length }} agencies,
+          {% endif %}
+          {{ organisation.tasks.length}} tasks</a></dd>
         <dt>Contact:</dt>
         <dd>Name of responsible person</dd>
         <dt>Last updated:</dt>
@@ -68,13 +72,13 @@
     <div class="column-full">
       <a href="#transactions" class="column-one-third data-box-alt">
         <div class="data">
-          <h2 class="bold-xlarge">354m</h2>
+          <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
           <p>transactions</p>
         </div>
       </a>
       <a href="#channels" class="column-one-third data-box-alt">
         <div class="data">
-          <h2 class="bold-xlarge">67%</h2>
+          <h2 class="bold-xlarge">{{ volume_summary.received_online_pct_total }}%</h2>
           <p>of transactions start online</p>
         </div>
       </a>
@@ -100,7 +104,7 @@
   <div class="grid-row">
     <div class="column-third">
       <div class="data">
-        <h2 class="bold-xlarge">354m</h2>
+        <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
         <p class="bold-small">transactions</p>
         <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
       </div>
@@ -202,21 +206,21 @@
   <div class="grid-row">
     <div class="column-one-third">
       <div class="data">
-        <h2 class="bold-xlarge">67%</h2>
+        <h2 class="bold-xlarge">{{ volume_summary.received_online_pct_total }}%</h2>
         <p class="bold-small">online</p>
         <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
       </div>
     </div>
     <div class="column-one-third">
       <div class="data">
-        <h2 class="bold-xlarge">23%</h2>
+        <h2 class="bold-xlarge">{{ volume_summary.received_phone_pct_total }}%</h2>
         <p class="bold-small">phone</p>
         <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
       </div>
     </div>
     <div class="column-one-third">
       <div class="data">
-        <h2 class="bold-xlarge">10%</h2>
+        <h2 class="bold-xlarge">{{ volume_summary.received_paper_pct_total }}%</h2>
         <p class="bold-small">paper</p>
         <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
       </div>
@@ -399,45 +403,41 @@
   <div class="grid-row" id="orgs">
     <div class="column-two-thirds">
       <h2 class="heading-large">What this data is aggregated from</h2>
-      <p>Transaction data for the Department for Transport, which currently consists of 12 agencies, 37 services and 88 tasks.</p>
+      <p>Transaction data for {{ organisation.name }}, which currently consists of
+        {% if organisation_type == 'department' and organisation.agencies.length > 0 %}
+            {{ organisation.agencies.length }} agencies and
+          {% endif %}
+          {{ organisation.tasks.length}} tasks.
+      </p>
       <br>
     </div>
   </div>
 
-  <div class="grid-row">
+    <div class="grid-row">
+      {% if organisation_type == 'department' and organisation.agencies.length > 0 %}
+        <div class="column-one-third">
+          <div class="data">
+            <h2 class="bold-xlarge">{{ organisation.agencies.length }}</h2>
+            <p class="bold-small">agencies</p>
+            <ul class="list font-xsmall">
+              {% for agency in organisation.agencies %}
+                <li><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></li>
+                <li class="bold-xsmall"><a href="#">View all</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
     <div class="column-one-third">
       <div class="data">
-        <h2 class="bold-xlarge">12</h2>
-        <p class="bold-small">agencies</p>
-        <ul class="list font-xsmall">
-          <li><a href="#">Air Accidents Investigation Branch</a></li>
-          <li><a href="#">British Transport Police Authority</a></li>
-          <li><a href="#">Civil Aviation Authority</a></li>
-          <li class="bold-xsmall"><a href="#">View all</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">37</h2>
-        <p class="bold-small">services</p>
-        <ul class="list font-xsmall">
-          <li><a href="#">Become a driving instructor</a></li>
-          <li><a href="#">Learn to drive</a></li>
-          <li><a href="#">Pay tax on a vehicle</a></li>
-          <li class="bold-xsmall"><a href="#">View all</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">88</h2>
+        <h2 class="bold-xlarge">{{ organisation.tasks.length }}</h2>
         <p class="bold-small">tasks</p>
         <ul class="list font-xsmall">
-          <li><a href="#">Amend trade license</a></li>
-          <li><a href="#">Apply for a diplomatic driver permit</a></li>
-          <li><a href="#">Apply for a compass adjuster's certificate of competency</a></li>
-          <li class="bold-xsmall"><a href="#">View all</a></li>
+          {% for task in organisation.tasks %}
+            <li>{{ task.name }}</li>
+            <li class="bold-xsmall"><a href="#">View all</a></li>
+          {% endfor %}
         </ul>
       </div>
     </div>
