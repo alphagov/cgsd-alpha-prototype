@@ -381,8 +381,8 @@
             <ul class="list font-xsmall">
               {% for agency in organisation.agencies %}
                 <li><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></li>
-                <li class="bold-xsmall"><a href="#">View all</a></li>
               {% endfor %}
+              <li class="bold-xsmall"><a href="#">View all</a></li>
             </ul>
           </div>
         </div>
@@ -395,8 +395,8 @@
         <ul class="list font-xsmall">
           {% for task in organisation.tasks %}
             <li>{{ task.name }}</li>
-            <li class="bold-xsmall"><a href="#">View all</a></li>
           {% endfor %}
+          <li class="bold-xsmall"><a href="#">View all</a></li>
         </ul>
       </div>
     </div>
