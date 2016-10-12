@@ -52,55 +52,68 @@ module.exports = class ViewController extends Controller {
   }
 
   performanceView(req, res) {
-    var friendly_id = req.params.dept_or_agency;
-    this.app.services.DepartmentService.getDepartmentByFriendlyId(friendly_id).then(
-        record => {
-          var task_ids = record.tasks.map(function(task) {
-            return task.id
-          });
+    var Promise = require('bluebird');
+    var volumeQueryAsync = Promise.promisify(this.app.orm.TaskVolumeRecord.query);
 
-          this.app.orm.TaskVolumeRecord.query(
-            'SELECT *  from taskvolumerecord WHERE task IN ($1)',
-            task_ids,
-            function(err, results) {
-              var volume_summary = new TaskVolumeSummary(results);
-              res.render(
-                'performance-data/show.html',
-                {
-                  asset_path: '/govuk_modules/govuk_template/assets/',
-                  organisation_type: 'department', // remember there is a service to determine this
-                  organisation: record,
-                  volume_summary: volume_summary
-                }
-              )
-            }
-          )
-        }
-    ).catch(err => {
-      this.app.services.AgencyService.getAgencyByFriendlyId(friendly_id).then(
-          record => {
+    var friendly_id = req.params.dept_or_agency;
+    this.app.services.DepartmentService.getDepartmentByFriendlyId(friendly_id)
+        .then(function(record) {
             var task_ids = record.tasks.map(function(task) {
-              return task.id
+                return task.id
             });
 
-            this.app.orm.TaskVolumeRecord.query(
-              'SELECT *  from taskvolumerecord WHERE task IN ($1)',
-              task_ids,
-              function(err, results) {
-                var volume_summary = new TaskVolumeSummary(results);
-                res.render(
-                  'performance-data/show.html',
-                  {
-                    asset_path: '/govuk_modules/govuk_template/assets/',
-                    organisation_type: 'agency', // remember there is a service to determine this
-                    organisation: record,
-                    volume_summary: volume_summary
-                  }
-                )
-              }
+            volumeQueryAsync(
+                'SELECT *  from taskvolumerecord WHERE task IN ($1)',
+                task_ids
             )
-         }
-      ).catch(err => {});
+            .then(function(volume_records) {
+                var volume_summary = new TaskVolumeSummary(volume_records,
+                    record.tasks, record.agencies);
+                return volume_summary
+            })
+            .then(function(volume_summary) {
+                res.render(
+                    'performance-data/show.html',
+                    {
+                        asset_path: '/govuk_modules/govuk_template/assets/',
+                        organisation_type: 'department', // remember there is a service to determine this
+                        organisation: record,
+                        volume_summary: volume_summary,
+                        grouped_volumes: volume_summary.agencies()
+                    }
+                )
+            })
+        })
+        .catch(err => {
+      this.app.services.AgencyService.getAgencyByFriendlyId(friendly_id)
+          .then( record => {
+              var task_ids = record.tasks.map(function(task) {
+                 return task.id
+              });
+
+              volumeQueryAsync(
+                  'SELECT *  from taskvolumerecord WHERE task IN ($1)',
+                  task_ids
+              )
+              .then(function(volume_records) {
+                  var volume_summary = new TaskVolumeSummary(volume_records,
+                      record.tasks, record.agencies);
+                  return volume_summary
+              })
+              .then(function(volume_summary) {
+                  res.render(
+                      'performance-data/show.html',
+                      {
+                          asset_path: '/govuk_modules/govuk_template/assets/',
+                          organisation_type: 'agency', // remember there is a service to determine this
+                          organisation: record,
+                          volume_summary: volume_summary,
+                          grouped_volumes: volume_summary.tasks()
+                      }
+                  )
+              })
+         })
+         .catch(err => {});
     });
   }
 }
