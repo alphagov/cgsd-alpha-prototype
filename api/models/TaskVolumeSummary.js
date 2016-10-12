@@ -57,8 +57,16 @@ module.exports = class TaskVolumeSummary {
           sum += record.count;
         }
       }
-      task_volumes.push({ friendly_id: this._tasks[x].friendly_id, name: this._tasks[x].name, total_received: sum });
+      task_volumes.push({
+        friendly_id: this._tasks[x].friendly_id,
+        name: this._tasks[x].name,
+        total_received: sum,
+        pct_total_received: Math.floor(( sum / this.total_received) * 100)
+      });
     }
+    task_volumes.sort(function(a, b) {
+      return a.total_received < b.total_received;
+    });
     return task_volumes;
   }
 
@@ -79,8 +87,16 @@ module.exports = class TaskVolumeSummary {
           }
         }
       }
-      agency_volumes.push({ friendly_id: this._agencies[z].friendly_id, name: this._agencies[z].name, total_received: sum });
+      agency_volumes.push({
+        friendly_id: this._agencies[z].friendly_id,
+        name: this._agencies[z].name,
+        total_received: sum,
+        pct_total_received: Math.floor(( sum / this.total_received) * 100)
+      });
     }
+    agency_volumes.sort(function(a, b) {
+      return a.total_received < b.total_received;
+    });
     return agency_volumes;
   }
 

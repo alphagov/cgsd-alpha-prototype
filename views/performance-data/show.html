@@ -134,10 +134,10 @@
       </div>
       <div class="column-half">
         <span class="spark-bar">
-           <span style="width: 100%">
+          <span style="width: {{ group.pct_total_received }}%">
              <h4 class="bold-medium">{{ group.total_received }}m</h4>
-           </span>
-         </span>
+          </span>
+        </span>
       </div>
     </div>
   {% endfor %}
