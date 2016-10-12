@@ -63,8 +63,8 @@ module.exports = class ViewController extends Controller {
             });
 
             volumeQueryAsync(
-                'SELECT *  from taskvolumerecord WHERE task IN ($1)',
-                task_ids
+                "SELECT *  from taskvolumerecord WHERE task IN (" + task_ids.join() + ")", // this is bad, I know but passing as $1 encloses the task ids in single apostrophes!
+                []
             )
             .then(function(volume_records) {
                 var volume_summary = new TaskVolumeSummary(volume_records,
@@ -92,8 +92,8 @@ module.exports = class ViewController extends Controller {
               });
 
               volumeQueryAsync(
-                  'SELECT *  from taskvolumerecord WHERE task IN ($1)',
-                  task_ids
+                  "SELECT *  from taskvolumerecord WHERE task IN (" + task_ids.join() + ")", // this is bad, I know but passing as $1 encloses the task ids in single apostrophes!
+                  []
               )
               .then(function(volume_records) {
                   var volume_summary = new TaskVolumeSummary(volume_records,

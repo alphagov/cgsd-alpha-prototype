@@ -78,8 +78,8 @@ module.exports = class TaskVolumeSummary {
             sum += record.count;
           }
         }
-        agency_volumes.push({ friendly_id: this._agencies[z].friendly_id, name: this._agencies[z].name, total_received: sum });
       }
+      agency_volumes.push({ friendly_id: this._agencies[z].friendly_id, name: this._agencies[z].name, total_received: sum });
     }
     return agency_volumes;
   }
