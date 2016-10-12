@@ -12,7 +12,8 @@ module.exports = class AgencyService extends Service {
    */
   getAgencyByFriendlyId(friendly_id) {
     return this.app.orm.Agency.findOne({
-      friendly_id: friendly_id }).populate('tasks')
+      friendly_id: friendly_id })
+      .populate('tasks', { sort: 'name ASC'})
   }
 }
 

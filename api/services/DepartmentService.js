@@ -12,7 +12,9 @@ module.exports = class DepartmentService extends Service {
    */
   getDepartmentByFriendlyId(friendly_id) {
     return this.app.orm.Department.findOne({
-      friendly_id: friendly_id }).populate('agencies').populate('tasks')
+      friendly_id: friendly_id })
+      .populate('agencies', { sort: 'name ASC'})
+      .populate('tasks', { sort: 'name ASC'})
   }
 }
 
