@@ -113,75 +113,34 @@
 
   <div class="grid-row">
     <div class="column-two-thirds">
-      <h3 class="heading-medium">Transactions by organisation</h3>
+      {% if organisation_type == 'department' %}
+        <h3 class="heading-medium">Transactions by agency</h3>
+      {% elif organisation_type == 'agency' %}
+        <h3 class="heading-medium">Transactions by task</h3>
+      {% endif %}
       <!-- <p class="font-xsmall text-supporting">Some text</p> -->
     </div>
   </div>
 
-  <div class="grid-row">
-    <div class="column-half">
-      <p><a href="agency">Driver and Vehicle Licensing Agency</a></p>
-    </div>
-    <div class="column-half">
-      <span class="spark-bar">
-         <span style="width: 100%">
-         <h4 class="bold-medium">309m</h4>
+  {% for group in grouped_volumes %}
+    <div class="grid-row">
+      <div class="column-half">
+        <p>
+          {% if organisation_type == 'department' %}
+            <a href="{{ group.friendly_id }}">{{ group.name }}</a></p>
+          {% elif organisation_type == 'agency' %}
+            <span>{{ group.name }}</span>
+          {% endif %}
+      </div>
+      <div class="column-half">
+        <span class="spark-bar">
+           <span style="width: 100%">
+             <h4 class="bold-medium">{{ group.total_received }}m</h4>
+           </span>
          </span>
-       </span>
+      </div>
     </div>
-  </div>
-
-   <div class="grid-row">
-    <div class="column-half">
-      <p><a href="agency">Highways England</a></p>
-    </div>
-    <div class="column-half">
-      <span class="spark-bar">
-         <span style="width: 12%">
-         <h4 class="bold-medium">38.2m</h4>
-         </span>
-       </span>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-half">
-      <p><a href="agency">Driver and Vehicle Standards Agency</a></p>
-    </div>
-    <div class="column-half">
-      <span class="spark-bar">
-         <span style="width: 2%">
-         <h4 class="bold-medium">6.77m</h4>
-         </span>
-       </span>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-half">
-      <p><a href="agency">Marine Management Organisation</a></p>
-    </div>
-    <div class="column-half">
-      <span class="spark-bar">
-         <span style="width: 1%">
-         <h4 class="bold-medium">35.8k</h4>
-         </span>
-       </span>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-half">
-      <p><a href="agency">Maritime and Coastguard Agency</a></p>
-    </div>
-    <div class="column-half">
-      <span class="spark-bar">
-         <span style="width: 1%">
-         <h4 class="bold-medium">11.2k</h4>
-         </span>
-       </span>
-    </div>
-  </div>
+  {% endfor %}
 
   <div class="grid-row">
     <div class="column-half">
