@@ -16,5 +16,14 @@ module.exports = class DepartmentService extends Service {
       .populate('agencies', { sort: 'name ASC'})
       .populate('tasks', { sort: 'name ASC'})
   }
-}
 
+  /**
+   * Get total transactions received by department
+   */
+  getTransactionsReceivedByDept() {
+    return this.app.orm.Department.query(
+        "select department.friendly_id, department.name, sum(taskvolumerecord.count) as total_received from department inner join task inner join taskvolumerecord where task.department = department.id and   taskvolumerecord.task = task.id and   taskvolumerecord.stage = 'received' group by department.name order by total_received DESC",
+        []
+    );
+  }
+}

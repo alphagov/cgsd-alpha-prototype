@@ -60,12 +60,21 @@ module.exports = [
   },
 
   /**
-   * Render performance data view
+   * Render performance data view (department or agency)
    */
   {
     method: 'GET',
     path: '/performance-data/:dept_or_agency',
     handler: 'ViewController.performanceView'
+  },
+
+  /**
+   * Render performance data view (government)
+   */
+  {
+    method: 'GET',
+    path: '/performance-data/government',
+    handler: 'ViewController.govtPerformanceView'
   },
 
   /**

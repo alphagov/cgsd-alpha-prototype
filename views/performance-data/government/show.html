@@ -1,0 +1,429 @@
+{% extends "layouts/layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  {% block page_banner %}
+    {% include "includes/phase_banner_alpha.html" %}
+  {% endblock %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">
+      	<span class="heading-secondary">Aggregated service data for</span>
+      	UK Government
+      </h1>
+      <dl class="metadata">
+        <dt>Includes:</dt>
+        <dd><a href="#orgs">{{departments.length }} departments, {{ agencies.length }} agencies, {{ tasks.length }} tasks</a></dd>
+<!--         <dt>Contact:</dt>
+        <dd>Name of responsible person</dd> -->
+        <dt>Last updated:</dt>
+        <dd>August 2016</dd>
+      </dl>
+    </div>
+    <div class="column-third">
+      <br><br>
+      <!-- <br><br>
+      <div class="notice">
+        <i class="icon icon-file-download">
+          <span class="visuallyhidden">Download file</span>
+        </i>
+        <strong class="bold-small">
+          <a href="#">Download data (CSV, 10KB)</a>
+        </strong>
+      </div> -->
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- date range -->
+
+  <div class="grid-row">
+    <div class="column-full">
+      <p class="lede">Showing data from September 2015 to August 2016 <a href="javascript:void(0)" id="change-date">Change</a></p>
+      <div class="date-range-selector initially-hidden">
+        <div class="form-group">
+          <label class="form-label" for="select-box">Show period starting</label>
+          <select class="form-control" id="select-box">
+            <option>June 2015</option>
+            <option>March 2015</option>
+            <option>December 2014</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="select-box">up to</label>
+          <select class="form-control" id="select-box">
+            <option>June 2015</option>
+            <option>March 2015</option>
+            <option>December 2014</option>
+          </select>
+        </div>
+        <input class="button" type="submit" value="Apply changes">
+        <a href="javascript:void(0)">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- summary -->
+
+  <div class="grid-row data-summary">
+    <div class="column-full">
+      <a href="#transactions" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">{{ task_volume_summary.total_received }}m</h2>
+          <p>transactions</p>
+        </div>
+      </a>
+      <a href="#channels" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">{{ task_volume_summary.received_online_pct_total }}%</h2>
+          <p>of transactions start online</p>
+        </div>
+      </a>
+      <a href="#user-effort" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">65%</h2>
+          <p>of callers need to check the status of something</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- transactions info -->
+
+  <div class="grid-row" id="transactions">
+    <div class="column-two-thirds">
+      <h3 class="bold-large">Transactions</h3>
+      <p>The total number of transactions handled by government departments.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.total_received }}m</h2>
+        <p class="bold-small">transactions</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-medium">Transactions by organisation</h3>
+      <!-- <p class="font-xsmall text-supporting">Some text</p> -->
+    </div>
+  </div>
+
+
+  {% for department in department_totals %}
+    <div class="grid-row">
+      <div class="column-half">
+        <p><a href="{{ department.friendly_id }}">{{ department.name }}</a></p>
+      </div>
+      <div class="column-half">
+        <span class="spark-bar">
+          <span style="width: {{department.pct_total_received }}%">
+             <h4 class="bold-medium">{{ department.total_received }}m</h4>
+           </span>
+         </span>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p class="bold-xsmall"><a href="#">View all</a></p>
+    </div>
+    <div class="column-half">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- channel breakdown -->
+
+  <div class="grid-row" id="channels">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">Channel breakdown</h2>
+      <p>A channel is defined as "the way that a service receives the user’s information".</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.received_online_pct_total }}%</h2>
+        <p class="bold-small">online</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.received_phone_pct_total }}%</h2>
+        <p class="bold-small">phone</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.received_paper_pct_total }}%</h2>
+        <p class="bold-small">paper</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- user effort -->
+
+  <div class="grid-row" id="user-effort">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">User effort</h2>
+      <p>Data collected at contact centres to find the reasons services are creating extra effort for their users. <a href="glossary">Read more about what the categories mean</a>.</p>
+      <br>
+    </div>  
+  </div>
+
+  <div class="grid-row">
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">25.2k</h2>
+        <p class="bold-small">calls taken</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+10% since Sep 2015</p>
+      </div>
+    </div>
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">880</h2>
+        <p class="bold-small">emails received</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+10% since Sep 2015</p>
+      </div>
+    </div>
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">1.2k</h2>
+        <p class="bold-small">casework issues</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+10% since Sep 2015</p>
+      </div>
+    </div>   
+  </div> 
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-medium">Reasons users get in touch</h3>
+      <p class="font-xsmall text-supporting">Based on a sample of 1,000 calls and 200 emails</p>
+    </div>  
+  </div>  
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I want to check the status of something</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 65%">
+         <h4 class="bold-medium">65%</h4>
+         </span>
+       </span>
+    </div>  
+  </div> 
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I need more information</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 19%">
+          <h4 class="bold-medium">19%</h4>
+         </span>
+       </span>
+    </div>  
+  </div> 
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I had to get in contact</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 8%">
+          <h4 class="bold-medium">8%</h4>
+         </span>
+       </span>
+    </div>  
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I need additional support</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 7%">
+          <h4 class="bold-medium">7%</h4>
+         </span>
+       </span>
+    </div>  
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I want to challenge a decision</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 1%">
+          <h4 class="bold-medium">1%</h4>
+         </span>
+       </span>
+    </div>  
+  </div>
+
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-medium">Reasons users have to repeat or amend something</h3>
+      <p class="font-xsmall text-supporting warning-text">Based on a range of sampling methods so numbers are indicative</p>
+    </div> 
+  </div> 
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>User's information is incomplete</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 37%">
+         <h4 class="bold-medium">37%</h4>
+         </span>
+       </span>
+    </div>  
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>User followed the wrong process</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 31%">
+         <h4 class="bold-medium">31%</h4>
+         </span>
+       </span>
+    </div>  
+  </div> 
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>User's information is illegible</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 21%">
+         <h4 class="bold-medium">21%</h4>
+         </span>
+       </span>
+    </div>  
+  </div> 
+ 
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>User's information doesn't match government records</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 11%">
+         <h4 class="bold-medium">11%</h4>
+         </span>
+       </span>
+    </div>  
+  </div>  
+
+  </div> 
+
+  <hr>
+
+  <!-- list of services -->
+
+  <div class="grid-row" id="orgs">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">What this data is aggregated from</h2>
+      <p>Transaction data for UK Government, which currently consists of
+          {{ departments.length }} departments,
+          {{ agencies.length }} agencies and
+          {{ tasks.length}} tasks.
+      </p>
+      <br>
+    </div>
+  </div>
+    <div class="grid-row">
+      <div class="column-one-third">
+        <div class="data">
+          <h2 class="bold-xlarge">{{ departments.length }}</h2>
+          <p class="bold-small">departments</p>
+          <ul class="list font-xsmall">
+            {% for department in departments %}
+              {% if loop.index < 4 %}
+                <li><a href="{{ department.friendly_id }}">{{ department.name }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li class="bold-xsmall"><a href="#">View all</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="column-one-third">
+        <div class="data">
+          <h2 class="bold-xlarge">{{ agencies.length }}</h2>
+          <p class="bold-small">agencies</p>
+          <ul class="list font-xsmall">
+            {% for agency in agencies %}
+              {% if loop.index < 4 %}
+                <li><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li class="bold-xsmall"><a href="#">View all</a></li>
+          </ul>
+        </div>
+      </div>
+
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ tasks.length }}</h2>
+        <p class="bold-small">tasks</p>
+        <ul class="list font-xsmall">
+          {% for task in tasks %}
+            {% if loop.index < 4 %}
+              <li>{{ task.name }}</li>
+            {% endif %}
+          {% endfor %}
+          <li class="bold-xsmall"><a href="#">View all</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+</main>
+
+{% endblock %}
+
+{% block body_end %}
+{{ super() }}
+  <script src="/javascripts/date-range-selector.js"></script>
+{% endblock %}
