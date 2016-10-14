@@ -15,6 +15,8 @@ module.exports = class TaskVolumeSummary {
     this._received_online = this._sum_received_volume_for('online');
     this._received_paper = this._sum_received_volume_for('paper');
     this._received_phone = this._sum_received_volume_for('phone');
+    this._received_face_to_face = this._sum_received_volume_for('face to face');
+    this._received_other = this._sum_received_volume_for('other');
   }
 
   get total_received() {
@@ -43,6 +45,22 @@ module.exports = class TaskVolumeSummary {
 
   get received_phone_pct_total() {
     return Math.floor((this.received_phone / this.total_received) * 100);
+  }
+
+  get received_face_to_face() {
+    return this._received_face_to_face;
+  }
+
+  get received_face_to_face_pct_total() {
+    return Math.floor((this.received_face_to_face / this.total_received) * 100);
+  }
+
+  get received_other() {
+    return this._received_other;
+  }
+
+  get received_other_pct_total() {
+    return Math.floor((this.received_other / this.total_received) * 100);
   }
 
   tasks() {
