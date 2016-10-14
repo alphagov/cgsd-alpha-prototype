@@ -40,11 +40,12 @@ hr + .grid-row .column-two-thirds h2 {
 }
 
 // Header banner (feel like this class should already exist somewhere else)
+.swatch {
+  background-color: $govuk-blue;
+}
 
 .header-banner {
-  @include core-19;
   color: $white;
-  background-color: $govuk-blue;
   width: 100%;
   margin-top: -10px;
   padding-bottom: 60px;
@@ -86,7 +87,7 @@ hr + .grid-row .column-two-thirds h2 {
   .phase-banner-alpha {
     color: #fff;
     border-bottom: none;
-    padding-left: 30px;
+    padding-left: 17px;
 
     p {
       color: $white;
