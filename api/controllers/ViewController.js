@@ -28,34 +28,6 @@ module.exports = class ViewController extends Controller {
     res.redirect('/performance-data/' + req.query.selectedId);
   }
 
-  prototypeV0Home(req, res) {
-    res.render('prototype-v0/index.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
-  }
-
-  taskView(req, res) {
-    this.app.services.TaskService.getTaskByFriendlyId(req.params.task).then(
-        record => {
-          this.app.orm.TaskVolumeRecord.find(
-            { task: record.id }).then(
-                records => {
-                  var volume_summary = new TaskVolumeSummary(records);
-                  res.render(
-                    'prototype-v0/tasks/index.html',
-                    { asset_path: '/govuk_modules/govuk_template/assets/',
-                      task: record,
-                      volume_summary: volume_summary
-                    }
-                  )
-                }
-              ).catch(err => {
-              // Handle no volume records found
-            })
-        }
-    ).catch(err => {
-      // Handle task not found
-    });
-  }
-
   govtPerformanceView(req, res) {
     var Promise = require('bluebird');
     Promise.join(
