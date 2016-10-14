@@ -36,7 +36,7 @@
             <div class="wrapper">
               <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true" placeholder="Search by department, agency, service or task">
                 <option value=""></option>
-                {% for option in options %}
+                {% for option in search_options %}
                   <option value="{{ option.friendly_id }}">{{ option.name }}</option>
                 {% endfor %}
               </select>

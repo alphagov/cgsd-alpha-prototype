@@ -8,15 +8,20 @@ module.exports = class ViewController extends Controller {
 
   home(req, res) {
     this.app.orm.Department.query(
-        'SELECT friendly_id, name FROM department UNION SELECT friendly_id, name FROM agency ORDER BY name ASC', [],
-        function(err, results) {
-          res.render(
-            'index.html',
-            {
-              asset_path: '/govuk_modules/govuk_template/assets/',
-              options: results
-            })
-        });
+      "SELECT friendly_id, name \
+       FROM department \
+       UNION SELECT friendly_id, name \
+       FROM agency ORDER BY name ASC",
+      [],
+      function(err, results) {
+        res.render(
+          'index.html',
+          {
+            asset_path: '/govuk_modules/govuk_template/assets/',
+            search_options: results
+          })
+      }
+    );
   }
 
   search(req, res) {

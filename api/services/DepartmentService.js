@@ -22,8 +22,18 @@ module.exports = class DepartmentService extends Service {
    */
   getTransactionsReceivedByDept() {
     return this.app.orm.Department.query(
-        "select department.friendly_id, department.name, sum(taskvolumerecord.count) as total_received from department inner join task inner join taskvolumerecord where task.department = department.id and   taskvolumerecord.task = task.id and   taskvolumerecord.stage = 'received' group by department.name order by total_received DESC",
-        []
+      "SELECT department.friendly_id, \
+              department.name, \
+              SUM(taskvolumerecord.count) as total_received \
+       FROM department \
+       INNER JOIN task \
+       INNER JOIN taskvolumerecord \
+       WHERE task.department = department.id \
+       AND taskvolumerecord.task = task.id \
+       AND taskvolumerecord.stage = 'received' \
+       GROUP BY department.name \
+       ORDER BY total_received DESC",
+      []
     );
   }
 }
