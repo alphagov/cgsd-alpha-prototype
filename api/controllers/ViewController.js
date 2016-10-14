@@ -65,65 +65,62 @@ module.exports = class ViewController extends Controller {
   }
 
   performanceView(req, res) {
-    var Promise = require('bluebird');
-    var volumeQueryAsync = Promise.promisify(this.app.orm.TaskVolumeRecord.query);
     var friendly_id = req.params.dept_or_agency;
+    var task_volume_service = this.app.services.TaskVolumeRecordService;
+    var department_service = this.app.services.DepartmentService;
+    var default_service = this.app.services.DefaultService;
     this.app.services.DepartmentService.getDepartmentByFriendlyId(friendly_id)
       .then(function(department) {
         var task_ids = department.tasks.map(function(task) { return task.id });
-        volumeQueryAsync(
-          "SELECT *  from taskvolumerecord WHERE task IN (" + task_ids.join() + ")", // this is bad, I know but passing as $1 encloses the task ids in single apostrophes!
-          []
-        )
-        .then(function(task_volume_records) {
-          var task_volume_summary = new TaskVolumeSummary(
-            task_volume_records, department.tasks, department.agencies);
-          return task_volume_summary
-        })
-        .then(function(task_volume_summary) {
-          res.render(
-            'performance-data/show.html',
-            {
-              asset_path: '/govuk_modules/govuk_template/assets/',
-              organisation_type: 'department', // remember there is a service to determine this
-              organisation: department,
-              volume_summary: task_volume_summary,
-              grouped_volumes: task_volume_summary.agencies()
-            }
-          )
-        })
-      })
-      .catch(err => {
-        this.app.services.AgencyService.getAgencyByFriendlyId(friendly_id)
-        .then( agency => {
-          var task_ids = agency.tasks.map(function(task) {
-            return task.id
-          });
-
-          volumeQueryAsync(
-            "SELECT *  from taskvolumerecord WHERE task IN (" + task_ids.join() + ")", // this is bad, I know but passing as $1 encloses the task ids in single apostrophes!
-            []
-          )
-          .then(function(task_volume_records) {
-            var task_volume_summary = new TaskVolumeSummary(
-              task_volume_records, agency.tasks, agency.agencies);
-            return task_volume_summary
-          })
-          .then(function(task_volume_summary) {
+        var Promise = require('bluebird');
+        Promise.join(
+          task_volume_service.getTotalVolumeByTask(task_ids)
+            .then( task_volume_records => { return task_volume_records }),
+          department_service.getTransactionsReceivedByAgency(department.friendly_id)
+            .then( agency_totals => { return agency_totals }),
+          function(task_volume_records, agency_totals) {
+            var task_volume_summary = new TaskVolumeSummary(task_volume_records);
             res.render(
               'performance-data/show.html',
               {
                 asset_path: '/govuk_modules/govuk_template/assets/',
-                organisation_type: 'agency', // remember there is a service to determine this
-                organisation: agency,
+                organisation_type: default_service.organisationType(department),
+                organisation: department,
                 volume_summary: task_volume_summary,
-                grouped_volumes: task_volume_summary.tasks()
+                grouped_volumes: agency_totals
               }
             )
-          })
-        })
-        .catch(err => {});
-    });
+          }
+        )
+      })
+      .catch(err => {
+        var agency_service = this.app.services.AgencyService;
+        this.app.services.AgencyService.getAgencyByFriendlyId(friendly_id)
+          .then(function(agency) {
+            var task_ids = agency.tasks.map(function(task) { return task.id });
+            var Promise = require('bluebird');
+            Promise.join(
+              task_volume_service.getTotalVolumeByTask(task_ids)
+                .then( task_volume_records => { return task_volume_records }),
+              agency_service.getTransactionsReceivedByTask(agency.friendly_id)
+                .then( task_totals => { return task_totals }),
+              function(task_volume_records, task_totals) {
+                var task_volume_summary = new TaskVolumeSummary(task_volume_records);
+                res.render(
+                  'performance-data/show.html',
+                  {
+                    asset_path: '/govuk_modules/govuk_template/assets/',
+                    organisation_type: default_service.organisationType(agency),
+                    organisation: agency,
+                    volume_summary: task_volume_summary,
+                    grouped_volumes: task_totals
+                  }
+                )
+              }
+            )
+          }
+        )
+      })
   }
 
   glossary(req, res) {

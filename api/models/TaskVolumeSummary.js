@@ -63,61 +63,6 @@ module.exports = class TaskVolumeSummary {
     return Math.floor((this.received_other / this.total_received) * 100);
   }
 
-  tasks() {
-    var task_volumes = [];
-    var x;
-    for (x = 0; x < this._tasks.length; x++) {
-      var y, sum = 0;
-      for (y = 0; y < this._task_volume_records.length; y++) {
-        var record;
-        record = this._task_volume_records[y];
-        if (record.task == this._tasks[x].id && record.stage == 'received') {
-          sum += record.count;
-        }
-      }
-      task_volumes.push({
-        friendly_id: this._tasks[x].friendly_id,
-        name: this._tasks[x].name,
-        total_received: sum,
-        pct_total_received: Math.floor(( sum / this.total_received) * 100)
-      });
-    }
-    task_volumes.sort(function(a, b) {
-      return a.total_received < b.total_received;
-    });
-    return task_volumes;
-  }
-
-  agencies() {
-    var agency_volumes = [];
-    var z;
-    for (z = 0; z < this._agencies.length; z++) {
-      var agency = this._agencies[z];
-      var sum = 0;
-      var x;
-      for (x = 0; x < this._tasks.length; x++) {
-        var y;
-        for (y = 0; y < this._task_volume_records.length; y++) {
-          var record;
-          record = this._task_volume_records[y];
-          if (this._tasks[x].agency == agency.id && record.task == this._tasks[x].id && record.stage == 'received') {
-            sum += record.count;
-          }
-        }
-      }
-      agency_volumes.push({
-        friendly_id: this._agencies[z].friendly_id,
-        name: this._agencies[z].name,
-        total_received: sum,
-        pct_total_received: Math.floor(( sum / this.total_received) * 100)
-      });
-    }
-    agency_volumes.sort(function(a, b) {
-      return a.total_received < b.total_received;
-    });
-    return agency_volumes;
-  }
-
   // private functions
 
   _sum_received_volume_for(channel) {

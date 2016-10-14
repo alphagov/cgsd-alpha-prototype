@@ -15,4 +15,3 @@ module.exports = class TaskService extends Service {
       friendly_id: friendly_id }).populate('agency').populate('department')
   }
 }
-
