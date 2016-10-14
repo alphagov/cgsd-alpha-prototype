@@ -148,4 +148,8 @@ module.exports = class ViewController extends Controller {
         .catch(err => {});
     });
   }
+
+  glossary(req, res) {
+    res.render('performance-data/glossary.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
+  }
 }

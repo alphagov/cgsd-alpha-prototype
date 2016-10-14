@@ -78,6 +78,15 @@ module.exports = [
   },
 
   /**
+   * Render the glossary page
+   */
+  {
+    method: 'GET',
+    path: '/performance-data/glossary',
+    handler: 'ViewController.glossary'
+  },
+
+  /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
   {
