@@ -19,16 +19,18 @@
         {{ organisation.name }}
       </h1>
       <dl class="metadata">
+        <dt>Part of:</dt>
+        <dd><a href="#">UK Government</a></dd>
         <dt>Includes:</dt>
         <dd><a href="#orgs">
           {% if organisation_type == 'department' %}
             {{ organisation.agencies.length }} agencies,
           {% endif %}
           {{ organisation.tasks.length}} tasks</a></dd>
-        <dt>Contact:</dt>
-        <dd>Name of responsible person</dd>
         <dt>Last updated:</dt>
         <dd>August 2016</dd>
+        <dt>Download data:</dt>
+        <dd><a href="#">CSV, 10KB</a></dd>
       </dl>
     </div>
     <div class="column-third">

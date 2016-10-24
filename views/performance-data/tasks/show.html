@@ -1,0 +1,383 @@
+{% extends "layouts/layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  {% block page_banner %}
+    {% include "includes/phase_banner_alpha.html" %}
+  {% endblock %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">
+      	<span class="heading-secondary">Service data for</span>
+        Apply for student finance
+      </h1>
+      <dl class="metadata">
+        <dt>Part of:</dt>
+        <dd><a href="#">Student Loans Company</a>, <a href="#">Department for Education</a>, <a href="#">UK Government</a></dd>
+        <dt>Last updated:</dt>
+        <dd>August 2016</dd>
+        <dt>Download data:</dt>
+        <dd><a href="#">CSV (10KB)</a></dd>
+      </dl>
+    </div>
+    <div class="column-third">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- date range -->
+
+  <div class="grid-row">
+    <div class="column-full">
+      <p class="lede">Showing data for September 2015 to August 2016 <a href="javascript:void(0)" id="change-date">Change</a></p>
+      <div class="date-range-selector initially-hidden">
+        <div class="form-group">
+          <label class="form-label" for="select-box">From</label>
+          <select class="form-control" id="select-box">
+            <option>June to August 2015</option>
+            <option>March to July 2015</option>
+            <option>December 2014 to February 2015</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="select-box">to</label>
+          <select class="form-control" id="select-box">
+            <option>June 2015</option>
+            <option>March 2015</option>
+            <option>December 2014</option>
+          </select>
+        </div>
+        <input class="button" type="submit" value="Apply changes">
+        <a href="javascript:void(0)">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- summary -->
+
+  <div class="grid-row data-summary">
+    <div class="column-full">
+      <a href="#transactions" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">1.2m</h2>
+          <p>transactions</p>
+        </div>
+      </a>
+      <a href="#channels" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">79%</h2>
+          <p>of transactions start online</p>
+        </div>
+      </a>
+      <a href="#user-contact" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">47%</h2>
+          <p>of callers need to check the status of something</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- transactions info -->
+
+  <div class="grid-row" id="transactions">
+    <div class="column-two-thirds">
+      <h3 class="bold-large">Transactions</h3>
+      <p>The total number of transactions handled by this task.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">1.2m</h2>
+        <p class="bold-small">transactions</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 1% increase on previous year</p>
+      </div>
+    </div>
+
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">89%</h2>
+        <p class="bold-small">successful transactions</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 5% increase on previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- channel breakdown -->
+
+  <!-- <div class="grid-row" id="channels">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">Transactions by channel</h2>
+      <p>A channel is defined as "the way that a service receives the user’s information". <a href="/performance-data/channels">Read more about how this data is collected</a>.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">79%</h2>
+        <p class="bold-small">online</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 10% increase on previous year</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">21%</h2>
+        <p class="bold-small">paper</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9660;</span> 10% decrease on previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <hr> -->
+
+  <!-- channel breakdown alternative -->
+
+  <div class="grid-row" id="channels">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">Transactions by channel</h2>
+      <p>A channel is defined as "the way that a service receives the user’s information". <a href="/performance-data/channels">Read more about how this data is collected</a>.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-third">
+      <p>Online</p>
+      <p class="text-supporting">&#9660; 10% decrease on previous year</p>
+    </div>
+    <div class="column-two-thirds">
+      <span class="spark-bar">
+         <span style="width: 79%">
+         <h4 class="bold-medium">79%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-third">
+      <p>Paper</p>
+      <p class="text-supporting">&#9650; 10% increase on previous year</p>
+    </div>
+    <div class="column-two-thirds">
+      <span class="spark-bar">
+         <span style="width: 21%">
+         <h4 class="bold-medium">21%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- user contact -->
+
+  <div class="grid-row" id="user-contact">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">User contact</h2>
+      <p>These numbers are based on data collected at contact centres to categorise the different reasons users call about a service. <a href="/performance-data/glossary">Read more about how this data is collected</a>.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">22.8k</h2>
+        <p class="bold-small">total calls taken</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9660;</span> 3% decrease on previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-medium ue-heading">Reasons users call</h3>
+      <!-- <p class="font-xsmall text-supporting">Based on a sample of 1,000 calls and 200 emails</p> -->
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I want to check the status of something</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 65%">
+         <h4 class="bold-medium">65%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I need more information</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 19%">
+          <h4 class="bold-medium">19%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I had to get in contact</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 8%">
+          <h4 class="bold-medium">8%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I need additional support</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 7%">
+          <h4 class="bold-medium">7%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>I want to challenge a decision</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 1%">
+          <h4 class="bold-medium">1%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge ue-number">10.9k</h2>
+        <p class="bold-small">casework issues</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9660;</span> 3% decrease on previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-medium ue-heading">Reasons users have to repeat or amend something</h3>
+      <!-- <p class="font-xsmall text-supporting warning-text">Based on a range of sampling methods so numbers are indicative</p> -->
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>User's information is incomplete</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 37%">
+         <h4 class="bold-medium">37%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>User followed the wrong process</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 31%">
+         <h4 class="bold-medium">31%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>User's information is illegible</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 21%">
+         <h4 class="bold-medium">21%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p>User's information doesn't match government records</p>
+    </div>
+    <div class="column-half">
+      <span class="spark-bar">
+         <span style="width: 11%">
+         <h4 class="bold-medium">11%</h4>
+         </span>
+       </span>
+    </div>
+  </div>
+
+  </div>
+
+  <hr>
+
+  <div class="grid-row" id="about-this-task">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">About this task</h2>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-small">Who uses it</h3>
+      <p>The majority of users are young people leaving school or college and planning to go to university.</p>
+      <h3 class="heading-small">Why they need it</h3>
+      <p>To get a loan to support their tuition and living costs for the duration of their studies.</p>
+      <h3 class="heading-small">See the service</h3>
+      <ul class="list">
+        <li><a href="https://www.gov.uk/apply-online-for-student-finance">Start page on GOV.UK</a></li>
+        <li><a href="https://www.gov.uk/student-finance-forms">Paper forms</a></li>
+      </ul>  
+    </div>
+  </div>
+
+
+
+
+</main>
+
+{% endblock %}
+
+{% block body_end %}
+{{ super() }}
+  <script src="/javascripts/date-range-selector.js"></script>
+{% endblock %}

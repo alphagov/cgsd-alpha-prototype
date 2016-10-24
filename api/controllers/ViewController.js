@@ -28,6 +28,15 @@ module.exports = class ViewController extends Controller {
     res.redirect('/performance-data/' + req.query.selectedId);
   }
 
+  taskPerformanceView(req, res) {
+    res.render(
+      'performance-data/tasks/show.html',
+      {
+         asset_path: '/govuk_modules/govuk_template/assets/'
+      }
+    )
+  }
+
   govtPerformanceView(req, res) {
     var Promise = require('bluebird');
     Promise.join(
@@ -126,4 +135,9 @@ module.exports = class ViewController extends Controller {
   glossary(req, res) {
     res.render('performance-data/glossary.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
   }
+
+  channels(req, res) {
+    res.render('performance-data/channels.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
+  }
+
 }

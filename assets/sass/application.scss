@@ -187,6 +187,7 @@ hr + .grid-row .column-two-thirds h2 {
 
 .data-increase-arrow { color: $button-colour; }
 .data-decrease-arrow { color: $mellow-red; }
+.data-neutral-arrow { color: $secondary-text-colour; }
 
 // Add 30px spacing at top of anchor links
 
@@ -197,98 +198,11 @@ height:30px;
 margin:-30px 0 0;
 }
 
-// Bar chart
-
-.bar-chart {
-  width: 100%;
-  min-height: 1px;
-  position: relative;
-  margin-top: 15px;
-}
-
-.bar-chart li {
-  display: inline-block;
-  width: 23%;
-  height: 250px;
-  margin: 0 8px 0 0;
-}
-
-.bar {
-  background-color: $govuk-blue;
-  border-top: 1px solid $white;
-  box-sizing: border-box;
-}
-
-.bar-chart li span {
-  display: block;
-  text-align: center!important;
-  padding: 10px;
-}
-
-.phone {
-  background-color: $light-blue;
-}
-
-.paper {
-  background-color: $light-blue;
-  opacity: 0.5;
-}
-
-.bar-chart-key {
-  margin: 15px 0;
-
-  li {
-    display: inline-block;
-    margin-right: 15px;
-    list-style-type: square;
-  }
-
-  li:before {
-    content: '';
-    display: inline-block;
-    height: 16px;
-    width: 16px;
-    background-color: $light-blue;
-    vertical-align: middle;
-    margin-right: 5px;
-  }
-
-  li:first-of-type:before {
-    background-color: $govuk-blue;
-  }
-
-  li:last-of-type:before {
-    opacity: 0.5;
-  }
-
-}
-
-#bar-chart-value-1 { height: 70%; }
-#bar-chart-value-1-1 { height: 15%; }
-#bar-chart-value-1-2 { height: 10%; }
-
-#bar-chart-value-2 { height: 80%; }
-#bar-chart-value-2-1 { height: 10%; }
-#bar-chart-value-2-2 { height: 10%; }
-
-#bar-chart-value-3 { height: 90%; }
-
-#bar-chart-value-4 { height: 95%; }
-#bar-chart-value-4-1 { height: 10%; }
-#bar-chart-value-4-2 { height: 7%; }
-
-#bar-chart-value-5 { height: 80%; }
-#bar-chart-value-5-1 { height: 8%; }
-#bar-chart-value-5-2 { height: 5%; }
-
-#bar-chart-value-6 { height: 100%; }
-#bar-chart-value-6-1 { height: 10%; }
-#bar-chart-value-6-2 { height: 8%; }
 
 // performance-data page styles
 
 .metadata {
-  font-size: 16px;
+  font-size: 14px;
 
   dt, dl {
     float: left;
@@ -297,6 +211,8 @@ margin:-30px 0 0;
   }
 
   dd {
+    width: 70%;
+    float: left;
 
     a {
       text-decoration: none;
@@ -312,6 +228,15 @@ margin:-30px 0 0;
     min-width: 120px;
     padding-right: 10px;
   }
+
+  @media (max-width: 640px) {
+
+    dd {
+      margin-bottom: 10px;
+    }
+
+  }
+
 }
 
 .date-range-selector {
@@ -352,6 +277,16 @@ margin:-30px 0 0;
     text-decoration: underline;
   }
 
+
+  @media (max-width: 640px) {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    padding: 15px 15px 5px;
+    border: none;
+    margin-bottom: 15px;
+  }
+
 }
 
 .data-box-alt:hover {
@@ -386,4 +321,20 @@ margin:-30px 0 0;
       padding-left: 5px;
     }
   }
+
+  @media (max-width: 640px) {
+    margin-top: -15px;
+    margin-bottom: 45px;
+  }
+
+}
+
+// spacing for numbers in user effort section
+
+.ue-number {
+  margin-top: 45px;
+}
+
+.ue-heading {
+  margin-top: 0;
 }
