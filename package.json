@@ -23,6 +23,7 @@
     "grunt-cli": "^1.2.0",
     "grunt-sass": "^1.2.0",
     "grunt-sync": "^0.5.2",
+    "cfenv": "^1.0.3",
     "nunjucks": "^2.4.2",
     "trailpack-core": "^1.0.1",
     "trailpack-express": "^1.0.9",
