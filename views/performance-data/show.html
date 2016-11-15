@@ -27,8 +27,6 @@
             {{ organisation.agencies.length }} agencies,
           {% endif %}
           {{ organisation.tasks.length}} tasks</a></dd>
-        <dt>Last updated:</dt>
-        <dd>August 2016</dd>
         <dt>Download data:</dt>
         <dd><a href="#">CSV, 10KB</a></dd>
       </dl>
@@ -108,7 +106,7 @@
       <div class="data">
         <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
         <p class="bold-small">transactions</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
       </div>
     </div>
 
@@ -116,7 +114,7 @@
       <div class="data">
         <h2 class="bold-xlarge">89%</h2>
         <p class="bold-small">successful transactions</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+1% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+1% since previous year</p>
       </div>
     </div>
   </div>
@@ -162,6 +160,8 @@
 
   <hr>
 
+
+
   <!-- channel breakdown -->
 
   <div class="grid-row" id="channels">
@@ -177,21 +177,21 @@
       <div class="data">
         <h2 class="bold-xlarge">{{ volume_summary.received_online_pct_total }}%</h2>
         <p class="bold-small">online</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
       </div>
     </div>
     <div class="column-one-third">
       <div class="data">
         <h2 class="bold-xlarge">{{ volume_summary.received_phone_pct_total }}%</h2>
         <p class="bold-small">phone</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
       </div>
     </div>
     <div class="column-one-third">
       <div class="data">
         <h2 class="bold-xlarge">{{ volume_summary.received_paper_pct_total }}%</h2>
         <p class="bold-small">paper</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
       </div>
     </div>
   </div>
@@ -201,15 +201,95 @@
       <div class="data">
         <h2 class="bold-xlarge">{{ volume_summary.received_face_to_face_pct_total }}%</h2>
         <p class="bold-small">face to face</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
       </div>
     </div>
     <div class="column-one-third">
       <div class="data">
         <h2 class="bold-xlarge">{{ volume_summary.received_other_pct_total }}%</h2>
         <p class="bold-small">other</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
       </div>
+    </div>
+  </div>
+
+  <hr>
+
+
+  <div class="grid-row" id="transactions">
+    <div class="column-two-thirds">
+      <h3 class="bold-large">Calls</h3>
+      <p>What this data is.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row" id="transactions">
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">100k</h2>
+        <p class="bold-small">calls received</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">+8%</h2>
+        <p class="bold-small">increase in calls received since previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-full">
+      <table class="table-chart">
+        <tbody>
+          <tr>
+            <th colspan="2" class="bold-medium">Reasons users call</th>
+          </tr>
+          <tr>
+            <td>Prefers to use the phone to do their transaction</td>
+            <td>
+              <span class="table-chart-number">65%</span>
+              <span class="table-chart-bar"><span style="width: 65%"></span></span>
+            </td>  
+          </tr>
+          <tr>
+            <td>Wants an update on the progress of their transaction</td>
+            <td>
+              <span class="table-chart-number">19%</span>
+              <span class="table-chart-bar"><span style="width: 19%"></span></span>
+            </td>  
+          </tr>
+          <tr>
+            <td>Needs more information to use the service</td>
+            <td>
+              <span class="table-chart-number">8%</span>
+              <span class="table-chart-bar"><span style="width: 8%"></span></span>
+            </td>  
+          </tr>
+          <tr>
+            <td>Was asked to call by the service</td>
+            <td>
+              <span class="table-chart-number">6%</span>
+              <span class="table-chart-bar"><span style="width: 6%"></span></span>
+            </td>  
+          </tr>
+          <tr>
+            <td>Wants to challenge the outcome of their transaction</td>
+            <td>
+              <span class="table-chart-number">1%</span>
+              <span class="table-chart-bar"><span style="width: 1%"></span></span>
+            </td>  
+          </tr>
+          <tr>
+            <td>Has accessibility or language needs</td>
+            <td>
+              <span class="table-chart-number">1%</span>
+              <span class="table-chart-bar"><span style="width: 1%"></span></span>
+            </td>  
+          </tr>
+        </tbody>      
+      </table>
     </div>
   </div>
 
@@ -217,7 +297,7 @@
 
   <!-- user effort -->
 
-  <div class="grid-row" id="user-effort">
+  <!-- <div class="grid-row" id="user-effort">
     <div class="column-two-thirds">
       <h2 class="heading-large">User effort</h2>
       <p>Data collected at contact centres to find the reasons services are creating extra effort for their users. <a href="/performance-data/glossary">Read more about what the categories mean</a>.</p>
@@ -230,21 +310,21 @@
       <div class="data">
         <h2 class="bold-xlarge">25.2k</h2>
         <p class="bold-small">calls taken</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+10% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+10% since previous year</p>
       </div>
     </div>
     <div class="column-third">
       <div class="data">
         <h2 class="bold-xlarge">880</h2>
         <p class="bold-small">emails received</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+10% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+10% since previous year</p>
       </div>
     </div>
     <div class="column-third">
       <div class="data">
         <h2 class="bold-xlarge">1.2k</h2>
         <p class="bold-small">casework issues</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+10% since Sep 2015</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+10% since previous year</p>
       </div>
     </div>
   </div>
@@ -383,7 +463,7 @@
   </div>
 
   <hr>
-
+ -->
   <!-- list of services -->
 
   <div class="grid-row" id="orgs">

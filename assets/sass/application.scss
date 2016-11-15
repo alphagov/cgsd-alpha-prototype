@@ -338,3 +338,79 @@ margin:-30px 0 0;
 .ue-heading {
   margin-top: 0;
 }
+
+// table chart
+
+.table-chart {
+  border: none;
+  
+
+}
+
+.table-number {
+  display: inline-block;
+  width: 45%;
+  float: left;
+  text-align:right;
+  margin-right: 5%;
+  font-weight: bold;
+}
+  
+.table-bar {
+  height: 1em;
+  background-color: $secondary-text-colour;
+  display: inline-block;
+  width: 50%;
+  float: left;
+}
+
+
+// transactions table alternative
+
+.table-chart {
+  margin: 15px 0; // only for purposes of spacing on page by itself
+  
+  tr, td, th {
+    border: none;
+    padding-bottom: 10px;
+    vertical-align: top;
+    width: 50%;
+  }
+  
+}
+
+.table-chart-number {
+  @include core-19($tabular-numbers: true);
+  display: inline-block;
+  width: 18%;
+  float: left;
+  text-align:right;
+  margin-right: 2%;
+  font-weight: bold;
+
+  @media (max-width: 640px) {
+    width: 20%;
+    margin-right: 5%;
+    text-align: left;
+  }
+}
+  
+.table-chart-bar {
+  width: 80%;
+  float: left;
+  display: inline-block;
+
+  span {
+    height: 1em;
+    background-color: $secondary-text-colour;
+    float: left;
+    display: inline-block;
+  }
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+
+}
+
+
