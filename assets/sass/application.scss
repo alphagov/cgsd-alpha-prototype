@@ -371,7 +371,8 @@ margin:-30px 0 0;
 // table with vertical bar chart
 
 .table-chart {
-  margin: 0 15px;
+  display: block;
+  margin: 0 15px 45px;
   
   tr, td, th {
     border: none;
@@ -379,16 +380,20 @@ margin:-30px 0 0;
     vertical-align: top;
     width: 50%;
   }
+
+  th {
+    padding-top: 0;
+  }
   
 }
 
 .table-chart-number {
   @include core-19($tabular-numbers: true);
   display: inline-block;
-  width: 17%;
+  width: 18%;
   float: left;
   text-align:right;
-  margin-right: 3%;
+  margin-right: 2%;
   font-weight: bold;
 
   @media (max-width: 640px) {
