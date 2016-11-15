@@ -7,50 +7,60 @@
 {% block content %}
 
 <div class="swatch">
-<main id="content" role="main">
-<div class="header-banner">
+  <main id="content" role="main">
+    <div class="header-banner">
 
-  <div class="phase-banner-alpha">
-    <p>
-      <strong class="phase-tag">ALPHA</strong>
-      <span>This is a new service – your feedback will help us to improve it.</span>
-    </p>
-  </div>
+      <div class="phase-banner-alpha">
+        <p>
+          <strong class="phase-tag">ALPHA</strong>
+          <span>This is a new service – your feedback will help us to improve it.</span>
+        </p>
+      </div>
 
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <h1 class="heading-xlarge">
+            Get data about government services
+          </h1>
+          <!-- <p>
+            See how people are accessing services, how many transactions are happening, and the ways services may be creating extra effort for their users.
+          </p> -->
+        </div>
+      </div>
+
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <form action="/search" autocomplete="off" method="get">
+            <fieldset>
+              <div class="form-group search">
+                <div class="wrapper">
+                  <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true" placeholder="Search by department or agency">
+                    <option value=""></option>
+                    {% for option in search_options %}
+                      <option value="{{ option.friendly_id }}">{{ option.name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <input class="submit" type="submit" value="search">
+              </div>
+            </fieldset>
+          </form>
+          <p>Or <a href="/performance-data/government">view summary</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+ <main id="content" role="main">
   <div class="grid-row">
     <div class="column-two-thirds">
-      <h1 class="heading-xlarge">
-        Check how government services are doing
-      </h1>
-      <p>
-        See how people are accessing services, how many transactions are happening, and the ways services may be creating extra effort for their users.
-      </p>
+      <h2 class="heading-large">What is this?</h2>
+      <p>Good question.</p>
     </div>
-  </div>
+  </div>  
+ </main>
 
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <form action="/search" autocomplete="off" method="get">
-        <fieldset>
-          <div class="form-group search">
-            <div class="wrapper">
-              <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true" placeholder="Search by department or agency">
-                <option value=""></option>
-                {% for option in search_options %}
-                  <option value="{{ option.friendly_id }}">{{ option.name }}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <input class="submit" type="submit" value="search">
-          </div>
-        </fieldset>
-      </form>
-      <p>Or <a href="/performance-data/government">view summary</a></p>
-    </div>
-  </div>
-</div>
-</main>
-</div>
 {% endblock %}
 
 {% block body_end %}
