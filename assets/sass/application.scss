@@ -198,6 +198,71 @@ height:30px;
 margin:-30px 0 0;
 }
 
+// Bar chart
+
+.bar-chart {
+  width: 100%;
+  min-height: 1px;
+  position: relative;
+  margin-top: 15px;
+}
+
+.bar-chart li {
+  display: inline-block;
+  width: 23%;
+  height: 250px;
+  margin: 0 8px 0 0;
+}
+
+.bar {
+  background-color: $govuk-blue;
+  border-top: 1px solid $white;
+  box-sizing: border-box;
+}
+
+.bar-chart li span {
+  display: block;
+  text-align: center!important;
+  padding: 10px;
+}
+
+.phone {
+  background-color: $light-blue;
+}
+
+.paper {
+  background-color: $light-blue;
+  opacity: 0.5;
+}
+
+.bar-chart-key {
+  margin: 15px 0;
+
+  li {
+    display: inline-block;
+    margin-right: 15px;
+    list-style-type: square;
+  }
+
+  li:before {
+    content: '';
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-color: $light-blue;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  li:first-of-type:before {
+    background-color: $govuk-blue;
+  }
+
+  li:last-of-type:before {
+    opacity: 0.5;
+  }
+
+}
 
 // performance-data page styles
 
@@ -399,7 +464,8 @@ margin:-30px 0 0;
 // table with vertical bar chart
 
 .table-chart {
-  margin: 0 15px;
+  display: block;
+  margin: 0 15px 45px;
   
   tr, td, th {
     border: none;
@@ -407,16 +473,20 @@ margin:-30px 0 0;
     vertical-align: top;
     width: 50%;
   }
+
+  th {
+    padding-top: 0;
+  }
   
 }
 
 .table-chart-number {
   @include core-19($tabular-numbers: true);
   display: inline-block;
-  width: 17%;
+  width: 18%;
   float: left;
   text-align:right;
-  margin-right: 3%;
+  margin-right: 2%;
   font-weight: bold;
 
   @media (max-width: 640px) {
