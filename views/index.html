@@ -34,7 +34,7 @@
             <fieldset>
               <div class="form-group search">
                 <div class="wrapper">
-                  <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true" placeholder="Search by department or agency">
+                  <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true" placeholder="Search by department, agency or service">
                     <option value=""></option>
                     {% for option in search_options %}
                       <option value="{{ option.friendly_id }}">{{ option.name }}</option>
