@@ -1,0 +1,328 @@
+{% extends "layouts/layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  {% block page_banner %}
+    {% include "includes/phase_banner_alpha.html" %}
+  {% endblock %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">
+      	<span class="heading-secondary">Service data for</span>
+        Apply for student finance
+      </h1>
+      <dl class="metadata">
+        <dt>Part of:</dt>
+        <dd><a href="#">Student Loans Company</a>, <a href="#">Department for Education</a>, <a href="#">UK Government</a></dd>
+        <dt>Source:</dt>
+        <dd>Student Loans Company</dd>
+        <dt>Method:</dt>
+        <dd>Manual upload using online form</dd>
+        <dt>Last updated:</dt>
+        <dd>30 September 2016</dd>
+        <dt>Download data:</dt>
+        <dd><a href="#">CSV (10KB)</a></dd>
+      </dl>
+    </div>
+    <div class="column-third">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- date range -->
+
+  <div class="grid-row">
+    <div class="column-full">
+      <p class="lede">Showing data for September 2015 to August 2016 <a href="javascript:void(0)" id="change-date">Change</a></p>
+      <div class="date-range-selector initially-hidden">
+        <div class="form-group">
+          <label class="form-label" for="select-box">From</label>
+          <select class="form-control" id="select-box">
+            <option>June to August 2015</option>
+            <option>March to July 2015</option>
+            <option>December 2014 to February 2015</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="select-box">to</label>
+          <select class="form-control" id="select-box">
+            <option>June 2015</option>
+            <option>March 2015</option>
+            <option>December 2014</option>
+          </select>
+        </div>
+        <input class="button" type="submit" value="Apply changes">
+        <a href="javascript:void(0)">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- summary -->
+
+  <div class="grid-row data-summary">
+    <div class="column-full">
+      <a href="#transactions" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">1.2m</h2>
+          <p>transactions</p>
+        </div>
+      </a>
+      <a href="#channels" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">79%</h2>
+          <p>of transactions start online</p>
+        </div>
+      </a>
+      <a href="#calls" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">47%</h2>
+          <p>of callers need to check the status of something</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- transactions info -->
+
+  <div class="grid-row" id="transactions">
+    <div class="column-two-thirds">
+      <h3 class="bold-large">Transactions</h3>
+      <p>Data about the number of transactions received. A transaction is deemed 'successful' when the user manages to the do the thing they wanted to do.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">1.2m</h2>
+        <p class="bold-small">transactions</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 1% increase on previous year</p>
+      </div>
+    </div>
+
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">89%</h2>
+        <p class="bold-small">successful transactions</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 5% increase on previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- channel breakdown -->
+
+  <div class="grid-row" id="channels">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">Channel breakdown</h2>
+      <p>Data about how users choose to access services. A channel is defined as "the way that a service receives the user’s information".</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">79%</h2>
+        <p class="bold-small">online</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 10% increase on previous year</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">21%</h2>
+        <p class="bold-small">paper</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9660;</span> 10% decrease on previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- calls -->
+
+  <div class="grid-row" id="calls">
+    <div class="column-two-thirds">
+      <h3 class="bold-large">Calls</h3>
+      <p>Data about the numbers of calls received by services, and the reasons users are calling them.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">100k</h2>
+        <p class="bold-small">calls received</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">+8%</h2>
+        <p class="bold-small">increase in calls received since previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <table class="table-chart">
+      <tbody>
+        <tr>
+          <th colspan="2" class="bold-medium">Reasons users call</th>
+        </tr>
+        <tr>
+          <td>Prefers to use the phone to do their transaction</td>
+          <td>
+            <span class="table-chart-number">65%</span>
+            <span class="table-chart-bar"><span style="width: 65%"></span></span>
+          </td>  
+        </tr>
+        <tr>
+          <td>Wants an update on the progress of their transaction</td>
+          <td>
+            <span class="table-chart-number">19%</span>
+            <span class="table-chart-bar"><span style="width: 19%"></span></span>
+          </td>  
+        </tr>
+        <tr>
+          <td>Needs more information to use the service</td>
+          <td>
+            <span class="table-chart-number">8%</span>
+            <span class="table-chart-bar"><span style="width: 8%"></span></span>
+          </td>  
+        </tr>
+        <tr>
+          <td>Was asked to call by the service</td>
+          <td>
+            <span class="table-chart-number">6%</span>
+            <span class="table-chart-bar"><span style="width: 6%"></span></span>
+          </td>  
+        </tr>
+        <tr>
+          <td>Wants to challenge the outcome of their transaction</td>
+          <td>
+            <span class="table-chart-number">1%</span>
+            <span class="table-chart-bar"><span style="width: 1%"></span></span>
+          </td>  
+        </tr>
+        <tr>
+          <td>Has accessibility or language needs</td>
+          <td>
+            <span class="table-chart-number">1%</span>
+            <span class="table-chart-bar"><span style="width: 1%"></span></span>
+          </td>  
+        </tr>
+      </tbody>      
+    </table>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <p><a href="#">Read more about these categories</a></p>
+    </div>
+  </div>    
+
+  <hr>
+
+  <!-- casework -->
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="bold-large">Processing errors</h3>
+      <p>Data about the processing errors that cause services to have to contact users to ask them to repeat or amend something.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <table class="table-chart">
+      <tbody>
+        <tr>
+          <th colspan="2" class="bold-medium">Reasons users need to be contacted due to processing errors</th>
+        </tr>
+        <tr>
+          <td>User's information was illegible</td>
+          <td>
+            <span class="table-chart-number">50%</span>
+            <span class="table-chart-bar"><span style="width: 50%"></span></span>
+          </td>  
+        </tr>
+        <tr>
+          <td>User's information was incomplete</td>
+          <td>
+            <span class="table-chart-number">25%</span>
+            <span class="table-chart-bar"><span style="width: 25%"></span></span>
+          </td>  
+        </tr>
+        <tr>
+          <td>User's information didn't match government records</td>
+          <td>
+            <span class="table-chart-number">15%</span>
+            <span class="table-chart-bar"><span style="width: 15%"></span></span>
+          </td>  
+        </tr>
+        <tr>
+          <td>User filled out the wrong form or used the wrong process</td>
+          <td>
+            <span class="table-chart-number">10%</span>
+            <span class="table-chart-bar"><span style="width: 10%"></span></span>
+          </td>  
+        </tr>
+      </tbody>      
+    </table>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <p><a href="#">Read more about these categories</a></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- about this task -->
+
+  <div class="grid-row" id="about-this-task">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">About this task</h2>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-small">What user need does the service meet?</h3>
+      <p>The majority of users are young people leaving school or college and planning to go to university.</p>
+      <h3 class="heading-small">Who are the typical users?</h3>
+      <p>To get a loan to support their tuition and living costs for the duration of their studies.</p>
+      <h3 class="heading-small">How often do people use the service?</h3>
+      <p>As many times as they go to university — for most people, no more than once in a lifetime.</p>
+      <h3 class="heading-small">How does the service work?</h3>
+      <p>All applications, whether online or paper, are exported to PDF. They are then sent to be reviewed by a decision maker. The decision maker assesses the applicant's suitability for a student loan, and grants it accordingly. Their decision is then entered into the system and an automated response is sent via post.</p>
+      <h3 class="heading-small">How long does it take users to complete a transaction?</h3>
+      <p>An applicant will receive a result within 2 weeks.</p>
+      <h3 class="heading-small">See the service</h3>
+      <ul class="list">
+        <li><a href="https://www.gov.uk/apply-online-for-student-finance">Online service</a></li>
+        <li><a href="https://www.gov.uk/student-finance-forms">Paper forms</a></li>
+      </ul>  
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
+
+{% block body_end %}
+{{ super() }}
+  <script src="/javascripts/date-range-selector.js"></script>
+{% endblock %}
