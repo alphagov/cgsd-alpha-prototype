@@ -198,6 +198,71 @@ height:30px;
 margin:-30px 0 0;
 }
 
+// Bar chart
+
+.bar-chart {
+  width: 100%;
+  min-height: 1px;
+  position: relative;
+  margin-top: 15px;
+}
+
+.bar-chart li {
+  display: inline-block;
+  width: 23%;
+  height: 250px;
+  margin: 0 8px 0 0;
+}
+
+.bar {
+  background-color: $govuk-blue;
+  border-top: 1px solid $white;
+  box-sizing: border-box;
+}
+
+.bar-chart li span {
+  display: block;
+  text-align: center!important;
+  padding: 10px;
+}
+
+.phone {
+  background-color: $light-blue;
+}
+
+.paper {
+  background-color: $light-blue;
+  opacity: 0.5;
+}
+
+.bar-chart-key {
+  margin: 15px 0;
+
+  li {
+    display: inline-block;
+    margin-right: 15px;
+    list-style-type: square;
+  }
+
+  li:before {
+    content: '';
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-color: $light-blue;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  li:first-of-type:before {
+    background-color: $govuk-blue;
+  }
+
+  li:last-of-type:before {
+    opacity: 0.5;
+  }
+
+}
 
 // performance-data page styles
 
@@ -290,7 +355,8 @@ margin:-30px 0 0;
 }
 
 .data-box-alt:hover {
-  color: #e3f0f7!important;
+  color: $white!important;
+  background-color: $link-hover-colour;
 }
 
 .text-supporting {
@@ -394,6 +460,41 @@ margin:-30px 0 0;
     text-align: left;
   }
 }
+
+// table with vertical bar chart
+
+.table-chart {
+  display: block;
+  margin: 0 15px 45px;
+  
+  tr, td, th {
+    border: none;
+    padding-bottom: 10px;
+    vertical-align: top;
+    width: 50%;
+  }
+
+  th {
+    padding-top: 0;
+  }
+  
+}
+
+.table-chart-number {
+  @include core-19($tabular-numbers: true);
+  display: inline-block;
+  width: 18%;
+  float: left;
+  text-align:right;
+  margin-right: 2%;
+  font-weight: bold;
+
+  @media (max-width: 640px) {
+    width: 20%;
+    margin-right: 5%;
+    text-align: left;
+  }
+}
   
 .table-chart-bar {
   width: 80%;
@@ -412,5 +513,3 @@ margin:-30px 0 0;
   }
 
 }
-
-
