@@ -121,7 +121,7 @@
 
   <div class="grid-row">
     <div class="column-two-thirds">
-      {% if organisation_type == 'department' %}
+      {% if organisation_type == 'department' and grouped_volumes.length > 0 %}
         <h3 class="heading-medium">Transactions by agency</h3>
       {% elif organisation_type == 'agency' %}
         <h3 class="heading-medium">Transactions by task</h3>
@@ -136,7 +136,7 @@
           {% if organisation_type == 'department' %}
             <a href="{{ group.friendly_id }}">{{ group.name }}</a></p>
           {% elif organisation_type == 'agency' %}
-            <span>{{ group.name }}</span>
+            <a href="{{ group.friendly_id }}">{{ group.name }}</a></p>
           {% endif %}
       </div>
       <div class="column-half">
@@ -149,13 +149,15 @@
     </div>
   {% endfor %}
 
-  <div class="grid-row">
-    <div class="column-half">
-      <p class="bold-xsmall"><a href="#">View all</a></p>
+  {% if grouped_volumes.length > 0 %}
+    <div class="grid-row">
+      <div class="column-half">
+        <p class="bold-xsmall"><a href="#">View all</a></p>
+      </div>
+      <div class="column-half">
+      </div>
     </div>
-    <div class="column-half">
-    </div>
-  </div>
+  {% endif %}
 
   <hr>
 
@@ -214,7 +216,6 @@
 
   <hr>
 
-
   <div class="grid-row" id="transactions">
     <div class="column-two-thirds">
       <h3 class="bold-large">Calls</h3>
@@ -239,55 +240,55 @@
   </div>
 
   <div class="grid-row">
-      <table class="table-chart">
-        <tbody>
-          <tr>
-            <th colspan="2" class="bold-medium">Reasons users call</th>
-          </tr>
-          <tr>
-            <td>Prefers to use the phone to do their transaction</td>
-            <td>
-              <span class="table-chart-number">65%</span>
-              <span class="table-chart-bar"><span style="width: 65%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Wants an update on the progress of their transaction</td>
-            <td>
-              <span class="table-chart-number">19%</span>
-              <span class="table-chart-bar"><span style="width: 19%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Needs more information to use the service</td>
-            <td>
-              <span class="table-chart-number">8%</span>
-              <span class="table-chart-bar"><span style="width: 8%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Was asked to call by the service</td>
-            <td>
-              <span class="table-chart-number">6%</span>
-              <span class="table-chart-bar"><span style="width: 6%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Wants to challenge the outcome of their transaction</td>
-            <td>
-              <span class="table-chart-number">1%</span>
-              <span class="table-chart-bar"><span style="width: 1%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Has accessibility or language needs</td>
-            <td>
-              <span class="table-chart-number">1%</span>
-              <span class="table-chart-bar"><span style="width: 1%"></span></span>
-            </td>  
-          </tr>
-        </tbody>      
-      </table>
+    <table class="table-chart">
+      <tbody>
+        <tr>
+          <th colspan="2" class="bold-medium">Reasons users call</th>
+        </tr>
+        <tr>
+          <td>Prefers to use the phone to do their transaction</td>
+          <td>
+            <span class="table-chart-number">65%</span>
+            <span class="table-chart-bar"><span style="width: 65%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Wants an update on the progress of their transaction</td>
+          <td>
+            <span class="table-chart-number">19%</span>
+            <span class="table-chart-bar"><span style="width: 19%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Needs more information to use the service</td>
+          <td>
+            <span class="table-chart-number">8%</span>
+            <span class="table-chart-bar"><span style="width: 8%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Was asked to call by the service</td>
+          <td>
+            <span class="table-chart-number">6%</span>
+            <span class="table-chart-bar"><span style="width: 6%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Wants to challenge the outcome of their transaction</td>
+          <td>
+            <span class="table-chart-number">1%</span>
+            <span class="table-chart-bar"><span style="width: 1%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Has accessibility or language needs</td>
+          <td>
+            <span class="table-chart-number">1%</span>
+            <span class="table-chart-bar"><span style="width: 1%"></span></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <hr>
@@ -324,58 +325,58 @@
   </div>
 
   <div class="grid-row">
-      <table class="table-chart">
-        <tbody>
-          <tr>
-            <th colspan="2" class="bold-medium">
-              Reasons users call<br>
-              <span class="text-supporting">Based on a sample of 12,000 calls over 3 months</span>
-            </th>
-          </tr>
-          <tr>
-            <td>Prefers to use the phone to do their transaction</td>
-            <td>
-              <span class="table-chart-number">62%</span>
-              <span class="table-chart-bar"><span style="width: 62%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Wants an update on the progress of their transaction</td>
-            <td>
-              <span class="table-chart-number">17%</span>
-              <span class="table-chart-bar"><span style="width: 17%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Needs more information to use the service</td>
-            <td>
-              <span class="table-chart-number">10%</span>
-              <span class="table-chart-bar"><span style="width: 10%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Was asked to call by the service</td>
-            <td>
-              <span class="table-chart-number">7%</span>
-              <span class="table-chart-bar"><span style="width: 7%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Wants to challenge the outcome of their transaction</td>
-            <td>
-              <span class="table-chart-number">3%</span>
-              <span class="table-chart-bar"><span style="width: 3%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>Has accessibility or language needs</td>
-            <td>
-              <span class="table-chart-number">1%</span>
-              <span class="table-chart-bar"><span style="width: 1%"></span></span>
-            </td>  
-          </tr>
-        </tbody>      
-      </table>
+    <table class="table-chart">
+      <tbody>
+        <tr>
+          <th colspan="2" class="bold-medium">
+            Reasons users call<br>
+            <span class="text-supporting">Based on a sample of 12,000 calls over 3 months</span>
+          </th>
+        </tr>
+        <tr>
+          <td>Prefers to use the phone to do their transaction</td>
+          <td>
+            <span class="table-chart-number">62%</span>
+            <span class="table-chart-bar"><span style="width: 62%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Wants an update on the progress of their transaction</td>
+          <td>
+            <span class="table-chart-number">17%</span>
+            <span class="table-chart-bar"><span style="width: 17%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Needs more information to use the service</td>
+          <td>
+            <span class="table-chart-number">10%</span>
+            <span class="table-chart-bar"><span style="width: 10%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Was asked to call by the service</td>
+          <td>
+            <span class="table-chart-number">7%</span>
+            <span class="table-chart-bar"><span style="width: 7%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Wants to challenge the outcome of their transaction</td>
+          <td>
+            <span class="table-chart-number">3%</span>
+            <span class="table-chart-bar"><span style="width: 3%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Has accessibility or language needs</td>
+          <td>
+            <span class="table-chart-number">1%</span>
+            <span class="table-chart-bar"><span style="width: 1%"></span></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <hr>
@@ -391,44 +392,44 @@
   </div>
 
   <div class="grid-row">
-      <table class="table-chart">
-        <tbody>
-          <tr>
-            <th colspan="2" class="bold-medium">
-              Reasons for processing errors<br>
-              <span class="text-supporting">Based on a sample of 500 cases over 4 weeks</span>
-            </th>
-          </tr>
-          <tr>
-            <td>User's information was illegible</td>
-            <td>
-              <span class="table-chart-number">50%</span>
-              <span class="table-chart-bar"><span style="width: 50%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>User's information was incomplete</td>
-            <td>
-              <span class="table-chart-number">30%</span>
-              <span class="table-chart-bar"><span style="width: 30%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>User filled out the wrong form or used the wrong process</td>
-            <td>
-              <span class="table-chart-number">20%</span>
-              <span class="table-chart-bar"><span style="width: 20%"></span></span>
-            </td>  
-          </tr>
-          <tr>
-            <td>User's information didn't match government records</td>
-            <td>
-              <span class="table-chart-number">10%</span>
-              <span class="table-chart-bar"><span style="width: 10%"></span></span>
-            </td>  
-          </tr>
-        </tbody>      
-      </table>
+    <table class="table-chart">
+      <tbody>
+        <tr>
+          <th colspan="2" class="bold-medium">
+            Reasons for processing errors<br>
+            <span class="text-supporting">Based on a sample of 500 cases over 4 weeks</span>
+          </th>
+        </tr>
+        <tr>
+          <td>User's information was illegible</td>
+          <td>
+            <span class="table-chart-number">50%</span>
+            <span class="table-chart-bar"><span style="width: 50%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>User's information was incomplete</td>
+          <td>
+            <span class="table-chart-number">30%</span>
+            <span class="table-chart-bar"><span style="width: 30%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>User filled out the wrong form or used the wrong process</td>
+          <td>
+            <span class="table-chart-number">20%</span>
+            <span class="table-chart-bar"><span style="width: 20%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>User's information didn't match government records</td>
+          <td>
+            <span class="table-chart-number">10%</span>
+            <span class="table-chart-bar"><span style="width: 10%"></span></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 <!--   <div class="grid-row">
@@ -444,12 +445,12 @@
               <dt>Collected via:</dt>
               <dd>Manual entry using online form</dd>
               <dt>Notes:</dt>
-              <dd>Any additional notes the data uploader wishes to add.</dd> 
+              <dd>Any additional notes the data uploader wishes to add.</dd>
             </dl>
           </div>
       </details>
     </div>
-  </div> -->    
+  </div> -->
 
   <hr>
 
@@ -490,7 +491,9 @@
         <p class="bold-small">tasks</p>
         <ul class="list font-xsmall">
           {% for task in organisation.tasks %}
-            <li>{{ task.name }}</li>
+            <li>
+              <a href="{{ task.friendly_id }}">{{ task.name }}</a></p>
+            </li>
           {% endfor %}
           <li class="bold-xsmall"><a href="#">View all</a></li>
         </ul>

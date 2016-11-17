@@ -13,16 +13,27 @@
   {% endblock %}
 
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="column-full">
       <h1 class="heading-xlarge">
       	<span class="heading-secondary">Service data for</span>
-        Apply for student finance
+        {{ task.name }}
       </h1>
       <dl class="metadata">
         <dt>Part of:</dt>
-        <dd><a href="#">Student Loans Company</a>, <a href="#">Department for Education</a>, <a href="#">UK Government</a></dd>
+        <dd>
+        {% if agency %}
+        <a href="{{ agency.friendly_id }}">{{ agency.name }}</a>,
+        {% endif %}
+        <a href="{{department.friendly_id }}">{{ department.name }}</a>, <a href="/performance-data/government">UK Government</a>
+        </dd>
         <dt>Source:</dt>
-        <dd>Student Loans Company</dd>
+        <dd>
+          {% if agency %}
+            {{ agency.name }}
+          {% else %}
+            {{ department.name }}
+          {% endif %}
+        </dd>
         <dt>Method:</dt>
         <dd>Manual upload using online form</dd>
         <dt>Last updated:</dt>
@@ -71,13 +82,13 @@
     <div class="column-full">
       <a href="#transactions" class="column-one-third data-box-alt">
         <div class="data">
-          <h2 class="bold-xlarge">1.2m</h2>
+          <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
           <p>transactions</p>
         </div>
       </a>
       <a href="#channels" class="column-one-third data-box-alt">
         <div class="data">
-          <h2 class="bold-xlarge">79%</h2>
+          <h2 class="bold-xlarge">{{ volume_summary.received_online_pct_total }}%</h2>
           <p>of transactions start online</p>
         </div>
       </a>
@@ -103,7 +114,7 @@
   <div class="grid-row">
     <div class="column-third">
       <div class="data">
-        <h2 class="bold-xlarge">1.2m</h2>
+        <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
         <p class="bold-small">transactions</p>
         <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 1% increase on previous year</p>
       </div>
@@ -133,16 +144,43 @@
   <div class="grid-row">
     <div class="column-one-third">
       <div class="data">
-        <h2 class="bold-xlarge">79%</h2>
+        <h2 class="bold-xlarge">{{ volume_summary.received_online_pct_total }}%</h2>
         <p class="bold-small">online</p>
         <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 10% increase on previous year</p>
       </div>
     </div>
+
     <div class="column-one-third">
       <div class="data">
-        <h2 class="bold-xlarge">21%</h2>
+        <h2 class="bold-xlarge">{{ volume_summary.received_phone_pct_total }}%</h2>
+        <p class="bold-small">phone</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
+      </div>
+    </div>
+
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ volume_summary.received_paper_pct_total }}%</h2>
         <p class="bold-small">paper</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9660;</span> 10% decrease on previous year</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ volume_summary.received_face_to_face_pct_total }}%</h2>
+        <p class="bold-small">face to face</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
+      </div>
+    </div>
+
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ volume_summary.received_other_pct_total }}%</h2>
+        <p class="bold-small">other</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
       </div>
     </div>
   </div>
@@ -185,44 +223,44 @@
           <td>
             <span class="table-chart-number">65%</span>
             <span class="table-chart-bar"><span style="width: 65%"></span></span>
-          </td>  
+          </td>
         </tr>
         <tr>
           <td>Wants an update on the progress of their transaction</td>
           <td>
             <span class="table-chart-number">19%</span>
             <span class="table-chart-bar"><span style="width: 19%"></span></span>
-          </td>  
+          </td>
         </tr>
         <tr>
           <td>Needs more information to use the service</td>
           <td>
             <span class="table-chart-number">8%</span>
             <span class="table-chart-bar"><span style="width: 8%"></span></span>
-          </td>  
+          </td>
         </tr>
         <tr>
           <td>Was asked to call by the service</td>
           <td>
             <span class="table-chart-number">6%</span>
             <span class="table-chart-bar"><span style="width: 6%"></span></span>
-          </td>  
+          </td>
         </tr>
         <tr>
           <td>Wants to challenge the outcome of their transaction</td>
           <td>
             <span class="table-chart-number">1%</span>
             <span class="table-chart-bar"><span style="width: 1%"></span></span>
-          </td>  
+          </td>
         </tr>
         <tr>
           <td>Has accessibility or language needs</td>
           <td>
             <span class="table-chart-number">1%</span>
             <span class="table-chart-bar"><span style="width: 1%"></span></span>
-          </td>  
+          </td>
         </tr>
-      </tbody>      
+      </tbody>
     </table>
   </div>
 
@@ -230,7 +268,7 @@
     <div class="column-one-third">
       <p><a href="#">Read more about these categories</a></p>
     </div>
-  </div>    
+  </div>
 
   <hr>
 
@@ -255,30 +293,30 @@
           <td>
             <span class="table-chart-number">50%</span>
             <span class="table-chart-bar"><span style="width: 50%"></span></span>
-          </td>  
+          </td>
         </tr>
         <tr>
           <td>User's information was incomplete</td>
           <td>
             <span class="table-chart-number">25%</span>
             <span class="table-chart-bar"><span style="width: 25%"></span></span>
-          </td>  
+          </td>
         </tr>
         <tr>
           <td>User's information didn't match government records</td>
           <td>
             <span class="table-chart-number">15%</span>
             <span class="table-chart-bar"><span style="width: 15%"></span></span>
-          </td>  
+          </td>
         </tr>
         <tr>
           <td>User filled out the wrong form or used the wrong process</td>
           <td>
             <span class="table-chart-number">10%</span>
             <span class="table-chart-bar"><span style="width: 10%"></span></span>
-          </td>  
+          </td>
         </tr>
-      </tbody>      
+      </tbody>
     </table>
   </div>
 
@@ -312,9 +350,9 @@
       <p>An applicant will receive a result within 2 weeks.</p>
       <h3 class="heading-small">See the service</h3>
       <ul class="list">
-        <li><a href="https://www.gov.uk/apply-online-for-student-finance">Online service</a></li>
-        <li><a href="https://www.gov.uk/student-finance-forms">Paper forms</a></li>
-      </ul>  
+        <li><a href="{{ task.url }}">Online service</a></li>
+        <li><a href="{{ task.url }}">Paper forms</a></li>
+      </ul>
     </div>
   </div>
 
