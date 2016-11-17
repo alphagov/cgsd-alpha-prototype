@@ -72,7 +72,7 @@ module.exports = [
    */
   {
     method: 'GET',
-    path: '/performance-data/:dept_or_agency',
+    path: '/performance-data/:friendly_id',
     handler: 'ViewController.performanceView'
   },
 
