@@ -11,7 +11,10 @@ module.exports = class ViewController extends Controller {
       "SELECT friendly_id, name \
        FROM department \
        UNION SELECT friendly_id, name \
-       FROM agency ORDER BY name ASC",
+       FROM agency \
+       UNION SELECT friendly_id, name \
+       FROM task \
+       ORDER BY name ASC",
       [],
       function(err, results) {
         res.render(
@@ -74,7 +77,7 @@ module.exports = class ViewController extends Controller {
   }
 
   performanceView(req, res) {
-    var friendly_id = req.params.dept_or_agency;
+    var friendly_id = req.params.friendly_id;
     var task_volume_service = this.app.services.TaskVolumeRecordService;
     var department_service = this.app.services.DepartmentService;
     var default_service = this.app.services.DefaultService;
