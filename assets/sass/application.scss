@@ -48,10 +48,10 @@ hr + .grid-row .column-two-thirds h2 {
   color: $white;
   width: 100%;
   margin-top: -10px;
-  margin-bottom: -45px;
+  margin-bottom: -30px;
 
   h1 {
-    margin: 0 0 45px;
+    margin: 0 0 30px;
   }
 
   p {
@@ -62,13 +62,11 @@ hr + .grid-row .column-two-thirds h2 {
     color: $white;
   }
 
-  a:hover {
-    color: #e3f0f7;
-  }
-
   .button-start {
-    background-image: url(../images/icon-pointer-2x.png);
+    background-image: url(../images/icon-pointer-blue-2x.png);
     background-size: 30px 19px;
+    background-color: $white;
+    color: $govuk-blue;
   }
 
   .phase-banner-alpha {
@@ -87,6 +85,7 @@ hr + .grid-row .column-two-thirds h2 {
 }
 
 .search {
+  padding-top: 15px;
 
   .wrapper {
     float: left;
