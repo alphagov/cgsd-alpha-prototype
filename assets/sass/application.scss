@@ -48,12 +48,7 @@ hr + .grid-row .column-two-thirds h2 {
   color: $white;
   width: 100%;
   margin-top: -10px;
-  padding-bottom: 60px;
-
-  div {
-    max-width: 990px;
-    margin: 0 auto;
-  }
+  margin-bottom: -30px;
 
   h1 {
     margin: 0 0 30px;
@@ -67,35 +62,30 @@ hr + .grid-row .column-two-thirds h2 {
     color: $white;
   }
 
-  a:hover {
-    color: #e3f0f7;
-  }
-
-  .button {
+  .button-start {
+    background-image: url(../images/icon-pointer-blue-2x.png);
+    background-size: 30px 19px;
     background-color: $white;
     color: $govuk-blue;
-    box-shadow: 0 2px 0 $grey-2;
-    font-size: 24px;
-    padding-bottom: 10px;
-    margin-right: 15px;
-  }
-
-  .button:hover {
-    background-color: #e3f0f7;
   }
 
   .phase-banner-alpha {
     color: #fff;
     border-bottom: none;
-    padding-left: 17px;
 
     p {
       color: $white;
     }
   }
+
+  @media (max-width: 640px) {
+    margin-bottom: 0;
+  }
+
 }
 
 .search {
+  padding-top: 15px;
 
   .wrapper {
     float: left;
@@ -123,7 +113,7 @@ hr + .grid-row .column-two-thirds h2 {
     color: rgba(0,0,0,0);
     width: 40px;
     position: relative;
-    left: 21px;
+    left: 20px;
   }
 
   .submit:hover {
@@ -196,72 +186,6 @@ content:"";
 display:block;
 height:30px;
 margin:-30px 0 0;
-}
-
-// Bar chart
-
-.bar-chart {
-  width: 100%;
-  min-height: 1px;
-  position: relative;
-  margin-top: 15px;
-}
-
-.bar-chart li {
-  display: inline-block;
-  width: 23%;
-  height: 250px;
-  margin: 0 8px 0 0;
-}
-
-.bar {
-  background-color: $govuk-blue;
-  border-top: 1px solid $white;
-  box-sizing: border-box;
-}
-
-.bar-chart li span {
-  display: block;
-  text-align: center!important;
-  padding: 10px;
-}
-
-.phone {
-  background-color: $light-blue;
-}
-
-.paper {
-  background-color: $light-blue;
-  opacity: 0.5;
-}
-
-.bar-chart-key {
-  margin: 15px 0;
-
-  li {
-    display: inline-block;
-    margin-right: 15px;
-    list-style-type: square;
-  }
-
-  li:before {
-    content: '';
-    display: inline-block;
-    height: 16px;
-    width: 16px;
-    background-color: $light-blue;
-    vertical-align: middle;
-    margin-right: 5px;
-  }
-
-  li:first-of-type:before {
-    background-color: $govuk-blue;
-  }
-
-  li:last-of-type:before {
-    opacity: 0.5;
-  }
-
 }
 
 // performance-data page styles
@@ -405,42 +329,21 @@ margin:-30px 0 0;
   margin-top: 0;
 }
 
-// table chart
+// table with vertical bar chart
 
 .table-chart {
-  border: none;
-  
-
-}
-
-.table-number {
-  display: inline-block;
-  width: 45%;
-  float: left;
-  text-align:right;
-  margin-right: 5%;
-  font-weight: bold;
-}
-  
-.table-bar {
-  height: 1em;
-  background-color: $secondary-text-colour;
-  display: inline-block;
-  width: 50%;
-  float: left;
-}
-
-
-// transactions table alternative
-
-.table-chart {
-  margin: 15px 0; // only for purposes of spacing on page by itself
+  display: block;
+  margin: 0 15px 45px;
   
   tr, td, th {
     border: none;
     padding-bottom: 10px;
     vertical-align: top;
     width: 50%;
+  }
+
+  th {
+    padding-top: 0;
   }
   
 }
@@ -459,6 +362,7 @@ margin:-30px 0 0;
     margin-right: 5%;
     text-align: left;
   }
+
 }
 
 // table with vertical bar chart
@@ -513,3 +417,4 @@ margin:-30px 0 0;
   }
 
 }
+
