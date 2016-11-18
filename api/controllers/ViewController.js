@@ -110,7 +110,9 @@ module.exports = class ViewController extends Controller {
                 .then( task_volume_records => { return task_volume_records }),
               department_service.getTransactionsReceivedByAgency(department.friendly_id)
                 .then( agency_totals => { return agency_totals }),
-              function(task_volume_records, agency_totals) {
+              department_service.getTransactionsReceivedByTask(department.friendly_id)
+                .then( transaction_totals => { return transaction_totals }),
+              function(task_volume_records, agency_totals, transaction_totals) {
                 var task_volume_summary = new TaskVolumeSummary(task_volume_records);
                 res.render(
                   'performance-data/show.html',
@@ -119,7 +121,8 @@ module.exports = class ViewController extends Controller {
                     organisation_type: default_service.organisationType(department),
                     organisation: department,
                     volume_summary: task_volume_summary,
-                    grouped_volumes: agency_totals
+                    grouped_volumes: agency_totals,
+                    transaction_volumes: transaction_totals
                   }
                 )
               }
