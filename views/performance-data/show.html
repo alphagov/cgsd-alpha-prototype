@@ -123,7 +123,7 @@
     <div class="column-two-thirds">
       {% if organisation_type == 'department' and grouped_volumes.length > 0 %}
         <h3 class="heading-medium">Transactions by agency</h3>
-      {% elif organisation_type == 'agency' %}
+      {% elif organisation_type == 'agency' or (organisation_type == 'department' and grouped_volumes.length == 0) %}
         <h3 class="heading-medium">Transactions by task</h3>
       {% endif %}
     </div>
@@ -149,19 +149,33 @@
     </div>
   {% endfor %}
 
-  {% if grouped_volumes.length > 0 %}
-    <div class="grid-row">
-      <div class="column-half">
-        <p class="bold-xsmall"><a href="#">View all</a></p>
+  {% if organisation_type == 'department' and grouped_volumes.length == 0 %}
+    {% for transaction in transaction_volumes %}
+      <div class="grid-row">
+        <div class="column-half">
+          <p>
+            <a href="{{ transaction.friendly_id }}">{{ transaction.name }}</a></p>
+        </div>
+        <div class="column-half">
+          <span class="spark-bar">
+            <span style="width: {{ transaction.pct_total_received }}%">
+               <h4 class="bold-medium">{{ transaction.total_received }}m</h4>
+            </span>
+          </span>
+        </div>
       </div>
-      <div class="column-half">
-      </div>
-    </div>
+    {% endfor %}
   {% endif %}
 
+  <div class="grid-row">
+    <div class="column-half">
+      <p class="bold-xsmall"><a href="#">View all</a></p>
+    </div>
+    <div class="column-half">
+    </div>
+  </div>
+
   <hr>
-
-
 
   <!-- channel breakdown -->
 
