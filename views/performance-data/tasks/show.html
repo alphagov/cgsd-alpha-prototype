@@ -52,7 +52,7 @@
 
   <div class="grid-row">
     <div class="column-full">
-      <p class="lede">Showing data for September 2015 to August 2016 <a href="javascript:void(0)" id="change-date">Change</a></p>
+      <p class="lede">Showing data from 1 October 2015 to 30 September 2016 <a href="javascript:void(0)" id="change-date">Change</a></p>
       <div class="date-range-selector initially-hidden">
         <div class="form-group">
           <label class="form-label" for="select-box">From</label>
@@ -116,7 +116,7 @@
       <div class="data">
         <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
         <p class="bold-small">transactions</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 1% increase on previous year</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> +1% on previous year</p>
       </div>
     </div>
 
@@ -124,7 +124,7 @@
       <div class="data">
         <h2 class="bold-xlarge">89%</h2>
         <p class="bold-small">successful transactions</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> 5% increase on previous year</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> +5% on previous year</p>
       </div>
     </div>
   </div>
@@ -145,7 +145,7 @@
       <div class="data">
         <h2 class="bold-xlarge">{{ volume_summary.received_face_to_face_pct_total }}%</h2>
         <p class="bold-small">face to face</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
       </div>
     </div>
 
@@ -153,7 +153,7 @@
       <div class="data">
         <h2 class="bold-xlarge">{{ volume_summary.received_other_pct_total }}%</h2>
         <p class="bold-small">other</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% since previous year</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
       </div>
     </div>
   </div>
@@ -165,7 +165,7 @@
   <div class="grid-row" id="calls">
     <div class="column-two-thirds">
       <h3 class="bold-large">Calls</h3>
-      <p>Data about the numbers of calls received by services, and the reasons users are calling them.</p>
+      <p>Data about the numbers of calls received by services, and the reasons users are calling.</p>
       <br>
     </div>
   </div>
@@ -179,8 +179,14 @@
     </div>
     <div class="column-one-third">
       <div class="data">
-        <h2 class="bold-xlarge">+8%</h2>
-        <p class="bold-small">increase in calls received since previous year</p>
+        <h2 class="bold-xlarge">+2%</h2>
+        <p class="bold-small">more calls received than previous year</p>
+      </div>
+    </div>
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">41%</h2>
+        <p class="bold-small">of calls are to complete transactions</p>
       </div>
     </div>
   </div>
@@ -239,7 +245,7 @@
 
   <div class="grid-row">
     <div class="column-one-third">
-      <p><a href="#">Read more about these categories</a></p>
+      <p><a href="/performance-data/guidancecalls">Read more about these categories</a></p>
     </div>
   </div>
 
@@ -249,8 +255,8 @@
 
   <div class="grid-row">
     <div class="column-two-thirds">
-      <h3 class="bold-large">Processing errors</h3>
-      <p>Data about the processing errors that cause services to have to contact users to ask them to repeat or amend something.</p>
+      <h3 class="bold-large">Processing</h3>
+      <p>Data about the reasons casework can't be processed at the first attempt. This usually means services have to contact users and ask them to repeat or amend something.</p>
       <br>
     </div>
   </div>
@@ -259,7 +265,7 @@
     <table class="table-chart">
       <tbody>
         <tr>
-          <th colspan="2" class="bold-medium">Reasons users need to be contacted due to processing errors</th>
+          <th colspan="2" class="bold-medium">Reasons casework can't be processed at first attempt</th>
         </tr>
         <tr>
           <td>User's information was illegible</td>
@@ -295,7 +301,7 @@
 
   <div class="grid-row">
     <div class="column-one-third">
-      <p><a href="#">Read more about these categories</a></p>
+      <p><a href="/performance-data/guidancecasework">Read more about these categories</a></p>
     </div>
   </div>
 
@@ -312,15 +318,15 @@
   <div class="grid-row">
     <div class="column-two-thirds">
       <h3 class="heading-small">What user need does the service meet?</h3>
-      <p>The majority of users are young people leaving school or college and planning to go to university.</p>
+      <p>Information explaining the user need identified, and why the service exists.</p>
       <h3 class="heading-small">Who are the typical users?</h3>
-      <p>To get a loan to support their tuition and living costs for the duration of their studies.</p>
+      <p>An overview of the different user groups, with high-level information about demographics and behaviour.</p>
       <h3 class="heading-small">How often do people use the service?</h3>
-      <p>As many times as they go to university — for most people, no more than once in a lifetime.</p>
+      <p>The regularity with which a typical user might use this service.</p>
       <h3 class="heading-small">How does the service work?</h3>
-      <p>All applications, whether online or paper, are exported to PDF. They are then sent to be reviewed by a decision maker. The decision maker assesses the applicant's suitability for a student loan, and grants it accordingly. Their decision is then entered into the system and an automated response is sent via post.</p>
+      <p>A description of the entire process of using a service, from becoming aware of it to receiving an outcome. This should include any back-end processes.</p>
       <h3 class="heading-small">How long does it take users to complete a transaction?</h3>
-      <p>An applicant will receive a result within 2 weeks.</p>
+      <p>The time it takes, in days, weeks or months, for a user to receive an outcome.</p>
       <h3 class="heading-small">See the service</h3>
       <ul class="list">
         <li><a href="{{ task.url }}">Online service</a></li>
