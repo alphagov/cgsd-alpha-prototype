@@ -84,14 +84,20 @@ module.exports = [
     path: '/performance-data/government',
     handler: 'ViewController.govtPerformanceView'
   },
-
+  
   /**
-   * Render the glossary page
+   * Render the glossary pages
    */
   {
     method: 'GET',
-    path: '/performance-data/glossary',
-    handler: 'ViewController.glossary'
+    path: '/performance-data/guidancecalls',
+    handler: 'ViewController.guidancecalls'
+  },
+
+  {
+    method: 'GET',
+    path: '/performance-data/guidancecasework',
+    handler: 'ViewController.guidancecasework'
   },
 
   /**

@@ -159,8 +159,12 @@ module.exports = class ViewController extends Controller {
       })
   }
 
-  glossary(req, res) {
-    res.render('performance-data/glossary.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
+  guidancecalls(req, res) {
+    res.render('performance-data/guidancecalls.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
+  }
+
+  guidancecasework(req, res) {
+    res.render('performance-data/guidancecasework.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
   }
 
   channels(req, res) {
