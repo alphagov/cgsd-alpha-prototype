@@ -8,6 +8,10 @@
     "email": "lee.longmore@gmail.com",
     "url": "https://github.com/trailsjs"
   },
+  "engines": {
+    "node": "6.7.0",
+    "npm": "3.10.6"
+  },
   "main": "index.js",
   "keywords": [
     "",
