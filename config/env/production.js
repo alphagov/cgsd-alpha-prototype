@@ -2,6 +2,8 @@
 
 const winston = require('winston')
 
+var vcap_services = JSON.parse(process.env.VCAP_SERVICES)
+
 module.exports = {
 
   trailpack: {
@@ -17,20 +19,19 @@ module.exports = {
       postgres: {
         adapter: require('waterline-postgresql'),
         connection: {
-          database: 'pp-alpha',
-          host: 'localhost',
-          user: 'turkeyred',
-          password: '',
+          database: vcap_services.postgres[0].credentials.name,
+          host: vcap_services.postgres[0].credentials.host,
+          user: vcap_services.postgres[0].credentials.username,
+          password: vcap_services.postgres[0].credentials.password,
           port: 5432,
-          ssl: false,
-          migrate: 'create'
+          ssl: true
         }
       }
     },
 
     models: {
       defaultStore: 'postgres',
-      migrate: 'create'
+      migrate: 'safe'
     }
 
   },

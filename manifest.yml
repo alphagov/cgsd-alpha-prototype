@@ -1,0 +1,8 @@
+---
+applications:
+- name: pp-alpha
+  command: NODE_ENV=production node server.js
+  memory: 256M
+  buildpack: nodejs_buildpack
+
+

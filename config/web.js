@@ -59,7 +59,7 @@ module.exports = {
   /**
    * The host to bind the web server to
    */
-  //host: process.env.HOST || 'localhost',
+  host: process.env.HOST || 'localhost',
 
   /**
    * The port to bind the web server to
