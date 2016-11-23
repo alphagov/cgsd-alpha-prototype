@@ -1,7 +1,7 @@
 {
-  "name": "hello-world-2",
-  "version": "0.0.0",
-  "description": "My first TrailsJS app",
+  "name": "pp-alpha-prototype",
+  "version": "0.0.1",
+  "description": "Performance Platform Alpha Prototype",
   "homepage": "http://trailsjs.io",
   "author": {
     "name": "Lee Longmore",
