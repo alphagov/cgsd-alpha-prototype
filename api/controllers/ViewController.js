@@ -17,11 +17,12 @@ module.exports = class ViewController extends Controller {
        ORDER BY name ASC",
       [],
       function(err, results) {
+        console.log(results.rows)
         res.render(
           'index.html',
           {
             asset_path: '/govuk_modules/govuk_template/assets/',
-            search_options: results
+            search_options: results.rows
           })
       }
     );
@@ -52,7 +53,7 @@ module.exports = class ViewController extends Controller {
       this.app.orm.TaskVolumeRecord.find({})
         .then( task_volume_records => { return task_volume_records }),
       this.app.services.DepartmentService.getTransactionsReceivedByDept()
-        .then( department_totals => { return department_totals }),
+        .then( department_totals => { return department_totals.rows }),
       function (departments, agencies, tasks, task_volume_records, department_totals) {
         var task_volume_summary = new TaskVolumeSummary(task_volume_records);
         department_totals = department_totals.map(function(department_total) {
@@ -86,7 +87,7 @@ module.exports = class ViewController extends Controller {
         if (task == undefined) { throw true };
         task_volume_service.getTotalVolumeByTask([task.id])
           .then( task_volume_records => {
-            var task_volume_summary = new TaskVolumeSummary(task_volume_records);
+            var task_volume_summary = new TaskVolumeSummary(task_volume_records.rows);
             res.render(
               'performance-data/tasks/show.html',
               {
@@ -107,12 +108,13 @@ module.exports = class ViewController extends Controller {
             var Promise = require('bluebird');
             Promise.join(
               task_volume_service.getTotalVolumeByTask(task_ids)
-                .then( task_volume_records => { return task_volume_records }),
+                .then( task_volume_records => { return task_volume_records.rows }),
               department_service.getTransactionsReceivedByAgency(department.friendly_id)
-                .then( agency_totals => { return agency_totals }),
+                .then( agency_totals => { return agency_totals.rows }),
               department_service.getTransactionsReceivedByTask(department.friendly_id)
-                .then( transaction_totals => { return transaction_totals }),
+                .then( transaction_totals => { return transaction_totals.rows }),
               function(task_volume_records, agency_totals, transaction_totals) {
+                console.log(task_volume_records);
                 var task_volume_summary = new TaskVolumeSummary(task_volume_records);
                 res.render(
                   'performance-data/show.html',
@@ -136,9 +138,9 @@ module.exports = class ViewController extends Controller {
                 var Promise = require('bluebird');
                 Promise.join(
                   task_volume_service.getTotalVolumeByTask(task_ids)
-                    .then( task_volume_records => { return task_volume_records }),
+                    .then( task_volume_records => { return task_volume_records.rows }),
                   agency_service.getTransactionsReceivedByTask(agency.friendly_id)
-                    .then( task_totals => { return task_totals }),
+                    .then( task_totals => { return task_totals.rows }),
                   function(task_volume_records, task_totals) {
                     var task_volume_summary = new TaskVolumeSummary(task_volume_records);
                     res.render(

@@ -26,12 +26,10 @@ module.exports = class DepartmentService extends Service {
               department.name, \
               SUM(taskvolumerecord.count) as total_received \
        FROM department \
-       INNER JOIN task \
-       INNER JOIN taskvolumerecord \
-       WHERE task.department = department.id \
-       AND taskvolumerecord.task = task.id \
-       AND taskvolumerecord.stage = 'received' \
-       GROUP BY department.name \
+       INNER JOIN task ON task.department = department.id \
+       INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
+       WHERE taskvolumerecord.stage = 'received' \
+       GROUP BY department.friendly_id, department.name \
        ORDER BY total_received DESC",
       []
     );
@@ -46,15 +44,12 @@ module.exports = class DepartmentService extends Service {
               agency.name, \
               SUM(taskvolumerecord.count) as total_received \
        FROM department \
-       INNER JOIN agency \
-       INNER JOIN task \
-       INNER JOIN taskvolumerecord \
+       INNER JOIN agency ON agency.department = department.id \
+       INNER JOIN task ON task.agency = agency.id \
+       INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
        WHERE department.friendly_id = $1 \
-       AND agency.department = department.id \
-       AND task.agency = agency.id \
-       AND taskvolumerecord.task = task.id \
        AND taskvolumerecord.stage = 'received' \
-       GROUP BY agency.name \
+       GROUP BY agency.friendly_id, agency.name \
        ORDER BY total_received DESC",
       [friendly_id]
     );
@@ -69,13 +64,11 @@ module.exports = class DepartmentService extends Service {
               task.name, \
               SUM(taskvolumerecord.count) as total_received \
        FROM department \
-       INNER JOIN task \
-       INNER JOIN taskvolumerecord \
+       INNER JOIN task ON task.department = department.id \
+       INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
        WHERE department.friendly_id = $1 \
-       AND task.department = department.id \
-       AND taskvolumerecord.task = task.id \
        AND taskvolumerecord.stage = 'received' \
-       GROUP BY task.name \
+       GROUP BY task.friendly_id, task.name \
        ORDER BY total_received DESC",
       [friendly_id]
     );
