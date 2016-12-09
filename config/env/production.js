@@ -32,7 +32,7 @@ if (process.env.NODE_ENV == 'production') {
 
       models: {
         defaultStore: 'postgres',
-        migrate: 'safe'
+        migrate: 'create'
       }
 
     },
