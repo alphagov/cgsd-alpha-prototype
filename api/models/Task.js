@@ -22,6 +22,9 @@ module.exports = class Task extends Model {
       description: {
         type: 'text'
       },
+      user_need: {
+        type: 'text'
+      },
       url: {
         type: 'string' // use for Start page URL or landing page
       },
