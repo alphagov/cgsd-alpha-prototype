@@ -69,6 +69,12 @@ hr + .grid-row .column-two-thirds h2 {
     color: $govuk-blue;
   }
 
+  .button-alternative {
+    position: relative;
+    top: 8px;
+    left: 8px;
+  }
+
   .phase-banner-alpha {
     color: #fff;
     border-bottom: none;
@@ -98,7 +104,7 @@ hr + .grid-row .column-two-thirds h2 {
 
   input {
     -webkit-appearance: none;
-    border: none;
+    border: 1px solid $black;
     font-size: 19px;
     line-height: 40px;
     padding: 0 10px;

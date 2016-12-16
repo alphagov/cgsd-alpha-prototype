@@ -27,22 +27,8 @@
       </div>
       <div class="grid-row">
         <div class="column-two-thirds">
-          <form action="/search" autocomplete="off" method="get">
-            <fieldset>
-              <div class="form-group search">
-                <div class="wrapper">
-                  <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true" placeholder="Search by department, agency or service">
-                    <option value=""></option>
-                    {% for option in search_options %}
-                      <option value="{{ option.friendly_id }}">{{ option.name }}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-                <input class="submit" type="submit" value="search">
-              </div>
-            </fieldset>
-          </form>
-          <a class="button button-start" href="/performance-data/government">View all</a>
+          <a class="button button-start" href="/performance-data/government">View all</a> 
+          <span class="button-alternative">or <a href="/performance-data/searchpage">find something specific</a></span>
         </div>
       </div>
     </div>

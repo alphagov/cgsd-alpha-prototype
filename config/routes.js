@@ -101,6 +101,15 @@ module.exports = [
   },
 
   /**
+   * Render the search page
+   */
+  {
+    method: 'GET',
+    path: '/performance-data/searchpage',
+    handler: 'ViewController.searchpage'
+  },
+
+  /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
   {

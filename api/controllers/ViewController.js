@@ -169,6 +169,10 @@ module.exports = class ViewController extends Controller {
     res.render('performance-data/guidancecasework.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
   }
 
+  searchpage(req, res) {
+    res.render('performance-data/searchpage.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
+  }
+
   channels(req, res) {
     res.render('performance-data/channels.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
   }
