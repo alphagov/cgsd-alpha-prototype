@@ -7,25 +7,12 @@ const Controller = require('trails-controller')
 module.exports = class ViewController extends Controller {
 
   home(req, res) {
-    this.app.orm.Department.query(
-      "SELECT friendly_id, name \
-       FROM department \
-       UNION SELECT friendly_id, name \
-       FROM agency \
-       UNION SELECT friendly_id, name \
-       FROM task \
-       ORDER BY name ASC",
-      [],
-      function(err, results) {
-        console.log(results.rows)
-        res.render(
-          'index.html',
-          {
-            asset_path: '/govuk_modules/govuk_template/assets/',
-            search_options: results.rows
-          })
+    res.render(
+      'index.html',
+      {
+        asset_path: '/govuk_modules/govuk_template/assets/'
       }
-    );
+    )
   }
 
   search(req, res) {
@@ -170,7 +157,24 @@ module.exports = class ViewController extends Controller {
   }
 
   searchpage(req, res) {
-    res.render('performance-data/searchpage.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
+    this.app.orm.Department.query(
+      "SELECT friendly_id, name \
+       FROM department \
+       UNION SELECT friendly_id, name \
+       FROM agency \
+       UNION SELECT friendly_id, name \
+       FROM task \
+       ORDER BY name ASC",
+      [],
+      function(err, results) {
+        res.render(
+          'performance-data/searchpage.html',
+          {
+            asset_path: '/govuk_modules/govuk_template/assets/',
+            search_options: results
+          })
+      }
+    );
   }
 
   channels(req, res) {
