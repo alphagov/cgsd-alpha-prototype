@@ -171,7 +171,7 @@ module.exports = class ViewController extends Controller {
           'performance-data/searchpage.html',
           {
             asset_path: '/govuk_modules/govuk_template/assets/',
-            search_options: results
+            search_options: results.rows
           })
       }
     );
