@@ -19,6 +19,8 @@
     "trailsjs"
   ],
   "dependencies": {
+    "db-migrate": "^0.10.0-beta.20",
+    "db-migrate-pg": "0.1.11",
     "express": "^4.14.0",
     "govuk-elements-sass": "^1.2.1",
     "govuk_frontend_toolkit": "^4.13.0",
