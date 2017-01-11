@@ -26,7 +26,7 @@
           {% if organisation_type == 'department' %}
             {{ organisation.agencies.length }} agencies,
           {% endif %}
-          {{ organisation.tasks.length}} tasks</a></dd>
+          {{ organisation.tasks.length}} services</a></dd>
         <dt>Download data:</dt>
         <dd><a href="#">CSV (10KB)</a></dd>
       </dl>
@@ -38,389 +38,330 @@
 
   <hr>
 
-  <!-- date range -->
+  <!-- transactions received data -->
 
-  <div class="grid-row">
-    <div class="column-full">
-      <p class="lede">Showing data from 1 October 2015 to 30 September 2016 <a href="javascript:void(0)" id="change-date">Change</a></p>
-      <div class="date-range-selector initially-hidden">
-        <div class="form-group">
-          <label class="form-label" for="select-box">Show period starting</label>
-          <select class="form-control" id="select-box">
-            <option>June 2015</option>
-            <option>March 2015</option>
-            <option>December 2014</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="select-box">up to</label>
-          <select class="form-control" id="select-box">
-            <option>June 2015</option>
-            <option>March 2015</option>
-            <option>December 2014</option>
-          </select>
-        </div>
-        <input class="button" type="submit" value="Apply changes">
-        <a href="javascript:void(0)">Cancel</a>
-      </div>
-    </div>
-  </div>
+  <div class="grid-row data-block">
 
-  <!-- summary -->
-
-  <div class="grid-row data-summary">
-    <div class="column-full">
-      <a href="#transactions" class="column-one-third data-box-alt">
-        <div class="data">
-          <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
-          <p>transactions</p>
-        </div>
-      </a>
-      <a href="#channels" class="column-one-third data-box-alt">
-        <div class="data">
-          <h2 class="bold-xlarge">{{ volume_summary.received_online_pct_total }}%</h2>
-          <p>of transactions start online</p>
-        </div>
-      </a>
-      <a href="#user-effort" class="column-one-third data-box-alt">
-        <div class="data">
-          <h2 class="bold-xlarge">62%</h2>
-          <p>of callers prefer to complete transactions over the phone</p>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- transactions info -->
-
-  <div class="grid-row" id="transactions">
-    <div class="column-two-thirds">
-      <h3 class="bold-large">Transactions</h3>
-      <p>Data about the number of transactions received. A transaction is deemed 'successful' when the user manages to the do the thing they wanted to do.</p>
-      <br>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-third">
+    <div class="column-one-third">
       <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
-        <p class="bold-small">transactions</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
-      </div>
+        <span class="data-item bold-xxlarge">{{ volume_summary.total_received }}m</span>
+        <br><span class="data-item bold-medium">transactions received</span>
+      </div>      
     </div>
 
-    <div class="column-third">
-      <div class="data">
-        <h2 class="bold-xlarge">89%</h2>
-        <p class="bold-small">successful transactions</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+1% on previous year</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid-row">
     <div class="column-two-thirds">
-      {% if organisation_type == 'department' and grouped_volumes.length > 0 %}
-        <h3 class="heading-medium">Transactions by agency</h3>
-      {% elif organisation_type == 'agency' or (organisation_type == 'department' and grouped_volumes.length == 0) %}
-        <h3 class="heading-medium">Transactions by task</h3>
-      {% endif %}
-    </div>
-  </div>
 
-  {% for group in grouped_volumes %}
-    <div class="grid-row">
-      <div class="column-half">
-        <p>
-          {% if organisation_type == 'department' %}
-            <a href="{{ group.friendly_id }}">{{ group.name }}</a></p>
-          {% elif organisation_type == 'agency' %}
-            <a href="{{ group.friendly_id }}">{{ group.name }}</a></p>
-          {% endif %}
-      </div>
-      <div class="column-half">
-        <span class="spark-bar">
-          <span style="width: {{ group.pct_total_received }}%">
-             <h4 class="bold-medium">{{ group.total_received }}m</h4>
-          </span>
-        </span>
-      </div>
-    </div>
-  {% endfor %}
+      <div class="topic-content">
 
-  {% if organisation_type == 'department' and grouped_volumes.length == 0 %}
-    {% for transaction in transaction_volumes %}
-      <div class="grid-row">
-        <div class="column-half">
-          <p>
-            <a href="{{ transaction.friendly_id }}">{{ transaction.name }}</a></p>
+        <div data-module="accordion-with-descriptions">
+          <h2 class="bold-medium">Channels</h2>
+          <div class="subsection-wrapper">
+            <div class="subsection">
+              <div class="subsection__header">
+                <h2 class="subsection__title">
+                  <span class="black">Online</span> N 
+                  <span class="lede">({{ volume_summary.received_online_pct_total }}%)</span>
+                </h2>
+              </div>
+              <div class="subsection__content">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>Organisation</th>
+                      <th class="numeric">Number online transactions</th>
+                      <th class="numeric">Number total transactions</th>
+                      <th class="numeric">Percentage online transactions</th>
+                    </tr>
+                    <tr>
+                      <td><a href="#">Driver and Vehicle Licensing Agency</a></td>
+                      <td class="numeric">100,000</td>
+                      <td class="numeric">120,000</td>
+                      <td class="numeric">80%</td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">Driver and Vehicle Standards Agency</a></td>
+                      <td class="numeric">10,000</td>
+                      <td class="numeric">12,000</td>
+                      <td class="numeric">80%</td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">Highways Agency</a></td>
+                      <td class="numeric">10,000</td>
+                      <td class="numeric">10,000</td>
+                      <td class="numeric">100%</td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">Vehicle Tax Authority</a></td>
+                      <td class="numeric">1,000</td>
+                      <td class="numeric">2,000</td>
+                      <td class="numeric">50%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="subsection">
+              <div class="subsection__header">
+                <h2 class="subsection__title">
+                  <span class="black">Phone</span> N 
+                  <span class="lede">({{ volume_summary.received_phone_pct_total }}%)</span>
+                </h2>
+              </div>
+              <div class="subsection__content" id="">
+              </div>
+            </div>
+            <div class="subsection">
+              <div class="subsection__header">
+                <h2 class="subsection__title">
+                  <span class="black">Paper</span> N 
+                  <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></style></h2>
+              </div>
+              <div class="subsection__content" id="">
+              </div>
+            </div>
+            <div class="subsection">
+              <div class="subsection__header">
+                <h2 class="subsection__title">
+                  <span class="black">Face to face</span> N 
+                  <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></h2>
+              </div>
+              <div class="subsection__content" id="">
+              </div>
+            </div>
+            <div class="subsection">
+              <div class="subsection__header">
+                <h2 class="subsection__title">
+                  <span class="black">Other</span> N 
+                  <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></h2>
+              </div>
+              <div class="subsection__content" id="">
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="column-half">
-          <span class="spark-bar">
-            <span style="width: {{ transaction.pct_total_received }}%">
-               <h4 class="bold-medium">{{ transaction.total_received }}m</h4>
-            </span>
-          </span>
-        </div>
       </div>
-    {% endfor %}
-  {% endif %}
 
-  <div class="grid-row">
-    <div class="column-half">
-      <p class="bold-xsmall"><a href="#">View all</a></p>
     </div>
-    <div class="column-half">
+    
+  </div><!--transactions received block-->
+
+  <!-- transactions ending in an outcome data -->
+
+  <div class="grid-row data-block">
+
+    <div class="column-one-third">
+      <div class="data">
+        <span class="data-item bold-xxlarge">200k</span>
+        <br><span class="data-item bold-medium">transactions ending in an outcome</span>
+      </div>     
     </div>
-  </div>
+
+    <div class="column-two-thirds">
+
+      <div class="topic-content">
+
+        <div data-module="accordion-with-descriptions">
+            <h2 class="bold-medium">Completion</h2>
+            <div class="subsection-wrapper">
+              <div class="subsection">
+                <div class="subsection__header">
+                  <h2 class="subsection__title">
+                    <span class="black">Ending in an outcome</span> N 
+                    <span class="lede">(N%)</span>
+                  </h2>
+                </div>
+                <div class="subsection__content">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>Organisation</th>
+                        <th class="numeric">Transactions ending in an outcome</th>
+                        <th class="numeric">Number total transactions</th>
+                        <th class="numeric">Percentage of transactions ending in an outcome</th>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Driver and Vehicle Licensing Agency</a></td>
+                        <td class="numeric">100,000</td>
+                        <td class="numeric">120,000</td>
+                        <td class="numeric">80%</td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Driver and Vehicle Standards Agency</a></td>
+                        <td class="numeric">10,000</td>
+                        <td class="numeric">12,000</td>
+                        <td class="numeric">80%</td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Highways Agency</a></td>
+                        <td class="numeric">10,000</td>
+                        <td class="numeric">10,000</td>
+                        <td class="numeric">100%</td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Vehicle Tax Authority</a></td>
+                        <td class="numeric">1,000</td>
+                        <td class="numeric">2,000</td>
+                        <td class="numeric">50%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="subsection">
+                <div class="subsection__header">
+                  <h2 class="subsection__title">
+                    <span class="black">Ending in user's intended outcome</span> N 
+                    <span class="lede">(N%)</span>
+                  </h2>
+                </div>
+                <div class="subsection__content" id="">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+  </div><!--transactions ending in an oucome block-->
+
+  <!-- calls data -->
+  <div class="grid-row data-block">
+
+    <div class="column-one-third">
+      <div class="data">
+        <span class="data-item bold-xxlarge">700k</span>
+        <br><span class="data-item bold-medium">calls received</span>
+      </div>     
+    </div>
+
+    <div class="column-two-thirds">
+
+      <div class="topic-content">
+
+        <div data-module="accordion-with-descriptions">
+            <h2 class="bold-medium">Reasons users called</h2>
+            <p style="margin: -5px 0 10px">Based on a sample of N calls</p>
+            <div class="subsection-wrapper">
+              <div class="subsection">
+                <div class="subsection__header">
+                  <h2 class="subsection__title">
+                    <span class="black">To get information</span> N 
+                    <span class="lede">(N%)</span>
+                  </h2>
+                </div>
+                <div class="subsection__content">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>Organisation</th>
+                        <th class="numeric">Calls to get information</th>
+                        <th class="numeric">Call sample size</th>
+                        <th class="numeric">Percentage of calls to get information</th>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Driver and Vehicle Licensing Agency</a></td>
+                        <td class="numeric">100</td>
+                        <td class="numeric">120</td>
+                        <td class="numeric">80%</td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Driver and Vehicle Standards Agency</a></td>
+                        <td class="numeric">100</td>
+                        <td class="numeric">120</td>
+                        <td class="numeric">80%</td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Highways Agency</a></td>
+                        <td class="numeric">100</td>
+                        <td class="numeric">100</td>
+                        <td class="numeric">100%</td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Vehicle Tax Authority</a></td>
+                        <td class="numeric">10</td>
+                        <td class="numeric">20</td>
+                        <td class="numeric">50%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="subsection">
+                <div class="subsection__header">
+                  <h2 class="subsection__title">
+                    <span class="black">To chase progress</span> N 
+                    <span class="lede">(N%)</span>
+                  </h2>
+                </div>
+                <div class="subsection__content" id="">
+                </div>
+              </div>
+              <div class="subsection">
+                <div class="subsection__header">
+                  <h2 class="subsection__title">
+                    <span class="black">To challenge a decision</span> N 
+                    <span class="lede">(N%)</span>
+                  </h2>
+                </div>
+                <div class="subsection__content" id="">
+                </div>
+              </div>
+              <div class="subsection">
+                <div class="subsection__header">
+                  <h2 class="subsection__title">
+                    <span class="black">Other</span> N 
+                    <span class="lede">(N%)</span>
+                  </h2>
+                </div>
+                <div class="subsection__content" id="">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+
+  </div><!--calls block-->
 
   <hr>
 
-  <!-- channel breakdown -->
 
-  <div class="grid-row" id="channels">
-    <div class="column-two-thirds">
-      <h2 class="heading-large">Channel breakdown</h2>
-      <p>Data about how users choose to access services. A channel is defined as "the way that a service receives the user’s information".</p>
-      <br>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_online_pct_total }}%</h2>
-        <p class="bold-small">online</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
-      </div>
-    </div>
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_phone_pct_total }}%</h2>
-        <p class="bold-small">phone</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
-      </div>
-    </div>
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_paper_pct_total }}%</h2>
-        <p class="bold-small">paper</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_face_to_face_pct_total }}%</h2>
-        <p class="bold-small">face to face</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
-      </div>
-    </div>
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_other_pct_total }}%</h2>
-        <p class="bold-small">other</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="grid-row" id="transactions">
-    <div class="column-two-thirds">
-      <h3 class="bold-large">Calls</h3>
-      <p>Data about the numbers of calls received by services, and the reasons users are calling.</p>
-      <br>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-third">
-      <div class="data">
-        <h2 class="bold-xlarge">721k</h2>
-        <p class="bold-small">calls received</p>
-      </div>
-    </div>
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">+8%</h2>
-        <p class="bold-small">more calls received than previous year</p>
-      </div>
-    </div>
-    <div class="column-third">
-      <div class="data">
-        <h2 class="bold-xlarge">30%</h2>
-        <p class="bold-small">of calls are to complete transactions</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <table class="table-chart">
-      <tbody>
-        <tr>
-          <th colspan="2" class="bold-medium">Reasons users call</th>
-        </tr>
-        <tr>
-          <td>Prefers to use the phone to do their transaction</td>
-          <td>
-            <span class="table-chart-number">65%</span>
-            <span class="table-chart-bar"><span style="width: 65%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Wants an update on the progress of their transaction</td>
-          <td>
-            <span class="table-chart-number">19%</span>
-            <span class="table-chart-bar"><span style="width: 19%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Needs more information to use the service</td>
-          <td>
-            <span class="table-chart-number">8%</span>
-            <span class="table-chart-bar"><span style="width: 8%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Was asked to call by the service</td>
-          <td>
-            <span class="table-chart-number">6%</span>
-            <span class="table-chart-bar"><span style="width: 6%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Wants to challenge the outcome of their transaction</td>
-          <td>
-            <span class="table-chart-number">1%</span>
-            <span class="table-chart-bar"><span style="width: 1%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Has accessibility or language needs</td>
-          <td>
-            <span class="table-chart-number">1%</span>
-            <span class="table-chart-bar"><span style="width: 1%"></span></span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-one-third">
-      <p><a href="/performance-data/guidancecalls">Read more about these categories</a></p>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- casework -->
-
-  <div class="grid-row" id="user-effort">
-    <div class="column-two-thirds">
-      <h2 class="heading-large">Processing</h2>
-      <p>Data about the reasons casework can't be processed at the first attempt. This usually means services have to contact users and ask them to repeat or amend something.</p>
-      <br>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <table class="table-chart">
-      <tbody>
-        <tr>
-          <th colspan="2" class="bold-medium">
-            Reasons casework can't be processed at first attempt
-          </th>
-        </tr>
-        <tr>
-          <td>User's information was illegible</td>
-          <td>
-            <span class="table-chart-number">50%</span>
-            <span class="table-chart-bar"><span style="width: 50%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>User's information was incomplete</td>
-          <td>
-            <span class="table-chart-number">30%</span>
-            <span class="table-chart-bar"><span style="width: 30%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>User filled out the wrong form or used the wrong process</td>
-          <td>
-            <span class="table-chart-number">20%</span>
-            <span class="table-chart-bar"><span style="width: 20%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>User's information didn't match government records</td>
-          <td>
-            <span class="table-chart-number">10%</span>
-            <span class="table-chart-bar"><span style="width: 10%"></span></span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-one-third">
-      <p><a href="/performance-data/guidancecasework">Read more about these categories</a></p>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- list of services -->
+  <!-- list of things this page is aggregated from -->
 
   <div class="grid-row" id="orgs">
+    <div class="column-one-third">
+      &nbsp;
+    </div>
     <div class="column-two-thirds">
-      <h2 class="heading-large">What this data is aggregated from</h2>
-      <p>Transaction data for {{ organisation.name }}, which currently consists of
+      <h2 class="heading-medium">What this data is aggregated from</h2>
+      <p>This page is made of transactional data about services provided by {{ organisation.name }}. The {{ organisation.name }} currently consists of
         {% if organisation_type == 'department' and organisation.agencies.length > 0 %}
             {{ organisation.agencies.length }} agencies and
           {% endif %}
-          {{ organisation.tasks.length}} tasks.
+          {{ organisation.tasks.length}} services.
       </p>
-      <br>
-    </div>
-  </div>
 
-    <div class="grid-row">
+      <!-- agencies -->
       {% if organisation_type == 'department' and organisation.agencies.length > 0 %}
-        <div class="column-one-third">
-          <div class="data">
-            <h2 class="bold-xlarge">{{ organisation.agencies.length }}</h2>
-            <p class="bold-small">agencies</p>
-            <ul class="list font-xsmall">
-              {% for agency in organisation.agencies %}
-                <li><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></li>
-              {% endfor %}
-              <li class="bold-xsmall"><a href="#">View all</a></li>
-            </ul>
-          </div>
-        </div>
-      {% endif %}
-
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ organisation.tasks.length }}</h2>
-        <p class="bold-small">tasks</p>
-        <ul class="list font-xsmall">
-          {% for task in organisation.tasks %}
-            <li>
-              <a href="{{ task.friendly_id }}">{{ task.name }}</a></p>
-            </li>
+        <h4 class="bold-medium">{{ organisation.agencies.length }} agencies</h4>
+        <ul class="list">
+          {% for agency in organisation.agencies %}
+            <li><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></li>
           {% endfor %}
           <li class="bold-xsmall"><a href="#">View all</a></li>
         </ul>
-      </div>
+      {% endif %}
+
+      <!-- services -->
+      <h4 class="bold-medium">{{ organisation.tasks.length }} services</h4>
+      <ul class="list">
+        {% for task in organisation.tasks %}
+          <li><a href="{{ task.friendly_id }}">{{ task.name }}</a></li>
+        {% endfor %}
+        <li class="bold-xsmall"><a href="#">View all</a></li>
+      </ul>
+
     </div>
   </div>
 
@@ -432,5 +373,5 @@
 
 {% block body_end %}
 {{ super() }}
-  <script src="/javascripts/date-range-selector.js"></script>
+
 {% endblock %}
