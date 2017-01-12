@@ -583,9 +583,9 @@ margin:-30px 0 0;
       margin-top: -8px;
 
       // PNG fallback for SVG
-      background-image: url('../public/images/icons-plus-minus.png');
+      background-image: url('../images/icons-plus-minus.png');
       // SVG sprite
-      background: url("../public/images/icons-plus-minus.svg"), linear-gradient(transparent, transparent);
+      background: url("../images/icons-plus-minus.svg"), linear-gradient(transparent, transparent);
       background-repeat: no-repeat;
       background-position: 0 -16px;
     }
