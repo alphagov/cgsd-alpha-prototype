@@ -27,12 +27,7 @@
             {{ organisation.agencies.length }} agencies,
           {% endif %}
           {{ organisation.tasks.length}} services</a></dd>
-        <dt>Download data:</dt>
-        <dd><a href="#">CSV (10KB)</a></dd>
       </dl>
-    </div>
-    <div class="column-third">
-      <br><br>
     </div>
   </div>
 
@@ -139,7 +134,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> 
 
     </div>
     
@@ -335,7 +330,7 @@
     </div>
     <div class="column-two-thirds">
       <h2 class="heading-medium">What this data is aggregated from</h2>
-      <p>This page is made of data about services provided by the {{ organisation.name }}. It currently consists of
+      <p>This page is aggregated from data about services delivered by {{ organisation.name }}. It is currently made up of
         {% if organisation_type == 'department' and organisation.agencies.length > 0 %}
             {{ organisation.agencies.length }} agencies and
           {% endif %}
