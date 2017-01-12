@@ -33,6 +33,10 @@ strong {
   font-weight: 700;
 }
 
+.data-item {
+  display: block;
+}
+
 // Less spacing for headings after <hr> keylines
 
 hr + .grid-row .column-two-thirds h2 {
@@ -496,8 +500,8 @@ margin:-30px 0 0;
 
     button {
       float: right;
-
       @include core-16;
+      font-family: 'nta', Arial, sans-serif;
       cursor: pointer;
       background: none;
       border: none;
@@ -622,6 +626,177 @@ margin:-30px 0 0;
   }
 }
 
-.blue {
-  color: $govuk-blue;
+.blue { color: $govuk-blue; }
+
+// filter cards
+
+.filter-cards {
+
+  li {
+    border-bottom: 1px solid $grey-2;
+    padding: 15px 0 30px;
+
+    .column-one-quarter {
+      padding-left: 0;
+    }
+
+    .column-one-third:first-of-type {
+      padding-left: 0;
+
+      .column-one-half {
+        padding-left: 0;
+      }
+    }
+
+    h2 {
+      margin-bottom: 15px;
+
+      a {
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .list {
+      margin-top: 15px;
+
+      li {
+      border: none;
+      padding: 0;
+      }
+
+    }
+
+  }
+
+  li:first-of-type {
+    border-top: 1px solid $grey-2;
+  }
+
+  li:hover {
+  cursor: pointer;
+  background-color: $highlight-colour;
+  }
+
 }
+
+.sort-by {
+  margin-bottom: 0;
+
+  label, select {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  span {
+    margin-left: 10px;
+  }
+}
+
+// filter panel at top of overview page
+
+.filter-panel-horizontal {
+  background-color: $panel-colour;
+  padding: 15px 5px;
+  margin: -10px 0 20px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    margin-bottom: 5px;
+  }
+
+  input {
+    background-color: $white;
+  }
+
+  .button {
+    @include core-19;
+    background-color: $button-colour;
+    font-family: 'nta', Arial, sans-serif;
+    margin: 0 0 5px;
+
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group:last-of-type {
+    margin-bottom: 30px;
+  }
+
+  details {
+    margin-bottom: 5px;
+
+    summary {
+      font-size: 16px;
+    }
+  }
+
+  details:last-of-type {
+    margin-bottom: 15px;
+  }
+
+  .filter-selected-text {
+    display: block;
+    color: $black;
+    font-weight: 300;
+  }
+
+  .cancel-button {
+    position: relative;
+    top: 8px;
+    left: 8px;
+  }
+
+}
+
+// styling for itunes style inline filters
+
+.filter-row {
+  margin-bottom: -15px;
+
+  select {
+    background-color: $white;
+  }
+
+  .inline-forms {
+    width: 20%;
+    display: inline-block;
+    float: none;
+    margin: 0 5px; 
+
+    .form-control {
+      width: 100%;
+    }
+
+  }
+
+  .connecting-word {
+    margin-right: 5px;
+  }
+
+  .width-data-org { width:40% }
+  .width-data-type { width:30% }
+  .width-data-range { width:20% }
+  .width-data-input { width:15% }
+
+  .inline-forms:first-of-type {
+    margin-left: 0;
+  }
+
+  .upper-range,
+  .filter-org-type,
+  .filter-org-department,
+  .filter-org-agency {
+    display: none;
+  }
+
+}
+
