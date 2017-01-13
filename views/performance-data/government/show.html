@@ -1,4 +1,4 @@
-{% extends "layouts/layout.html" %}
+{% extends "layouts/govuk-registers.html" %}
 
 {% block page_title %}
   GOV.UK prototype kit
@@ -8,17 +8,9 @@
 
 <main id="content" role="main">
 
-  {% block page_banner %}
-    {% include "includes/phase_banner_alpha.html" %}
-  {% endblock %}
-
   <div class="grid-row">
     <div class="column-two-thirds">
-      <h1 class="bold-xlarge" style="margin:15px 0 0;">Overview</h1>
-      
-    </div>
-    <div class="column-third">
-      
+      <h1 class="heading-xlarge" style="margin-bottom: 0">Overview</h1>     
     </div>
   </div>
 
@@ -34,157 +26,169 @@
   <div class="grid-row filter-panel-horizontal">
 
     <div class="column-full">
-      <h2 class="bold-small" style="margin-bottom: 0">Show</h2>
+      <h2 class="bold-small" style="margin-bottom: 0">Showing</h2>
     </div>
 
-    <div class="column-full filter-row">
-      <form>
-        <fieldset>
-          <legend class="visuallyhidden">Show</legend>
-          <div class="form-group inline-forms width-data-type" id="filter-select-box">
-            <select class="form-control" id="select-org-type">
-              <option value="departments">Departments</option>
-              <option value="agencies">Agencies</option>
-              <option value="services">Services</option>
+    <form class="column-full filter-row">
+      <fieldset>
+        <legend class="visuallyhidden">Show</legend>
+        <div class="form-group inline-forms width-data-type" id="filter-select-box">
+          <select class="form-control" id="select-org-type">
+            <option value="departments">Departments</option>
+            <option value="agencies">Agencies</option>
+            <option value="services">Services</option>
+          </select>
+        </div>
+        <span class="connecting-word">in</span>
+        <span class="filter-org-default">
+          <div class="form-group inline-forms width-data-org">
+            <select class="form-control">
+              <option value="UK Government">UK Government</option>
             </select>
           </div>
-          <span class="connecting-word">in</span>
-          <span class="filter-org-default">
-            <!-- <div class="form-group inline-forms width-data-range">
-              <select class="form-control">
-                <option value="in">in</option>
-              </select>
-            </div> -->
-            <div class="form-group inline-forms width-data-org">
-              <select class="form-control">
-                <option value="UK Government">UK Government</option>
-              </select>
-            </div>
-          </span>
-          <span class="filter-org-type">
-            <div class="form-group inline-forms width-data-range">
-              <select class="form-control" id="select-org-name">
-                <option value="any">any</option>
-                <option value="indepartment">in department</option>
-                <option value="inagency">in agency</option>
-              </select>
-            </div>
-          </span>
-          <span class="filter-org-department">
-            <div class="form-group inline-forms width-data-org">
-              <select class="form-control">
-                <option value="Department for Transport">Department for Transport</option>
-                <option value="Home Office">Home Office</option>
-                <option value="Ministry of Health">Ministry of Health</option>
-              </select>
-            </div>
-          </span>
-          <span class="filter-org-agency">
-            <div class="form-group inline-forms width-data-org">
-              <select class="form-control">
-                <option value="Driver and Vehicle Licensing Agency">Driver and Vehicle Licensing Agency</option>
-                <option value="HM Courts and Tribunals Service">HM Courts and Tribunals Service</option>
-                <option value="NHS Blood and Transplant">NHS Blood and Transplant</option>
-              </select>
-            </div>
-          </span>
-        </fieldset> 
-      </form>
-    </div>
+        </span>
+        <span class="filter-org-type">
+          <div class="form-group inline-forms width-data-org">
+            <select class="form-control">
+              <option value="UK Government">UK Government</option>
+              <option value="Ministerial Departments" disabled="disabled">Ministerial Departments</option>
+              <option value="Ministry of Health">Department of Health</option>
+              <option value="Department for Transport">Department for Transport</option>
+              <option value="Home Office">Home Office</option>
+              <option value="Ministry of Justice">Ministry of Justice</option>
+              <!-- <option value="Ministerial Departments" disabled="disabled">Agencies</option>
+              <option value="Driver and Vehicle Licensing Agency">Driver and Vehicle Licensing Agency</option>
+              <option value="HM Courts and Tribunals Service">HM Courts and Tribunals Service</option>
+              <option value="NHS Blood and Transplant">NHS Blood and Transplant</option> -->
+            </select>
+          </div>
+        </span>
+        <span class="filter-org-type-2">
+          <div class="form-group inline-forms width-data-org">
+            <select class="form-control">
+              <option value="UK Government">UK Government</option>
+              <option value="Ministerial Departments" disabled="disabled">Ministerial Departments</option>
+              <option value="Ministry of Health">Department of Health</option>
+              <option value="Department for Transport">Department for Transport</option>
+              <option value="Home Office">Home Office</option>
+              <option value="Ministry of Justice">Ministry of Justice</option>
+              <option value="Ministerial Departments" disabled="disabled">Agencies</option>
+              <option value="Driver and Vehicle Licensing Agency">Driver and Vehicle Licensing Agency</option>
+              <option value="HM Courts and Tribunals Service">HM Courts and Tribunals Service</option>
+              <option value="NHS Blood and Transplant">NHS Blood and Transplant</option>
+            </select>
+          </div>
+        </span>
+        <span class="filter-org-department">
+          <div class="form-group inline-forms width-data-org">
+            <select class="form-control">
+              <option value="Department for Transport">Department for Transport</option>
+              <option value="Home Office">Home Office</option>
+              <option value="Ministry of Health">Ministry of Health</option>
+            </select>
+          </div>
+        </span>
+        <span class="filter-org-agency">
+          <div class="form-group inline-forms width-data-org">
+            <select class="form-control">
+              <option value="Driver and Vehicle Licensing Agency">Driver and Vehicle Licensing Agency</option>
+              <option value="HM Courts and Tribunals Service">HM Courts and Tribunals Service</option>
+              <option value="NHS Blood and Transplant">NHS Blood and Transplant</option>
+            </select>
+          </div>
+        </span>
+      </fieldset> 
+    </form>
 
     <div class="column-full">
-      <h2 class="bold-small" style="margin: 0">where</h2>
+      <h2 class="bold-small" style="margin: 0">Where</h2>
     </div>  
 
-    <!-- filter row-->
-    <div class="column-full filter-row">
-      <form>
-        <fieldset>
-          <legend class="visuallyhidden">Where</legend>
-          <div class="form-group inline-forms width-data-type">
-            <select class="form-control">
-              <option>Transactions received</option>
-              <option>– Online transactions received</option>
-              <option>– Phone transactions received</option>
-              <option>– Paper transactions received</option>
-              <option>– Face to face transactions received</option>
-              <option>– Other transactions received</option>
-              <option>Transactions ending in an outcome</option>
-              <option>– Transactions ending in the user's intended outcome</option>
-              <option>Calls received</option>
-              <option>– Calls to get information</option>
-              <option>– Calls to chase progress</option>
-              <option>– Calls to challenge a decision</option>
-              <option>– Other calls</option>
-              <option>Number of services</option>
-              <option>Number of agencies</option>
+    <form class="column-full filter-row">
+      <fieldset>
+        <legend class="visuallyhidden">Where</legend>
+        <div class="form-group inline-forms width-data-org">
+          <select class="form-control" id="select-metric">
+            <option>Transactions received</option>
+            <option value="online">– Online transactions received</option>
+            <option value="phone">– Phone transactions received</option>
+            <option value="paper">– Paper transactions received</option>
+            <option value="facetoface">– Face-to-face transactions received</option>
+            <option value="otherchannel">– Other transactions received</option>
+            <option>Transactions ending in an outcome</option>
+            <option value="intendedoutcome">– Transactions ending in the user's intended outcome</option>
+            <option>Calls received</option>
+            <option value="getinfo">– Calls to get information</option>
+            <option value="chaseprogress">– Calls to chase progress</option>
+            <option value="challengedecision">– Calls to challenge a decision</option>
+            <option value="othercall">– Other</option>
+            <option>Number of services</option>
+            <option>Number of agencies</option>
+          </select>
+        </div>
+        <span>
+          <div class="form-group inline-forms width-data-range">
+            <select class="form-control" id="select-range">
+              <option value="isgreaterthan">are greater than</option>
+              <option value="islessthan">are less than</option>
+              <!-- <option value="isintherange">is in the range</option> -->
             </select>
           </div>
-          <span>
-            <div class="form-group inline-forms width-data-range">
-              <select class="form-control" id="select-range">
-                <option value="isgreaterthan">is greater than</option>
-                <option value="islessthan">is less than</option>
-                <option value="isintherange">is in the range</option>
-              </select>
-            </div>
-          </span>
-          <span class="lower-range">
-            <div class="form-group inline-forms width-data-input">
-              <input class="form-control" id="field-range-1" name="field-range-1" type="text" value='0'>
-            </div>
-          </span>
-          <span class="upper-range">
-            <span class="connecting-word">to</span>
-            <div class="form-group inline-forms width-data-input">
-              <input class="form-control" id="field-range-2" name="field-range-2" type="text">
-            </div>
-          </span> 
-          <span class="clear-filter-row font-xsmall">
-            <a href="#">Remove</a>
-          </span>
-        </fieldset>  
-      </form>
-    </div>
+        </span>
+        <span class="lower-range">
+          <div class="form-group inline-forms width-data-input">
+            <input class="form-control" id="field-range-1" type="text" value='0'>
+          </div>
+        </span>
+        <span class="upper-range">
+          <span class="connecting-word">to</span>
+          <div class="form-group inline-forms width-data-input">
+            <input class="form-control" id="field-range-2" type="text">
+          </div>
+        </span> 
+        <span class="clear-filter-row font-xsmall">
+          <a href="#">Remove</a>
+        </span>
+      </fieldset>  
+    </form>
 
     <div class="column-full">
       <p class="font-xsmall"><a href="javascript:void()" id="add-filter-row">+ Add filter</a></p>
     </div>
 
-    <div class="column-full">
-      <form>
-        <fieldset>
-          <legend class="visuallyhidden">Where</legend>
-          <input class="button" type="submit" value="Apply filters" disabled="disabled">
-          <a class="cancel-button" href="javascript:void()">or reset</a>
-        </fieldset>
-      </form>    
-    </div>      
-  </div>  
+    <form class="column-full">
+      <fieldset>
+        <legend class="visuallyhidden">Where</legend>
+        <input class="button" type="submit" value="Apply filters" disabled="disabled">
+        <a class="cancel-button" href="#" onclick='location.reload(true); return false;'>Reset filters</a>
+      </fieldset>
+    </form>    
+     
+  </div>
 
   <!--end of filter-->  
 
   <div class="grid-row">
     <div class="column-one-third">
-      <p>Showing <strong>12</strong> departments<!-- , filtered by <strong>over 1k transactions</strong>, <strong>less than 1m calls</strong> --></p>
+      <p>Showing <strong>12</strong> departments</p>
     </div>
     <div class="column-two-thirds">
       <div class="form-group sort-by">
         <label class="form-label" for="select-box">Sort by</label>
-        <select class="form-control form-control-2-3" id="select-box">
+        <select class="form-control form-control-1-2">
           <option>Transactions received</option>
-          <option>– Online transactions received</option>
-          <option>– Phone transactions received</option>
-          <option>– Paper transactions received</option>
-          <option>– Face to face transactions received</option>
-          <option>– Other transactions received</option>
+          <option>– Online</option>
+          <option>– Phone</option>
+          <option>– Paper</option>
+          <option>– Face-to-face</option>
+          <option>– Other</option>
           <option>Transactions ending in an outcome</option>
-          <option>– Transactions ending in the user's intended outcome</option>
+          <option>– The user's intended outcome</option>
           <option>Calls received</option>
           <option>– To get information</option>
           <option>– To chase progress</option>
           <option>– To challenge a decision</option>
-          <option>– Other</option>
+          <option>– Other calls</option>
           <option>Number of services</option>
           <option>Number of agencies</option>
         </select>
@@ -196,9 +200,10 @@
   <div class="grid-row">
     <ul class="filter-cards column-full">
       
+      {% for department in department_totals %}
       <li class="column-full">
         <div class="column-one-quarter">
-          <h2 class="bold-medium"><a href="#">Department Card Example</a></h2>
+          <h2 class="bold-medium"><a href="{{ department.friendly_id }}">{{ department.name }}</a></h2>
           <ul class="list font-xsmall">
             <li><strong>6</strong> agencies</li>
             <li><strong>28</strong> services</li>
@@ -206,7 +211,7 @@
         </div>
         <div class="column-one-quarter">
           <div class="data">
-            <span class="data-item bold-large">1.25m</span>
+            <span class="data-item bold-large">{{ department.total_received }}m</span>
             <span class="data-item bold-xsmall">transactions received</span>
           </div>
           <ul class="list font-xsmall">
@@ -238,8 +243,9 @@
           </ul>
         </div>  
       </li>
+      {% endfor %}
 
-      <li class="column-full">
+      <!-- <li class="column-full">
         <div class="column-one-quarter">
           <h2 class="bold-medium"><a href="#">Agency Card Example</a></h2>
           <ul class="list font-xsmall">
@@ -256,7 +262,7 @@
             <li><strong>60%</strong> online</li>
             <li><strong>20%</strong> phone</li>
             <li><strong>10%</strong> paper</li>
-            <li><strong>5%</strong> face to face</li>
+            <li><strong>5%</strong> Face-to-face</li>
             <li><strong>5%</strong> other</li>
           </ul>
         </div>
@@ -281,9 +287,9 @@
             <li><strong>15%</strong> other</li>
           </ul>
         </div>  
-      </li>
+      </li> -->
 
-      <li class="column-full">
+      <!-- <li class="column-full">
         <div class="column-one-quarter">
           <h2 class="bold-medium"><a href="#">Service Card Example</a></h2>
           <ul class="list font-xsmall">
@@ -321,7 +327,7 @@
             <li><strong>15%</strong> other</li>
           </ul>
         </div>  
-      </li>
+      </li> -->
 
     </ul>
   </div>

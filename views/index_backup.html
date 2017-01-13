@@ -1,0 +1,82 @@
+{% extends "layouts/layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<div class="swatch">
+  <main id="content" role="main">
+    <div class="header-banner">
+      <div class="phase-banner-alpha">
+        <p>
+          <strong class="phase-tag">ALPHA</strong>
+          <span>This is a new service – your feedback will help us to improve it.</span>
+        </p>
+      </div>
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <h1 class="heading-xlarge">
+            Get data about government services
+          </h1>
+          <p class="lede">
+            This tool gives government the data to make better decisions about services. It helps civil servants to design government to better meet user needs.
+          </p>
+        </div>
+      </div>
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <a class="button button-start" href="/performance-data/government">View all</a> 
+          <span class="button-alternative">or <a href="/performance-data/searchpage">find something specific</a></span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- bit after the header -->
+
+<main id="content">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">How it works</h2>
+      <p>You can use this tool to:</p>
+      <ul class="list list-bullet">
+        <li>see what’s happening with government services in order to prioritise work</li>
+        <li>find best practice so you can introduce standards</li>
+        <li>demonstrate the value of your strategies</li>
+      </ul>  
+    </div>
+  </div>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">What data is available</h2>
+      <p>Aggregate and trend data about:</p>
+      <ul class="list list-bullet">
+        <li>transaction and call volumes</li>
+        <li>channels used to access services</li>
+        <li>reasons users call about services</li>
+        <li>reasons services contact users</li>
+      </ul> 
+      <p>This data is for all government services, not just digital ones.</p> 
+    </div>
+  </div> 
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h2 class="heading-large" id="5">Contact the team</h2><p></p>
+      <p>This tool is built and supported by a full time team at the Government Digital Service. The product owner is Roxanne Asadi.</p>
+      <p>To contact the team email:</p>
+      <p>performance-platform@digital.cabinet-office.gov.uk</p>
+    </div>
+  </div> 
+</main>
+
+{% endblock %}
+
+{% block body_end %}
+{{ super() }}
+  <script src="/javascripts/patterns/autocomplete/03/typeahead-aria.js"></script>
+  <script src="/javascripts/patterns/autocomplete/03/init-autocomplete.js"></script>
+{% endblock %}
+

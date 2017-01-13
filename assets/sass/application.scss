@@ -3,8 +3,12 @@
 @import 'govuk-elements';
 
 // Take a look at in assets/sass/patterns/ to see which files are imported.
-@import 'patterns/check-your-answers';
-@import 'patterns/unbranded';
+@import 'patterns/headers';
+@import 'patterns/product-overview-page';
+@import 'patterns/search-in-header';
+@import 'patterns/tabs';
+@import 'patterns/subnav';
+@import 'patterns/helpers';
 
 // Take a look at in assets/sass/patterns.scss to see which files are imported.
 @import 'patterns';
@@ -27,6 +31,33 @@
   }
 }
 
+// Stuff from product pages sass
+
+.section-header {
+  margin: $gutter 0 $gutter/2 0;
+  color: $grey-1;
+  font-size: em(19);
+  border-bottom: 1px solid $grey-2;
+  padding-bottom: 5px;
+}
+
+.page-header__context {
+    font-family: "nta", Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #6f777b;
+    margin-bottom: em(10);
+    padding-bottom: .167em;
+
+    @media screen and (max-width: 640px) {
+      font-size: 18px;
+      line-height: 1.2;
+    }
+}
+
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 strong {
@@ -46,52 +77,6 @@ hr + .grid-row .column-two-thirds h2 {
 // Header banner (feel like this class should already exist somewhere else)
 .swatch {
   background-color: $govuk-blue;
-}
-
-.header-banner {
-  color: $white;
-  width: 100%;
-  margin-top: -10px;
-  margin-bottom: -30px;
-
-  h1 {
-    margin: 0 0 30px;
-  }
-
-  p {
-    margin-bottom: 30px;
-  }
-
-  a {
-    color: $white;
-  }
-
-  .button-start {
-    background-image: url(../images/icon-pointer-blue-2x.png);
-    background-size: 30px 19px;
-    background-color: $white;
-    color: $govuk-blue;
-  }
-
-  .button-alternative {
-    position: relative;
-    top: 8px;
-    left: 8px;
-  }
-
-  .phase-banner-alpha {
-    color: #fff;
-    border-bottom: none;
-
-    p {
-      color: $white;
-    }
-  }
-
-  @media (max-width: 640px) {
-    margin-bottom: 0;
-  }
-
 }
 
 .search {
@@ -685,6 +670,7 @@ margin:-30px 0 0;
 
 .sort-by {
   margin-bottom: 0;
+  text-align: right;
 
   label, select {
     display: inline-block;
@@ -793,6 +779,7 @@ margin:-30px 0 0;
 
   .upper-range,
   .filter-org-type,
+  .filter-org-type-2,
   .filter-org-department,
   .filter-org-agency {
     display: none;

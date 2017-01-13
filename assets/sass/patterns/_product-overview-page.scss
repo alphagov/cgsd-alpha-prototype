@@ -1,0 +1,339 @@
+// PRODUCT OVERVIEW PAGE STYLES
+
+
+// Blue intro panel on product overview pages
+
+.product-overview-intro {
+
+	.wrapper{
+	  @extend %site-width-container;
+  	  @extend %contain-floats;	
+	}
+
+    background-color: $govuk-blue;
+    color: $white;
+    margin-top: -10px;
+    padding: 0 0 $gutter 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    @media screen and (max-width: 640px) {
+    	padding: 0 0 $gutter/2 0;
+    }
+
+    h1.heading-xlarge {
+        margin-top: 45px;
+        margin-bottom: 30px;
+
+        @media screen and (max-width: 640px) {
+            margin-top: 30px;
+        }
+    }
+
+
+	// Links are white when when background is blue
+	
+    a {
+        color: $white;
+
+        &:hover {
+            color: $light-blue-25;
+        }
+    }
+
+    // White 'get started' button style
+    .button-start, .button-get-started {
+    	background-image: file-url("../../images/icon-pointer-blue-2x.png");
+      background-size: 30px;
+      background-position: 95% 50%;
+    }
+
+	a.button-start{	
+    background-color: $white;
+    color: $govuk-blue;
+    vertical-align: middle;
+    margin-right: 10px;
+    box-shadow: 0 2px 0 darken($govuk-blue, 10%);
+      
+      &:hover {
+          color: $link-hover-colour;
+      }
+
+   	@media screen and (max-width: 640px) {
+  		margin-bottom: $gutter/3;
+  	}
+	}
+
+    p a.button-start {
+        margin-bottom: 10px;
+    }
+
+	.button_paragraph {
+		margin-bottom: 0;
+	}
+
+	// Reapply typographic styles outside 'main'
+	p {
+  	@include core-19;
+	}
+
+  li {
+    @include core-24;
+  } 
+
+	.lede {
+  	@include core-24;
+        // margin-bottom: 30px;	
+
+      
+	}
+
+	.button-hint {
+	    margin-top: $gutter;
+        @include core-19;
+	}
+
+	// search box
+
+	.in-manual-search-blue {
+	   position: relative;
+	 }
+
+	 .in-manual-search-blue label {
+	   padding-bottom: 5px;
+	}
+
+	.in-manual-search-blue #search-box {
+	   width: 90%;
+	   border: none;
+       padding: 5px 5px 5px 10px;
+       font-size: 19px;
+	}
+
+	.in-manual-search-blue button {
+    width: 39px;
+    height: 39px;
+    border: 1px solid $black ;
+    border-width: 0 0 0 1px;
+    border-left-color: #222;
+    overflow: hidden;
+    text-indent: -5000px;
+    cursor: pointer;
+    color: #fff;
+    background: $black url(https://assets.publishing.service.gov.uk/manuals-frontend/search-button-de28edec94868c92285a8f97a79bb469.png) 
+    no-repeat 0 50%;
+    position: absolute;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+	}
+
+    .breadcrumbs {
+      border-bottom: 1px solid #377FB9;
+
+      a {
+          color: $white;
+      }
+
+      .active {
+          color: white;
+      }
+    }
+
+    img {
+      width: 100%;
+      margin-top: $gutter*2;
+
+      @media screen and (max-width: 640px) {
+           margin-top: 0;
+           max-width: 400px;
+      }
+    }
+
+    img.component-logo {
+      width: 110px;
+      margin: $gutter 0 $gutter-half; 
+      float: right;
+
+      @media screen and (max-width: 640px) {
+          width: 100px;
+          margin-bottom: 0;
+          float: left;
+      }
+
+    }
+
+    .product-overview-intro-image {
+      text-align: center;
+    }
+
+    .product-overview-intro-text,
+    .product-overview-intro-image {
+      @media screen and (min-width: 641px) and (max-width: 860px) {
+        width: 50% !important;
+      }
+    }
+
+}
+
+// Images on Product Page
+
+img .img_org-logos {
+	width: 100%;
+	max-width: 760px;
+}
+
+.diagram-image {
+  width: 100%;
+  margin-top: $gutter; 
+}
+
+.team-image img {
+  width: 100%;
+  float: right;
+  margin: $gutter 0 0 $gutter;
+
+  @media screen and (max-width: 500px) {
+  	width: 100%;
+  	margin: 0 0 $gutter/2 0;
+  }
+}
+
+//section rule separators
+
+.section-border-top {
+  margin-top: 30px;
+  border-top: 1px solid $border-colour;
+}
+
+
+// Breadcrumbs
+
+.breadcrumbs {
+  @include breadcrumbs;
+}
+
+.breadcrumbs {
+    
+  padding-bottom: 5px;
+
+  a {
+      
+  }
+
+  .active {
+      font-weight: bold;
+      color: $black;
+  }
+}
+
+
+// Related Items
+
+.govuk-related-items {
+  border-top: 10px solid #005ea5 !important;
+  padding-top: 5px;
+  margin-top: 45px;
+
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  ul {
+  
+    li {
+      margin-bottom: 0.75em;
+
+      &:last-child {
+          margin-bottom: 1.5em;
+      }
+    }
+  }
+}
+
+// Contents
+
+.page-contents {
+  margin-top: 2em;
+  padding-bottom: 4em;
+}
+
+.content-fixed {
+  top: 0;
+  position: fixed;
+}
+
+.page-contents__list li {
+  font-family: "nta", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 16px;
+  line-height: 1.14286;
+  list-style-type: none;
+  margin-bottom: 5px;
+  margin-left: 15px;
+  padding-right: 15px;
+}
+
+.page-contents__list a {
+  text-decoration: none;
+}
+
+.page-contents__list li:before {
+  content: "–";
+  float: left;
+  display: block;
+  width: 15px;
+  margin-left: -15px;
+}
+
+// Video
+
+.video-wrapper {
+  padding: 5px;
+  border: 1px solid $border-colour;
+}
+
+.video-container {
+  position:relative;
+  padding-bottom:56.25%;
+  padding-top:30px;
+  height:0;
+  overflow:hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+
+// Grid overrides 
+
+.column-float-left {
+    
+  float: left;
+
+  @media screen and (max-width: 640px) {
+    clear: left;
+    width: 100%;
+  }
+
+}
+
+.column-float-right {
+    
+  float: right;
+
+  @media screen and (max-width: 640px) {
+    clear: right;
+    width: 100%;
+  }
+
+}       
+

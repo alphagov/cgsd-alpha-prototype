@@ -1,5 +1,7 @@
 {% extends "./govuk/govuk_template.html" %}
 
+{% import "includes/macros.html" as macro %}
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
@@ -8,12 +10,20 @@
   <p>{{cookieText | safe }}</p>
 {% endblock %}
 
-{% block proposition_header %}
-  {% include "includes/propositional_navigation.html" %}
+{% block page_title %}
+  {{ productName }}
 {% endblock %}
 
 {% block header_class %}
-  with-proposition
+  with-proposition govuk-product
+{% endblock %}
+
+{% block header_logo %}
+  {{ macro.productName(productName, phase) }}
+{% endblock %}
+
+{% block proposition_header %}
+  {{ macro.headerNav(homepage_url, navItems, section) }}
 {% endblock %}
 
 {% block body_end %}

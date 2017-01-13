@@ -7,51 +7,45 @@ $(document).ready(function() {
     $("input.button").removeAttr('disabled');
   });
 
-	// add another form field when selecting a range
-	$("#select-range").change(function(){
-    if ($("#select-range").val() == "isintherange") {
-       $(".upper-range").toggle();
-    } else {
-       $(".upper-range").hide();
-    }
-	});
-
-	// when selecting an agency or service, show a org type selector
+	// show a different org list depending on what you select
 	$("#select-org-type").change(function(){
-    if ($("#select-org-type").val() == "agencies", "services") {
-       $(".filter-org-type").show();
-       $(".filter-org-default").hide();
+    if ($("#select-org-type").val() == "agencies") {
+      $(".filter-org-type").show();
+      $(".filter-org-type-2").hide();
+      $(".filter-org-default").hide();
+    }
+    if ($("#select-org-type").val() == "services") {
+      $(".filter-org-type-2").show();
+      $(".filter-org-type").hide();
+      $(".filter-org-default").hide();
     }
     if ($("#select-org-type").val() == "departments") {
     	$(".filter-org-default").show();
 			$(".filter-org-type").hide();
-			$(".filter-org-department").hide();
-			$(".filter-org-agency").hide();
+			$(".filter-org-type-2").hide();
     }
 	});
 
-	// show an org name selector when selecting the org type
-	$("#select-org-name").change(function(){
-    if ($("#select-org-name").val() == "indepartment") {
-       $(".filter-org-department").show();
-       $(".filter-org-agency").hide();
-    }
-    if ($("#select-org-name").val() == "inagency") {
-       $(".filter-org-agency").show();
-       $(".filter-org-department").hide();
-    }
-    if ($("#select-org-name").val() == "any") {
-       $(".filter-org-agency").hide();
-       $(".filter-org-department").hide();
-    }
-	});
+  // show a shorter input box when a percentage metric is selected
+  $("#select-metric").change(function(){
+    if ($("#select-metric").val() == "online", "phone", "paper", "facetoface", "other") {
+      $(this).closest("fieldset").find(".width-data-input").css("width", "5%").after("<span>% </span>");
+    } 
+    // if selecting one of the other options, make everything go back to normal :/
+  });
+
+  // // add another form field when selecting a range
+  // $("#select-range").change(function(){
+  //   if ($("#select-range").val() == "isintherange") {
+  //      $(".upper-range").toggle();
+  //   } else {
+  //      $(".upper-range").hide();
+  //   }
+  // });
 
 	// add another row when clicking 'add filter'
 	$('#add-filter-row').click(function() {
     $( '.filter-row:last' ).clone().insertAfter('.filter-row:last');
   });
-
-  // only show 'remove' link when more than one filter is showing???
-
  
 });
