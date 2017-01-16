@@ -189,16 +189,16 @@ margin:-30px 0 0;
 // performance-data page styles
 
 .metadata {
-  font-size: 14px;
+  font-size: 16px;
 
   dt, dl {
     float: left;
     clear: left;
-    width: 8em;
+    width: 10em;
   }
 
   dd {
-    width: 70%;
+    width: 65%;
     float: left;
 
     a {
@@ -212,7 +212,7 @@ margin:-30px 0 0;
 
   dt {
     width: auto;
-    min-width: 120px;
+    min-width: 135px;
     padding-right: 10px;
   }
 
@@ -420,7 +420,16 @@ margin:-30px 0 0;
 
 .data-block {
   margin-top: 30px;
-  margin-bottom: 60px;
+  margin-bottom: 75px;
+
+  ul.list.bold-medium {
+
+    > li {
+      margin-bottom: 15px;
+    }
+
+  }
+
 }
 
 
