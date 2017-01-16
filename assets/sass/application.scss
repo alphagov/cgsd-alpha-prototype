@@ -68,6 +68,10 @@ strong {
   display: block;
 }
 
+.secondary-text-colour {
+  color: $secondary-text-colour;
+}
+
 // Less spacing for headings after <hr> keylines
 
 hr + .grid-row .column-two-thirds h2 {
@@ -80,7 +84,6 @@ hr + .grid-row .column-two-thirds h2 {
 }
 
 .search {
-  padding-top: 15px;
 
   .wrapper {
     float: left;

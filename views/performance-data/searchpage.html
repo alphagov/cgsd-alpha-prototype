@@ -9,13 +9,13 @@
 <main id="content" role="main">
   <div class="grid-row">
     <div class="column-two-thirds">
-      <h1 class="heading-xlarge">Search</h1>
+      <h1 class="heading-xlarge" style="margin-bottom: 15px">Search</h1>
       <p>Find data for a specific government department, agency or service.</p>
       <form action="/search" autocomplete="off" method="get">
         <fieldset>
           <div class="form-group search">
             <div class="wrapper">
-              <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true" placeholder="Search by department, agency or service">
+              <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true">
                 <option value=""></option>
                 {% for option in search_options %}
                   <option value="{{ option.friendly_id }}">{{ option.name }}</option>
