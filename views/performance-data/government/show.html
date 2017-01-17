@@ -82,51 +82,53 @@
       <h2 class="bold-small" style="margin: 0">Where</h2>
     </div>  
 
-    <form class="column-full filter-row">
-      <fieldset>
-        <legend class="visuallyhidden">Where</legend>
-        <div class="form-group inline-forms width-data-org">
-          <select class="form-control" id="select-metric">
-            <option value="transactions">Transactions received</option>
-            <option value="online">– Online transactions received</option>
-            <option value="phone">– Phone transactions received</option>
-            <option value="paper">– Paper transactions received</option>
-            <option value="facetoface">– Face-to-face transactions received</option>
-            <option value="other">– Other transactions received</option>
-            <option value="outcome">Transactions ending in an outcome</option>
-            <option value="intendedoutcome">– Transactions ending in the user's intended outcome</option>
-            <option value="calls">Calls received</option>
-            <option value="getinfo">– Calls to get information</option>
-            <option value="chaseprogress">– Calls to chase progress</option>
-            <option value="challengedecision">– Calls to challenge a decision</option>
-            <option value="othercall">– Other</option>
-            <option value="numberservices">Number of services</option>
-            <option value="numberagencies">Number of agencies</option>
-          </select>
-        </div>
-        <span>
-          <div class="form-group inline-forms width-data-range">
-            <select class="form-control" id="select-range">
-              <option value="isgreaterthan">are greater than</option>
-              <option value="islessthan">are less than</option>
+    <div class="column-full filter-row" id="filterrow1">
+      <form>
+        <fieldset>
+          <legend class="visuallyhidden">Where</legend>
+          <div class="form-group inline-forms width-data-org">
+            <select class="form-control select-metric">
+              <option value="transactions">Transactions received</option>
+              <option value="online">– Online transactions received</option>
+              <option value="phone">– Phone transactions received</option>
+              <option value="paper">– Paper transactions received</option>
+              <option value="facetoface">– Face-to-face transactions received</option>
+              <option value="other">– Other transactions received</option>
+              <option value="outcome">Transactions ending in an outcome</option>
+              <option value="intendedoutcome">– Transactions ending in the user's intended outcome</option>
+              <option value="calls">Calls received</option>
+              <option value="getinfo">– Calls to get information</option>
+              <option value="chaseprogress">– Calls to chase progress</option>
+              <option value="challengedecision">– Calls to challenge a decision</option>
+              <option value="othercall">– Other</option>
+              <option value="numberservices">Number of services</option>
+              <option value="numberagencies">Number of agencies</option>
             </select>
           </div>
-        </span>
-        <span class="input-number">
-          <div class="form-group inline-forms width-data-input">
-            <input class="form-control" id="field-range-1" type="text" value='0'>
-          </div>
-        </span>
-        <span class="input-percentage">
-          <div class="form-group inline-forms width-data-percentage">
-            <input class="form-control" id="field-range-2" type="text" value='0'>
-          </div><span class="connecting-word">%</span>
-        </span> 
-        <span class="clear-filter-row font-xsmall">
-          <a href="#">Remove</a>
-        </span>
-      </fieldset>  
-    </form>
+          <span>
+            <div class="form-group inline-forms width-data-range">
+              <select class="form-control select-range">
+                <option value="isgreaterthan">are greater than</option>
+                <option value="islessthan">are less than</option>
+              </select>
+            </div>
+          </span>
+          <span class="input-number">
+            <div class="form-group inline-forms width-data-input">
+              <input class="form-control" id="field-range-1" type="text" value='0'>
+            </div>
+          </span>
+          <span class="input-percentage">
+            <div class="form-group inline-forms width-data-percentage">
+              <input class="form-control" id="field-range-2" type="text" value='0'>
+            </div><span class="connecting-word">%</span>
+          </span> 
+          <span class="clear-filter-row font-xsmall">
+            <a href="#">Remove</a>
+          </span>
+        </fieldset> 
+      </form> 
+    </div>
 
     <div class="column-full">
       <p class="font-xsmall"><a href="javascript:void()" id="add-filter-row">+ Add filter</a></p>

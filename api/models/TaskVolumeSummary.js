@@ -7,6 +7,7 @@ module.exports = class TaskVolumeSummary {
     this._agencies = agencies;
 
     this._total_received = 0;
+    console.log(task_volume_records);
     var i;
     for (i = 0; i < this._task_volume_records.length; i++) {
       this._total_received += this._task_volume_records[i].count;

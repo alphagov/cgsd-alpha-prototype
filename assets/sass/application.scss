@@ -727,6 +727,11 @@ margin:-30px 0 0;
 
   .form-group:last-of-type {
     margin-bottom: 30px;
+
+    @media screen and (max-width: 640px) {
+      margin-bottom: 5px;
+    }
+
   }
 
   details {
@@ -799,8 +804,22 @@ margin:-30px 0 0;
   .upper-range,
   .filter-org-type,
   .filter-org-type-2,
-  .input-percentage {
+  .input-percentage,
+  .clear-filter-row {
     display: none;
+  }
+
+  @media screen and (max-width: 640px) {
+    margin-bottom: 0;
+
+    .width-data-org,
+    .width-data-type,
+    .width-data-range,
+    .width-data-input,
+    .width-data-percentage {
+      width: 100%;
+    }
+
   }
 
 }
