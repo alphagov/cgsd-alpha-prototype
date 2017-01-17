@@ -780,10 +780,17 @@ margin:-30px 0 0;
     margin-right: 5px;
   }
 
+  .percentage-symbol {
+    position: relative;
+    left: 0;
+    top: 0
+  }
+
   .width-data-org { width:40% }
   .width-data-type { width:30% }
   .width-data-range { width:20% }
   .width-data-input { width:15% }
+  .width-data-percentage { width:5% }
 
   .inline-forms:first-of-type {
     margin-left: 0;
@@ -792,9 +799,7 @@ margin:-30px 0 0;
   .upper-range,
   .filter-org-type,
   .filter-org-type-2,
-  .filter-org-department,
-  .filter-org-agency,
-  .percent {
+  .input-percentage {
     display: none;
   }
 

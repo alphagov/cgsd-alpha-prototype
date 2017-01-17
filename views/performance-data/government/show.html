@@ -31,7 +31,7 @@
 
     <form class="column-full filter-row">
       <fieldset>
-        <legend class="visuallyhidden">Show</legend>
+        <legend class="visuallyhidden">Showing</legend>
         <div class="form-group inline-forms width-data-type" id="filter-select-box">
           <select class="form-control" id="select-org-type">
             <option value="departments">Departments</option>
@@ -56,10 +56,6 @@
               <option value="Department for Transport">Department for Transport</option>
               <option value="Home Office">Home Office</option>
               <option value="Ministry of Justice">Ministry of Justice</option>
-              <!-- <option value="Ministerial Departments" disabled="disabled">Agencies</option>
-              <option value="Driver and Vehicle Licensing Agency">Driver and Vehicle Licensing Agency</option>
-              <option value="HM Courts and Tribunals Service">HM Courts and Tribunals Service</option>
-              <option value="NHS Blood and Transplant">NHS Blood and Transplant</option> -->
             </select>
           </div>
         </span>
@@ -73,24 +69,6 @@
               <option value="Home Office">Home Office</option>
               <option value="Ministry of Justice">Ministry of Justice</option>
               <option value="Ministerial Departments" disabled="disabled">Agencies</option>
-              <option value="Driver and Vehicle Licensing Agency">Driver and Vehicle Licensing Agency</option>
-              <option value="HM Courts and Tribunals Service">HM Courts and Tribunals Service</option>
-              <option value="NHS Blood and Transplant">NHS Blood and Transplant</option>
-            </select>
-          </div>
-        </span>
-        <span class="filter-org-department">
-          <div class="form-group inline-forms width-data-org">
-            <select class="form-control">
-              <option value="Department for Transport">Department for Transport</option>
-              <option value="Home Office">Home Office</option>
-              <option value="Ministry of Health">Ministry of Health</option>
-            </select>
-          </div>
-        </span>
-        <span class="filter-org-agency">
-          <div class="form-group inline-forms width-data-org">
-            <select class="form-control">
               <option value="Driver and Vehicle Licensing Agency">Driver and Vehicle Licensing Agency</option>
               <option value="HM Courts and Tribunals Service">HM Courts and Tribunals Service</option>
               <option value="NHS Blood and Transplant">NHS Blood and Transplant</option>
@@ -114,7 +92,7 @@
             <option value="phone">– Phone transactions received</option>
             <option value="paper">– Paper transactions received</option>
             <option value="facetoface">– Face-to-face transactions received</option>
-            <option value="otherchannel">– Other transactions received</option>
+            <option value="other">– Other transactions received</option>
             <option value="outcome">Transactions ending in an outcome</option>
             <option value="intendedoutcome">– Transactions ending in the user's intended outcome</option>
             <option value="calls">Calls received</option>
@@ -122,8 +100,8 @@
             <option value="chaseprogress">– Calls to chase progress</option>
             <option value="challengedecision">– Calls to challenge a decision</option>
             <option value="othercall">– Other</option>
-            <option value="services">Number of services</option>
-            <option value="agencies">Number of agencies</option>
+            <option value="numberservices">Number of services</option>
+            <option value="numberagencies">Number of agencies</option>
           </select>
         </div>
         <span>
@@ -131,14 +109,18 @@
             <select class="form-control" id="select-range">
               <option value="isgreaterthan">are greater than</option>
               <option value="islessthan">are less than</option>
-              <!-- <option value="isintherange">is in the range</option> -->
             </select>
           </div>
         </span>
-        <span class="lower-range">
+        <span class="input-number">
           <div class="form-group inline-forms width-data-input">
-            <input class="form-control" id="field-range-1" type="text" value='0'><!-- <span class="percent">%</span> -->
+            <input class="form-control" id="field-range-1" type="text" value='0'>
           </div>
+        </span>
+        <span class="input-percentage">
+          <div class="form-group inline-forms width-data-percentage">
+            <input class="form-control" id="field-range-2" type="text" value='0'>
+          </div><span class="connecting-word">%</span>
         </span> 
         <span class="clear-filter-row font-xsmall">
           <a href="#">Remove</a>
@@ -153,7 +135,7 @@
     <form class="column-full">
       <fieldset>
         <legend class="visuallyhidden">Where</legend>
-        <input class="button" type="submit" value="Apply filters">
+        <a class="button" type="submit" href="javascript:void()">Apply filters</a>
         <a class="cancel-button" href="#" onclick='location.reload(true); return false;'>Reset filters</a>
       </fieldset>
     </form>    
