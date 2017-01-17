@@ -109,21 +109,21 @@
         <legend class="visuallyhidden">Where</legend>
         <div class="form-group inline-forms width-data-org">
           <select class="form-control" id="select-metric">
-            <option>Transactions received</option>
+            <option value="transactions">Transactions received</option>
             <option value="online">– Online transactions received</option>
             <option value="phone">– Phone transactions received</option>
             <option value="paper">– Paper transactions received</option>
             <option value="facetoface">– Face-to-face transactions received</option>
             <option value="otherchannel">– Other transactions received</option>
-            <option>Transactions ending in an outcome</option>
+            <option value="outcome">Transactions ending in an outcome</option>
             <option value="intendedoutcome">– Transactions ending in the user's intended outcome</option>
-            <option>Calls received</option>
+            <option value="calls">Calls received</option>
             <option value="getinfo">– Calls to get information</option>
             <option value="chaseprogress">– Calls to chase progress</option>
             <option value="challengedecision">– Calls to challenge a decision</option>
             <option value="othercall">– Other</option>
-            <option>Number of services</option>
-            <option>Number of agencies</option>
+            <option value="services">Number of services</option>
+            <option value="agencies">Number of agencies</option>
           </select>
         </div>
         <span>
@@ -137,13 +137,7 @@
         </span>
         <span class="lower-range">
           <div class="form-group inline-forms width-data-input">
-            <input class="form-control" id="field-range-1" type="text" value='0'>
-          </div>
-        </span>
-        <span class="upper-range">
-          <span class="connecting-word">to</span>
-          <div class="form-group inline-forms width-data-input">
-            <input class="form-control" id="field-range-2" type="text">
+            <input class="form-control" id="field-range-1" type="text" value='0'><!-- <span class="percent">%</span> -->
           </div>
         </span> 
         <span class="clear-filter-row font-xsmall">
@@ -159,7 +153,7 @@
     <form class="column-full">
       <fieldset>
         <legend class="visuallyhidden">Where</legend>
-        <input class="button" type="submit" value="Apply filters" disabled="disabled">
+        <input class="button" type="submit" value="Apply filters">
         <a class="cancel-button" href="#" onclick='location.reload(true); return false;'>Reset filters</a>
       </fieldset>
     </form>    
