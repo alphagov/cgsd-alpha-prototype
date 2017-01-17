@@ -28,7 +28,6 @@ module.exports = class AgencyService extends Service {
        INNER JOIN task ON task.agency = agency.id \
        INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
        WHERE agency.friendly_id = $1 \
-       AND taskvolumerecord.stage = 'received' \
        GROUP BY task.friendly_id, task.name \
        ORDER BY total_received DESC",
       [friendly_id]

@@ -70,7 +70,7 @@ module.exports = class TaskVolumeSummary {
     for (i = 0; i < this._task_volume_records.length; i++) {
       var record;
       record = this._task_volume_records[i];
-      if (record.channel == channel && record.stage == 'received') {
+      if (record.channel == channel) {
         sum += record.count;
       }
     }

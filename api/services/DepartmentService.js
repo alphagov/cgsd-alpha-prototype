@@ -28,7 +28,6 @@ module.exports = class DepartmentService extends Service {
        FROM department \
        INNER JOIN task ON task.department = department.id \
        INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
-       WHERE taskvolumerecord.stage = 'received' \
        GROUP BY department.friendly_id, department.name \
        ORDER BY total_received DESC",
       []
@@ -48,7 +47,6 @@ module.exports = class DepartmentService extends Service {
        INNER JOIN task ON task.agency = agency.id \
        INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
        WHERE department.friendly_id = $1 \
-       AND taskvolumerecord.stage = 'received' \
        GROUP BY agency.friendly_id, agency.name \
        ORDER BY total_received DESC",
       [friendly_id]
@@ -67,7 +65,6 @@ module.exports = class DepartmentService extends Service {
        INNER JOIN task ON task.department = department.id \
        INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
        WHERE department.friendly_id = $1 \
-       AND taskvolumerecord.stage = 'received' \
        GROUP BY task.friendly_id, task.name \
        ORDER BY total_received DESC",
       [friendly_id]

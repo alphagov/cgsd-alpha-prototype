@@ -20,11 +20,7 @@ module.exports = class TaskVolumeRecord extends Model {
         type: 'date'
       },
       channel: {       // channel through which an application was received:
-        type: 'string' // online, paper, phone, face-to-face,
-                       // other, null ('completed' stage)
-      },
-      stage: {
-        type: 'string' // received, completed
+        type: 'string' // online, paper, phone, face-to-face, other
       },
       count: {
         type: 'integer'
