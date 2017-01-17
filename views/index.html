@@ -1,82 +1,127 @@
-{% extends "layouts/layout.html" %}
+{% extends "layouts/govuk-registers.html" %}
 
-{% block page_title %}
-  GOV.UK prototype kit
-{% endblock %}
+{% set section = "index" %}
 
 {% block content %}
 
-<div class="swatch">
-  <main id="content" role="main">
-    <div class="header-banner">
-      <div class="phase-banner-alpha">
-        <p>
-          <strong class="phase-tag">ALPHA</strong>
-          <span>This is a new service – your feedback will help us to improve it.</span>
-        </p>
-      </div>
-      <div class="grid-row">
-        <div class="column-two-thirds">
-          <h1 class="heading-xlarge">
-            Get data about government services
-          </h1>
-          <p class="lede">
-            This tool gives government the data to make better decisions about services. It helps civil servants to design government to better meet user needs.
-          </p>
-        </div>
-      </div>
-      <div class="grid-row">
-        <div class="column-two-thirds">
-          <a class="button button-start" href="/performance-data/government">View all</a> 
-          <span class="button-alternative">or <a href="/performance-data/searchpage">find something specific</a></span>
-        </div>
-      </div>
-    </div>
-  </main>
-</div>
+<div class="product-overview-intro">
+  <div class="wrapper">
 
-<!-- bit after the header -->
+    <div class="grid-row">
+      <!-- <div class="column-full">
+        <div class="breadcrumbs">
+          <ol>
+            <li>
+                <a href="#">Monitoring</a>
+            </li>
+            <li class="active">
+                Cross-Government Service Data
+            </li>
+          </ol>
+        </div>
+      </div> -->
+      
+      <div class="column-two-thirds">
 
-<main id="content">
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <h2 class="heading-large">How it works</h2>
-      <p>You can use this tool to:</p>
-      <ul class="list list-bullet">
-        <li>see what’s happening with government services in order to prioritise work</li>
-        <li>find best practice so you can introduce standards</li>
-        <li>demonstrate the value of your strategies</li>
-      </ul>  
+        <h1 class="heading-xlarge">Get data about government services</h1>
+
+        <p class="lede">Cross-Government Service Data lets civil servants quickly access standardised high-level data so they can:</p>
+
+        <ul class="list list-bullet">
+          <li>get an overview of all the services delivered by government</li>
+          <li>see how departments, agencies and services are related</li>
+          <li>track changes in service usage and delivery</li>
+        </ul>
+      
+        <a class="button button-start" href="/performance-data/government" role="button">View data</a>
+        <span class="font-small">&nbsp;or <a href="/performance-data/searchpage">search for something specific</a></span>
+
+      </div>
+
+      <div class="column-one-third product-overview-intro-image">
+        <img class="top-image" src="/images/product-image.png">
+      </div>
+
     </div>
   </div>
+</div>
+
+<main id="content" role="main">
+
   <div class="grid-row">
-    <div class="column-two-thirds">
-      <h2 class="heading-large">What data is available</h2>
-      <p>Aggregate and trend data about:</p>
+    <div class="column-two-thirds"> 
+
+      <h2 class="heading-large" id="1">How it works</h2>
+
+      <p>Cross-Government Service Data is designed for civil servants who work across or want to learn from multiple organisations within government.</p>
+
+      <p>It provides standardised high-level metrics along with additional context to help them get a rounded view of each service, agency and department.</p> 
+
+      <p>This data can be explored through the Cross-Government Service Data website or exported as a CSV.</p>
+      
+      <p>All metrics also come with guidance on how they were collected and calculated to allow easy evaluation of the data.</p>
+      
+      <hr class="m_0">
+
+      <h2 class="heading-large" id="2">What data is available</h2>
+
+      <p>Where appropriate data is also aggregated to the agency, department and UK government level.</p> 
+
+      <h3 class="heading-small">Information about the service</h3>
       <ul class="list list-bullet">
-        <li>transaction and call volumes</li>
-        <li>channels used to access services</li>
-        <li>reasons users call about services</li>
-        <li>reasons services contact users</li>
+        <li>The purpose of the service</li>
+        <li>The typical users of the service</li>
+        <li>How the service works</li>
+        <li>How frequently the service is used</li>
+        <li>How long it takes for a transaction to end in an outcome</li>
+      </ul>
+
+      <h3 class="heading-small">Demand for the service</h3>
+      <ul class="list list-bullet">
+        <li>Transactions received by the service</li>
       </ul> 
-      <p>This data is for all government services, not just digital ones.</p> 
-    </div>
-  </div> 
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <h2 class="heading-large" id="5">Contact the team</h2><p></p>
-      <p>This tool is built and supported by a full time team at the Government Digital Service. The product owner is Roxanne Asadi.</p>
-      <p>To contact the team email:</p>
-      <p>performance-platform@digital.cabinet-office.gov.uk</p>
-    </div>
-  </div> 
+
+      <h3 class="heading-small">Channels people use to access the service</h3>
+      <ul class="list list-bullet">
+        <li>Online</li>
+        <li>Phone</li>
+        <li>Paper</li>
+        <li>Face-to-face</li>
+      </ul>
+
+      <h3 class="heading-small">Delivery of the service</h3>
+      <ul class="list list-bullet">
+        <li>Transactions ending in an outcome</li>
+        <li>Transactions ending in the user's intended outcome (where available)</li>
+      </ul>
+      
+      <h3 class="heading-small">Reasons people call the service</h3>
+      <ul class="list list-bullet">
+        <li>To get information</li>
+        <li>To chase progress</li>
+        <li>To challenge a decision</li>
+      </ul> 
+      
+      <h3 class="heading-small">Guidance about how metrics are collected and calculated</h3>
+      <ul class="list list-bullet">
+        <li>Department and agency responsible for the data</li>
+        <li>How the data was collected</li>
+        <li>When the data was last updated</li>
+      </ul>
+
+      <hr class="m_0">
+
+      <h2 class="heading-large" id="2">Contact the team</h2>
+
+      <p>Cross-Government Service Data is collected by the Government Digital Service.</p>
+
+      <p><a class="link" mailto="performance-platform@digital.cabinet-office.gov.uk">Contact the team</a> if you have a question or would like to provide feedback.</p>
+          
+    </div> <!-- End Two Thirds -->
+
+  </div> <!-- End row -->
+
+
 </main>
 
 {% endblock %}
-
-{% block body_end %}
-{{ super() }}
-  <script src="/javascripts/patterns/autocomplete/03/typeahead-aria.js"></script>
-  <script src="/javascripts/patterns/autocomplete/03/init-autocomplete.js"></script>
-{% endblock %}
-

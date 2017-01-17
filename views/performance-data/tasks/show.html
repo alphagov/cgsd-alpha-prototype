@@ -1,4 +1,4 @@
-{% extends "layouts/layout.html" %}
+{% extends "layouts/govuk-registers.html" %}
 
 {% block page_title %}
   GOV.UK prototype kit
@@ -8,12 +8,8 @@
 
 <main id="content" role="main">
 
-  {% block page_banner %}
-    {% include "includes/phase_banner_alpha.html" %}
-  {% endblock %}
-
   <div class="grid-row">
-    <div class="column-full">
+    <div class="column-two-thirds">
       <h1 class="heading-xlarge">
       	<span class="heading-secondary">Service data for</span>
         {{ task.name }}
@@ -26,7 +22,7 @@
         {% endif %}
         <a href="{{department.friendly_id }}">{{ department.name }}</a>, <a href="/performance-data/government">UK Government</a>
         </dd>
-        <dt>Source:</dt>
+        <dt>Data provider:</dt>
         <dd>
           {% if agency %}
             {{ agency.name }}
@@ -34,330 +30,307 @@
             {{ department.name }}
           {% endif %}
         </dd>
-        <dt>Method:</dt>
-        <dd>Manual upload using online form</dd>
+        <dt>Collection method:</dt>
+        <dd>Manual upload via spreadsheet</dd>
         <dt>Last updated:</dt>
         <dd>30 September 2016</dd>
-        <dt>Download data:</dt>
-        <dd><a href="#">CSV (10KB)</a></dd>
       </dl>
     </div>
-    <div class="column-third">
-    </div>
   </div>
 
   <hr>
 
-  <!-- date range -->
-
   <div class="grid-row">
-    <div class="column-full">
-      <p class="lede">Showing data from 1 October 2015 to 30 September 2016 <a href="javascript:void(0)" id="change-date">Change</a></p>
-      <div class="date-range-selector initially-hidden">
-        <div class="form-group">
-          <label class="form-label" for="select-box">From</label>
-          <select class="form-control" id="select-box">
-            <option>June to August 2015</option>
-            <option>March to July 2015</option>
-            <option>December 2014 to February 2015</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="select-box">to</label>
-          <select class="form-control" id="select-box">
-            <option>June 2015</option>
-            <option>March 2015</option>
-            <option>December 2014</option>
-          </select>
-        </div>
-        <input class="button" type="submit" value="Apply changes">
-        <a href="javascript:void(0)">Cancel</a>
-      </div>
+    <div class="column-one-third">
+      <h2 class="bold-medium">About the service</h2>
+      <p>View the service itself to see how it appears to users:
+        <ul class="list">
+          <li><a href="#">Start page</a></li>
+          <li><a href="#">Paper form</a></li>
+        </ul>
+      </p>
     </div>
-  </div>
-
-  <!-- summary -->
-
-  <div class="grid-row data-summary">
-    <div class="column-full">
-      <a href="#transactions" class="column-one-third data-box-alt">
-        <div class="data">
-          <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
-          <p>transactions</p>
-        </div>
-      </a>
-      <a href="#channels" class="column-one-third data-box-alt">
-        <div class="data">
-          <h2 class="bold-xlarge">{{ volume_summary.received_online_pct_total }}%</h2>
-          <p>of transactions start online</p>
-        </div>
-      </a>
-      <a href="#calls" class="column-one-third data-box-alt">
-        <div class="data">
-          <h2 class="bold-xlarge">47%</h2>
-          <p>of callers need to check the status of something</p>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- transactions info -->
-
-  <div class="grid-row" id="transactions">
     <div class="column-two-thirds">
-      <h3 class="bold-large">Transactions</h3>
-      <p>Data about the number of transactions received. A transaction is deemed 'successful' when the user manages to the do the thing they wanted to do.</p>
+      <h3 class="bold-medium">What is the purpose of the service?</h3>
+      <p>Why the service was built, what its policy objectives are and the user intent it meets.</p>
+      <h3 class="bold-medium">Who are the typical users of the service?</h3>
+      <p>A list of the service’s key user groups containing high-level demographics, geographic distribution and other relevant information for each.</p>
+      <h3 class="bold-medium">How does the service work?</h3>
+      <p>The technologies, processes, staffing and back-office operations that allow the service to operate.</p>
+      <h3 class="bold-medium">How frequently is the service used?</h3>
+      <p>The average of how often each of the key user groups uses the service.</p>
+      <h3 class="bold-medium">How long does it take a transaction to end in outcome?</h3>
+      <p>The average amount of time it takes for a transaction go from received to having an outcome for each of the key user groups.</p>
+    </div>
+  </div>
+
+  <hr>    
+
+  <!-- transactions received data -->
+
+  <div class="grid-row data-block">
+
+    <div class="column-one-third">
+      <div class="data">
+        <span class="data-item bold-xxlarge">{{ volume_summary.total_received }}m</span>
+        <span class="data-item bold-medium">transactions received</span>
+      </div> 
       <br>
+      <details class="font-xsmall">
+        <summary><span class="summary">More info</span></summary>
+        <div class="panel panel-border-narrow">
+          <p>
+            A transaction is the specific instance of a user’s interaction with a service by which they update their status with government. It starts when it is received by the service and ends when it has an outcome.
+          </p>
+          <p>
+            A channel is the way the service receives the transaction. It is the initial method of contact even if additional information is collected in other ways afterwards.
+          </p>  
+        </div>
+      </details>     
     </div>
-  </div>
 
-  <div class="grid-row">
-    <div class="column-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.total_received }}m</h2>
-        <p class="bold-small">transactions</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> +1% on previous year</p>
-      </div>
-    </div>
-
-    <div class="column-third">
-      <div class="data">
-        <h2 class="bold-xlarge">89%</h2>
-        <p class="bold-small">successful transactions</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span> +5% on previous year</p>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- channel breakdown -->
-
-  <div class="grid-row" id="channels">
     <div class="column-two-thirds">
-      <h2 class="heading-large">Channel breakdown</h2>
-      <p>Data about how users choose to access services. A channel is defined as "the way that a service receives the user’s information".</p>
-    </div>
-  </div>
 
-  <div class="grid-row">
+      <h2 class="heading-medium">Channels used to access the service</h2>
+      <ul class="list bold-medium">
+        <li>
+          Online <span class="blue">N <span class="lede">({{ volume_summary.received_online_pct_total }}%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                The transaction must be received online. Doesn’t include services where you use an online tool to fill out a paper form or transactions received via web chat.
+              </p> 
+            </div>
+          </details>
+        </li>
+        <li>
+          Phone <span class="blue">N <span class="lede">({{ volume_summary.received_phone_pct_total }}%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                The transaction must be received via the phone. Doesn’t include IVR or purely informational calls that don’t affect the outcome of a transaction.
+              </p> 
+            </div>
+          </details>
+        </li>
+        <li>
+          Paper <span class="blue">N <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                The transaction must be received via a paper form filled out by hand. The form can be sent in any way including by post, email, fax or uploading.
+              </p> 
+            </div>
+          </details>
+        </li>
+        <li>
+          Face-to-face <span class="blue">N <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                The transaction must be received through a face-to-face meeting with someone working for the service. Doesn’t include handing in a paper form in person.
+              </p> 
+            </div>
+          </details>
+        </li>
+        <li>
+          Other <span class="blue">N <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                Any other way the user provides the information needed to complete a transaction that doesn’t fit into the Online, Phone, Paper and Face-to-face channels.
+              </p> 
+            </div>
+          </details>
+        </li>
+      </ul> 
+
+    </div>
+    
+  </div><!--transactions received block-->
+
+  <!-- transactions ending in an outcome data -->
+
+  <div class="grid-row data-block">
+
     <div class="column-one-third">
       <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_online_pct_total }}%</h2>
-        <p class="bold-small">online</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+9% on previous year</p>
+        <span class="data-item bold-xxlarge">200k</span>
+        <span class="data-item bold-medium">transactions ending in an outcome</span>
       </div>
-    </div>
-
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_phone_pct_total }}%</h2>
-        <p class="bold-small">phone</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9660;</span>-2% on previous year</p>
-      </div>
-    </div>
-
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_paper_pct_total }}%</h2>
-        <p class="bold-small">paper</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9660;</span>-1% on previous year</p>
-      </div>
-    </div>
-
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_face_to_face_pct_total }}%</h2>
-        <p class="bold-small">face to face</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9660;</span>-5% on previous year</p>
-      </div>
-    </div>
-
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">{{ volume_summary.received_other_pct_total }}%</h2>
-        <p class="bold-small">other</p>
-        <p class="text-supporting"><span class="data-neutral-arrow">&#9660;</span>-1% on previous year</p>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- calls -->
-
-  <div class="grid-row" id="calls">
-    <div class="column-two-thirds">
-      <h3 class="bold-large">Calls</h3>
-      <p>Data about the numbers of calls received by services, and the reasons users are calling.</p>
       <br>
+      <details class="font-xsmall">
+        <summary><span class="summary">More info</span></summary>
+        <div class="panel panel-border-narrow">
+          <p>
+            The delivery of the service is measured by the number of outcomes it produces.
+          </p>  
+          <p>
+            Depending on the service, some transactions may take time to reach an outcome and therefore won’t be directly related to those received in the same period.
+          </p>
+          <p>  
+            For example, if a service is seasonal and a transaction takes several months to reach an outcome it could show a many transactions received with no outcomes in the first month and more outcomes than received in later months.
+          </p> 
+        </div>
+      </details>     
     </div>
-  </div>
 
-  <div class="grid-row">
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">100k</h2>
-        <p class="bold-small">calls received</p>
-      </div>
-    </div>
-    <div class="column-one-third">
-      <div class="data">
-        <h2 class="bold-xlarge">+2%</h2>
-        <p class="bold-small">more calls received than previous year</p>
-      </div>
-    </div>
-    <div class="column-third">
-      <div class="data">
-        <h2 class="bold-xlarge">41%</h2>
-        <p class="bold-small">of calls are to complete transactions</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <table class="table-chart">
-      <tbody>
-        <tr>
-          <th colspan="2" class="bold-medium">Reasons users call</th>
-        </tr>
-        <tr>
-          <td>Prefers to use the phone to do their transaction</td>
-          <td>
-            <span class="table-chart-number">65%</span>
-            <span class="table-chart-bar"><span style="width: 65%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Wants an update on the progress of their transaction</td>
-          <td>
-            <span class="table-chart-number">19%</span>
-            <span class="table-chart-bar"><span style="width: 19%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Needs more information to use the service</td>
-          <td>
-            <span class="table-chart-number">8%</span>
-            <span class="table-chart-bar"><span style="width: 8%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Was asked to call by the service</td>
-          <td>
-            <span class="table-chart-number">6%</span>
-            <span class="table-chart-bar"><span style="width: 6%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Wants to challenge the outcome of their transaction</td>
-          <td>
-            <span class="table-chart-number">1%</span>
-            <span class="table-chart-bar"><span style="width: 1%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>Has accessibility or language needs</td>
-          <td>
-            <span class="table-chart-number">1%</span>
-            <span class="table-chart-bar"><span style="width: 1%"></span></span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-one-third">
-      <p><a href="/performance-data/guidancecalls">Read more about these categories</a></p>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- casework -->
-
-  <div class="grid-row">
     <div class="column-two-thirds">
-      <h3 class="bold-large">Processing</h3>
-      <p>Data about the reasons casework can't be processed at the first attempt. This usually means services have to contact users and ask them to repeat or amend something.</p>
-      <br>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <table class="table-chart">
-      <tbody>
-        <tr>
-          <th colspan="2" class="bold-medium">Reasons casework can't be processed at first attempt</th>
-        </tr>
-        <tr>
-          <td>User's information was illegible</td>
-          <td>
-            <span class="table-chart-number">50%</span>
-            <span class="table-chart-bar"><span style="width: 50%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>User's information was incomplete</td>
-          <td>
-            <span class="table-chart-number">25%</span>
-            <span class="table-chart-bar"><span style="width: 25%"></span></span>
-          </td>
-        </tr>
-        <tr>
-          <td>User's information didn't match government records</td>
-          <td>
-            <span class="table-chart-number">15%</span>
-            <span class="table-chart-bar"><span style="width: 15%"></span></span>
-          </td>  
-        </tr>
-        <tr>
-          <td>User filled out the wrong form or used the wrong process</td>
-          <td>
-            <span class="table-chart-number">10%</span>
-            <span class="table-chart-bar"><span style="width: 10%"></span></span>
-          </td>  
-        </tr>
-      </tbody>      
-    </table>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-one-third">
-      <p><a href="/performance-data/guidancecasework">Read more about these categories</a></p>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- about this task -->
-
-  <div class="grid-row" id="about-this-task">
-    <div class="column-two-thirds">
-      <h2 class="heading-large">About this task</h2>
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <h3 class="heading-small">What user need does the service meet?</h3>
-      <p>Information explaining the user need identified, and why the service exists.</p>
-      <h3 class="heading-small">Who are the typical users?</h3>
-      <p>An overview of the different user groups, with high-level information about demographics and behaviour.</p>
-      <h3 class="heading-small">How often do people use the service?</h3>
-      <p>The regularity with which a typical user might use this service.</p>
-      <h3 class="heading-small">How does the service work?</h3>
-      <p>A description of the entire process of using a service, from becoming aware of it to receiving an outcome. This should include any back-end processes.</p>
-      <h3 class="heading-small">How long does it take users to complete a transaction?</h3>
-      <p>The time it takes, in days, weeks or months, for a user to receive an outcome.</p>
-      <h3 class="heading-small">See the service</h3>
-      <ul class="list">
-        <li><a href="{{ task.url }}">Online service</a></li>
-        <li><a href="{{ task.url }}">Paper forms</a></li>
+      <h2 class="heading-medium" style="margin-top: 0">Delivery of the service</h2>
+      <ul class="list bold-medium">
+        <li>
+          Transactions ending in an outcome <span class="blue">N</span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                The number of transactions where no further decisions will be made for that transaction. For example:
+                <ul class="list list-bullet">
+                  <li>payment of a benefit isn’t an outcome &mdash; the decision about whether to award it or not is</li>
+                  <li>renewing a licence is a new transaction as it needs a new decision</li>
+                </ul>
+              </p> 
+            </div>
+          </details>
+        </li>
+        <li>
+          Transactions ending in user's intended outcome <span class="blue">N <span class="lede">(N%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                A subset of the transactions ending in an outcome where the outcome is what the user set out to achieve. For example:
+                <ul class="list list-bullet">
+                  <li>the user applying for a visa and being granted that visa</li>
+                  <li>the user sending money to a prisoner and the prisoner receiving the money</li>
+                  <li>the user reporting a crime and having the report accepted and processed</li>
+                </ul>
+              </p> 
+            </div>
+          </details>
+        </li>       
       </ul>
     </div>
-  </div>
+    
+  </div><!--transactions ending in an oucome block-->
+
+  <!-- calls data -->
+  <div class="grid-row data-block">
+
+    <div class="column-one-third">
+      <div class="data">
+        <span class="data-item bold-xxlarge">700k</span>
+        <span class="data-item bold-medium">calls received</span>
+      </div> 
+      <br>
+      <details class="font-xsmall">
+        <summary><span class="summary">More info</span></summary>
+        <div class="panel panel-border-narrow">
+          <p>
+            These are the total number of calls received by the service including calls that aren’t counted as a received transaction.
+          </p> 
+          <p>
+            The 'reasons people called' are the initial reasons that triggered the user to contact the service via the phone, even if they then go on to discuss other subjects. Transactions received via the phone are not included in this list.
+          </p>  
+        </div>
+      </details>    
+    </div>
+
+    <div class="column-two-thirds">
+      <h2 class="bold-medium">Reasons people called the service</h2>
+      <p style="margin: 0 0 20px">Based on a sample of N calls</p>
+      <ul class="list bold-medium">
+        <li>
+          To get information <span class="blue">N <span class="lede">(N%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                Calls to get advice or guidance about the service. For example:
+                <ul class="list list-bullet">
+                  <li>to get information they couldn’t find online</li>
+                  <li>to learn about what the service is for</li>
+                  <li>to check that they’re eligible for the service</li>
+                  <li>to see how the service’s rules or process applies to them</li>
+                  <li>to check that a licence, visa etc is still valid</li>
+                  <li>to ask what to do if they’ve lost their licence, visa etc</li>
+                  <li>to find out why the service has sent them unexpected information</li>
+                </ul>
+              </p> 
+            </div>
+          </details>
+        </li>
+        <li>
+          To chase progress <span class="blue">N <span class="lede">(N%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                Calls to find out about a decision or action that the user expects the service to take. For example:
+                <ul class="list list-bullet">
+                  <li>to find out what has happened to information previously supplied</li>
+                  <li>to ask about the status of an application</li>
+                  <li>to find out when a payment will be made</li>
+                  <li>to ask why they haven’t heard from the service</li>
+                </ul>
+              </p> 
+            </div>
+          </details>
+        </li>
+        <li>
+          To challenge a decision <span class="blue">N <span class="lede">(N%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                Calls to dispute an instruction or request from the service or to appeal an outcome. For example:
+                <ul class="list list-bullet">
+                  <li>to appeal an outcome or decision</li>
+                </ul>
+              </p> 
+            </div>
+          </details>
+        </li>
+        <li>
+          Other <span class="blue">N <span class="lede">(N%)</span></span>
+          <br>
+          <details class="font-xsmall">
+            <summary><span class="summary">More info</span></summary>
+            <div class="panel panel-border-narrow">
+              <p>
+                Calls that don’t fit into the three previous categories. For example:
+                <ul class="list list-bullet">
+                  <li>to do a transaction</li>
+                  <li>to get help using the service</li>
+                  <li>to respond to a letter, call etc from the service</li>
+                  <li>to check that they’ve done the right thing</li>
+                  <li>to update their information when their situation changes</li>
+                  <li>to deregister from the service</li>
+                  <li>to tell the service its information is incorrect</li>
+                </ul>
+              </p> 
+            </div>
+          </details>
+        </li>
+      </ul>
+    </div>
+    
+  </div><!--calls block-->
 
 </main>
 

@@ -1,0 +1,89 @@
+// Prototype banner
+
+.prototype {
+    font-weight: 700;
+    position: fixed;
+    left: -50px;
+    top: 35px;
+    background-color: $turquoise;
+    width: 200px;
+    text-align: center; 
+    transform: rotate(-45deg);
+
+    @media screen and (max-width: 1200px) {
+        display: none;
+    }
+
+}
+
+// Desktop only Helpers
+
+@media screen and (min-width: 641px) {
+    
+    .m_0 {
+        margin: 0px !important;
+    }
+
+    .mt_0 {
+        margin-top: 0px !important;
+    }
+
+    .mb_0 {
+        margin-bottom: 0px !important;
+    }
+
+    .mt_5 {
+        margin-top: 5px !important;
+    }
+
+    .mb_5 {
+        margin-bottom: 5px !important;
+    }
+
+    .mt_10 {
+        margin-top: 10px !important;
+    }
+
+    .mt_20 {
+        margin-top: 20px !important;
+    }
+
+    .mb_10 {
+        margin-bottom: 10px !important;
+    }
+
+    .mb_20 {
+        margin-bottom: 20px !important;
+    }
+}
+
+// Forms
+
+.form-control-1-1 {
+    width: 100%;
+}
+
+// Extra Typography
+
+.subtitle {
+    margin: 0;
+    color: #6f777b;
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+// Temporary class to highlight sections with no url or content
+
+.no-link {
+    color: #999 !important;
+
+    a {
+        color: #999 !important;
+
+        &:visited,
+        &:hover {
+            color: #999 !important;
+        }
+    }
+}
+

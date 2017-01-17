@@ -1,0 +1,422 @@
+{% extends "layouts/layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  {% block page_banner %}
+    {% include "includes/phase_banner_alpha.html" %}
+  {% endblock %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">
+      	<span class="heading-secondary">Aggregated service data for</span>
+      	UK Government
+      </h1>
+      <dl class="metadata">
+        <dt>Includes:</dt>
+        <dd><a href="#orgs">{{departments.length }} departments, {{ agencies.length }} agencies, {{ tasks.length }} tasks</a></dd>
+        <dt>Download data:</dt>
+        <dd><a href="#">CSV (10KB)</a></dd>
+      </dl>
+    </div>
+    <div class="column-third">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- date range -->
+
+  <div class="grid-row">
+    <div class="column-full">
+      <p class="lede">Showing data from 1 October 2015 to 30 September 2016 <a href="javascript:void(0)" id="change-date">Change</a></p>
+      <div class="date-range-selector initially-hidden">
+        <div class="form-group">
+          <label class="form-label" for="select-box">Show period starting</label>
+          <select class="form-control" id="select-box">
+            <option>June 2015</option>
+            <option>March 2015</option>
+            <option>December 2014</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="select-box">up to</label>
+          <select class="form-control" id="select-box">
+            <option>June 2015</option>
+            <option>March 2015</option>
+            <option>December 2014</option>
+          </select>
+        </div>
+        <input class="button" type="submit" value="Apply changes">
+        <a href="javascript:void(0)">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- summary -->
+
+  <div class="grid-row data-summary">
+    <div class="column-full">
+      <a href="#transactions" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">{{ task_volume_summary.total_received }}m</h2>
+          <p>transactions</p>
+        </div>
+      </a>
+      <a href="#channels" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">{{ task_volume_summary.received_online_pct_total }}%</h2>
+          <p>of transactions start online</p>
+        </div>
+      </a>
+      <a href="#user-effort" class="column-one-third data-box-alt">
+        <div class="data">
+          <h2 class="bold-xlarge">32%</h2>
+          <p>of callers prefer to use the phone to complete transactions</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- transactions info -->
+
+  <div class="grid-row" id="transactions">
+    <div class="column-two-thirds">
+      <h3 class="bold-large">Transactions</h3>
+      <p>Data about the number of transactions received. A transaction is deemed 'successful' when the user manages to the do the thing they wanted to do.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.total_received }}m</h2>
+        <p class="bold-small">transactions</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
+      </div>
+    </div>
+
+    <div class="column-third">
+      <div class="data">
+        <h2 class="bold-xlarge">89%</h2>
+        <p class="bold-small">successful transactions</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+1% on previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h3 class="heading-medium">Transactions by organisation</h3>
+      <!-- <p class="font-xsmall text-supporting">Some text</p> -->
+    </div>
+  </div>
+
+
+  {% for department in department_totals %}
+    <div class="grid-row">
+      <div class="column-half">
+        <p><a href="{{ department.friendly_id }}">{{ department.name }}</a></p>
+      </div>
+      <div class="column-half">
+        <span class="spark-bar">
+          <span style="width: {{department.pct_total_received }}%">
+             <h4 class="bold-medium">{{ department.total_received }}m</h4>
+           </span>
+         </span>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="grid-row">
+    <div class="column-half">
+      <p class="bold-xsmall"><a href="#">View all</a></p>
+    </div>
+    <div class="column-half">
+    </div>
+  </div>
+
+  <hr>
+
+
+  <!-- channel breakdown -->
+
+  <div class="grid-row" id="channels">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">Channel breakdown</h2>
+      <p>Data about how users choose to access services. A channel is defined as "the way that a service receives the user’s information".</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.received_online_pct_total }}%</h2>
+        <p class="bold-small">online</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+8% on previous year</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.received_phone_pct_total }}%</h2>
+        <p class="bold-small">phone</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>+2% on previous year</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.received_paper_pct_total }}%</h2>
+        <p class="bold-small">paper</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>-10% on previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.received_face_to_face_pct_total }}%</h2>
+        <p class="bold-small">face to face</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>=0% on previous year</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ task_volume_summary.received_other_pct_total }}%</h2>
+        <p class="bold-small">other</p>
+        <p class="text-supporting"><span class="data-neutral-arrow">&#9650;</span>=0% on previous year</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- calls -->
+
+  <div class="grid-row" id="transactions">
+    <div class="column-two-thirds">
+      <h3 class="bold-large">Calls</h3>
+      <p>Data about the numbers of calls received by services, and the reasons users are calling.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row" id="transactions">
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">80.9m</h2>
+        <p class="bold-small">calls received</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">+8%</h2>
+        <p class="bold-small">increase in calls received since previous year</p>
+      </div>
+    </div>
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">40%</h2>
+        <p class="bold-small">of calls received are to do a transaction</p>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="grid-row">
+    <table class="table-chart">
+      <tbody>
+        <tr>
+          <th colspan="2" class="bold-medium">Reasons users call</th>
+        </tr>
+        <tr>
+          <td>Prefers to use the phone to do their transaction</td>
+          <td>
+            <span class="table-chart-number">32%</span>
+            <span class="table-chart-bar"><span style="width: 32%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Wants an update on the progress of their transaction</td>
+          <td>
+            <span class="table-chart-number">31%</span>
+            <span class="table-chart-bar"><span style="width: 31%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Needs more information to use the service</td>
+          <td>
+            <span class="table-chart-number">22%</span>
+            <span class="table-chart-bar"><span style="width: 22%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Has accessibility or language needs</td>
+          <td>
+            <span class="table-chart-number">8%</span>
+            <span class="table-chart-bar"><span style="width: 8%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Was asked to call by the service</td>
+          <td>
+            <span class="table-chart-number">6%</span>
+            <span class="table-chart-bar"><span style="width: 6%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Wants to challenge the outcome of their transaction</td>
+          <td>
+            <span class="table-chart-number">1%</span>
+            <span class="table-chart-bar"><span style="width: 1%"></span></span>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <p><a href="/performance-data/guidancecalls">Read more about these categories</a></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- casework -->
+
+  <div class="grid-row" id="user-effort">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">Processing</h2>
+      <p>Data about the reasons casework can't be processed at the first attempt. This usually means services have to contact users and ask them to repeat or amend something.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <table class="table-chart">
+      <tbody>
+        <tr>
+          <th colspan="2" class="bold-medium">
+            Reasons casework can't be processed at first attempt
+          </th>
+        </tr>
+        <tr>
+          <td>User's information was illegible</td>
+          <td>
+            <span class="table-chart-number">50%</span>
+            <span class="table-chart-bar"><span style="width: 50%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>User's information was incomplete</td>
+          <td>
+            <span class="table-chart-number">30%</span>
+            <span class="table-chart-bar"><span style="width: 30%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>User filled out the wrong form or used the wrong process</td>
+          <td>
+            <span class="table-chart-number">20%</span>
+            <span class="table-chart-bar"><span style="width: 20%"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>User's information didn't match government records</td>
+          <td>
+            <span class="table-chart-number">10%</span>
+            <span class="table-chart-bar"><span style="width: 10%"></span></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <p><a href="/performance-data/guidancecasework">Read more about these categories</a></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- list of services -->
+
+  <div class="grid-row" id="orgs">
+    <div class="column-two-thirds">
+      <h2 class="heading-large">What this data is aggregated from</h2>
+      <p>Transaction data for UK Government, which currently consists of
+          {{ departments.length }} departments,
+          {{ agencies.length }} agencies and
+          {{ tasks.length}} tasks.
+      </p>
+      <br>
+    </div>
+  </div>
+    <div class="grid-row">
+      <div class="column-one-third">
+        <div class="data">
+          <h2 class="bold-xlarge">{{ departments.length }}</h2>
+          <p class="bold-small">departments</p>
+          <ul class="list font-xsmall">
+            {% for department in departments %}
+              {% if loop.index < 4 %}
+                <li><a href="{{ department.friendly_id }}">{{ department.name }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li class="bold-xsmall"><a href="#">View all</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="column-one-third">
+        <div class="data">
+          <h2 class="bold-xlarge">{{ agencies.length }}</h2>
+          <p class="bold-small">agencies</p>
+          <ul class="list font-xsmall">
+            {% for agency in agencies %}
+              {% if loop.index < 4 %}
+                <li><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li class="bold-xsmall"><a href="#">View all</a></li>
+          </ul>
+        </div>
+      </div>
+
+    <div class="column-one-third">
+      <div class="data">
+        <h2 class="bold-xlarge">{{ tasks.length }}</h2>
+        <p class="bold-small">tasks</p>
+        <ul class="list font-xsmall">
+          {% for task in tasks %}
+            {% if loop.index < 4 %}
+              <li>{{ task.name }}</li>
+            {% endif %}
+          {% endfor %}
+          <li class="bold-xsmall"><a href="#">View all</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+</main>
+
+{% endblock %}
+
+{% block body_end %}
+{{ super() }}
+  <script src="/javascripts/date-range-selector.js"></script>
+{% endblock %}
