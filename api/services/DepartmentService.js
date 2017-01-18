@@ -70,4 +70,32 @@ module.exports = class DepartmentService extends Service {
       [friendly_id]
     );
   }
+
+  /**
+   * Sum transactions ending in an outcome
+   */
+  sumTransactionsWithOutcome(friendly_id) {
+    return this.app.orm.Department.query(
+      "SELECT SUM(transactionsendinginanoutcome.all_outcomes_count) \
+       FROM department \
+       INNER JOIN task ON task.department = department.id \
+       INNER JOIN transactionsendinginanoutcome ON transactionsendinginanoutcome.task = task.id \
+       WHERE department.friendly_id = $1",
+      [friendly_id]
+    );
+  }
+
+  /**
+   * Sum transactions ending in an outcome
+   */
+  sumTransactionsWithUsersIntendedOutcome(friendly_id) {
+    return this.app.orm.Department.query(
+      "SELECT SUM(transactionsendinginanoutcome.users_intended_outcome_count) \
+       FROM department \
+       INNER JOIN task ON task.department = department.id \
+       INNER JOIN transactionsendinginanoutcome ON transactionsendinginanoutcome.task = task.id \
+       WHERE department.friendly_id = $1",
+      [friendly_id]
+    );
+  }
 }

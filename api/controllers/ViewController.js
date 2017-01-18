@@ -96,13 +96,18 @@ module.exports = class ViewController extends Controller {
             Promise.join(
               task_volume_service.getTotalVolumeByTask(task_ids)
                 .then( task_volume_records => { return task_volume_records.rows }),
+              department_service.sumTransactionsWithOutcome(department.friendly_id)
+                .then( transactions_with_outcome_count => { return transactions_with_outcome_count.rows[0].sum }),
+              department_service.sumTransactionsWithUsersIntendedOutcome(department.friendly_id)
+                .then( transactions_with_users_intended_outcome_count => { return transactions_with_users_intended_outcome_count.rows[0].sum }),
               department_service.getTransactionsReceivedByAgency(department.friendly_id)
                 .then( agency_totals => { return agency_totals.rows }),
               department_service.getTransactionsReceivedByTask(department.friendly_id)
                 .then( transaction_totals => { return transaction_totals.rows }),
-              function(task_volume_records, agency_totals, transaction_totals) {
-                console.log(task_volume_records);
+              function(task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count, agency_totals, transaction_totals) {
                 var task_volume_summary = new TaskVolumeSummary(task_volume_records);
+                var pct_users_intended_outcome = Math.floor(
+                      ( transactions_with_users_intended_outcome_count / transactions_with_outcome_count ) * 100)
                 res.render(
                   'performance-data/show.html',
                   {
@@ -110,6 +115,9 @@ module.exports = class ViewController extends Controller {
                     organisation_type: default_service.organisationType(department),
                     organisation: department,
                     volume_summary: task_volume_summary,
+                    transactions_with_outcome_count: transactions_with_outcome_count,
+                    transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
+                    pct_users_intended_outcome: pct_users_intended_outcome,
                     grouped_volumes: agency_totals,
                     transaction_volumes: transaction_totals
                   }

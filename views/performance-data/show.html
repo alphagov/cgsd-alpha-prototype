@@ -199,7 +199,7 @@
 
     <div class="column-one-third">
       <div class="data">
-        <span class="data-item bold-xxlarge">200k</span>
+        <span class="data-item bold-xxlarge">{{ transactions_with_outcome_count }}</span>
         <span class="data-item bold-medium">transactions ending in an outcome</span>
       </div> 
       <br>
@@ -229,8 +229,7 @@
               <div class="subsection">
                 <div class="subsection__header">
                   <h2 class="subsection__title">
-                    <span class="black">Ending in an outcome</span> N 
-                    <span class="lede">(N%)</span>
+                    <span class="black">Ending in an outcome</span> {{ transactions_with_outcome_count }} 
                   </h2>
                 </div>
                 <div class="subsection__content">
@@ -286,8 +285,8 @@
               <div class="subsection">
                 <div class="subsection__header">
                   <h2 class="subsection__title">
-                    <span class="black">Ending in user's intended outcome</span> N 
-                    <span class="lede">(N%)</span>
+                    <span class="black">Ending in user's intended outcome</span> {{ transactions_with_users_intended_outcome_count }}
+                    <span class="lede">({{ pct_users_intended_outcome }}%)</span>
                   </h2>
                 </div>
                 <div class="subsection__content" id="">
