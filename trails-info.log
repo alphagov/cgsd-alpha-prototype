@@ -10464,3 +10464,238 @@
 {"level":"info","message":"---------------------------------------------------------------\n        Wed Jan 18 2017 10:38:17 GMT+0000 (GMT)\n        Basic Info\n          Application       : pp-alpha-prototype\n          Application root  : http://localhost:3000\n          Version           : 0.0.1\n          Environment       : development","timestamp":"2017-01-18T10:38:17.245Z"}
 {"level":"debug","message":" Database Info\n          ORM               : waterline\n          Stores            : postgres\n        Web Server Info\n          Server            : express\n          View Engine       : nunjucks\n          Port              : 3000\n          Routes            : 27","timestamp":"2017-01-18T10:38:17.246Z"}
 {"level":"info","message":"---------------------------------------------------------------","timestamp":"2017-01-18T10:38:17.246Z"}
+{"level":"debug","message":"trails event: trails:stop","timestamp":"2017-01-18T12:01:02.648Z"}
+{"level":"debug","message":"The config setting i18n.resources is defined by both trailpack-core and the application. trailpack-core:i18n.resources will be merge with application settings.","timestamp":"2017-01-18T12:01:06.641Z"}
+{"level":"debug","message":"The config setting resources.en is defined by both trailpack-core and the application. trailpack-core:resources.en will be merge with application settings.","timestamp":"2017-01-18T12:01:06.643Z"}
+{"level":"debug","message":"trails event: trailpack:core:constructed","timestamp":"2017-01-18T12:01:06.643Z"}
+{"level":"debug","message":"trails event: trailpack:repl:constructed","timestamp":"2017-01-18T12:01:06.645Z"}
+{"level":"debug","message":"trails event: trailpack:router:constructed","timestamp":"2017-01-18T12:01:06.651Z"}
+{"level":"debug","message":"The config setting web.middlewares is defined by both trailpack-express and the application. trailpack-express:web.middlewares will be merge with application settings.","timestamp":"2017-01-18T12:01:06.693Z"}
+{"level":"debug","message":"The config setting middlewares.order is defined by both trailpack-express and the application. trailpack-express:middlewares.order will be merge with application settings.","timestamp":"2017-01-18T12:01:06.693Z"}
+{"level":"debug","message":"trails event: trailpack:express:constructed","timestamp":"2017-01-18T12:01:06.695Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:constructed","timestamp":"2017-01-18T12:01:06.705Z"}
+{"level":"debug","message":"The config setting footprints.models is defined by both trailpack-footprints and the application. trailpack-footprints:footprints.models will be merge with application settings.","timestamp":"2017-01-18T12:01:06.710Z"}
+{"level":"debug","message":"The config setting models.options is defined by both trailpack-footprints and the application. trailpack-footprints:models.options will be merge with application settings.","timestamp":"2017-01-18T12:01:06.711Z"}
+{"level":"debug","message":"The config setting models.actions is defined by both trailpack-footprints and the application. trailpack-footprints:models.actions will be merge with application settings.","timestamp":"2017-01-18T12:01:06.711Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:constructed","timestamp":"2017-01-18T12:01:06.712Z"}
+{"level":"debug","message":"trails event: trails:start","timestamp":"2017-01-18T12:01:06.714Z"}
+{"level":"debug","message":"trails event: trailpack:repl:validated","timestamp":"2017-01-18T12:01:06.742Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:validated","timestamp":"2017-01-18T12:01:06.742Z"}
+{"level":"debug","message":"trails event: trailpack:core:validated","timestamp":"2017-01-18T12:01:06.743Z"}
+{"level":"debug","message":"trails event: trailpack:express:validated","timestamp":"2017-01-18T12:01:06.743Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:validated","timestamp":"2017-01-18T12:01:06.743Z"}
+{"level":"debug","message":"trails event: trailpack:router:validated","timestamp":"2017-01-18T12:01:06.743Z"}
+{"level":"debug","message":"trails event: trailpack:all:validated","timestamp":"2017-01-18T12:01:06.743Z"}
+{"level":"debug","message":"historyFile /Users/christopherthomas/projects/pp_alpha_prototype/.tmp/.node_repl_history","timestamp":"2017-01-18T12:01:06.751Z"}
+{"level":"debug","message":"trails event: trailpack:repl:configured","timestamp":"2017-01-18T12:01:06.753Z"}
+{"level":"debug","message":"trails event: trailpack:router:configured","timestamp":"2017-01-18T12:01:06.753Z"}
+{"level":"debug","message":"trails event: trailpack:express:configured","timestamp":"2017-01-18T12:01:06.753Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:configured","timestamp":"2017-01-18T12:01:06.753Z"}
+{"level":"debug","message":"trails event: trailpack:core:configured","timestamp":"2017-01-18T12:01:06.753Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:configured","timestamp":"2017-01-18T12:01:06.763Z"}
+{"level":"debug","message":"trails event: trailpack:all:configured","timestamp":"2017-01-18T12:01:06.763Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.prototypeV0Home ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:01:06.786Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.taskView ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:01:06.786Z"}
+{"level":"debug","message":"trails event: i18n:ready","timestamp":"2017-01-18T12:01:06.857Z"}
+{"level":"debug","message":"trails event: trailpack:repl:initialized","timestamp":"2017-01-18T12:01:06.857Z"}
+{"level":"debug","message":"trails event: trailpack:router:initialized","timestamp":"2017-01-18T12:01:06.858Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:initialized","timestamp":"2017-01-18T12:01:06.858Z"}
+{"level":"debug","message":"trails event: trailpack:core:initialized","timestamp":"2017-01-18T12:01:06.858Z"}
+{"level":"info","message":"config.session.secret: No secret given so session are disabled","timestamp":"2017-01-18T12:01:06.861Z"}
+{"level":"debug","message":"trails event: webserver:http:ready","timestamp":"2017-01-18T12:01:06.879Z"}
+{"level":"debug","message":"trails event: trailpack:express:initialized","timestamp":"2017-01-18T12:01:06.879Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:initialized","timestamp":"2017-01-18T12:01:07.635Z"}
+{"level":"debug","message":"trails event: trailpack:all:initialized","timestamp":"2017-01-18T12:01:07.636Z"}
+{"level":"info","message":"All trailpacks are loaded.","timestamp":"2017-01-18T12:01:07.636Z"}
+{"level":"debug","message":"trails event: trails:ready","timestamp":"2017-01-18T12:01:07.636Z"}
+{"level":"info","message":"---------------------------------------------------------------\n        Wed Jan 18 2017 12:01:07 GMT+0000 (GMT)\n        Basic Info\n          Application       : pp-alpha-prototype\n          Application root  : http://localhost:3000\n          Version           : 0.0.1\n          Environment       : development","timestamp":"2017-01-18T12:01:07.637Z"}
+{"level":"debug","message":" Database Info\n          ORM               : waterline\n          Stores            : postgres\n        Web Server Info\n          Server            : express\n          View Engine       : nunjucks\n          Port              : 3000\n          Routes            : 27","timestamp":"2017-01-18T12:01:07.637Z"}
+{"level":"info","message":"---------------------------------------------------------------","timestamp":"2017-01-18T12:01:07.638Z"}
+{"level":"debug","message":"trails event: trails:stop","timestamp":"2017-01-18T12:03:02.776Z"}
+{"level":"debug","message":"The config setting i18n.resources is defined by both trailpack-core and the application. trailpack-core:i18n.resources will be merge with application settings.","timestamp":"2017-01-18T12:03:08.169Z"}
+{"level":"debug","message":"The config setting resources.en is defined by both trailpack-core and the application. trailpack-core:resources.en will be merge with application settings.","timestamp":"2017-01-18T12:03:08.171Z"}
+{"level":"debug","message":"trails event: trailpack:core:constructed","timestamp":"2017-01-18T12:03:08.172Z"}
+{"level":"debug","message":"trails event: trailpack:repl:constructed","timestamp":"2017-01-18T12:03:08.173Z"}
+{"level":"debug","message":"trails event: trailpack:router:constructed","timestamp":"2017-01-18T12:03:08.181Z"}
+{"level":"debug","message":"The config setting web.middlewares is defined by both trailpack-express and the application. trailpack-express:web.middlewares will be merge with application settings.","timestamp":"2017-01-18T12:03:08.255Z"}
+{"level":"debug","message":"The config setting middlewares.order is defined by both trailpack-express and the application. trailpack-express:middlewares.order will be merge with application settings.","timestamp":"2017-01-18T12:03:08.255Z"}
+{"level":"debug","message":"trails event: trailpack:express:constructed","timestamp":"2017-01-18T12:03:08.257Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:constructed","timestamp":"2017-01-18T12:03:08.270Z"}
+{"level":"debug","message":"The config setting footprints.models is defined by both trailpack-footprints and the application. trailpack-footprints:footprints.models will be merge with application settings.","timestamp":"2017-01-18T12:03:08.278Z"}
+{"level":"debug","message":"The config setting models.options is defined by both trailpack-footprints and the application. trailpack-footprints:models.options will be merge with application settings.","timestamp":"2017-01-18T12:03:08.278Z"}
+{"level":"debug","message":"The config setting models.actions is defined by both trailpack-footprints and the application. trailpack-footprints:models.actions will be merge with application settings.","timestamp":"2017-01-18T12:03:08.278Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:constructed","timestamp":"2017-01-18T12:03:08.279Z"}
+{"level":"debug","message":"trails event: trails:start","timestamp":"2017-01-18T12:03:08.281Z"}
+{"level":"debug","message":"trails event: trailpack:repl:validated","timestamp":"2017-01-18T12:03:08.312Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:validated","timestamp":"2017-01-18T12:03:08.312Z"}
+{"level":"debug","message":"trails event: trailpack:core:validated","timestamp":"2017-01-18T12:03:08.312Z"}
+{"level":"debug","message":"trails event: trailpack:express:validated","timestamp":"2017-01-18T12:03:08.312Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:validated","timestamp":"2017-01-18T12:03:08.312Z"}
+{"level":"debug","message":"trails event: trailpack:router:validated","timestamp":"2017-01-18T12:03:08.313Z"}
+{"level":"debug","message":"trails event: trailpack:all:validated","timestamp":"2017-01-18T12:03:08.313Z"}
+{"level":"debug","message":"historyFile /Users/christopherthomas/projects/pp_alpha_prototype/.tmp/.node_repl_history","timestamp":"2017-01-18T12:03:08.320Z"}
+{"level":"debug","message":"trails event: trailpack:repl:configured","timestamp":"2017-01-18T12:03:08.321Z"}
+{"level":"debug","message":"trails event: trailpack:router:configured","timestamp":"2017-01-18T12:03:08.321Z"}
+{"level":"debug","message":"trails event: trailpack:express:configured","timestamp":"2017-01-18T12:03:08.322Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:configured","timestamp":"2017-01-18T12:03:08.322Z"}
+{"level":"debug","message":"trails event: trailpack:core:configured","timestamp":"2017-01-18T12:03:08.322Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:configured","timestamp":"2017-01-18T12:03:08.331Z"}
+{"level":"debug","message":"trails event: trailpack:all:configured","timestamp":"2017-01-18T12:03:08.331Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.prototypeV0Home ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:03:08.354Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.taskView ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:03:08.354Z"}
+{"level":"debug","message":"trails event: i18n:ready","timestamp":"2017-01-18T12:03:08.459Z"}
+{"level":"debug","message":"trails event: trailpack:repl:initialized","timestamp":"2017-01-18T12:03:08.459Z"}
+{"level":"debug","message":"trails event: trailpack:router:initialized","timestamp":"2017-01-18T12:03:08.459Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:initialized","timestamp":"2017-01-18T12:03:08.459Z"}
+{"level":"debug","message":"trails event: trailpack:core:initialized","timestamp":"2017-01-18T12:03:08.460Z"}
+{"level":"info","message":"config.session.secret: No secret given so session are disabled","timestamp":"2017-01-18T12:03:08.462Z"}
+{"level":"debug","message":"trails event: webserver:http:ready","timestamp":"2017-01-18T12:03:08.481Z"}
+{"level":"debug","message":"trails event: trailpack:express:initialized","timestamp":"2017-01-18T12:03:08.481Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:initialized","timestamp":"2017-01-18T12:03:09.234Z"}
+{"level":"debug","message":"trails event: trailpack:all:initialized","timestamp":"2017-01-18T12:03:09.234Z"}
+{"level":"info","message":"All trailpacks are loaded.","timestamp":"2017-01-18T12:03:09.234Z"}
+{"level":"debug","message":"trails event: trails:ready","timestamp":"2017-01-18T12:03:09.234Z"}
+{"level":"info","message":"---------------------------------------------------------------\n        Wed Jan 18 2017 12:03:09 GMT+0000 (GMT)\n        Basic Info\n          Application       : pp-alpha-prototype\n          Application root  : http://localhost:3000\n          Version           : 0.0.1\n          Environment       : development","timestamp":"2017-01-18T12:03:09.235Z"}
+{"level":"debug","message":" Database Info\n          ORM               : waterline\n          Stores            : postgres\n        Web Server Info\n          Server            : express\n          View Engine       : nunjucks\n          Port              : 3000\n          Routes            : 27","timestamp":"2017-01-18T12:03:09.236Z"}
+{"level":"info","message":"---------------------------------------------------------------","timestamp":"2017-01-18T12:03:09.236Z"}
+{"level":"debug","message":"trails event: trails:stop","timestamp":"2017-01-18T12:07:31.067Z"}
+{"level":"debug","message":"The config setting i18n.resources is defined by both trailpack-core and the application. trailpack-core:i18n.resources will be merge with application settings.","timestamp":"2017-01-18T12:07:35.174Z"}
+{"level":"debug","message":"The config setting resources.en is defined by both trailpack-core and the application. trailpack-core:resources.en will be merge with application settings.","timestamp":"2017-01-18T12:07:35.176Z"}
+{"level":"debug","message":"trails event: trailpack:core:constructed","timestamp":"2017-01-18T12:07:35.177Z"}
+{"level":"debug","message":"trails event: trailpack:repl:constructed","timestamp":"2017-01-18T12:07:35.178Z"}
+{"level":"debug","message":"trails event: trailpack:router:constructed","timestamp":"2017-01-18T12:07:35.184Z"}
+{"level":"debug","message":"The config setting web.middlewares is defined by both trailpack-express and the application. trailpack-express:web.middlewares will be merge with application settings.","timestamp":"2017-01-18T12:07:35.231Z"}
+{"level":"debug","message":"The config setting middlewares.order is defined by both trailpack-express and the application. trailpack-express:middlewares.order will be merge with application settings.","timestamp":"2017-01-18T12:07:35.232Z"}
+{"level":"debug","message":"trails event: trailpack:express:constructed","timestamp":"2017-01-18T12:07:35.234Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:constructed","timestamp":"2017-01-18T12:07:35.244Z"}
+{"level":"debug","message":"The config setting footprints.models is defined by both trailpack-footprints and the application. trailpack-footprints:footprints.models will be merge with application settings.","timestamp":"2017-01-18T12:07:35.249Z"}
+{"level":"debug","message":"The config setting models.options is defined by both trailpack-footprints and the application. trailpack-footprints:models.options will be merge with application settings.","timestamp":"2017-01-18T12:07:35.250Z"}
+{"level":"debug","message":"The config setting models.actions is defined by both trailpack-footprints and the application. trailpack-footprints:models.actions will be merge with application settings.","timestamp":"2017-01-18T12:07:35.250Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:constructed","timestamp":"2017-01-18T12:07:35.252Z"}
+{"level":"debug","message":"trails event: trails:start","timestamp":"2017-01-18T12:07:35.254Z"}
+{"level":"debug","message":"trails event: trailpack:repl:validated","timestamp":"2017-01-18T12:07:35.286Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:validated","timestamp":"2017-01-18T12:07:35.286Z"}
+{"level":"debug","message":"trails event: trailpack:core:validated","timestamp":"2017-01-18T12:07:35.286Z"}
+{"level":"debug","message":"trails event: trailpack:express:validated","timestamp":"2017-01-18T12:07:35.286Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:validated","timestamp":"2017-01-18T12:07:35.286Z"}
+{"level":"debug","message":"trails event: trailpack:router:validated","timestamp":"2017-01-18T12:07:35.287Z"}
+{"level":"debug","message":"trails event: trailpack:all:validated","timestamp":"2017-01-18T12:07:35.287Z"}
+{"level":"debug","message":"historyFile /Users/christopherthomas/projects/pp_alpha_prototype/.tmp/.node_repl_history","timestamp":"2017-01-18T12:07:35.294Z"}
+{"level":"debug","message":"trails event: trailpack:repl:configured","timestamp":"2017-01-18T12:07:35.295Z"}
+{"level":"debug","message":"trails event: trailpack:router:configured","timestamp":"2017-01-18T12:07:35.295Z"}
+{"level":"debug","message":"trails event: trailpack:express:configured","timestamp":"2017-01-18T12:07:35.296Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:configured","timestamp":"2017-01-18T12:07:35.296Z"}
+{"level":"debug","message":"trails event: trailpack:core:configured","timestamp":"2017-01-18T12:07:35.296Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:configured","timestamp":"2017-01-18T12:07:35.304Z"}
+{"level":"debug","message":"trails event: trailpack:all:configured","timestamp":"2017-01-18T12:07:35.305Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.prototypeV0Home ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:07:35.327Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.taskView ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:07:35.327Z"}
+{"level":"debug","message":"trails event: i18n:ready","timestamp":"2017-01-18T12:07:35.404Z"}
+{"level":"debug","message":"trails event: trailpack:repl:initialized","timestamp":"2017-01-18T12:07:35.404Z"}
+{"level":"debug","message":"trails event: trailpack:router:initialized","timestamp":"2017-01-18T12:07:35.404Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:initialized","timestamp":"2017-01-18T12:07:35.404Z"}
+{"level":"debug","message":"trails event: trailpack:core:initialized","timestamp":"2017-01-18T12:07:35.405Z"}
+{"level":"info","message":"config.session.secret: No secret given so session are disabled","timestamp":"2017-01-18T12:07:35.407Z"}
+{"level":"debug","message":"trails event: webserver:http:ready","timestamp":"2017-01-18T12:07:35.426Z"}
+{"level":"debug","message":"trails event: trailpack:express:initialized","timestamp":"2017-01-18T12:07:35.426Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:initialized","timestamp":"2017-01-18T12:07:36.167Z"}
+{"level":"debug","message":"trails event: trailpack:all:initialized","timestamp":"2017-01-18T12:07:36.168Z"}
+{"level":"info","message":"All trailpacks are loaded.","timestamp":"2017-01-18T12:07:36.168Z"}
+{"level":"debug","message":"trails event: trails:ready","timestamp":"2017-01-18T12:07:36.168Z"}
+{"level":"info","message":"---------------------------------------------------------------\n        Wed Jan 18 2017 12:07:36 GMT+0000 (GMT)\n        Basic Info\n          Application       : pp-alpha-prototype\n          Application root  : http://localhost:3000\n          Version           : 0.0.1\n          Environment       : development","timestamp":"2017-01-18T12:07:36.169Z"}
+{"level":"debug","message":" Database Info\n          ORM               : waterline\n          Stores            : postgres\n        Web Server Info\n          Server            : express\n          View Engine       : nunjucks\n          Port              : 3000\n          Routes            : 27","timestamp":"2017-01-18T12:07:36.169Z"}
+{"level":"info","message":"---------------------------------------------------------------","timestamp":"2017-01-18T12:07:36.170Z"}
+{"level":"debug","message":"trails event: trails:stop","timestamp":"2017-01-18T12:09:10.432Z"}
+{"level":"debug","message":"The config setting i18n.resources is defined by both trailpack-core and the application. trailpack-core:i18n.resources will be merge with application settings.","timestamp":"2017-01-18T12:09:14.467Z"}
+{"level":"debug","message":"The config setting resources.en is defined by both trailpack-core and the application. trailpack-core:resources.en will be merge with application settings.","timestamp":"2017-01-18T12:09:14.468Z"}
+{"level":"debug","message":"trails event: trailpack:core:constructed","timestamp":"2017-01-18T12:09:14.469Z"}
+{"level":"debug","message":"trails event: trailpack:repl:constructed","timestamp":"2017-01-18T12:09:14.470Z"}
+{"level":"debug","message":"trails event: trailpack:router:constructed","timestamp":"2017-01-18T12:09:14.476Z"}
+{"level":"debug","message":"The config setting web.middlewares is defined by both trailpack-express and the application. trailpack-express:web.middlewares will be merge with application settings.","timestamp":"2017-01-18T12:09:14.520Z"}
+{"level":"debug","message":"The config setting middlewares.order is defined by both trailpack-express and the application. trailpack-express:middlewares.order will be merge with application settings.","timestamp":"2017-01-18T12:09:14.520Z"}
+{"level":"debug","message":"trails event: trailpack:express:constructed","timestamp":"2017-01-18T12:09:14.523Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:constructed","timestamp":"2017-01-18T12:09:14.532Z"}
+{"level":"debug","message":"The config setting footprints.models is defined by both trailpack-footprints and the application. trailpack-footprints:footprints.models will be merge with application settings.","timestamp":"2017-01-18T12:09:14.536Z"}
+{"level":"debug","message":"The config setting models.options is defined by both trailpack-footprints and the application. trailpack-footprints:models.options will be merge with application settings.","timestamp":"2017-01-18T12:09:14.537Z"}
+{"level":"debug","message":"The config setting models.actions is defined by both trailpack-footprints and the application. trailpack-footprints:models.actions will be merge with application settings.","timestamp":"2017-01-18T12:09:14.537Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:constructed","timestamp":"2017-01-18T12:09:14.538Z"}
+{"level":"debug","message":"trails event: trails:start","timestamp":"2017-01-18T12:09:14.540Z"}
+{"level":"debug","message":"trails event: trailpack:repl:validated","timestamp":"2017-01-18T12:09:14.570Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:validated","timestamp":"2017-01-18T12:09:14.571Z"}
+{"level":"debug","message":"trails event: trailpack:core:validated","timestamp":"2017-01-18T12:09:14.571Z"}
+{"level":"debug","message":"trails event: trailpack:express:validated","timestamp":"2017-01-18T12:09:14.571Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:validated","timestamp":"2017-01-18T12:09:14.571Z"}
+{"level":"debug","message":"trails event: trailpack:router:validated","timestamp":"2017-01-18T12:09:14.571Z"}
+{"level":"debug","message":"trails event: trailpack:all:validated","timestamp":"2017-01-18T12:09:14.571Z"}
+{"level":"debug","message":"historyFile /Users/christopherthomas/projects/pp_alpha_prototype/.tmp/.node_repl_history","timestamp":"2017-01-18T12:09:14.579Z"}
+{"level":"debug","message":"trails event: trailpack:repl:configured","timestamp":"2017-01-18T12:09:14.580Z"}
+{"level":"debug","message":"trails event: trailpack:router:configured","timestamp":"2017-01-18T12:09:14.580Z"}
+{"level":"debug","message":"trails event: trailpack:express:configured","timestamp":"2017-01-18T12:09:14.580Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:configured","timestamp":"2017-01-18T12:09:14.580Z"}
+{"level":"debug","message":"trails event: trailpack:core:configured","timestamp":"2017-01-18T12:09:14.580Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:configured","timestamp":"2017-01-18T12:09:14.589Z"}
+{"level":"debug","message":"trails event: trailpack:all:configured","timestamp":"2017-01-18T12:09:14.590Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.prototypeV0Home ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:09:14.612Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.taskView ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:09:14.612Z"}
+{"level":"debug","message":"trails event: i18n:ready","timestamp":"2017-01-18T12:09:14.685Z"}
+{"level":"debug","message":"trails event: trailpack:repl:initialized","timestamp":"2017-01-18T12:09:14.685Z"}
+{"level":"debug","message":"trails event: trailpack:router:initialized","timestamp":"2017-01-18T12:09:14.685Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:initialized","timestamp":"2017-01-18T12:09:14.685Z"}
+{"level":"debug","message":"trails event: trailpack:core:initialized","timestamp":"2017-01-18T12:09:14.686Z"}
+{"level":"info","message":"config.session.secret: No secret given so session are disabled","timestamp":"2017-01-18T12:09:14.688Z"}
+{"level":"debug","message":"trails event: webserver:http:ready","timestamp":"2017-01-18T12:09:14.708Z"}
+{"level":"debug","message":"trails event: trailpack:express:initialized","timestamp":"2017-01-18T12:09:14.708Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:initialized","timestamp":"2017-01-18T12:09:15.407Z"}
+{"level":"debug","message":"trails event: trailpack:all:initialized","timestamp":"2017-01-18T12:09:15.407Z"}
+{"level":"info","message":"All trailpacks are loaded.","timestamp":"2017-01-18T12:09:15.407Z"}
+{"level":"debug","message":"trails event: trails:ready","timestamp":"2017-01-18T12:09:15.407Z"}
+{"level":"info","message":"---------------------------------------------------------------\n        Wed Jan 18 2017 12:09:15 GMT+0000 (GMT)\n        Basic Info\n          Application       : pp-alpha-prototype\n          Application root  : http://localhost:3000\n          Version           : 0.0.1\n          Environment       : development","timestamp":"2017-01-18T12:09:15.408Z"}
+{"level":"debug","message":" Database Info\n          ORM               : waterline\n          Stores            : postgres\n        Web Server Info\n          Server            : express\n          View Engine       : nunjucks\n          Port              : 3000\n          Routes            : 27","timestamp":"2017-01-18T12:09:15.409Z"}
+{"level":"info","message":"---------------------------------------------------------------","timestamp":"2017-01-18T12:09:15.409Z"}
+{"level":"debug","message":"trails event: trails:stop","timestamp":"2017-01-18T12:09:49.165Z"}
+{"level":"debug","message":"The config setting i18n.resources is defined by both trailpack-core and the application. trailpack-core:i18n.resources will be merge with application settings.","timestamp":"2017-01-18T12:09:52.953Z"}
+{"level":"debug","message":"The config setting resources.en is defined by both trailpack-core and the application. trailpack-core:resources.en will be merge with application settings.","timestamp":"2017-01-18T12:09:52.955Z"}
+{"level":"debug","message":"trails event: trailpack:core:constructed","timestamp":"2017-01-18T12:09:52.956Z"}
+{"level":"debug","message":"trails event: trailpack:repl:constructed","timestamp":"2017-01-18T12:09:52.957Z"}
+{"level":"debug","message":"trails event: trailpack:router:constructed","timestamp":"2017-01-18T12:09:52.962Z"}
+{"level":"debug","message":"The config setting web.middlewares is defined by both trailpack-express and the application. trailpack-express:web.middlewares will be merge with application settings.","timestamp":"2017-01-18T12:09:52.995Z"}
+{"level":"debug","message":"The config setting middlewares.order is defined by both trailpack-express and the application. trailpack-express:middlewares.order will be merge with application settings.","timestamp":"2017-01-18T12:09:52.996Z"}
+{"level":"debug","message":"trails event: trailpack:express:constructed","timestamp":"2017-01-18T12:09:52.998Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:constructed","timestamp":"2017-01-18T12:09:53.006Z"}
+{"level":"debug","message":"The config setting footprints.models is defined by both trailpack-footprints and the application. trailpack-footprints:footprints.models will be merge with application settings.","timestamp":"2017-01-18T12:09:53.010Z"}
+{"level":"debug","message":"The config setting models.options is defined by both trailpack-footprints and the application. trailpack-footprints:models.options will be merge with application settings.","timestamp":"2017-01-18T12:09:53.010Z"}
+{"level":"debug","message":"The config setting models.actions is defined by both trailpack-footprints and the application. trailpack-footprints:models.actions will be merge with application settings.","timestamp":"2017-01-18T12:09:53.010Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:constructed","timestamp":"2017-01-18T12:09:53.012Z"}
+{"level":"debug","message":"trails event: trails:start","timestamp":"2017-01-18T12:09:53.014Z"}
+{"level":"debug","message":"trails event: trailpack:repl:validated","timestamp":"2017-01-18T12:09:53.047Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:validated","timestamp":"2017-01-18T12:09:53.047Z"}
+{"level":"debug","message":"trails event: trailpack:core:validated","timestamp":"2017-01-18T12:09:53.047Z"}
+{"level":"debug","message":"trails event: trailpack:express:validated","timestamp":"2017-01-18T12:09:53.047Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:validated","timestamp":"2017-01-18T12:09:53.047Z"}
+{"level":"debug","message":"trails event: trailpack:router:validated","timestamp":"2017-01-18T12:09:53.047Z"}
+{"level":"debug","message":"trails event: trailpack:all:validated","timestamp":"2017-01-18T12:09:53.047Z"}
+{"level":"debug","message":"historyFile /Users/christopherthomas/projects/pp_alpha_prototype/.tmp/.node_repl_history","timestamp":"2017-01-18T12:09:53.055Z"}
+{"level":"debug","message":"trails event: trailpack:repl:configured","timestamp":"2017-01-18T12:09:53.057Z"}
+{"level":"debug","message":"trails event: trailpack:router:configured","timestamp":"2017-01-18T12:09:53.057Z"}
+{"level":"debug","message":"trails event: trailpack:express:configured","timestamp":"2017-01-18T12:09:53.057Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:configured","timestamp":"2017-01-18T12:09:53.057Z"}
+{"level":"debug","message":"trails event: trailpack:core:configured","timestamp":"2017-01-18T12:09:53.057Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:configured","timestamp":"2017-01-18T12:09:53.067Z"}
+{"level":"debug","message":"trails event: trailpack:all:configured","timestamp":"2017-01-18T12:09:53.067Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.prototypeV0Home ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:09:53.089Z"}
+{"level":"warn","message":"trailpack-router: route handler [ ViewController.taskView ] does not correspond to any defined Controller handler","timestamp":"2017-01-18T12:09:53.090Z"}
+{"level":"debug","message":"trails event: i18n:ready","timestamp":"2017-01-18T12:09:53.154Z"}
+{"level":"debug","message":"trails event: trailpack:repl:initialized","timestamp":"2017-01-18T12:09:53.154Z"}
+{"level":"debug","message":"trails event: trailpack:router:initialized","timestamp":"2017-01-18T12:09:53.155Z"}
+{"level":"debug","message":"trails event: trailpack:footprints:initialized","timestamp":"2017-01-18T12:09:53.155Z"}
+{"level":"debug","message":"trails event: trailpack:core:initialized","timestamp":"2017-01-18T12:09:53.155Z"}
+{"level":"info","message":"config.session.secret: No secret given so session are disabled","timestamp":"2017-01-18T12:09:53.158Z"}
+{"level":"debug","message":"trails event: webserver:http:ready","timestamp":"2017-01-18T12:09:53.176Z"}
+{"level":"debug","message":"trails event: trailpack:express:initialized","timestamp":"2017-01-18T12:09:53.176Z"}
+{"level":"debug","message":"trails event: trailpack:waterline:initialized","timestamp":"2017-01-18T12:09:53.903Z"}
+{"level":"debug","message":"trails event: trailpack:all:initialized","timestamp":"2017-01-18T12:09:53.904Z"}
+{"level":"info","message":"All trailpacks are loaded.","timestamp":"2017-01-18T12:09:53.904Z"}
+{"level":"debug","message":"trails event: trails:ready","timestamp":"2017-01-18T12:09:53.904Z"}
+{"level":"info","message":"---------------------------------------------------------------\n        Wed Jan 18 2017 12:09:53 GMT+0000 (GMT)\n        Basic Info\n          Application       : pp-alpha-prototype\n          Application root  : http://localhost:3000\n          Version           : 0.0.1\n          Environment       : development","timestamp":"2017-01-18T12:09:53.905Z"}
+{"level":"debug","message":" Database Info\n          ORM               : waterline\n          Stores            : postgres\n        Web Server Info\n          Server            : express\n          View Engine       : nunjucks\n          Port              : 3000\n          Routes            : 27","timestamp":"2017-01-18T12:09:53.905Z"}
+{"level":"info","message":"---------------------------------------------------------------","timestamp":"2017-01-18T12:09:53.906Z"}

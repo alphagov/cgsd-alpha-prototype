@@ -37,7 +37,11 @@ $(document).ready(function() {
     // Finally insert $filterrow wherever you want
     $div.after( $filterrow.show() );
 
-    // Show number of divs with ID starting with ^= "filterrow" and show in console
+    // Show number input by default when adding a new filter row
+    $filterrow.find(".input-number").show()
+    $filterrow.find(".input-percentage").hide();
+
+    // Show number of divs with ID starting with ^= "filterrow" in console
     console.log($('div[id^="filterrow"]').length);
     // If there's more than one, show the clear filter row controls
     if ($('div[id^="filterrow"]').length > 1) {
