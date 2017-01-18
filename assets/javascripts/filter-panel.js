@@ -37,9 +37,8 @@ $(document).ready(function() {
     // Finally insert $filterrow wherever you want
     $div.after( $filterrow.show() );
 
-    // Count number of divs with ID starting with ^= "filterrow" and show in console
+    // Show number of divs with ID starting with ^= "filterrow" and show in console
     console.log($('div[id^="filterrow"]').length);
-
     // If there's more than one, show the clear filter row controls
     if ($('div[id^="filterrow"]').length > 1) {
       $('.clear-filter-row').show();
@@ -50,7 +49,7 @@ $(document).ready(function() {
     // Removing filter rows and hiding the controls if there's only one
     $('.clear-filter-row').click(function() {
 
-      $(this).parent().parent().parent().remove();
+      $(this).closest('div[id^="filterrow"]').remove();
 
       console.log($('div[id^="filterrow"]').length);
       // If there's more than one, show the clear filter row controls
@@ -62,143 +61,145 @@ $(document).ready(function() {
 
     });
 
-    // show either a number or percentage box depending on the metric selected
-    // there's definitely a better way to do this but I can't work out how to if/else with arrays of multiple values
+    // repeat of the code below so that the newly added rows change input width too
     $(".select-metric").change(function(){
+
+      console.log($(this).closest(".filter-row").find(".input-number"));
+
       if ($(this).val() == "transactions") {
-        $(".input-number").show();
-        $(".input-percentage").hide();
+        $(this).closest(".filter-row").find(".input-number").show();
+        $(this).closest(".filter-row").find(".input-percentage").hide();
       }
       if ($(this).val() == "online") {
-        $(".input-percentage").show(); // it's something about not selecting all spans with this class, just children of the particular select-metric
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "phone") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "paper") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "facetoface") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "other") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "outcome") {
-        $(".input-number").show();
-        $(".input-percentage").hide();
+        $(this).closest(".filter-row").find(".input-number").show();
+        $(this).closest(".filter-row").find(".input-percentage").hide();
       }
       if ($(this).val() == "intendedoutcome") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "calls") {
-        $(".input-number").show();
-        $(".input-percentage").hide();
+        $(this).closest(".filter-row").find(".input-number").show();
+        $(this).closest(".filter-row").find(".input-percentage").hide();
       }
       if ($(this).val() == "getinfo") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "getinfo") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "chaseprogress") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "challengedecision") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "othercall") {
-        $(".input-percentage").show();
-        $(".input-number").hide();
+        $(this).closest(".filter-row").find(".input-percentage").show();
+        $(this).closest(".filter-row").find(".input-number").hide();
       }
       if ($(this).val() == "numberservices") {
-        $(".input-number").show();
-        $(".input-percentage").hide();
+        $(this).closest(".filter-row").find(".input-number").show();
+        $(this).closest(".filter-row").find(".input-percentage").hide();
       }
       if ($(this).val() == "numberagencies") {
-        $(".input-number").show();
-        $(".input-percentage").hide();
+        $(this).closest(".filter-row").find(".input-number").show();
+        $(this).closest(".filter-row").find(".input-percentage").hide();
       }
-    });  
+    });
 
   });
 
   // show either a number or percentage box depending on the metric selected
-  // there's definitely a better way to do this but I can't work out how to if/else with arrays of multiple values
+  // there's definitely a better way to do this but I can't get it to if/else with arrays of multiple values
   $(".select-metric").change(function(){
     if ($(this).val() == "transactions") {
-      $(".input-number").show();
-      $(".input-percentage").hide();
+      $(this).closest(".filter-row").find(".input-number").show();
+      $(this).closest(".filter-row").find(".input-percentage").hide();
     }
     if ($(this).val() == "online") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "phone") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "paper") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "facetoface") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "other") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "outcome") {
-      $(".input-number").show();
-      $(".input-percentage").hide();
+      $(this).closest(".filter-row").find(".input-number").show();
+      $(this).closest(".filter-row").find(".input-percentage").hide();
     }
     if ($(this).val() == "intendedoutcome") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "calls") {
-      $(".input-number").show();
-      $(".input-percentage").hide();
+      $(this).closest(".filter-row").find(".input-number").show();
+      $(this).closest(".filter-row").find(".input-percentage").hide();
     }
     if ($(this).val() == "getinfo") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "getinfo") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "chaseprogress") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "challengedecision") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "othercall") {
-      $(".input-percentage").show();
-      $(".input-number").hide();
+      $(this).closest(".filter-row").find(".input-percentage").show();
+      $(this).closest(".filter-row").find(".input-number").hide();
     }
     if ($(this).val() == "numberservices") {
-      $(".input-number").show();
-      $(".input-percentage").hide();
+      $(this).closest(".filter-row").find(".input-number").show();
+      $(this).closest(".filter-row").find(".input-percentage").hide();
     }
     if ($(this).val() == "numberagencies") {
-      $(".input-number").show();
-      $(".input-percentage").hide();
+      $(this).closest(".filter-row").find(".input-number").show();
+      $(this).closest(".filter-row").find(".input-percentage").hide();
     }
   });
 
