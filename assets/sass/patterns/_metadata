@@ -1,0 +1,39 @@
+// performance-data page styles
+
+.metadata {
+  font-size: 16px;
+
+  dt, dl {
+    float: left;
+    clear: left;
+    width: 10em;
+  }
+
+  dd {
+    width: 65%;
+    float: left;
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  dt {
+    width: auto;
+    min-width: 135px;
+    padding-right: 10px;
+  }
+
+  @media (max-width: 640px) {
+
+    dd {
+      margin-bottom: 10px;
+    }
+
+  }
+
+}

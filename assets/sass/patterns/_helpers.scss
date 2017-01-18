@@ -16,6 +16,26 @@
 
 }
 
+// Typography
+
+strong {
+  font-weight: 700;
+}
+
+.a_r { 
+  text-align: right; 
+}
+
+// Colours
+
+.blue { 
+  color: $govuk-blue; 
+}
+
+.secondary-text-colour {
+  color: $secondary-text-colour;
+}
+
 // Desktop only Helpers
 
 @media screen and (min-width: 641px) {
