@@ -40,4 +40,8 @@ module.exports = class DefaultService extends Service {
       return 'department'
     }
   }
+
+  pct_of(number1, number2) {
+    return Math.floor((number1 / number2) * 100);
+  }
 }

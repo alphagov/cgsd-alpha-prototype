@@ -209,10 +209,11 @@
             <span class="data-item bold-xsmall">transactions received</span>
           </div>
           <ul class="list font-xsmall">
-            <li><strong>60%</strong> online</li>
-            <li><strong>20%</strong> phone</li>
-            <li><strong>10%</strong> paper</li>
-            <li><strong>10%</strong> other</li>
+            <li><strong>{{ department.pct_received_online }}%</strong> online</li>
+            <li><strong>{{ department.pct_received_phone }}%</strong> phone</li>
+            <li><strong>{{ department.pct_received_paper }}%</strong> paper</li>
+            <li><strong>{{ department.pct_received_face_to_face }}%</strong> face-to-face</li>
+            <li><strong>{{ department.pct_received_other }}%</strong> other</li>
           </ul>
         </div>
         <div class="column-one-quarter">

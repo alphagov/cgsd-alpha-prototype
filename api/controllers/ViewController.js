@@ -30,6 +30,7 @@ module.exports = class ViewController extends Controller {
 
   govtPerformanceView(req, res) {
     var uk_government_service = this.app.services.UKGovernmentService;
+    var department_service = this.app.services.DepartmentService;
     var default_service = this.app.services.DefaultService;
     var Promise = require('bluebird');
     Promise.join(
@@ -39,19 +40,31 @@ module.exports = class ViewController extends Controller {
         .then( agencies => { return agencies }),
       this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
         .then( tasks  => { return tasks }),
-      this.app.orm.TaskVolumeRecord.find({})
-        .then( task_volume_records => { return task_volume_records }),
       uk_government_service.sumTransactionCountsByDept()
-        .then( transaction_counts_by_dept => { return transaction_counts_by_dept.rows }),
-      function (departments, agencies, tasks, task_volume_records, transaction_counts_by_dept) {
-        var task_volume_summary = new TaskVolumeSummary(task_volume_records);
-        transaction_counts_by_dept = transaction_counts_by_dept.map(function(department_counts) {
-          department_counts.pct_total_received = Math.floor(
-            (department_counts.transactions_received_count / task_volume_summary.total_received) * 100);
-          department_counts.pct_users_intended_outcome = Math.floor(
-            (department_counts.transactions_with_users_intended_outcome_count / department_counts.transactions_with_outcome_count) * 100);
-          return department_counts
-        });
+        .then( transaction_counts_by_dept => { return transaction_counts_by_dept.rows })
+        .then( function(transaction_counts_by_dept) {
+          return transaction_counts_by_dept.map(function(counts) {
+            counts.pct_users_intended_outcome = default_service.pct_of(
+              counts.transactions_with_users_intended_outcome_count, counts.transactions_with_outcome_count);
+
+              counts.pct_received_online = default_service.pct_of(
+                counts.transactions_received_online_count, counts.transactions_received_count);
+
+              counts.pct_received_phone = default_service.pct_of(
+                counts.transactions_received_phone_count, counts.transactions_received_count);
+
+              counts.pct_received_paper = default_service.pct_of(
+                counts.transactions_received_paper_count, counts.transactions_received_count);
+
+              counts.pct_received_face_to_face = default_service.pct_of(
+                counts.transactions_received_face_to_face_count, counts.transactions_received_count);
+
+              counts.pct_received_other = default_service.pct_of(
+                counts.transactions_received_other, counts.transactions_received_count);
+
+            return counts; })
+        }),
+      function (departments, agencies, tasks, transaction_counts_by_dept) {
         res.render(
           'performance-data/government/show.html',
           {
@@ -60,8 +73,7 @@ module.exports = class ViewController extends Controller {
             departments: departments,
             agencies: agencies,
             tasks: tasks,
-            transaction_counts_by_dept: transaction_counts_by_dept,
-            task_volume_summary: task_volume_summary
+            transaction_counts_by_dept: transaction_counts_by_dept
           }
         )
       }
@@ -87,8 +99,8 @@ module.exports = class ViewController extends Controller {
             .then( transactions_with_users_intended_outcome_count => { return transactions_with_users_intended_outcome_count.rows[0].sum }),
           function(task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count) {
             var task_volume_summary = new TaskVolumeSummary(task_volume_records);
-            var pct_users_intended_outcome = Math.floor(
-                  ( transactions_with_users_intended_outcome_count / transactions_with_outcome_count ) * 100)
+            var pct_users_intended_outcome = default_service.pct_of(
+                  transactions_with_users_intended_outcome_count, transactions_with_outcome_count);
             res.render(
               'performance-data/tasks/show.html',
               {
@@ -124,8 +136,8 @@ module.exports = class ViewController extends Controller {
                 .then( transaction_totals => { return transaction_totals.rows }),
               function(task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count, agency_totals, transaction_totals) {
                 var task_volume_summary = new TaskVolumeSummary(task_volume_records);
-                var pct_users_intended_outcome = Math.floor(
-                      ( transactions_with_users_intended_outcome_count / transactions_with_outcome_count ) * 100)
+                var pct_users_intended_outcome = default_service.pct_of(
+                      transactions_with_users_intended_outcome_count, transactions_with_outcome_count);
                 res.render(
                   'performance-data/show.html',
                   {
@@ -160,8 +172,8 @@ module.exports = class ViewController extends Controller {
                     .then( task_totals => { return task_totals.rows }),
                   function(task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count, task_totals) {
                     var task_volume_summary = new TaskVolumeSummary(task_volume_records);
-                    var pct_users_intended_outcome = Math.floor(
-                          ( transactions_with_users_intended_outcome_count / transactions_with_outcome_count ) * 100)
+                    var pct_users_intended_outcome = default_service.pct_of(
+                          transactions_with_users_intended_outcome_count, transactions_with_outcome_count);
                     res.render(
                       'performance-data/show.html',
                       {

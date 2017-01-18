@@ -16,6 +16,41 @@ module.exports = class UKGovernmentService extends Service {
               department.name, \
               SUM(taskvolumerecord.count) as transactions_received_count, \
               ( \
+                SELECT SUM(taskvolumerecord.count) as transactions_received_online_count \
+                FROM task \
+                INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
+                WHERE task.department = department.id \
+                AND   taskvolumerecord.channel = 'online' \
+              ), \
+              ( \
+                SELECT SUM(taskvolumerecord.count) as transactions_received_phone_count \
+                FROM task \
+                INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
+                WHERE task.department = department.id \
+                AND   taskvolumerecord.channel = 'phone' \
+              ), \
+              ( \
+                SELECT SUM(taskvolumerecord.count) as transactions_received_paper_count \
+                FROM task \
+                INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
+                WHERE task.department = department.id \
+                AND   taskvolumerecord.channel = 'paper' \
+              ), \
+              ( \
+                SELECT SUM(taskvolumerecord.count) as transactions_received_face_to_face_count \
+                FROM task \
+                INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
+                WHERE task.department = department.id \
+                AND   taskvolumerecord.channel = 'face-to-face' \
+              ), \
+              ( \
+                SELECT SUM(taskvolumerecord.count) as transactions_received_other_count \
+                FROM task \
+                INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
+                WHERE task.department = department.id \
+                AND   taskvolumerecord.channel = 'other' \
+              ), \
+              ( \
                 SELECT SUM(transactionsendinginanoutcome.all_outcomes_count) as transactions_with_outcome_count \
                 FROM task \
                 INNER JOIN transactionsendinginanoutcome ON transactionsendinginanoutcome.task = task.id \
