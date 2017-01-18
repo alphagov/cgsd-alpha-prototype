@@ -69,3 +69,14 @@
   }
 
 }
+
+// Download CSV link
+
+.download-csv { 
+  text-align: right; 
+
+  @media screen and (max-width: 640px) {
+    text-align: left;
+  }
+
+}

@@ -5,6 +5,10 @@
   padding: 15px 5px;
   margin: -10px 0 20px;
 
+  @media screen and (max-width: 640px) {
+    padding: 15px 0;
+  }
+
   h2 {
     margin-bottom: 10px;
   }
@@ -60,6 +64,13 @@
     position: relative;
     top: 8px;
     left: 8px;
+
+    @media screen and (max-width: 640px) {
+      position: static;
+      display: block;
+      margin-top: 10px;
+    }
+
   }
 
 }
@@ -85,6 +96,10 @@
 
   }
 
+  .inline-forms:first-of-type {
+    margin-left: 0;
+  }
+
   .connecting-word {
     margin-right: 5px;
   }
@@ -95,14 +110,13 @@
     top: 0
   }
 
-  .width-data-org { width:40% }
-  .width-data-type { width:30% }
-  .width-data-range { width:20% }
-  .width-data-input { width:15% }
-  .width-data-percentage { width:5% }
+  .clear-filter-row {
 
-  .inline-forms:first-of-type {
-    margin-left: 0;
+    @media screen and (max-width: 640px) {
+      display: block!important;
+      margin: 5px 0 20px;
+    }
+    
   }
 
   .upper-range,
@@ -112,6 +126,12 @@
   .clear-filter-row {
     display: none;
   }
+
+  .width-data-org { width:40% }
+  .width-data-type { width:30% }
+  .width-data-range { width:20% }
+  .width-data-input { width:15% }
+  .width-data-percentage { width:5% }
 
   @media screen and (max-width: 640px) {
     margin-bottom: 0;
@@ -152,6 +172,10 @@
     border-bottom: 1px solid $grey-2;
     padding: 15px 0 30px;
 
+    @media screen and (max-width: 640px) {
+      padding-bottom: 0;
+    }
+
     .column-one-quarter {
       padding-left: 0;
     }
@@ -167,6 +191,11 @@
     h2 {
       margin-bottom: 15px;
 
+      @media screen and (max-width: 640px) {
+        font-size: 24px;
+        margin-bottom: 5px;
+      }
+
       a {
         text-decoration: none;
       }
@@ -179,6 +208,10 @@
     .list {
       margin-top: 15px;
 
+      @media screen and (max-width: 640px) {
+        margin-top: 5px;
+      }
+
       li {
       border: none;
       padding: 0;
@@ -190,6 +223,10 @@
 
   li:first-of-type {
     border-top: 1px solid $grey-2;
+  }
+
+  li:last-of-type {
+    border-bottom: none;
   }
 
   li:hover {
