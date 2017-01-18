@@ -33,4 +33,32 @@ module.exports = class AgencyService extends Service {
       [friendly_id]
     );
   }
+
+  /**
+   * Sum transactions ending in an outcome
+   */
+  sumTransactionsWithOutcome(friendly_id) {
+    return this.app.orm.Agency.query(
+      "SELECT SUM(transactionsendinginanoutcome.all_outcomes_count) \
+       FROM agency \
+       INNER JOIN task ON task.agency = agency.id \
+       INNER JOIN transactionsendinginanoutcome ON transactionsendinginanoutcome.task = task.id \
+       WHERE agency.friendly_id = $1",
+      [friendly_id]
+    );
+  }
+
+  /**
+   * Sum transactions ending in an outcome
+   */
+  sumTransactionsWithUsersIntendedOutcome(friendly_id) {
+    return this.app.orm.Agency.query(
+      "SELECT SUM(transactionsendinginanoutcome.users_intended_outcome_count) \
+       FROM agency \
+       INNER JOIN task ON task.agency = agency.id \
+       INNER JOIN transactionsendinginanoutcome ON transactionsendinginanoutcome.task = task.id \
+       WHERE agency.friendly_id = $1",
+      [friendly_id]
+    );
+  }
 }

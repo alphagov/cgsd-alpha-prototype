@@ -134,16 +134,25 @@ module.exports = class ViewController extends Controller {
                 Promise.join(
                   task_volume_service.getTotalVolumeByTask(task_ids)
                     .then( task_volume_records => { return task_volume_records.rows }),
+                  agency_service.sumTransactionsWithOutcome(agency.friendly_id)
+                    .then( transactions_with_outcome_count => { return transactions_with_outcome_count.rows[0].sum }),
+                  agency_service.sumTransactionsWithUsersIntendedOutcome(agency.friendly_id)
+                    .then( transactions_with_users_intended_outcome_count => { return transactions_with_users_intended_outcome_count.rows[0].sum }),
                   agency_service.getTransactionsReceivedByTask(agency.friendly_id)
                     .then( task_totals => { return task_totals.rows }),
-                  function(task_volume_records, task_totals) {
+                  function(task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count, task_totals) {
                     var task_volume_summary = new TaskVolumeSummary(task_volume_records);
+                    var pct_users_intended_outcome = Math.floor(
+                          ( transactions_with_users_intended_outcome_count / transactions_with_outcome_count ) * 100)
                     res.render(
                       'performance-data/show.html',
                       {
                         asset_path: '/govuk_modules/govuk_template/assets/',
                         organisation_type: default_service.organisationType(agency),
                         organisation: agency,
+                        transactions_with_outcome_count: transactions_with_outcome_count,
+                        transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
+                        pct_users_intended_outcome: pct_users_intended_outcome,
                         volume_summary: task_volume_summary,
                         grouped_volumes: task_totals
                       }
