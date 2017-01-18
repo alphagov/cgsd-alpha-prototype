@@ -94,7 +94,7 @@
       <h2 class="heading-medium">Channels used to access the service</h2>
       <ul class="list bold-medium">
         <li>
-          Online <span class="blue">N <span class="lede">({{ volume_summary.received_online_pct_total }}%)</span></span>
+          Online <span class="blue">{{ volume_summary.received_online }} <span class="lede">({{ volume_summary.received_online_pct_total }}%)</span></span>
           <br>
           <details class="font-xsmall">
             <summary><span class="summary">More info</span></summary>
@@ -106,7 +106,7 @@
           </details>
         </li>
         <li>
-          Phone <span class="blue">N <span class="lede">({{ volume_summary.received_phone_pct_total }}%)</span></span>
+          Phone <span class="blue">{{ volume_summary.received_phone }} <span class="lede">({{ volume_summary.received_phone_pct_total }}%)</span></span>
           <br>
           <details class="font-xsmall">
             <summary><span class="summary">More info</span></summary>
@@ -118,7 +118,7 @@
           </details>
         </li>
         <li>
-          Paper <span class="blue">N <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></span>
+          Paper <span class="blue">{{ volume_summary.received_paper }} <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></span>
           <br>
           <details class="font-xsmall">
             <summary><span class="summary">More info</span></summary>
@@ -130,7 +130,7 @@
           </details>
         </li>
         <li>
-          Face-to-face <span class="blue">N <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></span>
+          Face-to-face <span class="blue">{{ volume_summary.received_face_to_face }} <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></span>
           <br>
           <details class="font-xsmall">
             <summary><span class="summary">More info</span></summary>
@@ -142,7 +142,7 @@
           </details>
         </li>
         <li>
-          Other <span class="blue">N <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></span>
+          Other <span class="blue">{{ volume_summary.received_other }} <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></span>
           <br>
           <details class="font-xsmall">
             <summary><span class="summary">More info</span></summary>
