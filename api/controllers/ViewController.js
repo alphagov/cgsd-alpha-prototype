@@ -66,15 +66,25 @@ module.exports = class ViewController extends Controller {
 
   performanceView(req, res) {
     var friendly_id = req.params.friendly_id;
+    var task_service = this.app.services.TaskService;
     var task_volume_service = this.app.services.TaskVolumeRecordService;
     var department_service = this.app.services.DepartmentService;
     var default_service = this.app.services.DefaultService;
     this.app.services.TaskService.getTaskByFriendlyId(friendly_id)
       .then(function(task) {
         if (task == undefined) { throw true };
-        task_volume_service.getTotalVolumeByTask([task.id])
-          .then( task_volume_records => {
-            var task_volume_summary = new TaskVolumeSummary(task_volume_records.rows);
+        var Promise = require('bluebird');
+        Promise.join(
+          task_volume_service.getTotalVolumeByTask([task.id])
+            .then( task_volume_records => { return task_volume_records.rows }),
+          task_service.sumTransactionsWithOutcome(task.friendly_id)
+            .then( transactions_with_outcome_count => { return transactions_with_outcome_count.rows[0].sum }),
+          task_service.sumTransactionsWithUsersIntendedOutcome(task.friendly_id)
+            .then( transactions_with_users_intended_outcome_count => { return transactions_with_users_intended_outcome_count.rows[0].sum }),
+          function(task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count) {
+            var task_volume_summary = new TaskVolumeSummary(task_volume_records);
+            var pct_users_intended_outcome = Math.floor(
+                  ( transactions_with_users_intended_outcome_count / transactions_with_outcome_count ) * 100)
             res.render(
               'performance-data/tasks/show.html',
               {
@@ -82,10 +92,14 @@ module.exports = class ViewController extends Controller {
                 department: task.department,
                 agency: task.agency,
                 task: task,
-                volume_summary: task_volume_summary
+                volume_summary: task_volume_summary,
+                transactions_with_outcome_count: transactions_with_outcome_count,
+                transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
+                pct_users_intended_outcome: pct_users_intended_outcome
               }
             )
-          })
+          }
+        )
       })
       .catch(err => {
         this.app.services.DepartmentService.getDepartmentByFriendlyId(friendly_id)

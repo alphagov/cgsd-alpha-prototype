@@ -165,7 +165,7 @@
 
     <div class="column-one-third">
       <div class="data">
-        <span class="data-item bold-xxlarge">200k</span>
+        <span class="data-item bold-xxlarge">{{ transactions_with_outcome_count }}</span>
         <span class="data-item bold-medium">transactions ending in an outcome</span>
       </div>
       <br>
@@ -189,7 +189,7 @@
       <h2 class="heading-medium" style="margin-top: 0">Delivery of the service</h2>
       <ul class="list bold-medium">
         <li>
-          Transactions ending in an outcome <span class="blue">N</span>
+          Transactions ending in an outcome <span class="blue">{{ transactions_with_outcome_count }}</span>
           <br>
           <details class="font-xsmall">
             <summary><span class="summary">More info</span></summary>
@@ -205,7 +205,7 @@
           </details>
         </li>
         <li>
-          Transactions ending in user's intended outcome <span class="blue">N <span class="lede">(N%)</span></span>
+          Transactions ending in user's intended outcome <span class="blue">{{ transactions_with_users_intended_outcome_count }} <span class="lede">({{ pct_users_intended_outcome }}%)</span></span>
           <br>
           <details class="font-xsmall">
             <summary><span class="summary">More info</span></summary>
