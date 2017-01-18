@@ -39,14 +39,14 @@ module.exports = class ViewController extends Controller {
         .then( tasks  => { return tasks }),
       this.app.orm.TaskVolumeRecord.find({})
         .then( task_volume_records => { return task_volume_records }),
-      this.app.services.DepartmentService.getTransactionsReceivedByDept()
-        .then( department_totals => { return department_totals.rows }),
-      function (departments, agencies, tasks, task_volume_records, department_totals) {
+      this.app.services.UKGovernmentService.sumTransactionsReceivedByDept()
+        .then( transactions_received_count_by_dept => { return transactions_received_count_by_dept.rows }),
+      function (departments, agencies, tasks, task_volume_records, transactions_received_count_by_dept) {
         var task_volume_summary = new TaskVolumeSummary(task_volume_records);
-        department_totals = department_totals.map(function(department_total) {
-          department_total.pct_total_received = Math.floor(
-            (department_total.total_received / task_volume_summary.total_received) * 100) ;
-          return department_total
+        transactions_received_count_by_dept = transactions_received_count_by_dept.map(function(department_count) {
+          department_count.pct_total_received = Math.floor(
+            (department_count.total_received / task_volume_summary.total_received) * 100) ;
+          return department_count
         });
         res.render(
           'performance-data/government/show.html',
@@ -56,7 +56,7 @@ module.exports = class ViewController extends Controller {
             departments: departments,
             agencies: agencies,
             tasks: tasks,
-            department_totals: department_totals,
+            transactions_received_count_by_dept: transactions_received_count_by_dept,
             task_volume_summary: task_volume_summary
           }
         )

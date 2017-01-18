@@ -194,7 +194,7 @@
   <div class="grid-row">
     <ul class="filter-cards column-full">
       
-      {% for department in department_totals %}
+      {% for department in transactions_received_count_by_dept %}
       <li class="column-full">
         <div class="column-one-quarter">
           <h2 class="bold-medium"><a href="{{ department.friendly_id }}">{{ department.name }}</a></h2>
