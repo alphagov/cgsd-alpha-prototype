@@ -29,6 +29,8 @@ module.exports = class ViewController extends Controller {
   }
 
   govtPerformanceView(req, res) {
+    var uk_government_service = this.app.services.UKGovernmentService;
+    var default_service = this.app.services.DefaultService;
     var Promise = require('bluebird');
     Promise.join(
       this.app.orm.Department.find({ where : {}, sort: 'name ASC' })
@@ -39,14 +41,16 @@ module.exports = class ViewController extends Controller {
         .then( tasks  => { return tasks }),
       this.app.orm.TaskVolumeRecord.find({})
         .then( task_volume_records => { return task_volume_records }),
-      this.app.services.UKGovernmentService.sumTransactionsReceivedByDept()
-        .then( transactions_received_count_by_dept => { return transactions_received_count_by_dept.rows }),
-      function (departments, agencies, tasks, task_volume_records, transactions_received_count_by_dept) {
+      uk_government_service.sumTransactionCountsByDept()
+        .then( transaction_counts_by_dept => { return transaction_counts_by_dept.rows }),
+      function (departments, agencies, tasks, task_volume_records, transaction_counts_by_dept) {
         var task_volume_summary = new TaskVolumeSummary(task_volume_records);
-        transactions_received_count_by_dept = transactions_received_count_by_dept.map(function(department_count) {
-          department_count.pct_total_received = Math.floor(
-            (department_count.total_received / task_volume_summary.total_received) * 100) ;
-          return department_count
+        transaction_counts_by_dept = transaction_counts_by_dept.map(function(department_counts) {
+          department_counts.pct_total_received = Math.floor(
+            (department_counts.transactions_received_count / task_volume_summary.total_received) * 100);
+          department_counts.pct_users_intended_outcome = Math.floor(
+            (department_counts.transactions_with_users_intended_outcome_count / department_counts.transactions_with_outcome_count) * 100);
+          return department_counts
         });
         res.render(
           'performance-data/government/show.html',
@@ -56,7 +60,7 @@ module.exports = class ViewController extends Controller {
             departments: departments,
             agencies: agencies,
             tasks: tasks,
-            transactions_received_count_by_dept: transactions_received_count_by_dept,
+            transaction_counts_by_dept: transaction_counts_by_dept,
             task_volume_summary: task_volume_summary
           }
         )

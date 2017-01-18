@@ -194,7 +194,7 @@
   <div class="grid-row">
     <ul class="filter-cards column-full">
       
-      {% for department in transactions_received_count_by_dept %}
+      {% for department in transaction_counts_by_dept %}
       <li class="column-full">
         <div class="column-one-quarter">
           <h2 class="bold-medium"><a href="{{ department.friendly_id }}">{{ department.name }}</a></h2>
@@ -205,7 +205,7 @@
         </div>
         <div class="column-one-quarter">
           <div class="data">
-            <span class="data-item bold-large">{{ department.total_received }}m</span>
+            <span class="data-item bold-large">{{ department.transactions_received_count }}m</span>
             <span class="data-item bold-xsmall">transactions received</span>
           </div>
           <ul class="list font-xsmall">
@@ -217,11 +217,11 @@
         </div>
         <div class="column-one-quarter">
           <div class="data">
-            <span class="data-item bold-large">1.1m</span>
+            <span class="data-item bold-large">{{ department.transactions_with_outcome_count }}m</span>
             <span class="data-item bold-xsmall">transactions ending in an outcome</span>
           </div>
           <ul class="list font-xsmall">
-            <li><strong>60%</strong> end in user's intended outcome</li>
+            <li><strong>{{ department.pct_users_intended_outcome }}%</strong> end in user's intended outcome</li>
           </ul>
         </div>
         <div class="column-one-quarter">
