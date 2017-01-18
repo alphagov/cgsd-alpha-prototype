@@ -14,6 +14,16 @@ module.exports = class UKGovernmentService extends Service {
     return this.app.orm.Department.query(
       "SELECT department.friendly_id, \
               department.name, \
+              ( \
+                SELECT COUNT(*) as agencies_count \
+                FROM agency \
+                WHERE agency.department = department.id \
+              ), \
+              ( \
+                SELECT COUNT(*) as services_count \
+                FROM task \
+                WHERE task.department = department.id \
+              ), \
               SUM(taskvolumerecord.count) as transactions_received_count, \
               ( \
                 SELECT SUM(taskvolumerecord.count) as transactions_received_online_count \

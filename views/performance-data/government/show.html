@@ -199,8 +199,8 @@
         <div class="column-one-quarter">
           <h2 class="bold-medium"><a href="{{ department.friendly_id }}">{{ department.name }}</a></h2>
           <ul class="list font-xsmall">
-            <li><strong>6</strong> agencies</li>
-            <li><strong>28</strong> services</li>
+            <li><strong>{{ department.agencies_count}}</strong> agencies</li>
+            <li><strong>{{ department.services_count}}</strong> services</li>
           </ul>
         </div>
         <div class="column-one-quarter">
