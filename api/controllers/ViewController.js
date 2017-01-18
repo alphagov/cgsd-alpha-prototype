@@ -35,7 +35,7 @@ module.exports = class ViewController extends Controller {
     var Promise = require('bluebird');
     Promise.join(
       this.app.orm.Department.find({ where : {}, sort: 'name ASC' })
-        .then( departments => { return departments }),
+        .then( departments => { return departments }), // then call anonymous function passing in one argument called 'departments'
       this.app.orm.Agency.find({ where : {}, sort: 'name ASC' })
         .then( agencies => { return agencies }),
       this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
