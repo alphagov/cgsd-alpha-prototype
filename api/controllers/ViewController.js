@@ -201,9 +201,29 @@ module.exports = class ViewController extends Controller {
                     .then( transactions_with_outcome_count => { return transactions_with_outcome_count.rows[0].sum }),
                   agency_service.sumTransactionsWithUsersIntendedOutcome(agency.friendly_id)
                     .then( transactions_with_users_intended_outcome_count => { return transactions_with_users_intended_outcome_count.rows[0].sum }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'online')
+                    .then( online_totals => { return online_totals.rows }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'phone')
+                    .then( phone_totals => { return phone_totals.rows }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'paper')
+                    .then( paper_totals => { return paper_totals.rows }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'face-to-face')
+                    .then( face_to_face_totals => { return face_to_face_totals.rows }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'other')
+                    .then( other_totals => { return other_totals.rows }),
                   agency_service.getTransactionsReceivedByTask(agency.friendly_id)
                     .then( task_totals => { return task_totals.rows }),
-                  function(task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count, task_totals) {
+                  function(
+                    task_volume_records,
+                    transactions_with_outcome_count,
+                    transactions_with_users_intended_outcome_count,
+                    agency_totals,
+                    online_totals,
+                    phone_totals,
+                    paper_totals,
+                    face_to_face_totals,
+                    other_totals, 
+                    task_totals) {
                     var task_volume_summary = new TaskVolumeSummary(task_volume_records);
                     var pct_users_intended_outcome = default_service.pct_of(
                           transactions_with_users_intended_outcome_count, transactions_with_outcome_count);
@@ -218,7 +238,13 @@ module.exports = class ViewController extends Controller {
                         pct_users_intended_outcome: pct_users_intended_outcome,
                         volume_summary: task_volume_summary,
                         grouped_volumes: task_totals,
-                        to_3_sf: default_service.to3SF
+                        online_totals: online_totals,
+                        phone_totals: phone_totals,
+                        paper_totals: paper_totals,
+                        face_to_face_totals: face_to_face_totals,
+                        other_totals: other_totals,
+                        to_3_sf: default_service.to3SF,
+                        pct_of: default_service.pct_of
                       }
                     )
                   }

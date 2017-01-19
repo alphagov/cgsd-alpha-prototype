@@ -35,6 +35,31 @@ module.exports = class AgencyService extends Service {
   }
 
   /**
+   * Get total transactions received by task and channel
+   */
+  sumTransactionsReceivedByTaskAndChannel(friendly_id, channel) {
+    return this.app.orm.Agency.query(
+      "SELECT task.friendly_id, \
+              task.name, \
+              SUM(taskvolumerecord.count) as transactions_received_count, \
+              ( \
+                SELECT SUM(taskvolumerecord.count) as transactions_received_channel_count \
+                FROM task \
+                INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
+                WHERE task.agency = agency.id \
+                AND taskvolumerecord.channel = $1 \
+              ) \
+       FROM agency \
+       INNER JOIN task ON task.agency = agency.id \
+       INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
+       WHERE agency.friendly_id = $2 \
+       GROUP BY agency.id, task.id, task.friendly_id, task.name \
+       ORDER BY transactions_received_channel_count DESC",
+      [channel, friendly_id]
+    );
+  }
+
+  /**
    * Sum transactions ending in an outcome
    */
   sumTransactionsWithOutcome(friendly_id) {
