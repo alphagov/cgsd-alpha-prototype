@@ -75,30 +75,14 @@
                       <th class="numeric">Total transactions</th>
                       <th class="numeric">Percentage online</th>
                     </tr>
-                    <tr>
-                      <td><a href="#">Driver and Vehicle Licensing Agency</a></td>
-                      <td class="numeric">100,000</td>
-                      <td class="numeric">120,000</td>
-                      <td class="numeric">80%</td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">Driver and Vehicle Standards Agency</a></td>
-                      <td class="numeric">10,000</td>
-                      <td class="numeric">12,000</td>
-                      <td class="numeric">80%</td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">Highways Agency</a></td>
-                      <td class="numeric">10,000</td>
-                      <td class="numeric">10,000</td>
-                      <td class="numeric">100%</td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">Vehicle Tax Authority</a></td>
-                      <td class="numeric">1,000</td>
-                      <td class="numeric">2,000</td>
-                      <td class="numeric">50%</td>
-                    </tr>
+                    {% for agency in agency_online_totals %}
+                      <tr>
+                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                      </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
                 <br>
@@ -120,6 +104,24 @@
                 </h2>
               </div>
               <div class="subsection__content" id="">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>Organisation</th>
+                      <th class="numeric">Phone transactions</th>
+                      <th class="numeric">Total transactions</th>
+                      <th class="numeric">Percentage phone</th>
+                    </tr>
+                    {% for agency in agency_phone_totals %}
+                      <tr>
+                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
                 <br>
                 <details class="font-xsmall">
                   <summary><span class="summary">More info</span></summary>
@@ -138,6 +140,24 @@
                   <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></style></h2>
               </div>
               <div class="subsection__content" id="">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>Organisation</th>
+                      <th class="numeric">Paper transactions</th>
+                      <th class="numeric">Total transactions</th>
+                      <th class="numeric">Percentage paper</th>
+                    </tr>
+                    {% for agency in agency_paper_totals %}
+                      <tr>
+                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
                 <br>
                 <details class="font-xsmall">
                   <summary><span class="summary">More info</span></summary>
@@ -156,6 +176,24 @@
                   <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></h2>
               </div>
               <div class="subsection__content" id="">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>Organisation</th>
+                      <th class="numeric">Face-to-face transactions</th>
+                      <th class="numeric">Total transactions</th>
+                      <th class="numeric">Percentage face-to-face</th>
+                    </tr>
+                    {% for agency in agency_face_to_face_totals %}
+                      <tr>
+                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
                 <br>
                 <details class="font-xsmall">
                   <summary><span class="summary">More info</span></summary>
@@ -174,6 +212,24 @@
                   <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></h2>
               </div>
               <div class="subsection__content" id="">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>Organisation</th>
+                      <th class="numeric">Other transactions</th>
+                      <th class="numeric">Total transactions</th>
+                      <th class="numeric">Percentage other</th>
+                    </tr>
+                    {% for agency in agency_other_totals %}
+                      <tr>
+                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
                 <br>
                 <details class="font-xsmall">
                   <summary><span class="summary">More info</span></summary>
