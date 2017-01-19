@@ -44,19 +44,9 @@
     width: 75%!important;
 
     @media screen and (max-width: 640px) {
-      float: left;
+      float: none;
     }
 
-  }
-
-  // this makes me weep
-  .header-wrapper:after,
-  .header-global:after,
-  .header-logo:after,
-  .header-proposition:after {
-    content: '';
-    display: block;
-    clear: both;
   }
 
   .header-proposition {
@@ -64,13 +54,14 @@
     width: 25%!important;
 
     @media screen and (max-width: 640px) {
-      float: left;
+      float: none;
+      display: inline;
     }
 
   }
 
   .header-proposition #proposition-menu{
-    margin-top: 6px;  
+    margin-top: 5px;  
   }
 
 }
@@ -79,6 +70,10 @@
 #global-header .phase-banner {
     border: 0;
     margin-left: 10px;
+
+    @media screen and (max-width: 640px) {
+      display: none;
+    }
 
   .phase-tag{
     font-size: 14px;
@@ -100,13 +95,13 @@
 
   @media screen and (max-width: 940px) {
     float: left;
-    margin-top: 6px;
+    margin-top: 5px;
   }
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    margin-top: 0;
-    margin-bottom: 8px;
+    margin-top: 35px;
+    margin-bottom: 5px;
   }
 
   li {
