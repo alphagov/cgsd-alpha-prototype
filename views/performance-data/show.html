@@ -75,12 +75,12 @@
                       <th class="numeric">Total transactions</th>
                       <th class="numeric">Percentage online</th>
                     </tr>
-                    {% for agency in agency_online_totals %}
+                    {% for row in online_totals %}
                       <tr>
-                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
-                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                        <td><a href="{{ row.friendly_id }}">{{ row.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(row.transactions_received_channel_count, row.transactions_received_count) }}%</td>
                       </tr>
                     {% endfor %}
                   </tbody>
@@ -112,12 +112,12 @@
                       <th class="numeric">Total transactions</th>
                       <th class="numeric">Percentage phone</th>
                     </tr>
-                    {% for agency in agency_phone_totals %}
+                    {% for row in phone_totals %}
                       <tr>
-                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
-                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                        <td><a href="{{ row.friendly_id }}">{{ row.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(row.transactions_received_channel_count, row.transactions_received_count) }}%</td>
                       </tr>
                     {% endfor %}
                   </tbody>
@@ -148,12 +148,12 @@
                       <th class="numeric">Total transactions</th>
                       <th class="numeric">Percentage paper</th>
                     </tr>
-                    {% for agency in agency_paper_totals %}
+                    {% for row in paper_totals %}
                       <tr>
-                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
-                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                        <td><a href="{{ row.friendly_id }}">{{ row.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(row.transactions_received_channel_count, row.transactions_received_count) }}%</td>
                       </tr>
                     {% endfor %}
                   </tbody>
@@ -184,12 +184,12 @@
                       <th class="numeric">Total transactions</th>
                       <th class="numeric">Percentage face-to-face</th>
                     </tr>
-                    {% for agency in agency_face_to_face_totals %}
+                    {% for row in face_to_face_totals %}
                       <tr>
-                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
-                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                        <td><a href="{{ row.friendly_id }}">{{ row.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(row.transactions_received_channel_count, row.transactions_received_count) }}%</td>
                       </tr>
                     {% endfor %}
                   </tbody>
@@ -220,12 +220,12 @@
                       <th class="numeric">Total transactions</th>
                       <th class="numeric">Percentage other</th>
                     </tr>
-                    {% for agency in agency_other_totals %}
+                    {% for row in other_totals %}
                       <tr>
-                        <td><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_channel_count) }}</td>
-                        <td class="numeric">{{ to_3_sf(agency.transactions_received_count) }}</td>
-                        <td class="numeric">{{ pct_of(agency.transactions_received_channel_count, agency.transactions_received_count) }}%</td>
+                        <td><a href="{{ row.friendly_id }}">{{ row.name }}</a></td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_channel_count) }}</td>
+                        <td class="numeric">{{ to_3_sf(row.transactions_received_count) }}</td>
+                        <td class="numeric">{{ pct_of(row.transactions_received_channel_count, row.transactions_received_count) }}%</td>
                       </tr>
                     {% endfor %}
                   </tbody>

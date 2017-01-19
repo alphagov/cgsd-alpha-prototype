@@ -137,15 +137,15 @@ module.exports = class ViewController extends Controller {
               department_service.getTransactionsReceivedByAgency(department.friendly_id)
                 .then( agency_totals => { return agency_totals.rows }),
               department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'online')
-                .then( agency_online_totals => { return agency_online_totals.rows }),
+                .then( online_totals => { return online_totals.rows }),
               department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'phone')
-                .then( agency_phone_totals => { return agency_phone_totals.rows }),
+                .then( phone_totals => { return phone_totals.rows }),
               department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'paper')
-                .then( agency_paper_totals => { return agency_paper_totals.rows }),
+                .then( paper_totals => { return paper_totals.rows }),
               department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'face-to-face')
-                .then( agency_face_to_face_totals => { return agency_face_to_face_totals.rows }),
+                .then( face_to_face_totals => { return face_to_face_totals.rows }),
               department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'other')
-                .then( agency_other_totals => { return agency_other_totals.rows }),
+                .then( other_totals => { return other_totals.rows }),
               department_service.getTransactionsReceivedByTask(department.friendly_id)
                 .then( transaction_totals => { return transaction_totals.rows }),
               function(
@@ -153,16 +153,15 @@ module.exports = class ViewController extends Controller {
                 transactions_with_outcome_count,
                 transactions_with_users_intended_outcome_count,
                 agency_totals,
-                agency_online_totals,
-                agency_phone_totals,
-                agency_paper_totals,
-                agency_face_to_face_totals,
-                agency_other_totals,                
+                online_totals,
+                phone_totals,
+                paper_totals,
+                face_to_face_totals,
+                other_totals,                
                 transaction_totals ) {
                 var task_volume_summary = new TaskVolumeSummary(task_volume_records);
                 var pct_users_intended_outcome = default_service.pct_of(
                       transactions_with_users_intended_outcome_count, transactions_with_outcome_count);
-                console.log(agency_face_to_face_totals);
                 res.render(
                   'performance-data/show.html',
                   {
@@ -174,11 +173,11 @@ module.exports = class ViewController extends Controller {
                     transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
                     pct_users_intended_outcome: pct_users_intended_outcome,
                     grouped_volumes: agency_totals,
-                    agency_online_totals: agency_online_totals,
-                    agency_phone_totals: agency_phone_totals,
-                    agency_paper_totals: agency_paper_totals,
-                    agency_face_to_face_totals: agency_face_to_face_totals,
-                    agency_other_totals: agency_other_totals,
+                    online_totals: online_totals,
+                    phone_totals: phone_totals,
+                    paper_totals: paper_totals,
+                    face_to_face_totals: face_to_face_totals,
+                    other_totals: other_totals,
                     transaction_volumes: transaction_totals,
                     to_3_sf: default_service.to3SF,
                     pct_of: default_service.pct_of
