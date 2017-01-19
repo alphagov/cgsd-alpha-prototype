@@ -47,7 +47,7 @@ module.exports = class DefaultService extends Service {
 
   to3SF(number) {
     if (number >= 1000000) {
-      return (number / 100000) + 'm'
+      return (number / 1000000) + 'm'
     } else {
       return Math.floor((number / 1000)) + 'k'
     }
