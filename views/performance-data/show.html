@@ -35,7 +35,7 @@
 
     <div class="column-one-third">
       <div class="data">
-        <span class="data-item bold-xxlarge">{{ volume_summary.total_received }}m</span>
+        <span class="data-item bold-xxlarge">{{ to_3_sf(volume_summary.total_received) }}</span>
         <span class="data-item bold-medium">transactions received</span>
       </div>
       <br>
@@ -62,7 +62,7 @@
             <div class="subsection">
               <div class="subsection__header">
                 <h2 class="subsection__title">
-                  <span class="black">Online</span> {{ volume_summary.received_online }}
+                  <span class="black">Online</span> {{ to_3_sf(volume_summary.received_online) }}
                   <span class="lede">({{ volume_summary.received_online_pct_total }}%)</span>
                 </h2>
               </div>
@@ -115,7 +115,7 @@
             <div class="subsection">
               <div class="subsection__header">
                 <h2 class="subsection__title">
-                  <span class="black">Phone</span> {{ volume_summary.received_phone }}
+                  <span class="black">Phone</span> {{ to_3_sf(volume_summary.received_phone) }}
                   <span class="lede">({{ volume_summary.received_phone_pct_total }}%)</span>
                 </h2>
               </div>
@@ -134,7 +134,7 @@
             <div class="subsection">
               <div class="subsection__header">
                 <h2 class="subsection__title">
-                  <span class="black">Paper</span> {{ volume_summary.received_paper }}
+                  <span class="black">Paper</span> {{ to_3_sf(volume_summary.received_paper) }}
                   <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></style></h2>
               </div>
               <div class="subsection__content" id="">
@@ -152,7 +152,7 @@
             <div class="subsection">
               <div class="subsection__header">
                 <h2 class="subsection__title">
-                  <span class="black">Face-to-face</span> {{ volume_summary.received_face_to_face }}
+                  <span class="black">Face-to-face</span> {{ to_3_sf(volume_summary.received_face_to_face) }}
                   <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></h2>
               </div>
               <div class="subsection__content" id="">
@@ -170,7 +170,7 @@
             <div class="subsection">
               <div class="subsection__header">
                 <h2 class="subsection__title">
-                  <span class="black">Other</span> {{ volume_summary.received_other }}
+                  <span class="black">Other</span> {{ to_3_sf(volume_summary.received_other) }}
                   <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></h2>
               </div>
               <div class="subsection__content" id="">
@@ -199,7 +199,7 @@
 
     <div class="column-one-third">
       <div class="data">
-        <span class="data-item bold-xxlarge">{{ transactions_with_outcome_count }}</span>
+        <span class="data-item bold-xxlarge">{{ to_3_sf(transactions_with_outcome_count) }}</span>
         <span class="data-item bold-medium">transactions ending in an outcome</span>
       </div> 
       <br>
@@ -229,7 +229,7 @@
               <div class="subsection">
                 <div class="subsection__header">
                   <h2 class="subsection__title">
-                    <span class="black">Ending in an outcome</span> {{ transactions_with_outcome_count }} 
+                    <span class="black">Ending in an outcome</span> {{ to_3_sf(transactions_with_outcome_count) }} 
                   </h2>
                 </div>
                 <div class="subsection__content">
@@ -285,7 +285,7 @@
               <div class="subsection">
                 <div class="subsection__header">
                   <h2 class="subsection__title">
-                    <span class="black">Ending in user's intended outcome</span> {{ transactions_with_users_intended_outcome_count }}
+                    <span class="black">Ending in user's intended outcome</span> {{ to_3_sf(transactions_with_users_intended_outcome_count) }}
                     <span class="lede">({{ pct_users_intended_outcome }}%)</span>
                   </h2>
                 </div>

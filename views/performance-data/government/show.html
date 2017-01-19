@@ -205,7 +205,7 @@
         </div>
         <div class="column-one-quarter">
           <div class="data">
-            <span class="data-item bold-large">{{ department.transactions_received_count }}m</span>
+            <span class="data-item bold-large">{{ to_3_sf(department.transactions_received_count) }}</span>
             <span class="data-item bold-xsmall">transactions received</span>
           </div>
           <ul class="list font-xsmall">
@@ -218,7 +218,7 @@
         </div>
         <div class="column-one-quarter">
           <div class="data">
-            <span class="data-item bold-large">{{ department.transactions_with_outcome_count }}m</span>
+            <span class="data-item bold-large">{{ to_3_sf(department.transactions_with_outcome_count) }}</span>
             <span class="data-item bold-xsmall">transactions ending in an outcome</span>
           </div>
           <ul class="list font-xsmall">

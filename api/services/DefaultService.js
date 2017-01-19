@@ -44,4 +44,12 @@ module.exports = class DefaultService extends Service {
   pct_of(number1, number2) {
     return Math.floor((number1 / number2) * 100);
   }
+
+  to3SF(number) {
+    if (number >= 1000000) {
+      return (number / 100000) + 'm'
+    } else {
+      return Math.floor((number / 1000)) + 'k'
+    }
+  }
 }

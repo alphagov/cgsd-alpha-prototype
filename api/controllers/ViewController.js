@@ -73,7 +73,8 @@ module.exports = class ViewController extends Controller {
             departments: departments,
             agencies: agencies,
             tasks: tasks,
-            transaction_counts_by_dept: transaction_counts_by_dept
+            transaction_counts_by_dept: transaction_counts_by_dept,
+            to_3_sf: default_service.to3SF
           }
         )
       }
@@ -111,13 +112,16 @@ module.exports = class ViewController extends Controller {
                 volume_summary: task_volume_summary,
                 transactions_with_outcome_count: transactions_with_outcome_count,
                 transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
-                pct_users_intended_outcome: pct_users_intended_outcome
+                pct_users_intended_outcome: pct_users_intended_outcome,
+                to_3_sf: default_service.to3SF
               }
             )
           }
         )
       })
       .catch(err => {
+        var default_service = this.app.services.DefaultService;
+
         this.app.services.DepartmentService.getDepartmentByFriendlyId(friendly_id)
           .then(function(department) {
             if (department == undefined) { throw true };
@@ -149,7 +153,8 @@ module.exports = class ViewController extends Controller {
                     transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
                     pct_users_intended_outcome: pct_users_intended_outcome,
                     grouped_volumes: agency_totals,
-                    transaction_volumes: transaction_totals
+                    transaction_volumes: transaction_totals,
+                    to_3_sf: default_service.to3SF
                   }
                 )
               }
@@ -157,6 +162,8 @@ module.exports = class ViewController extends Controller {
           })
           .catch(err => {
             var agency_service = this.app.services.AgencyService;
+            var default_service = this.app.services.DefaultService;
+
             this.app.services.AgencyService.getAgencyByFriendlyId(friendly_id)
               .then(function(agency) {
                 var task_ids = agency.tasks.map(function(task) { return task.id });
@@ -184,7 +191,8 @@ module.exports = class ViewController extends Controller {
                         transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
                         pct_users_intended_outcome: pct_users_intended_outcome,
                         volume_summary: task_volume_summary,
-                        grouped_volumes: task_totals
+                        grouped_volumes: task_totals,
+                        to_3_sf: default_service.to3SF
                       }
                     )
                   }
