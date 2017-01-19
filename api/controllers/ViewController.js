@@ -29,25 +29,42 @@ module.exports = class ViewController extends Controller {
   }
 
   govtPerformanceView(req, res) {
+    var uk_government_service = this.app.services.UKGovernmentService;
+    var department_service = this.app.services.DepartmentService;
+    var default_service = this.app.services.DefaultService;
     var Promise = require('bluebird');
     Promise.join(
       this.app.orm.Department.find({ where : {}, sort: 'name ASC' })
-        .then( departments => { return departments }),
+        .then( departments => { return departments }), // then call anonymous function passing in one argument called 'departments'
       this.app.orm.Agency.find({ where : {}, sort: 'name ASC' })
         .then( agencies => { return agencies }),
       this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
         .then( tasks  => { return tasks }),
-      this.app.orm.TaskVolumeRecord.find({})
-        .then( task_volume_records => { return task_volume_records }),
-      this.app.services.DepartmentService.getTransactionsReceivedByDept()
-        .then( department_totals => { return department_totals.rows }),
-      function (departments, agencies, tasks, task_volume_records, department_totals) {
-        var task_volume_summary = new TaskVolumeSummary(task_volume_records);
-        department_totals = department_totals.map(function(department_total) {
-          department_total.pct_total_received = Math.floor(
-            (department_total.total_received / task_volume_summary.total_received) * 100) ;
-          return department_total
-        });
+      uk_government_service.sumTransactionCountsByDept()
+        .then( transaction_counts_by_dept => { return transaction_counts_by_dept.rows })
+        .then( function(transaction_counts_by_dept) {
+          return transaction_counts_by_dept.map(function(counts) {
+            counts.pct_users_intended_outcome = default_service.pct_of(
+              counts.transactions_with_users_intended_outcome_count, counts.transactions_with_outcome_count);
+
+              counts.pct_received_online = default_service.pct_of(
+                counts.transactions_received_online_count, counts.transactions_received_count);
+
+              counts.pct_received_phone = default_service.pct_of(
+                counts.transactions_received_phone_count, counts.transactions_received_count);
+
+              counts.pct_received_paper = default_service.pct_of(
+                counts.transactions_received_paper_count, counts.transactions_received_count);
+
+              counts.pct_received_face_to_face = default_service.pct_of(
+                counts.transactions_received_face_to_face_count, counts.transactions_received_count);
+
+              counts.pct_received_other = default_service.pct_of(
+                counts.transactions_received_other, counts.transactions_received_count);
+
+            return counts; })
+        }),
+      function (departments, agencies, tasks, transaction_counts_by_dept) {
         res.render(
           'performance-data/government/show.html',
           {
@@ -56,8 +73,8 @@ module.exports = class ViewController extends Controller {
             departments: departments,
             agencies: agencies,
             tasks: tasks,
-            department_totals: department_totals,
-            task_volume_summary: task_volume_summary
+            transaction_counts_by_dept: transaction_counts_by_dept,
+            to_3_sf: default_service.to3SF
           }
         )
       }
@@ -66,15 +83,25 @@ module.exports = class ViewController extends Controller {
 
   performanceView(req, res) {
     var friendly_id = req.params.friendly_id;
+    var task_service = this.app.services.TaskService;
     var task_volume_service = this.app.services.TaskVolumeRecordService;
     var department_service = this.app.services.DepartmentService;
     var default_service = this.app.services.DefaultService;
     this.app.services.TaskService.getTaskByFriendlyId(friendly_id)
       .then(function(task) {
         if (task == undefined) { throw true };
-        task_volume_service.getTotalVolumeByTask([task.id])
-          .then( task_volume_records => {
-            var task_volume_summary = new TaskVolumeSummary(task_volume_records.rows);
+        var Promise = require('bluebird');
+        Promise.join(
+          task_volume_service.getTotalVolumeByTask([task.id])
+            .then( task_volume_records => { return task_volume_records.rows }),
+          task_service.sumTransactionsWithOutcome(task.friendly_id)
+            .then( transactions_with_outcome_count => { return transactions_with_outcome_count.rows[0].sum }),
+          task_service.sumTransactionsWithUsersIntendedOutcome(task.friendly_id)
+            .then( transactions_with_users_intended_outcome_count => { return transactions_with_users_intended_outcome_count.rows[0].sum }),
+          function(task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count) {
+            var task_volume_summary = new TaskVolumeSummary(task_volume_records);
+            var pct_users_intended_outcome = default_service.pct_of(
+                  transactions_with_users_intended_outcome_count, transactions_with_outcome_count);
             res.render(
               'performance-data/tasks/show.html',
               {
@@ -82,12 +109,19 @@ module.exports = class ViewController extends Controller {
                 department: task.department,
                 agency: task.agency,
                 task: task,
-                volume_summary: task_volume_summary
+                volume_summary: task_volume_summary,
+                transactions_with_outcome_count: transactions_with_outcome_count,
+                transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
+                pct_users_intended_outcome: pct_users_intended_outcome,
+                to_3_sf: default_service.to3SF
               }
             )
-          })
+          }
+        )
       })
       .catch(err => {
+        var default_service = this.app.services.DefaultService;
+
         this.app.services.DepartmentService.getDepartmentByFriendlyId(friendly_id)
           .then(function(department) {
             if (department == undefined) { throw true };
@@ -96,13 +130,38 @@ module.exports = class ViewController extends Controller {
             Promise.join(
               task_volume_service.getTotalVolumeByTask(task_ids)
                 .then( task_volume_records => { return task_volume_records.rows }),
+              department_service.sumTransactionsWithOutcome(department.friendly_id)
+                .then( transactions_with_outcome_count => { return transactions_with_outcome_count.rows[0].sum }),
+              department_service.sumTransactionsWithUsersIntendedOutcome(department.friendly_id)
+                .then( transactions_with_users_intended_outcome_count => { return transactions_with_users_intended_outcome_count.rows[0].sum }),
               department_service.getTransactionsReceivedByAgency(department.friendly_id)
                 .then( agency_totals => { return agency_totals.rows }),
+              department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'online')
+                .then( online_totals => { return online_totals.rows }),
+              department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'phone')
+                .then( phone_totals => { return phone_totals.rows }),
+              department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'paper')
+                .then( paper_totals => { return paper_totals.rows }),
+              department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'face-to-face')
+                .then( face_to_face_totals => { return face_to_face_totals.rows }),
+              department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'other')
+                .then( other_totals => { return other_totals.rows }),
               department_service.getTransactionsReceivedByTask(department.friendly_id)
                 .then( transaction_totals => { return transaction_totals.rows }),
-              function(task_volume_records, agency_totals, transaction_totals) {
-                console.log(task_volume_records);
+              function(
+                task_volume_records,
+                transactions_with_outcome_count,
+                transactions_with_users_intended_outcome_count,
+                agency_totals,
+                online_totals,
+                phone_totals,
+                paper_totals,
+                face_to_face_totals,
+                other_totals,                
+                transaction_totals ) {
                 var task_volume_summary = new TaskVolumeSummary(task_volume_records);
+                var pct_users_intended_outcome = default_service.pct_of(
+                      transactions_with_users_intended_outcome_count, transactions_with_outcome_count);
                 res.render(
                   'performance-data/show.html',
                   {
@@ -110,8 +169,18 @@ module.exports = class ViewController extends Controller {
                     organisation_type: default_service.organisationType(department),
                     organisation: department,
                     volume_summary: task_volume_summary,
+                    transactions_with_outcome_count: transactions_with_outcome_count,
+                    transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
+                    pct_users_intended_outcome: pct_users_intended_outcome,
                     grouped_volumes: agency_totals,
-                    transaction_volumes: transaction_totals
+                    online_totals: online_totals,
+                    phone_totals: phone_totals,
+                    paper_totals: paper_totals,
+                    face_to_face_totals: face_to_face_totals,
+                    other_totals: other_totals,
+                    transaction_volumes: transaction_totals,
+                    to_3_sf: default_service.to3SF,
+                    pct_of: default_service.pct_of
                   }
                 )
               }
@@ -119,6 +188,8 @@ module.exports = class ViewController extends Controller {
           })
           .catch(err => {
             var agency_service = this.app.services.AgencyService;
+            var default_service = this.app.services.DefaultService;
+
             this.app.services.AgencyService.getAgencyByFriendlyId(friendly_id)
               .then(function(agency) {
                 var task_ids = agency.tasks.map(function(task) { return task.id });
@@ -126,18 +197,54 @@ module.exports = class ViewController extends Controller {
                 Promise.join(
                   task_volume_service.getTotalVolumeByTask(task_ids)
                     .then( task_volume_records => { return task_volume_records.rows }),
+                  agency_service.sumTransactionsWithOutcome(agency.friendly_id)
+                    .then( transactions_with_outcome_count => { return transactions_with_outcome_count.rows[0].sum }),
+                  agency_service.sumTransactionsWithUsersIntendedOutcome(agency.friendly_id)
+                    .then( transactions_with_users_intended_outcome_count => { return transactions_with_users_intended_outcome_count.rows[0].sum }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'online')
+                    .then( online_totals => { return online_totals.rows }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'phone')
+                    .then( phone_totals => { return phone_totals.rows }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'paper')
+                    .then( paper_totals => { return paper_totals.rows }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'face-to-face')
+                    .then( face_to_face_totals => { return face_to_face_totals.rows }),
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'other')
+                    .then( other_totals => { return other_totals.rows }),
                   agency_service.getTransactionsReceivedByTask(agency.friendly_id)
                     .then( task_totals => { return task_totals.rows }),
-                  function(task_volume_records, task_totals) {
+                  function(
+                    task_volume_records,
+                    transactions_with_outcome_count,
+                    transactions_with_users_intended_outcome_count,
+                    agency_totals,
+                    online_totals,
+                    phone_totals,
+                    paper_totals,
+                    face_to_face_totals,
+                    other_totals, 
+                    task_totals) {
                     var task_volume_summary = new TaskVolumeSummary(task_volume_records);
+                    var pct_users_intended_outcome = default_service.pct_of(
+                          transactions_with_users_intended_outcome_count, transactions_with_outcome_count);
                     res.render(
                       'performance-data/show.html',
                       {
                         asset_path: '/govuk_modules/govuk_template/assets/',
                         organisation_type: default_service.organisationType(agency),
                         organisation: agency,
+                        transactions_with_outcome_count: transactions_with_outcome_count,
+                        transactions_with_users_intended_outcome_count: transactions_with_users_intended_outcome_count,
+                        pct_users_intended_outcome: pct_users_intended_outcome,
                         volume_summary: task_volume_summary,
-                        grouped_volumes: task_totals
+                        grouped_volumes: task_totals,
+                        online_totals: online_totals,
+                        phone_totals: phone_totals,
+                        paper_totals: paper_totals,
+                        face_to_face_totals: face_to_face_totals,
+                        other_totals: other_totals,
+                        to_3_sf: default_service.to3SF,
+                        pct_of: default_service.pct_of
                       }
                     )
                   }

@@ -23,7 +23,7 @@ module.exports = {
 
     models: {
       defaultStore: 'postgres',
-      migrate: 'alter'
+      migrate: 'safe'
     }
 
   },

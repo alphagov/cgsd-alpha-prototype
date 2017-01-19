@@ -194,34 +194,35 @@
   <div class="grid-row">
     <ul class="filter-cards column-full">
       
-      {% for department in department_totals %}
+      {% for department in transaction_counts_by_dept %}
       <li class="column-full">
         <div class="column-one-quarter">
           <h2 class="bold-medium"><a href="{{ department.friendly_id }}">{{ department.name }}</a></h2>
           <ul class="list font-xsmall">
-            <li><strong>6</strong> agencies</li>
-            <li><strong>28</strong> services</li>
+            <li><strong>{{ department.agencies_count}}</strong> agencies</li>
+            <li><strong>{{ department.services_count}}</strong> services</li>
           </ul>
         </div>
         <div class="column-one-quarter">
           <div class="data">
-            <span class="data-item bold-large">{{ department.total_received }}m</span>
+            <span class="data-item bold-large">{{ to_3_sf(department.transactions_received_count) }}</span>
             <span class="data-item bold-xsmall">transactions received</span>
           </div>
           <ul class="list font-xsmall">
-            <li><strong>60%</strong> online</li>
-            <li><strong>20%</strong> phone</li>
-            <li><strong>10%</strong> paper</li>
-            <li><strong>10%</strong> other</li>
+            <li><strong>{{ department.pct_received_online }}%</strong> online</li>
+            <li><strong>{{ department.pct_received_phone }}%</strong> phone</li>
+            <li><strong>{{ department.pct_received_paper }}%</strong> paper</li>
+            <li><strong>{{ department.pct_received_face_to_face }}%</strong> face-to-face</li>
+            <li><strong>{{ department.pct_received_other }}%</strong> other</li>
           </ul>
         </div>
         <div class="column-one-quarter">
           <div class="data">
-            <span class="data-item bold-large">1.1m</span>
+            <span class="data-item bold-large">{{ to_3_sf(department.transactions_with_outcome_count) }}</span>
             <span class="data-item bold-xsmall">transactions ending in an outcome</span>
           </div>
           <ul class="list font-xsmall">
-            <li><strong>60%</strong> end in user's intended outcome</li>
+            <li><strong>{{ department.pct_users_intended_outcome }}%</strong> end in user's intended outcome</li>
           </ul>
         </div>
         <div class="column-one-quarter">

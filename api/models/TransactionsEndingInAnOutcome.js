@@ -3,10 +3,10 @@
 const Model = require('trails-model')
 
 /**
- * @module TaskVolumeRecord
- * @description GovUK Task Volume Record object
-*/
-module.exports = class TaskVolumeRecord extends Model {
+ * @module TransactionsEndingInAnOutcome
+ * @description Monthly summary of transactions ending in an outcome
+ */
+module.exports = class TransactionsEndingInAnOutcome extends Model {
 
   static config () {
   }
@@ -19,10 +19,10 @@ module.exports = class TaskVolumeRecord extends Model {
       month_end_date: {
         type: 'date'
       },
-      channel: {       // channel through which an application was received:
-        type: 'string' // online, paper, phone, face-to-face, other
+      all_outcomes_count: {
+        type: 'integer'
       },
-      count: {
+      users_intended_outcome_count: {
         type: 'integer'
       },
       // associations

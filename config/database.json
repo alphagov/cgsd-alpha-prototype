@@ -1,0 +1,10 @@
+{
+  "development": {
+    "driver": "pg",
+    "user": "turkeyred",
+    "password": "",
+    "host": "localhost",
+    "database": "pp_alpha",
+    "schema": "public"
+  }
+}
