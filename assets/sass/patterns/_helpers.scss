@@ -1,18 +1,44 @@
 // Prototype banner
 
 .prototype {
-    font-weight: 700;
-    position: fixed;
-    left: -50px;
-    top: 35px;
-    background-color: $turquoise;
-    width: 200px;
-    text-align: center; 
-    transform: rotate(-45deg);
+  font-weight: 700;
+  position: fixed;
+  left: -50px;
+  top: 35px;
+  background-color: $turquoise;
+  width: 200px;
+  text-align: center; 
+  transform: rotate(-45deg);
 
-    @media screen and (max-width: 1200px) {
-        display: none;
-    }
+  @media screen and (max-width: 1200px) {
+      display: none;
+  }
+
+}
+
+// Typography
+
+strong {
+  font-weight: 700;
+}
+
+// Colours
+
+.blue { 
+  color: $govuk-blue; 
+}
+
+.secondary-text-colour {
+  color: $secondary-text-colour;
+}
+
+// Mobile helpers
+
+@media screen and (max-width: 640px) {
+
+  .mb_0 {
+    margin-bottom: 0px !important;
+  }
 
 }
 
@@ -20,41 +46,45 @@
 
 @media screen and (min-width: 641px) {
     
-    .m_0 {
-        margin: 0px !important;
-    }
+  .m_0 {
+    margin: 0px !important;
+  }
 
-    .mt_0 {
-        margin-top: 0px !important;
-    }
+  .mt_0 {
+    margin-top: 0px !important;
+  }
 
-    .mb_0 {
-        margin-bottom: 0px !important;
-    }
+  .mb_0 {
+    margin-bottom: 0px !important;
+  }
 
-    .mt_5 {
-        margin-top: 5px !important;
-    }
+  .mt_5 {
+    margin-top: 5px !important;
+  }
 
-    .mb_5 {
-        margin-bottom: 5px !important;
-    }
+  .mb_5 {
+    margin-bottom: 5px !important;
+  }
 
-    .mt_10 {
-        margin-top: 10px !important;
-    }
+  .mt_5 {
+    margin-top: 5px !important;
+  }
 
-    .mt_20 {
-        margin-top: 20px !important;
-    }
+  .mt_10 {
+    margin-top: 10px !important;
+  }
 
-    .mb_10 {
-        margin-bottom: 10px !important;
-    }
+  .mt_20 {
+    margin-top: 20px !important;
+  }
 
-    .mb_20 {
-        margin-bottom: 20px !important;
-    }
+  .mb_10 {
+    margin-bottom: 10px !important;
+  }
+
+  .mb_20 {
+    margin-bottom: 20px !important;
+  }
 }
 
 // Forms
