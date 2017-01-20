@@ -41,21 +41,21 @@ module.exports = class AgencyService extends Service {
     return this.app.orm.Agency.query(
       "SELECT task.friendly_id, \
               task.name, \
-              SUM(taskvolumerecord.count) as transactions_received_count, \
+              SUM(taskvolumerecord.count) as transactions_received_channel_count, \
               ( \
-                SELECT SUM(taskvolumerecord.count) as transactions_received_channel_count \
-                FROM task \
-                INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
-                WHERE task.agency = agency.id \
-                AND taskvolumerecord.channel = $1 \
+                SELECT SUM(taskvolumerecord.count) as transactions_received_count \
+                FROM task AS t1 \
+                INNER JOIN taskvolumerecord ON taskvolumerecord.task = t1.id \
+                WHERE t1.id = task.id \
               ) \
        FROM agency \
        INNER JOIN task ON task.agency = agency.id \
        INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
-       WHERE agency.friendly_id = $2 \
-       GROUP BY agency.id, task.id, task.friendly_id, task.name \
+       WHERE agency.friendly_id = $1 \
+       AND taskvolumerecord.channel = $2 \
+       GROUP BY task.id, task.friendly_id, task.name \
        ORDER BY transactions_received_channel_count DESC",
-      [channel, friendly_id]
+      [friendly_id, channel]
     );
   }
 
