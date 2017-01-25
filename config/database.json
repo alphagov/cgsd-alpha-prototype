@@ -8,7 +8,7 @@
     "host": "localhost",
     "database": "pp_alpha",
     "schema": "public"
-  }
+  },
 
   "production": { "ENV": "FOOBAR"}
 }
