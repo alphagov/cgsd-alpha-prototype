@@ -1,8 +1,6 @@
 ---
 applications:
 - name: pp-alpha
-  command: NODE_ENV=production node server.js
-  memory: 256M
   buildpack: nodejs_buildpack
-
-
+  command: node node_modules/db-migrate/bin/db-migrate up -v --config config/database.json && NODE_ENV=production node server.js
+  memory: 256M

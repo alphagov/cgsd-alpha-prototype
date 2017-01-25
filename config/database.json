@@ -1,4 +1,6 @@
 {
+  "default": "production",
+
   "development": {
     "driver": "pg",
     "user": "turkeyred",
@@ -7,4 +9,6 @@
     "database": "pp_alpha",
     "schema": "public"
   }
+
+  "production": { "ENV": "FOOBAR"}
 }
