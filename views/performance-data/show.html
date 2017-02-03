@@ -1,7 +1,7 @@
 {% extends "layouts/govuk-registers.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  {{ organisation.name }} - Cross-Government Service Data
 {% endblock %}
 
 {% block content %}
@@ -36,10 +36,10 @@
   <div class="grid-row data-block">
 
     <div class="column-one-third">
-      <div class="data">
+      <h2 class="data">
         <span class="data-item bold-xxlarge">{{ to_3_sf(volume_summary.total_received) }}</span>
         <span class="data-item bold-medium">transactions received</span>
-      </div>
+      </h2>
       <br>
       <details class="font-xsmall">
         <summary><span class="summary">More info</span></summary>
@@ -59,7 +59,7 @@
       <div class="topic-content">
 
         <div data-module="accordion-with-descriptions">
-          <h2 class="bold-medium">Channels used to access the service</h2>
+          <h3 class="bold-medium">Channels used to access the service</h3>
           <div class="subsection-wrapper">
             <div class="subsection">
               <div class="subsection__header">
@@ -105,7 +105,7 @@
                   <span class="lede">({{ volume_summary.received_phone_pct_total }}%)</span>
                 </h2>
               </div>
-              <div class="subsection__content" id="">
+              <div class="subsection__content">
                 <table>
                   <tbody>
                     <tr>
@@ -141,7 +141,7 @@
                   <span class="black">Paper</span> {{ to_3_sf(volume_summary.received_paper) }}
                   <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></style></h2>
               </div>
-              <div class="subsection__content" id="">
+              <div class="subsection__content" >
                 <table>
                   <tbody>
                     <tr>
@@ -177,7 +177,7 @@
                   <span class="black">Face-to-face</span> {{ to_3_sf(volume_summary.received_face_to_face) }}
                   <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></h2>
               </div>
-              <div class="subsection__content" id="">
+              <div class="subsection__content" >
                 <table>
                   <tbody>
                     <tr>
@@ -213,7 +213,7 @@
                   <span class="black">Other</span> {{ to_3_sf(volume_summary.received_other) }}
                   <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></h2>
               </div>
-              <div class="subsection__content" id="">
+              <div class="subsection__content" >
                 <table>
                   <tbody>
                     <tr>
@@ -256,10 +256,10 @@
   <div class="grid-row data-block">
 
     <div class="column-one-third">
-      <div class="data">
+      <h2 class="data">
         <span class="data-item bold-xxlarge">{{ to_3_sf(transactions_with_outcome_count) }}</span>
         <span class="data-item bold-medium">transactions ending in an outcome</span>
-      </div> 
+      </h2> 
       <br>
       <details class="font-xsmall">
         <summary><span class="summary">More info</span></summary>
@@ -282,13 +282,13 @@
       <div class="topic-content">
 
         <div data-module="accordion-with-descriptions">
-            <h2 class="bold-medium">Delivery of the service</h2>
+            <h3 class="bold-medium">Delivery of the service</h3>
             <div class="subsection-wrapper">
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
+                  <h4 class="subsection__title">
                     <span class="black">Ending in an outcome</span> {{ to_3_sf(transactions_with_outcome_count) }} 
-                  </h2>
+                  </h4>
                 </div>
                 <div class="subsection__content">
                   <table>
@@ -336,12 +336,12 @@
               </div>
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
+                  <h4 class="subsection__title">
                     <span class="black">Ending in user's intended outcome</span> {{ to_3_sf(transactions_with_users_intended_outcome_count) }}
                     <span class="lede">({{ pct_users_intended_outcome }}%)</span>
-                  </h2>
+                  </h4>
                 </div>
-                <div class="subsection__content" id="">
+                <div class="subsection__content" >
                   <table>
                     <tbody>
                       <tr>
@@ -397,10 +397,10 @@
   <div class="grid-row data-block">
 
     <div class="column-one-third">
-      <div class="data">
+      <h2 class="data">
         <span class="data-item bold-xxlarge">7.2m</span>
         <span class="data-item bold-medium">calls received</span>
-      </div> 
+      </h2> 
       <br>
       <details class="font-xsmall">
         <summary><span class="summary">More info</span></summary>
@@ -420,15 +420,15 @@
       <div class="topic-content">
 
         <div data-module="accordion-with-descriptions">
-            <h2 class="bold-medium">Reasons people called</h2>
+            <h3 class="bold-medium">Reasons people called</h3>
             <p style="margin: -5px 0 10px">Based on a sample of 10,000 calls</p>
             <div class="subsection-wrapper">
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
+                  <h4 class="subsection__title">
                     <span class="black">To get information</span> 2.8m 
                     <span class="lede">(40%)</span>
-                  </h2>
+                  </h4>
                 </div>
                 <div class="subsection__content">
                   <table>
@@ -481,12 +481,12 @@
               </div>
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
+                  <h4 class="subsection__title">
                     <span class="black">To chase progress</span> 1.8m 
                     <span class="lede">(30%)</span>
-                  </h2>
+                  </h4>
                 </div>
-                <div class="subsection__content" id="">
+                <div class="subsection__content" >
                   <table>
                     <tbody>
                       <tr>
@@ -534,12 +534,12 @@
               </div>
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
+                  <h4 class="subsection__title">
                     <span class="black">To challenge a decision</span> 1.4m 
                     <span class="lede">(20%)</span>
-                  </h2>
+                  </h4>
                 </div>
-                <div class="subsection__content" id="">
+                <div class="subsection__content" >
                   <table>
                     <tbody>
                       <tr>
@@ -584,12 +584,12 @@
               </div>
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
+                  <h4 class="subsection__title">
                     <span class="black">Other</span> 1m 
                     <span class="lede">(15%)</span>
-                  </h2>
+                  </h4>
                 </div>
-                <div class="subsection__content" id="">
+                <div class="subsection__content" >
                   <table>
                     <tbody>
                       <tr>

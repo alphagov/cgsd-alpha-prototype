@@ -1,7 +1,7 @@
 {% extends "layouts/govuk-registers.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  Overview - Cross-Government Service Data
 {% endblock %}
 
 {% block content %}
@@ -25,13 +25,9 @@
 
   <div class="grid-row filter-panel-horizontal">
 
-    <div class="column-full">
-      <h2 class="bold-small mb_0">Showing</h2>
-    </div>
-
-    <form class="column-full filter-row">
+    <form class="column-full filter-row mt_-5">
       <fieldset>
-        <legend class="visuallyhidden">Showing</legend>
+        <label>Show</label>
         <div class="form-group inline-forms width-data-type" id="filter-select-box">
           <select class="form-control" id="select-org-type">
             <option value="departments">Departments</option>
@@ -41,11 +37,7 @@
         </div>
         <span class="connecting-word">in</span>
         <span class="filter-org-default">
-          <div class="form-group inline-forms width-data-org">
-            <select class="form-control">
-              <option value="UK Government">UK Government</option>
-            </select>
-          </div>
+          UK Government
         </span>
         <span class="filter-org-type">
           <div class="form-group inline-forms width-data-org">
@@ -102,81 +94,9 @@
       </fieldset> 
     </form>
 
-    <div class="column-full">
-      <h2 class="bold-small m_0">Where</h2>
-    </div>  
-
-    <div class="column-full filter-row" id="filterrow1">
-      <form>
-        <fieldset>
-          <legend class="visuallyhidden">Where</legend>
-          <div class="form-group inline-forms width-data-org">
-            <select class="form-control select-metric">
-              <option value="transactions">Transactions received</option>
-              <option value="online">– Online transactions received</option>
-              <option value="phone">– Phone transactions received</option>
-              <option value="paper">– Paper transactions received</option>
-              <option value="facetoface">– Face-to-face transactions received</option>
-              <option value="other">– Other transactions received</option>
-              <option value="outcome">Transactions ending in an outcome</option>
-              <option value="intendedoutcome">– Transactions ending in the user's intended outcome</option>
-              <option value="calls">Calls received</option>
-              <option value="getinfo">– Calls to get information</option>
-              <option value="chaseprogress">– Calls to chase progress</option>
-              <option value="challengedecision">– Calls to challenge a decision</option>
-              <option value="othercall">– Other</option>
-              <option value="numberservices">Number of services</option>
-              <option value="numberagencies">Number of agencies</option>
-            </select>
-          </div>
-          <span>
-            <div class="form-group inline-forms width-data-range">
-              <select class="form-control select-range">
-                <option value="isgreaterthan">are greater than</option>
-                <option value="islessthan">are less than</option>
-              </select>
-            </div>
-          </span>
-          <span class="input-number">
-            <div class="form-group inline-forms width-data-input">
-              <input class="form-control" id="field-range-1" type="text" value='0'>
-            </div>
-          </span>
-          <span class="input-percentage">
-            <div class="form-group inline-forms width-data-percentage">
-              <input class="form-control" id="field-range-2" type="text" value='0'>
-            </div><span class="connecting-word">%</span>
-          </span> 
-          <span class="clear-filter-row font-xsmall">
-            <a href="#">Remove</a>
-          </span>
-        </fieldset> 
-      </form> 
-    </div>
-
-    <div class="column-full">
-      <p><a href="javascript:void()" id="add-filter-row">+ Add filter</a></p>
-    </div>
-
-    <form class="column-full">
+    <form class="column-full filter-row">
       <fieldset>
-        <legend class="visuallyhidden">Where</legend>
-        <a class="button" type="submit" href="javascript:void()">Apply filters</a>
-        <a class="cancel-button" href="javascript:void()" onclick='location.reload(true); return false;'>Reset filters</a>
-      </fieldset>
-    </form>    
-     
-  </div>
-
-  <!--end of filter-->  
-
-  <div class="grid-row">
-    <div class="column-one-third">
-      <p>Showing <strong>12</strong> departments</p>
-    </div>
-    <div class="column-two-thirds">
-      <div class="form-group sort-by">
-        <label class="form-label" for="select-box">Sort by</label>
+        <label>Sort by</label>
         <select class="form-control form-control-1-2">
           <option>Transactions received</option>
           <option>– Online</option>
@@ -194,8 +114,17 @@
           <option>Number of services</option>
           <option>Number of agencies</option>
         </select>
-        <span class="font-xsmall"><a href="javascript:void()">Reverse order</a></span>
-      </div>
+        <span class="font-xsmall ml_5"><a href="javascript:void()">⇅ Reverse order</a></span>
+      </fieldset>
+    </form>    
+     
+  </div>
+
+  <!--end of filter-->  
+
+  <div class="grid-row">
+    <div class="column-one-third">
+      <p>Showing <strong>12</strong> departments</p>
     </div>
   </div>    
 

@@ -1,7 +1,7 @@
 {% extends "layouts/govuk-registers.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  {{ task.name }} - Cross-Government Service Data
 {% endblock %}
 
 {% block content %}
@@ -73,10 +73,10 @@
   <div class="grid-row data-block">
 
     <div class="column-one-third">
-      <div class="data">
+      <h2 class="data">
         <span class="data-item bold-xxlarge">{{ to_3_sf(volume_summary.total_received) }}</span>
         <span class="data-item bold-medium">transactions received</span>
-      </div> 
+      </h2> 
       <br>
       <details class="font-xsmall">
         <summary><span class="summary">More info</span></summary>
@@ -93,7 +93,7 @@
 
     <div class="column-two-thirds">
 
-      <h2 class="heading-medium">Channels used to access the service</h2>
+      <h3 class="heading-medium">Channels used to access the service</h3>
       <ul class="list bold-medium">
         <li>
           Online <span class="blue">{{ to_3_sf(volume_summary.received_online) }} <span class="lede">({{ volume_summary.received_online_pct_total }}%)</span></span>
@@ -166,10 +166,10 @@
   <div class="grid-row data-block">
 
     <div class="column-one-third">
-      <div class="data">
+      <h2 class="data">
         <span class="data-item bold-xxlarge">{{ to_3_sf(transactions_with_outcome_count) }}</span>
         <span class="data-item bold-medium">transactions ending in an outcome</span>
-      </div>
+      </h2>
       <br>
       <details class="font-xsmall">
         <summary><span class="summary">More info</span></summary>
@@ -188,7 +188,7 @@
     </div>
 
     <div class="column-two-thirds">
-      <h2 class="heading-medium" style="margin-top: 0">Delivery of the service</h2>
+      <h3 class="heading-medium" style="margin-top: 0">Delivery of the service</h3>
       <ul class="list bold-medium">
         <li>
           Transactions ending in an outcome <span class="blue">{{ to_3_sf(transactions_with_outcome_count) }}</span>
@@ -232,10 +232,10 @@
   <div class="grid-row data-block">
 
     <div class="column-one-third">
-      <div class="data">
+      <h2 class="data">
         <span class="data-item bold-xxlarge">700k</span>
         <span class="data-item bold-medium">calls received</span>
-      </div> 
+      </h2> 
       <br>
       <details class="font-xsmall">
         <summary><span class="summary">More info</span></summary>
@@ -251,7 +251,7 @@
     </div>
 
     <div class="column-two-thirds">
-      <h2 class="bold-medium">Reasons people called the service</h2>
+      <h3 class="bold-medium">Reasons people called the service</h3>
       <p style="margin: 0 0 20px">Based on a sample of 1,000 calls</p>
       <ul class="list bold-medium">
         <li>

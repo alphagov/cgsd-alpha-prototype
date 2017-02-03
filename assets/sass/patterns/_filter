@@ -2,11 +2,16 @@
 
 .filter-panel-horizontal {
   background-color: $panel-colour;
-  padding: 15px 5px;
+  padding: 20px 5px;
   margin: -10px 0 20px;
 
   @media screen and (max-width: 640px) {
     padding: 15px 0;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
   }
 
   h2 {
@@ -34,7 +39,7 @@
   }
 
   .form-group:last-of-type {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 
     @media screen and (max-width: 640px) {
       margin-bottom: 5px;
@@ -78,7 +83,7 @@
 // filter rows
 
 .filter-row {
-  margin-bottom: -15px;
+  margin-bottom: 0;
 
   select {
     background-color: $white;
@@ -127,7 +132,7 @@
     display: none;
   }
 
-  .width-data-org { width:40% }
+  .width-data-org { width:50% }
   .width-data-type { width:30% }
   .width-data-range { width:20% }
   .width-data-input { width:15% }
@@ -148,21 +153,6 @@
 
 }
 
-// sort controls
-
-.sort-by {
-  margin-bottom: 0;
-  text-align: right;
-
-  label, select {
-    display: inline-block;
-    margin-left: 5px;
-  }
-
-  span {
-    margin-left: 10px;
-  }
-}
 
 // filter cards
 
