@@ -34,6 +34,21 @@
   display: block;
 }
 
+.data {
+
+  .bold-xxlarge {
+
+    @media (max-width: 920px) {
+      font-size: 56px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 48px;
+    }
+  }
+  
+}
+
 // Stuff from product pages sass
 
 .section-header {
