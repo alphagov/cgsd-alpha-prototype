@@ -130,6 +130,10 @@
     .breadcrumbs {
       border-bottom: 1px solid #377FB9;
 
+      li {
+        background-image: url('../../images/separator.png');
+      }
+
       a {
           color: $white;
       }
