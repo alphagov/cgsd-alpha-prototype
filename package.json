@@ -9,7 +9,7 @@
     "url": "https://github.com/trailsjs"
   },
   "engines": {
-    "node": "6.9.0",
+    "node": "6.9.3",
     "npm": "3.10.6"
   },
   "main": "index.js",
