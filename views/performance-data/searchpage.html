@@ -1,7 +1,7 @@
 {% extends "layouts/govuk-registers.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  Search - Cross-Government Service Data
 {% endblock %}
 
 {% block content %}
@@ -13,10 +13,11 @@
       <p>Find data for a specific government department, agency or service:</p>
       <form action="/search" autocomplete="off" method="get">
         <fieldset>
+          <label class="visuallyhidden">Search</label>
           <div class="form-group search">
             <div class="wrapper">
-              <select id="search" type="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true">
-                <option value=""></option>
+              <select id="search" class="typeahead js-hidden form-control-1" name="search" aria-required="true">
+                <option disabled selected value> -- select an option -- </option>
                 {% for option in search_options %}
                   <option value="{{ option.friendly_id }}">{{ option.name }}</option>
                 {% endfor %}

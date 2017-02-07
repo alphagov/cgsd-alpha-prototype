@@ -1,7 +1,7 @@
 {% extends "layouts/govuk-registers.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  {{ organisation.name }} - Cross-Government Service Data
 {% endblock %}
 
 {% block content %}
@@ -36,10 +36,10 @@
   <div class="grid-row data-block">
 
     <div class="column-one-third">
-      <div class="data">
+      <h2 class="data">
         <span class="data-item bold-xxlarge">{{ to_3_sf(volume_summary.total_received) }}</span>
         <span class="data-item bold-medium">transactions received</span>
-      </div>
+      </h2>
       <br>
       <details class="font-xsmall">
         <summary><span class="summary">More info</span></summary>
@@ -59,7 +59,7 @@
       <div class="topic-content">
 
         <div data-module="accordion-with-descriptions">
-          <h2 class="bold-medium">Channels used to access the service</h2>
+          <h3 class="bold-medium">Channels used to access the service</h3>
           <div class="subsection-wrapper">
             <div class="subsection">
               <div class="subsection__header">
@@ -69,6 +69,9 @@
                 </h2>
               </div>
               <div class="subsection__content">
+                <p class="font-xsmall">
+                  The transaction must be received online. Doesn’t include services where you use an online tool to fill out a paper form or transactions received via web chat.
+                </p> 
                 <table>
                   <tbody>
                     <tr>
@@ -87,15 +90,6 @@
                     {% endfor %}
                   </tbody>
                 </table>
-                <br>
-                <details class="font-xsmall">
-                  <summary><span class="summary">More info</span></summary>
-                  <div class="panel panel-border-narrow">
-                    <p>
-                      The transaction must be received online. Doesn’t include services where you use an online tool to fill out a paper form or transactions received via web chat.
-                    </p> 
-                  </div>
-                </details>
               </div>
             </div>
             <div class="subsection">
@@ -105,7 +99,10 @@
                   <span class="lede">({{ volume_summary.received_phone_pct_total }}%)</span>
                 </h2>
               </div>
-              <div class="subsection__content" id="">
+              <div class="subsection__content">
+                <p class="font-xsmall">
+                  The transaction must be received via the phone. Doesn’t include IVR or purely informational calls that don’t affect the outcome of a transaction.
+                </p> 
                 <table>
                   <tbody>
                     <tr>
@@ -124,15 +121,6 @@
                     {% endfor %}
                   </tbody>
                 </table>
-                <br>
-                <details class="font-xsmall">
-                  <summary><span class="summary">More info</span></summary>
-                  <div class="panel panel-border-narrow">
-                    <p>
-                      The transaction must be received via the phone. Doesn’t include IVR or purely informational calls that don’t affect the outcome of a transaction.
-                    </p> 
-                  </div>
-                </details>
               </div>
             </div>
             <div class="subsection">
@@ -142,6 +130,9 @@
                   <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></style></h2>
               </div>
               <div class="subsection__content" id="">
+                <p class="font-xsmall">
+                  The transaction must be received via a paper form filled out by hand. The form can be sent in any way including by post, email, fax or uploading.
+                </p>
                 <table>
                   <tbody>
                     <tr>
@@ -160,15 +151,6 @@
                     {% endfor %}
                   </tbody>
                 </table>
-                <br>
-                <details class="font-xsmall">
-                  <summary><span class="summary">More info</span></summary>
-                  <div class="panel panel-border-narrow">
-                    <p>
-                      The transaction must be received via a paper form filled out by hand. The form can be sent in any way including by post, email, fax or uploading.
-                    </p> 
-                  </div>
-                </details>
               </div>
             </div>
             <div class="subsection">
@@ -178,6 +160,9 @@
                   <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></h2>
               </div>
               <div class="subsection__content" id="">
+                <p class="font-xsmall">
+                  The transaction must be received through a face-to-face meeting with someone working for the service. Doesn’t include handing in a paper form in person.
+                </p>
                 <table>
                   <tbody>
                     <tr>
@@ -196,15 +181,6 @@
                     {% endfor %}
                   </tbody>
                 </table>
-                <br>
-                <details class="font-xsmall">
-                  <summary><span class="summary">More info</span></summary>
-                  <div class="panel panel-border-narrow">
-                    <p>
-                      The transaction must be received through a face-to-face meeting with someone working for the service. Doesn’t include handing in a paper form in person.
-                    </p> 
-                  </div>
-                </details>
               </div>
             </div>
             <div class="subsection">
@@ -214,6 +190,9 @@
                   <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></h2>
               </div>
               <div class="subsection__content" id="">
+                <p class="font-xsmall">
+                  Any other way the user provides the information needed to complete a transaction that doesn’t fit into the Online, Phone, Paper and Face-to-face channels.
+                </p>
                 <table>
                   <tbody>
                     <tr>
@@ -232,15 +211,6 @@
                     {% endfor %}
                   </tbody>
                 </table>
-                <br>
-                <details class="font-xsmall">
-                  <summary><span class="summary">More info</span></summary>
-                  <div class="panel panel-border-narrow">
-                    <p>
-                      Any other way the user provides the information needed to complete a transaction that doesn’t fit into the Online, Phone, Paper and Face-to-face channels.
-                    </p> 
-                  </div>
-                </details>
               </div>
             </div>
           </div>
@@ -256,10 +226,10 @@
   <div class="grid-row data-block">
 
     <div class="column-one-third">
-      <div class="data">
+      <h2 class="data">
         <span class="data-item bold-xxlarge">{{ to_3_sf(transactions_with_outcome_count) }}</span>
         <span class="data-item bold-medium">transactions ending in an outcome</span>
-      </div> 
+      </h2> 
       <br>
       <details class="font-xsmall">
         <summary><span class="summary">More info</span></summary>
@@ -282,15 +252,22 @@
       <div class="topic-content">
 
         <div data-module="accordion-with-descriptions">
-            <h2 class="bold-medium">Delivery of the service</h2>
+            <h3 class="bold-medium">Delivery of the service</h3>
             <div class="subsection-wrapper">
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
+                  <h4 class="subsection__title">
                     <span class="black">Ending in an outcome</span> {{ to_3_sf(transactions_with_outcome_count) }} 
-                  </h2>
+                  </h4>
                 </div>
                 <div class="subsection__content">
+                  <p class="font-xsmall">
+                    The number of transactions where no further decisions will be made for that transaction. For example:
+                  </p>  
+                  <ul class="list list-bullet font-xsmall">
+                    <li>payment of a benefit isn’t an outcome &mdash; the decision about whether to award it or not is</li>
+                    <li>renewing a licence is a new transaction as it needs a new decision</li>
+                  </ul>
                   <table>
                     <tbody>
                       <tr>
@@ -319,29 +296,24 @@
                       </tr>
                     </tbody>
                   </table>
-                  <br>
-                  <details class="font-xsmall">
-                    <summary><span class="summary">More info</span></summary>
-                    <div class="panel panel-border-narrow">
-                      <p>
-                        The number of transactions where no further decisions will be made for that transaction. For example:
-                        <ul class="list list-bullet">
-                          <li>payment of a benefit isn’t an outcome &mdash; the decision about whether to award it or not is</li>
-                          <li>renewing a licence is a new transaction as it needs a new decision</li>
-                        </ul>
-                      </p> 
-                    </div>
-                  </details>
                 </div>
               </div>
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
+                  <h4 class="subsection__title">
                     <span class="black">Ending in user's intended outcome</span> {{ to_3_sf(transactions_with_users_intended_outcome_count) }}
                     <span class="lede">({{ pct_users_intended_outcome }}%)</span>
-                  </h2>
+                  </h4>
                 </div>
                 <div class="subsection__content" id="">
+                  <p class="font-xsmall">
+                    A subset of the transactions ending in an outcome where the outcome is what the user set out to achieve. For example:
+                  </p>  
+                  <ul class="list list-bullet font-xsmall">
+                    <li>the user applying for a visa and being granted that visa</li>
+                    <li>the user sending money to a prisoner and the prisoner receiving the money</li>
+                    <li>the user reporting a crime and having the report accepted and processed</li>
+                  </ul>
                   <table>
                     <tbody>
                       <tr>
@@ -370,20 +342,6 @@
                       </tr>
                     </tbody>
                   </table>
-                  <br>
-                  <details class="font-xsmall">
-                    <summary><span class="summary">More info</span></summary>
-                    <div class="panel panel-border-narrow">
-                      <p>
-                        A subset of the transactions ending in an outcome where the outcome is what the user set out to achieve. For example:
-                        <ul class="list list-bullet">
-                          <li>the user applying for a visa and being granted that visa</li>
-                          <li>the user sending money to a prisoner and the prisoner receiving the money</li>
-                          <li>the user reporting a crime and having the report accepted and processed</li>
-                        </ul>
-                      </p> 
-                    </div>
-                  </details>
                 </div>
               </div>
             </div>
@@ -397,10 +355,10 @@
   <div class="grid-row data-block">
 
     <div class="column-one-third">
-      <div class="data">
+      <h2 class="data">
         <span class="data-item bold-xxlarge">7.2m</span>
         <span class="data-item bold-medium">calls received</span>
-      </div> 
+      </h2> 
       <br>
       <details class="font-xsmall">
         <summary><span class="summary">More info</span></summary>
@@ -420,17 +378,29 @@
       <div class="topic-content">
 
         <div data-module="accordion-with-descriptions">
-            <h2 class="bold-medium">Reasons people called</h2>
+            <h3 class="bold-medium">Reasons people called</h3>
             <p style="margin: -5px 0 10px">Based on a sample of 10,000 calls</p>
             <div class="subsection-wrapper">
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
-                    <span class="black">To get information</span> 2.8m 
+                  <h4 class="subsection__title">
+                    <span class="black">To get information</span> 4k 
                     <span class="lede">(40%)</span>
-                  </h2>
+                  </h4>
                 </div>
                 <div class="subsection__content">
+                  <p class="font-xsmall">
+                    Calls to get advice or guidance about the service. For example:
+                  </p>  
+                  <ul class="list list-bullet font-xsmall">
+                    <li>to get information they couldn’t find online</li>
+                    <li>to learn about what the service is for</li>
+                    <li>to check that they’re eligible for the service</li>
+                    <li>to see how the service’s rules or process applies to them</li>
+                    <li>to check that a licence, visa etc is still valid</li>
+                    <li>to ask what to do if they’ve lost their licence, visa etc</li>
+                    <li>to find out why the service has sent them unexpected information</li>
+                  </ul>
                   <table>
                     <tbody>
                       <tr>
@@ -459,34 +429,25 @@
                       </tr>
                     </tbody>
                   </table>
-                  <br>
-                  <details class="font-xsmall">
-                    <summary><span class="summary">More info</span></summary>
-                    <div class="panel panel-border-narrow">
-                      <p>
-                        Calls to get advice or guidance about the service. For example:
-                        <ul class="list list-bullet">
-                          <li>to get information they couldn’t find online</li>
-                          <li>to learn about what the service is for</li>
-                          <li>to check that they’re eligible for the service</li>
-                          <li>to see how the service’s rules or process applies to them</li>
-                          <li>to check that a licence, visa etc is still valid</li>
-                          <li>to ask what to do if they’ve lost their licence, visa etc</li>
-                          <li>to find out why the service has sent them unexpected information</li>
-                        </ul>
-                      </p> 
-                    </div>
-                  </details>
                 </div>
               </div>
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
-                    <span class="black">To chase progress</span> 1.8m 
+                  <h4 class="subsection__title">
+                    <span class="black">To chase progress</span> 3k 
                     <span class="lede">(30%)</span>
-                  </h2>
+                  </h4>
                 </div>
                 <div class="subsection__content" id="">
+                  <p class="font-xsmall">
+                    Calls to find out about a decision or action that the user expects the service to take. For example:
+                  </p>  
+                  <ul class="list list-bullet font-xsmall">
+                    <li>to find out what has happened to information previously supplied</li>
+                    <li>to ask about the status of an application</li>
+                    <li>to find out when a payment will be made</li>
+                    <li>to ask why they haven’t heard from the service</li>
+                  </ul>
                   <table>
                     <tbody>
                       <tr>
@@ -515,31 +476,22 @@
                       </tr>
                     </tbody>
                   </table>
-                  <br>
-                  <details class="font-xsmall">
-                    <summary><span class="summary">More info</span></summary>
-                    <div class="panel panel-border-narrow">
-                      <p>
-                        Calls to find out about a decision or action that the user expects the service to take. For example:
-                        <ul class="list list-bullet">
-                          <li>to find out what has happened to information previously supplied</li>
-                          <li>to ask about the status of an application</li>
-                          <li>to find out when a payment will be made</li>
-                          <li>to ask why they haven’t heard from the service</li>
-                        </ul>
-                      </p> 
-                    </div>
-                  </details>
                 </div>
               </div>
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
-                    <span class="black">To challenge a decision</span> 1.4m 
+                  <h4 class="subsection__title">
+                    <span class="black">To challenge a decision</span> 2k 
                     <span class="lede">(20%)</span>
-                  </h2>
+                  </h4>
                 </div>
                 <div class="subsection__content" id="">
+                  <p class="font-xsmall">
+                    Calls to dispute an instruction or request from the service or to appeal an outcome. For example:
+                  </p>  
+                  <ul class="list list-bullet font-xsmall">
+                    <li>to appeal an outcome or decision</li>
+                  </ul>
                   <table>
                     <tbody>
                       <tr>
@@ -568,28 +520,28 @@
                       </tr>
                     </tbody>
                   </table>
-                  <br>
-                  <details class="font-xsmall">
-                    <summary><span class="summary">More info</span></summary>
-                    <div class="panel panel-border-narrow">
-                      <p>
-                        Calls to dispute an instruction or request from the service or to appeal an outcome. For example:
-                        <ul class="list list-bullet">
-                          <li>to appeal an outcome or decision</li>
-                        </ul>
-                      </p> 
-                    </div>
-                  </details>
                 </div>
               </div>
               <div class="subsection">
                 <div class="subsection__header">
-                  <h2 class="subsection__title">
-                    <span class="black">Other</span> 1m 
+                  <h4 class="subsection__title">
+                    <span class="black">Other</span> 1.5k 
                     <span class="lede">(15%)</span>
-                  </h2>
+                  </h4>
                 </div>
                 <div class="subsection__content" id="">
+                  <p class="font-xsmall">
+                    Calls that don’t fit into the three previous categories. For example:
+                  </p>  
+                  <ul class="list list-bullet font-xsmall">
+                    <li>to do a transaction</li>
+                    <li>to get help using the service</li>
+                    <li>to respond to a letter, call etc from the service</li>
+                    <li>to check that they’ve done the right thing</li>
+                    <li>to update their information when their situation changes</li>
+                    <li>to deregister from the service</li>
+                    <li>to tell the service its information is incorrect</li>
+                  </ul>
                   <table>
                     <tbody>
                       <tr>
@@ -618,24 +570,6 @@
                       </tr>
                     </tbody>
                   </table>
-                  <br>
-                  <details class="font-xsmall">
-                    <summary><span class="summary">More info</span></summary>
-                    <div class="panel panel-border-narrow">
-                      <p>
-                        Calls that don’t fit into the three previous categories. For example:
-                        <ul class="list list-bullet">
-                          <li>to do a transaction</li>
-                          <li>to get help using the service</li>
-                          <li>to respond to a letter, call etc from the service</li>
-                          <li>to check that they’ve done the right thing</li>
-                          <li>to update their information when their situation changes</li>
-                          <li>to deregister from the service</li>
-                          <li>to tell the service its information is incorrect</li>
-                        </ul>
-                      </p> 
-                    </div>
-                  </details>
                 </div>
               </div>
             </div>

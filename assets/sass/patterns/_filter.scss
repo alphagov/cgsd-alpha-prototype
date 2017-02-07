@@ -2,11 +2,16 @@
 
 .filter-panel-horizontal {
   background-color: $panel-colour;
-  padding: 15px 5px;
+  padding: 20px 5px;
   margin: -10px 0 20px;
 
   @media screen and (max-width: 640px) {
-    padding: 15px 0;
+    padding: 15px 0 5px;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
   }
 
   h2 {
@@ -26,7 +31,6 @@
     background-color: $button-colour;
     font-family: 'nta', Arial, sans-serif;
     margin: 0 0 5px;
-
   }
 
   .form-group {
@@ -34,7 +38,7 @@
   }
 
   .form-group:last-of-type {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 
     @media screen and (max-width: 640px) {
       margin-bottom: 5px;
@@ -73,12 +77,21 @@
 
   }
 
+  .reverse-sort {
+
+    @media screen and (max-width: 640px) {
+      display: block;
+      margin: 15px 0 0;
+    }
+
+  }
+
 }
 
 // filter rows
 
 .filter-row {
-  margin-bottom: -15px;
+  margin-bottom: 0;
 
   select {
     background-color: $white;
@@ -127,14 +140,14 @@
     display: none;
   }
 
-  .width-data-org { width:40% }
+  .width-data-org { width:50% }
   .width-data-type { width:30% }
   .width-data-range { width:20% }
   .width-data-input { width:15% }
   .width-data-percentage { width:5% }
 
   @media screen and (max-width: 640px) {
-    margin-bottom: 0;
+    margin-bottom: 15px;
 
     .width-data-org,
     .width-data-type,
@@ -148,21 +161,6 @@
 
 }
 
-// sort controls
-
-.sort-by {
-  margin-bottom: 0;
-  text-align: right;
-
-  label, select {
-    display: inline-block;
-    margin-left: 5px;
-  }
-
-  span {
-    margin-left: 10px;
-  }
-}
 
 // filter cards
 
@@ -227,11 +225,6 @@
 
   li:last-of-type {
     border-bottom: none;
-  }
-
-  li:hover {
-  cursor: pointer;
-  background-color: $highlight-colour;
   }
 
 }

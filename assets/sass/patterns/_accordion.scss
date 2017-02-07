@@ -71,12 +71,22 @@
       padding: 0.5em 0;
       position: relative;
       bottom: -35px;
+
+      @media (max-width: 640px) {
+        bottom: -25px;
+      }
+
     }
 
   }
 
   .subsection-controls.js-subsection-controls {
     margin-top: -35px;
+
+    @media (max-width: 640px) {
+      margin-top: -5px;
+    }
+
   }
 
   // Wrapper for subsections
@@ -180,10 +190,16 @@
 
         table, th, td, tr {
           font-size: 16px;
+
+          @media (max-width: 640px) {
+            font-size: 14px;
+          }
+
         }
 
       }
     }
 
   }
+
 }

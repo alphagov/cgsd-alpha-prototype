@@ -84,9 +84,7 @@
 
 	.lede {
   	@include core-24;
-        // margin-bottom: 30px;	
-
-      
+        // margin-bottom: 30px;	      
 	}
 
 	.button-hint {
@@ -131,6 +129,10 @@
 
     .breadcrumbs {
       border-bottom: 1px solid #377FB9;
+
+      li {
+        background-image: url('../../images/separator.png');
+      }
 
       a {
           color: $white;
