@@ -25,14 +25,14 @@
 
   <div class="grid-row filter-panel-horizontal">
 
-    <form class="column-full filter-row mt_-5">
+    <form action="/filter" method="get" class="column-full filter-row mt_-5">
       <fieldset>
         <label>Show</label>
         <div class="form-group inline-forms width-data-type" id="filter-select-box">
-          <select class="form-control" id="select-org-type">
-            <option value="departments">Departments</option>
-            <option value="agencies">Agencies</option>
-            <option value="services">Services</option>
+          <select class="form-control" name="select-org-type" id="select-org-type">
+            <option value="departments" {% if filter == 'departments' %} selected {% endif %}>Departments</option>
+            <option value="agencies" {% if filter == 'agencies' %} selected {% endif %}>Agencies</option>
+            <option value="services" {% if filter == 'services' %} selected {% endif %}>Services</option>
           </select>
         </div>
         <span class="connecting-word">in</span>
@@ -41,61 +41,41 @@
         </span>
         <span class="filter-org-type">
           <div class="form-group inline-forms width-data-org">
-            <select class="form-control">
-              <option value="UK Government">UK Government</option>
-              <optgroup label="Departments">
-                <option value="Department for Business, Energy & Industrial Strategy">Department for Business, Energy &amp; Industrial Strategy</option>
-                <option value="Department for Education">Department for Education</option>
-                <option value="Department for Environment Food & Rural Affairs">Department for Environment Food &amp; Rural Affairs</option>
-                <option value="Department of Health">Department of Health</option>
-                <option value="Department for Transport">Department for Transport</option>
-                <option value="Department for Work and Pensions">Department for Work and Pensions</option>
-                <option value="HM Revenue & Customs">HM Revenue &amp; Customs</option>
-                <option value="Home Office">Home Office</option>
-                <option value="Ministry of Justice">Ministry of Justice</option>
-              </optgroup>  
-            </select>
-          </div>
-        </span>
-        <span class="filter-org-type-2">
-          <div class="form-group inline-forms width-data-org">
-            <select class="form-control">
-              <option value="UK Government">UK Government</option>
-              <optgroup label="Departments">
-                <option value="Department for Business, Energy & Industrial Strategy">Department for Business, Energy &amp; Industrial Strategy</option>
-                <option value="Department for Education">Department for Education</option>
-                <option value="Department for Environment Food & Rural Affairs">Department for Environment Food &amp; Rural Affairs</option>
-                <option value="Department of Health">Department of Health</option>
-                <option value="Department for Transport">Department for Transport</option>
-                <option value="Department for Work and Pensions">Department for Work and Pensions</option>
-                <option value="HM Revenue & Customs">HM Revenue &amp; Customs</option>
-                <option value="Home Office">Home Office</option>
-                <option value="Ministry of Justice">Ministry of Justice</option>
+            <select class="form-control" name ="select-organisation" id="select-organisation">
+              <option value="government">UK Government</option>
+              <optgroup id="departments" label="Departments">
+                <option value="department-for-business-energy-and-industrial-strategy" {% if organisation == 'department-for-business-energy-and-industrial-strategy' %} selected {% endif %}>Department for Business, Energy &amp; Industrial Strategy</option>
+                <option value="department-for-education" {% if organisation == 'department-for-education' %} selected {% endif %}>Department for Education</option>
+                <option value="department-for-environment-food-and-rural-affairs" {% if organisation == 'department-for-environment-food-and-rural-affairs' %} selected {% endif %}>Department for Environment Food &amp; Rural Affairs</option>
+                <option value="department-of-health" {% if organisation == 'department-of-health' %} selected {% endif %}>Department of Health</option>
+                <option value="department-for-transport" {% if organisation == 'department-for-transport' %} selected {% endif %}>Department for Transport</option>
+                <option value="department-for-work-and-pensions" {% if organisation == 'department-for-work-and-pensions' %} selected {% endif %}>Department for Work and Pensions</option>
+                <option value="hm-revenue-and-customs" {% if organisation == 'hm-revenue-and-customs' %} selected {% endif %}>HM Revenue &amp; Customs</option>
+                <option value="home-office" {% if organisation == 'home-office' %} selected {% endif %}>Home Office</option>
+                <option value="ministry-of-justice" {% if organisation == 'ministry-of-justice' %} selected {% endif %}>Ministry of Justice</option>
               </optgroup>
-              <optgroup label="Agencies & public bodies">
-                <option value="Companies House">Companies House</option>
-                <option value="Driver and Vehicle Licensing Agency">Driver and Vehicle Licensing Agency</option>
-                <option value="Driver and Vehicle Standards Agency">Driver and Vehicle Standards Agency</option>
-                <option value="Environment Agency">Environment Agency</option>
-                <option value="HM Courts and Tribunals Service">HM Courts and Tribunals Service</option>
-                <option value="Independent Police Complaints Commission">Independent Police Complaints Commission</option>
-                <option value="Intellectual Property Office">Intellectual Property Office</option>
-                <option value="Land Registry">Land Registry</option>
-                <option value="National Offender Management Service">National Offender Management Service</option>
-                <option value="NHS Blood and Transplant">NHS Blood and Transplant</option>
-                <option value="NHS England">NHS England</option>
-                <option value="Ordnance Survey">Ordnance Survey</option>
-                <option value="Skills Funding Agency">Skills Funding Agency</option>
-                <option value="Student Loans Company">Student Loans Company</option>
-              </optgroup>  
+              <optgroup id="agencies" label="Agencies & public bodies">
+                <option value="companies-house" {% if organisation == 'companies-house' %} selected {% endif %}>Companies House</option>
+                <option value="driver-and-vehicle-licensing-agency" {% if organisation == 'driver-and-vehicle-licensing-agency' %} selected {% endif %}>Driver and Vehicle Licensing Agency</option>
+                <option value="driver-and-vehicle-standards-agency" {% if organisation == 'driver-and-vehicle-standards-agency' %} selected {% endif %}>Driver and Vehicle Standards Agency</option>
+                <option value="environment-agency" {% if organisation == 'environment-agency' %} selected {% endif %}>Environment Agency</option>
+                <option value="hm-courts-and-tribunals-service" {% if organisation == 'hm-courts-and-tribunals-service' %} selected {% endif %}>HM Courts and Tribunals Service</option>
+                <option value="independent-police-complaints-comission" {% if organisation == 'independent-police-complaints-comission' %} selected {% endif %}>Independent Police Complaints Commission</option>
+                <option value="intellectual-property-office" {% if organisation == 'intellectual-property-office' %} selected {% endif %}>Intellectual Property Office</option>
+                <option value="land-registry" {% if organisation == 'land-registry' %} selected {% endif %}>Land Registry</option>
+                <option value="national-offender-management-service" {% if organisation == 'national-offender-management-service' %} selected {% endif %}>National Offender Management Service</option>
+                <option value="nhs-blood-and-transplant" {% if organisation == 'nhs-blood-and-transplant' %} selected {% endif %}>NHS Blood and Transplant</option>
+                <option value="nhs-england" {% if organisation == 'nhs-england' %} selected {% endif %}>NHS England</option>
+                <option value="ordnance-survey" {% if organisation == 'ordnance-survey' %} selected {% endif %}>Ordnance Survey</option>
+                <option value="skills-funding-agency" {% if organisation == 'skills-funding-agency' %} selected {% endif %}>Skills Funding Agency</option>
+                <option value="student-loans-company" {% if organisation == 'student-loans-company' %} selected {% endif %}>Student Loans Company</option>
+              </optgroup>
             </select>
           </div>
         </span>
       </fieldset> 
-    </form>
 
-    <form class="column-full filter-row">
-      <fieldset>
+      <fieldset class="filter-row">
         <label>Sort by</label>
         <select class="form-control form-control-1-2">
           <option>Transactions received</option>
@@ -116,50 +96,52 @@
         </select>
         <span class="reverse-sort font-xsmall"><a href="javascript:void()">⇅ Reverse order</a></span>
       </fieldset>
-    </form>    
-     
   </div>
 
   <!--end of filter-->  
 
   <div class="grid-row">
     <div class="column-one-third">
-      <p>Showing <strong>12</strong> departments</p>
+      <p>Showing <strong>{{ transaction_counts.length }}</strong> {{ filter }}</p>
     </div>
   </div>    
 
   <div class="grid-row">
     <ul class="filter-cards column-full">
       
-      {% for department in transaction_counts_by_dept %}
+      {% for row in transaction_counts %}
       <li class="column-full">
         <div class="column-one-quarter">
-          <h2 class="bold-medium"><a href="{{ department.friendly_id }}">{{ department.name }}</a></h2>
+          <h2 class="bold-medium"><a href="{{ row.friendly_id }}">{{ row.name }}</a></h2>
           <ul class="list font-xsmall">
-            <li><strong>{{ department.agencies_count}}</strong> agencies</li>
-            <li><strong>{{ department.services_count}}</strong> services</li>
+            {% if filter == 'departments' %}
+              <li><strong>{{ row.agencies_count}}</strong> agencies</li>
+            {% endif %}
+            {% if filter == 'departments' or filter == 'agencies' %}
+              <li><strong>{{ row.services_count}}</strong> services</li>
+            {% endif %}
           </ul>
         </div>
         <div class="column-one-quarter">
           <h3 class="data">
-            <span class="data-item bold-large">{{ to_3_sf(department.transactions_received_count) }}</span>
+            <span class="data-item bold-large">{{ to_3_sf(row.transactions_received_count) }}</span>
             <span class="data-item bold-xsmall">transactions received</span>
           </h3>
           <ul class="list font-xsmall">
-            <li><strong>{{ department.pct_received_online }}%</strong> online</li>
-            <li><strong>{{ department.pct_received_phone }}%</strong> phone</li>
-            <li><strong>{{ department.pct_received_paper }}%</strong> paper</li>
-            <li><strong>{{ department.pct_received_face_to_face }}%</strong> face-to-face</li>
-            <li><strong>{{ department.pct_received_other }}%</strong> other</li>
+            <li><strong>{{ row.pct_received_online }}%</strong> online</li>
+            <li><strong>{{ row.pct_received_phone }}%</strong> phone</li>
+            <li><strong>{{ row.pct_received_paper }}%</strong> paper</li>
+            <li><strong>{{ row.pct_received_face_to_face }}%</strong> face-to-face</li>
+            <li><strong>{{ row.pct_received_other }}%</strong> other</li>
           </ul>
         </div>
         <div class="column-one-quarter">
           <h3 class="data">
-            <span class="data-item bold-large">{{ to_3_sf(department.transactions_with_outcome_count) }}</span>
+            <span class="data-item bold-large">{{ to_3_sf(row.transactions_with_outcome_count) }}</span>
             <span class="data-item bold-xsmall">transactions ending in an outcome</span>
           </h3>
           <ul class="list font-xsmall">
-            <li><strong>{{ department.pct_users_intended_outcome }}%</strong> end in user's intended outcome</li>
+            <li><strong>{{ row.pct_users_intended_outcome }}%</strong> end in user's intended outcome</li>
           </ul>
         </div>
         <div class="column-one-quarter">

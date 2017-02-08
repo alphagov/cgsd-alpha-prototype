@@ -2,24 +2,68 @@
 
 $(document).ready(function() {
 
+  var filter = window.location.pathname.split( '/' )[2];
+
+  if (filter == "agencies") {
+    $(".filter-org-default").hide();
+    $(".filter-org-type").show();
+    $("optgroup#departments").show();
+    $("optgroup#agencies").hide();
+  } else if (filter == "services") {
+    $(".filter-org-default").hide();
+    $(".filter-org-type").show();
+    $("optgroup#departments").show();
+    $("optgroup#agencies").show();
+  } else {
+    $(".filter-org-default").show();
+    $(".filter-org-type").hide();
+    $("optgroup#departments").hide();
+    $("optgroup#agencies").hide();
+  };
+
 	// show a different org list depending on what you select
 	$("#select-org-type").change(function(){
-    if ($("#select-org-type").val() == "agencies") {
+    var selected_option = $("#select-org-type").val();
+
+    if (selected_option == "agencies") {
+      $(".filter-org-default").hide();
       $(".filter-org-type").show();
-      $(".filter-org-type-2").hide();
+      $("optgroup#departments").show();
+      $("optgroup#agencies").hide();
+      window.location.href = "agencies"
+    } else if (selected_option == "services") {
       $(".filter-org-default").hide();
-    }
-    if ($("#select-org-type").val() == "services") {
-      $(".filter-org-type-2").show();
-      $(".filter-org-type").hide();
-      $(".filter-org-default").hide();
-    }
-    if ($("#select-org-type").val() == "departments") {
+      $(".filter-org-type").show();
+      $("optgroup#departments").show();
+      $("optgroup#agencies").show();
+      window.location.href = "services"
+    } else {
     	$(".filter-org-default").show();
-			$(".filter-org-type").hide();
-			$(".filter-org-type-2").hide();
+      $(".filter-org-type").hide();
+      $("optgroup#departments").hide();
+      $("optgroup#agencies").hide();
+      window.location.href = "government"
     }
-	});
+ 	});
+
+  $("#select-organisation").change(function(){
+    var organisation = $("#select-organisation").val();
+    if (filter == "agencies" && organisation != 'government') {    
+       window.location.href = filter + "?organisation=" + organisation;
+    } else if (filter == 'services' && organisation != 'government') {
+      var id = $('#select-organisation option:selected').parent().attr('id');
+      var url = filter + "?organisation=" + organisation;
+
+      if (id == 'departments') {
+        url += '&type=department'
+      } else {
+        url += '&type=agency'
+      }
+      window.location.href = url
+    } else {
+       window.location.href = filter
+    }
+  });
 
   // add another filter row when clicking 'add filter'
   $('#add-filter-row').click(function() {
