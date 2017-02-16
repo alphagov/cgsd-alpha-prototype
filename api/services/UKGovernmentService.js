@@ -51,7 +51,7 @@ module.exports = class UKGovernmentService extends Service {
                 FROM task \
                 INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
                 WHERE task.department = department.id \
-                AND   taskvolumerecord.channel = 'face-to-face' \
+                AND   taskvolumerecord.channel = 'face to face' \
               ), \
               ( \
                 SELECT SUM(taskvolumerecord.count) as transactions_received_other_count \

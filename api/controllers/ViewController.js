@@ -65,12 +65,11 @@ module.exports = class ViewController extends Controller {
                 counts.transactions_received_face_to_face_count, counts.transactions_received_count);
 
               counts.pct_received_other = default_service.pct_of(
-                counts.transactions_received_other, counts.transactions_received_count);
+                counts.transactions_received_other_count, counts.transactions_received_count);
 
             return counts; })
         }),
       function (departments, agencies, tasks, transaction_counts_by_dept) {
-        console.log(transaction_counts_by_dept);
         res.render(
           'performance-data/government/show.html',
           {
@@ -117,7 +116,7 @@ module.exports = class ViewController extends Controller {
                 counts.transactions_received_face_to_face_count, counts.transactions_received_count);
 
               counts.pct_received_other = default_service.pct_of(
-                counts.transactions_received_other, counts.transactions_received_count);
+                counts.transactions_received_other_count, counts.transactions_received_count);
 
             return counts; })
         }),
@@ -169,7 +168,7 @@ module.exports = class ViewController extends Controller {
                 counts.transactions_received_face_to_face_count, counts.transactions_received_count);
 
               counts.pct_received_other = default_service.pct_of(
-                counts.transactions_received_other, counts.transactions_received_count);
+                counts.transactions_received_other_count, counts.transactions_received_count);
 
             return counts; })
         }),
