@@ -19,6 +19,11 @@ module.exports = class ViewController extends Controller {
     res.redirect('/performance-data/' + req.query.selectedId);
   }
 
+  filter(req, res) {
+    // use req.body for accessing POSTed content
+    res.redirect('/performance-data/government');
+  }
+
   taskPerformanceView(req, res) {
     res.render(
       'performance-data/tasks/show.html',
@@ -28,7 +33,7 @@ module.exports = class ViewController extends Controller {
     )
   }
 
-  govtPerformanceView(req, res) {
+  government(req, res) {
     var uk_government_service = this.app.services.UKGovernmentService;
     var department_service = this.app.services.DepartmentService;
     var default_service = this.app.services.DefaultService;
@@ -60,7 +65,7 @@ module.exports = class ViewController extends Controller {
                 counts.transactions_received_face_to_face_count, counts.transactions_received_count);
 
               counts.pct_received_other = default_service.pct_of(
-                counts.transactions_received_other, counts.transactions_received_count);
+                counts.transactions_received_other_count, counts.transactions_received_count);
 
             return counts; })
         }),
@@ -70,10 +75,113 @@ module.exports = class ViewController extends Controller {
           {
             asset_path: '/govuk_modules/govuk_template/assets/',
             organisation_type: 'department', // remember there is a service to determine this
-            departments: departments,
-            agencies: agencies,
             tasks: tasks,
-            transaction_counts_by_dept: transaction_counts_by_dept,
+            filter: 'departments',
+            transaction_counts: transaction_counts_by_dept,
+            to_3_sf: default_service.to3SF
+          }
+        )
+      }
+    )
+  }
+
+  agencies(req, res) {
+    var department_service = this.app.services.DepartmentService;
+    var agency_service = this.app.services.AgencyService;
+    var default_service = this.app.services.DefaultService;
+
+    var Promise = require('bluebird');
+    Promise.join(
+      this.app.orm.Agency.find({ where : {}, sort: 'name ASC' })
+        .then( agencies => { return agencies }),
+      this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
+        .then( tasks  => { return tasks }),
+      agency_service.sumTransactionCountsByDept(req.query.organisation)
+        .then( transaction_counts_by_dept => { return transaction_counts_by_dept.rows })
+        .then( function(transaction_counts_by_dept) {
+          return transaction_counts_by_dept.map(function(counts) {
+            counts.pct_users_intended_outcome = default_service.pct_of(
+              counts.transactions_with_users_intended_outcome_count, counts.transactions_with_outcome_count);
+
+              counts.pct_received_online = default_service.pct_of(
+                counts.transactions_received_online_count, counts.transactions_received_count);
+
+              counts.pct_received_phone = default_service.pct_of(
+                counts.transactions_received_phone_count, counts.transactions_received_count);
+
+              counts.pct_received_paper = default_service.pct_of(
+                counts.transactions_received_paper_count, counts.transactions_received_count);
+
+              counts.pct_received_face_to_face = default_service.pct_of(
+                counts.transactions_received_face_to_face_count, counts.transactions_received_count);
+
+              counts.pct_received_other = default_service.pct_of(
+                counts.transactions_received_other_count, counts.transactions_received_count);
+
+            return counts; })
+        }),
+      function (agencies, tasks, transaction_counts_by_dept) {
+        res.render(
+          'performance-data/government/show.html',
+          {
+            asset_path: '/govuk_modules/govuk_template/assets/',
+            organisation_type: 'agency', // remember there is a service to determine this
+            tasks: tasks,
+            filter: 'agencies',
+            organisation: req.query.organisation,
+            transaction_counts: transaction_counts_by_dept,
+            to_3_sf: default_service.to3SF
+          }
+        )
+      }
+    )
+  }
+
+  services(req, res) {
+    var task_service = this.app.services.TaskService;
+    var agency_service = this.app.services.AgencyService;
+    var default_service = this.app.services.DefaultService;
+
+    var Promise = require('bluebird');
+    Promise.join(
+      this.app.orm.Agency.find({ where : {}, sort: 'name ASC' })
+        .then( agencies => { return agencies }),
+      this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
+        .then( tasks  => { return tasks }),
+      task_service.sumTransactionCountsByTask(req.query.organisation, req.query.type)
+        .then( transaction_counts_by_task => { return transaction_counts_by_task.rows })
+        .then( function(transaction_counts_by_task) {
+          return transaction_counts_by_task.map(function(counts) {
+            counts.pct_users_intended_outcome = default_service.pct_of(
+              counts.transactions_with_users_intended_outcome_count, counts.transactions_with_outcome_count);
+
+              counts.pct_received_online = default_service.pct_of(
+                counts.transactions_received_online_count, counts.transactions_received_count);
+
+              counts.pct_received_phone = default_service.pct_of(
+                counts.transactions_received_phone_count, counts.transactions_received_count);
+
+              counts.pct_received_paper = default_service.pct_of(
+                counts.transactions_received_paper_count, counts.transactions_received_count);
+
+              counts.pct_received_face_to_face = default_service.pct_of(
+                counts.transactions_received_face_to_face_count, counts.transactions_received_count);
+
+              counts.pct_received_other = default_service.pct_of(
+                counts.transactions_received_other_count, counts.transactions_received_count);
+
+            return counts; })
+        }),
+      function (agencies, tasks, transaction_counts_by_task) {
+        res.render(
+          'performance-data/government/show.html',
+          {
+            asset_path: '/govuk_modules/govuk_template/assets/',
+            organisation_type: 'task', // remember there is a service to determine this
+            tasks: tasks,
+            filter: 'services',
+            organisation: req.query.organisation,
+            transaction_counts: transaction_counts_by_task,
             to_3_sf: default_service.to3SF
           }
         )

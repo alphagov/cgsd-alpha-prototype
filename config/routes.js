@@ -42,6 +42,15 @@ module.exports = [
   },
 
   /**
+   * Filter
+   */
+  {
+    method: 'GET',
+    path: '/filter',
+    handler: 'ViewController.filter'
+  },
+
+  /**
    * Tasks
    */
   {
@@ -82,9 +91,27 @@ module.exports = [
   {
     method: 'GET',
     path: '/performance-data/government',
-    handler: 'ViewController.govtPerformanceView'
+    handler: 'ViewController.government'
+  },
+
+  /**
+   * Render performance data view (agencies)
+   */
+  {
+    method: 'GET',
+    path: '/performance-data/agencies',
+    handler: 'ViewController.agencies'
   },
   
+  /**
+   * Render performance data view (agencies)
+   */
+  {
+    method: 'GET',
+    path: '/performance-data/services',
+    handler: 'ViewController.services'
+  },
+
   /**
    * Render the glossary pages
    */

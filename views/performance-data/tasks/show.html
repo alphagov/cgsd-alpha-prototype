@@ -58,7 +58,7 @@
       <h3 class="bold-medium">Who are the typical users of the service?</h3>
       <p>A list of the service’s key user groups containing high-level demographics, geographic distribution and other relevant information for each.</p>
       <h3 class="bold-medium">How does the service work?</h3>
-      <p>The technologies, processes, staffing and back-office operations that allow the service to operate.</p>
+      <p>The processes and back-office operations that allow the service to operate.</p>
       <h3 class="bold-medium">How frequently is the service used?</h3>
       <p>The average of how often each of the key user groups uses the service.</p>
       <h3 class="bold-medium">How long does it take a transaction to end in outcome?</h3>
@@ -79,7 +79,7 @@
       </h2> 
       <br>
       <details class="font-xsmall">
-        <summary><span class="summary">More info</span></summary>
+        <summary><span class="summary">How this number is calculated</span></summary>
         <div class="panel panel-border-narrow">
           <p>
             A transaction is the specific instance of a user’s interaction with a service by which they update their status with government. It starts when it is received by the service and ends when it has an outcome.
@@ -98,62 +98,37 @@
         <li>
           Online <span class="blue">{{ to_3_sf(volume_summary.received_online) }} <span class="lede">({{ volume_summary.received_online_pct_total }}%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                The transaction must be received online. Doesn’t include services where you use an online tool to fill out a paper form or transactions received via web chat.
-              </p> 
-            </div>
-          </details>
+          <p class="font-xsmall">
+            The transaction must be received online. Doesn’t include services where you use an online tool to fill out a paper form or transactions received via web chat.
+          </p> 
         </li>
         <li>
           Phone <span class="blue">{{ to_3_sf(volume_summary.received_phone) }} <span class="lede">({{ volume_summary.received_phone_pct_total }}%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                The transaction must be received via the phone. Doesn’t include IVR or purely informational calls that don’t affect the outcome of a transaction.
-              </p> 
-            </div>
-          </details>
+          <p class="font-xsmall">
+            The transaction must be received via the phone. Doesn’t include IVR or purely informational calls that don’t affect the outcome of a transaction.
+          </p> 
         </li>
         <li>
           Paper <span class="blue">{{ to_3_sf(volume_summary.received_paper) }} <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                The transaction must be received via a paper form filled out by hand. The form can be sent in any way including by post, email, fax or uploading.
-              </p> 
-            </div>
-          </details>
+          <p class="font-xsmall">
+            The transaction must be received via a paper form filled out by hand. The form can be sent in any way including by post, email, fax or uploading.
+          </p> 
         </li>
         <li>
           Face-to-face <span class="blue">{{ to_3_sf(volume_summary.received_face_to_face) }} <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                The transaction must be received through a face-to-face meeting with someone working for the service. Doesn’t include handing in a paper form in person.
-              </p> 
-            </div>
-          </details>
+          <p class="font-xsmall">
+            The transaction must be received through a face-to-face meeting with someone working for the service. Doesn’t include handing in a paper form in person.
+          </p> 
         </li>
         <li>
           Other <span class="blue">{{ to_3_sf(volume_summary.received_other) }} <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                Any other way the user provides the information needed to complete a transaction that doesn’t fit into the Online, Phone, Paper and Face-to-face channels.
-              </p> 
-            </div>
-          </details>
+          <p class="font-xsmall">
+            Any other way the user provides the information needed to complete a transaction that doesn’t fit into the Online, Phone, Paper and Face-to-face channels.
+          </p> 
         </li>
       </ul> 
 
@@ -172,7 +147,7 @@
       </h2>
       <br>
       <details class="font-xsmall">
-        <summary><span class="summary">More info</span></summary>
+        <summary><span class="summary">How this number is calculated</span></summary>
         <div class="panel panel-border-narrow">
           <p>
             The delivery of the service is measured by the number of outcomes it produces.
@@ -193,35 +168,25 @@
         <li>
           Transactions ending in an outcome <span class="blue">{{ to_3_sf(transactions_with_outcome_count) }}</span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                The number of transactions where no further decisions will be made for that transaction. For example:
-              </p>   
-              <ul class="list list-bullet font-xsmall">
-                <li>payment of a benefit isn’t an outcome &mdash; the decision about whether to award it or not is</li>
-                <li>renewing a licence is a new transaction as it needs a new decision</li>
-              </ul>
-            </div>
-          </details>
+          <p class="font-xsmall">
+            The number of transactions where no further decisions will be made for that transaction. For example:
+          </p>   
+          <ul class="list list-bullet font-xsmall">
+            <li>payment of a benefit isn’t an outcome &mdash; the decision about whether to award it or not is</li>
+            <li>renewing a licence is a new transaction as it needs a new decision</li>
+          </ul>
         </li>
         <li>
           Transactions ending in user's intended outcome <span class="blue">{{ to_3_sf(transactions_with_users_intended_outcome_count) }} <span class="lede">({{ pct_users_intended_outcome }}%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                A subset of the transactions ending in an outcome where the outcome is what the user set out to achieve. For example:
-              </p>  
-              <ul class="list list-bullet">
-                <li>the user applying for a visa and being granted that visa</li>
-                <li>the user sending money to a prisoner and the prisoner receiving the money</li>
-                <li>the user reporting a crime and having the report accepted and processed</li>
-              </ul>
-            </div>
-          </details>
+          <p class="font-xsmall">
+            A subset of the transactions ending in an outcome where the outcome is what the user set out to achieve. For example:
+          </p>  
+          <ul class="list list-bullet font-xsmall">
+            <li>the user applying for a visa and being granted that visa</li>
+            <li>the user sending money to a prisoner and the prisoner receiving the money</li>
+            <li>the user reporting a crime and having the report accepted and processed</li>
+          </ul>
         </li>       
       </ul>
     </div>
@@ -238,7 +203,7 @@
       </h2> 
       <br>
       <details class="font-xsmall">
-        <summary><span class="summary">More info</span></summary>
+        <summary><span class="summary">How this number is calculated</span></summary>
         <div class="panel panel-border-narrow">
           <p>
             These are the total number of calls received by the service including calls that aren’t counted as a received transaction.
@@ -257,77 +222,57 @@
         <li>
           To get information <span class="blue">400 <span class="lede">(40%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                Calls to get advice or guidance about the service. For example:
-              </p>  
-              <ul class="list list-bullet">
-                <li>to get information they couldn’t find online</li>
-                <li>to learn about what the service is for</li>
-                <li>to check that they’re eligible for the service</li>
-                <li>to see how the service’s rules or process applies to them</li>
-                <li>to check that a licence, visa etc is still valid</li>
-                <li>to ask what to do if they’ve lost their licence, visa etc</li>
-                <li>to find out why the service has sent them unexpected information</li>
-              </ul>
-            </div>
-          </details>
+          <p class="font-xsmall">
+            Calls to get advice or guidance about the service. For example:
+          </p>  
+          <ul class="list list-bullet font-xsmall">
+            <li>to get information they couldn’t find online</li>
+            <li>to learn about what the service is for</li>
+            <li>to check that they’re eligible for the service</li>
+            <li>to see how the service’s rules or process applies to them</li>
+            <li>to check that a licence, visa etc is still valid</li>
+            <li>to ask what to do if they’ve lost their licence, visa etc</li>
+            <li>to find out why the service has sent them unexpected information</li>
+          </ul>
         </li>
         <li>
           To chase progress <span class="blue">250 <span class="lede">(25%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                Calls to find out about a decision or action that the user expects the service to take. For example:
-              </p>  
-              <ul class="list list-bullet">
-                <li>to find out what has happened to information previously supplied</li>
-                <li>to ask about the status of an application</li>
-                <li>to find out when a payment will be made</li>
-                <li>to ask why they haven’t heard from the service</li>
-              </ul>
-            </div>
-          </details>
+          <p class="font-xsmall">
+            Calls to find out about a decision or action that the user expects the service to take. For example:
+          </p>  
+          <ul class="list list-bullet font-xsmall">
+            <li>to find out what has happened to information previously supplied</li>
+            <li>to ask about the status of an application</li>
+            <li>to find out when a payment will be made</li>
+            <li>to ask why they haven’t heard from the service</li>
+          </ul>
         </li>
         <li>
           To challenge a decision <span class="blue">200 <span class="lede">(20%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                Calls to dispute an instruction or request from the service or to appeal an outcome. For example:
-              </p>  
-              <ul class="list list-bullet">
-                <li>to appeal an outcome or decision</li>
-              </ul>
-            </div>
-          </details>
+          <p class="font-xsmall">
+            Calls to dispute an instruction or request from the service or to appeal an outcome. For example:
+          </p>  
+          <ul class="list list-bullet font-xsmall">
+            <li>to appeal an outcome or decision</li>
+          </ul>
         </li>
         <li>
           Other <span class="blue">150 <span class="lede">(15%)</span></span>
           <br>
-          <details class="font-xsmall">
-            <summary><span class="summary">More info</span></summary>
-            <div class="panel panel-border-narrow">
-              <p>
-                Calls that don’t fit into the three previous categories. For example:
-              </p>  
-              <ul class="list list-bullet">
-                <li>to do a transaction</li>
-                <li>to get help using the service</li>
-                <li>to respond to a letter, call etc from the service</li>
-                <li>to check that they’ve done the right thing</li>
-                <li>to update their information when their situation changes</li>
-                <li>to deregister from the service</li>
-                <li>to tell the service its information is incorrect</li>
-              </ul>
-            </div>
-          </details>
+          <p class="font-xsmall">
+            Calls that don’t fit into the three previous categories. For example:
+          </p>  
+          <ul class="list list-bullet font-xsmall">
+            <li>to do a transaction</li>
+            <li>to get help using the service</li>
+            <li>to respond to a letter, call etc from the service</li>
+            <li>to check that they’ve done the right thing</li>
+            <li>to update their information when their situation changes</li>
+            <li>to deregister from the service</li>
+            <li>to tell the service its information is incorrect</li>
+          </ul>
         </li>
       </ul>
     </div>
