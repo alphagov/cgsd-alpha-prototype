@@ -250,7 +250,7 @@ module.exports = class ViewController extends Controller {
                 .then( phone_totals => { return phone_totals.rows }),
               department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'paper')
                 .then( paper_totals => { return paper_totals.rows }),
-              department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'face-to-face')
+              department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'face to face')
                 .then( face_to_face_totals => { return face_to_face_totals.rows }),
               department_service.sumTransactionsReceivedByAgencyAndChannel(department.friendly_id, 'other')
                 .then( other_totals => { return other_totals.rows }),
@@ -315,7 +315,7 @@ module.exports = class ViewController extends Controller {
                     .then( phone_totals => { return phone_totals.rows }),
                   agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'paper')
                     .then( paper_totals => { return paper_totals.rows }),
-                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'face-to-face')
+                  agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'face to face')
                     .then( face_to_face_totals => { return face_to_face_totals.rows }),
                   agency_service.sumTransactionsReceivedByTaskAndChannel(agency.friendly_id, 'other')
                     .then( other_totals => { return other_totals.rows }),
