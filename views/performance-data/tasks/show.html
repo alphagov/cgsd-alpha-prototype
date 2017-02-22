@@ -45,7 +45,7 @@
   <div class="grid-row">
     <div class="column-one-third">
       <h2 class="bold-medium">About the service</h2>
-      <p>View the service itself to see how it appears to users:
+      <p>See how it appears to users:
         <ul class="list">
           <li><a href="#">Start page</a></li>
           <li><a href="#">Paper form</a></li>
@@ -54,15 +54,15 @@
     </div>
     <div class="column-two-thirds">
       <h3 class="bold-medium">What is the purpose of the service?</h3>
-      <p>Why the service was built, what its policy objectives are and the user intent it meets.</p>
-      <h3 class="bold-medium">Who are the typical users of the service?</h3>
-      <p>A list of the service’s key user groups containing high-level demographics, geographic distribution and other relevant information for each.</p>
+      <p>Why the service was built, its policy objectives and the user need it meets.</p>
       <h3 class="bold-medium">How does the service work?</h3>
       <p>The processes and back-office operations that allow the service to operate.</p>
+      <h3 class="bold-medium">Who are the typical users of the service?</h3>
+      <p>Each of the service’s key user groups with their respective demographic, geographic distribution and other relevant details. </p>
       <h3 class="bold-medium">How frequently is the service used?</h3>
-      <p>The average of how often each of the key user groups uses the service.</p>
+      <p>On average, how often each of the key user groups uses the service.</p>
       <h3 class="bold-medium">How long does it take a transaction to end in outcome?</h3>
-      <p>The average amount of time it takes for a transaction go from received to having an outcome for each of the key user groups.</p>
+      <p>The average amount of time for each of the key user groups that it takes for a received transaction to end in an outcome.</p>
     </div>
   </div>
 
@@ -113,7 +113,7 @@
           Paper <span class="blue">{{ to_3_sf(volume_summary.received_paper) }} <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></span>
           <br>
           <p class="font-xsmall">
-            The transaction must be received via a paper form filled out by hand. The form can be sent in any way including by post, email, fax or uploading.
+            The transaction must be received via a paper form. The form can be sent in any way including by post, email, fax or uploading.
           </p> 
         </li>
         <li>
@@ -169,11 +169,13 @@
           Transactions ending in an outcome <span class="blue">{{ to_3_sf(transactions_with_outcome_count) }}</span>
           <br>
           <p class="font-xsmall">
-            The number of transactions where no further decisions will be made for that transaction. For example:
+            The number of transactions where no further changes to the user’s relationship with government will be made in response to their request. 
+          </p>
+          <p class="font-xsmall">
+            A transaction can end in an outcome even if some activities take place afterwards as long as there are no further changes in the user’s relationship with government. For example:
           </p>   
           <ul class="list list-bullet font-xsmall">
-            <li>payment of a benefit isn’t an outcome &mdash; the decision about whether to award it or not is</li>
-            <li>renewing a licence is a new transaction as it needs a new decision</li>
+            <li>the decision on whether to award a benefit is counted as the outcome rather than the ongoing payments</li>
           </ul>
         </li>
         <li>
@@ -183,9 +185,9 @@
             A subset of the transactions ending in an outcome where the outcome is what the user set out to achieve. For example:
           </p>  
           <ul class="list list-bullet font-xsmall">
-            <li>the user applying for a visa and being granted that visa</li>
-            <li>the user sending money to a prisoner and the prisoner receiving the money</li>
-            <li>the user reporting a crime and having the report accepted and processed</li>
+            <li>applying for a visa and being granted that visa</li>
+            <li>sending money to a prisoner and the prisoner receiving the money</li>
+            <li>reporting a crime and having the report accepted and processed</li>
           </ul>
         </li>       
       </ul>
@@ -209,7 +211,7 @@
             These are the total number of calls received by the service including calls that aren’t counted as a received transaction.
           </p> 
           <p>
-            The 'reasons people called' are the initial reasons that triggered the user to contact the service via the phone, even if they then go on to discuss other subjects. Transactions received via the phone are not included in this list.
+            The 'reasons people called' are the initial reasons that triggered the user to contact the service via the phone, even if they then go on to discuss other subjects.
           </p>  
         </div>
       </details>    
@@ -227,12 +229,10 @@
           </p>  
           <ul class="list list-bullet font-xsmall">
             <li>to get information they couldn’t find online</li>
-            <li>to learn about what the service is for</li>
-            <li>to check that they’re eligible for the service</li>
-            <li>to see how the service’s rules or process applies to them</li>
-            <li>to check that a licence, visa etc is still valid</li>
-            <li>to ask what to do if they’ve lost their licence, visa etc</li>
-            <li>to find out why the service has sent them unexpected information</li>
+            <li>to find out why they've been sent unexpected information</li>
+            <li>to check that they’re eligible and how the service's rules apply to them</li>
+            <li>to check that something is still valid, such as a licence or visa</li>
+            <li>to ask what to do if they’ve lost something, such as a licence or visa</li>
           </ul>
         </li>
         <li>
@@ -242,7 +242,7 @@
             Calls to find out about a decision or action that the user expects the service to take. For example:
           </p>  
           <ul class="list list-bullet font-xsmall">
-            <li>to find out what has happened to information previously supplied</li>
+            <li>to find out what’s happening in response to information they’ve provided</li>
             <li>to ask about the status of an application</li>
             <li>to find out when a payment will be made</li>
             <li>to ask why they haven’t heard from the service</li>
@@ -267,7 +267,7 @@
           <ul class="list list-bullet font-xsmall">
             <li>to do a transaction</li>
             <li>to get help using the service</li>
-            <li>to respond to a letter, call etc from the service</li>
+            <li>to respond to contact from the service, such as a letter or call</li>
             <li>to check that they’ve done the right thing</li>
             <li>to update their information when their situation changes</li>
             <li>to deregister from the service</li>
