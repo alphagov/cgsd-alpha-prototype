@@ -8,22 +8,31 @@
 
 <main id="content" role="main">
 
+  <div class="breadcrumbs">
+    <ol>
+      <li><a href="/performance-data/government/">Overview</a></li>
+      <li><a href="{{department.friendly_id }}">{{ department.name }}</a></li> 
+      {% if agency %}
+      <li><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></li>
+      {% endif %}     
+      <li>{{ task.name }}</li>
+    </ol>
+  </div>
+
   <div class="grid-row">
     <div class="column-two-thirds">
       <h1 class="heading-xlarge">
-      	<span class="heading-secondary">Service data for</span>
+      	<span class="heading-secondary">Information about</span>
         {{ task.name }}
       </h1>
       <dl class="metadata">
-        <dt>Part of:</dt>
+        <!-- <dt>Part of:</dt>
         <dd>
         {% if agency %}
         <a href="{{ agency.friendly_id }}">{{ agency.name }}</a>,
         {% endif %}
         <a href="{{department.friendly_id }}">{{ department.name }}</a>, <a href="/performance-data/government">UK Government</a>
-        </dd>
-        <dt>Time period:</dt>
-        <dd>1 January to 31 December 2016</dd>
+        </dd> -->
         <dt>Data provider:</dt>
         <dd>
           {% if agency %}
@@ -40,11 +49,32 @@
     </div>
   </div>
 
-  <hr>
+  <hr>  
 
   <div class="grid-row">
+    
+    <div class="column-two-thirds">
+      <h2 class="bold-large mb_20">About the service</h2>
+
+      <h3 class="bold-medium">What is the purpose of the service?</h3>
+      <p>Why the service was built, its policy objectives and the user need it meets.</p>
+
+      <h3 class="bold-medium">How does the service work?</h3>
+      <p>The processes and back-office operations that allow the service to operate.</p>
+
+      <h3 class="bold-medium">Who are the typical users of the service?</h3>
+      <p>Each of the service’s key user groups with their respective demographic, geographic distribution and other relevant details. </p>
+
+      <h3 class="bold-medium">How frequently is the service used?</h3>
+      <p>On average, how often each of the key user groups uses the service.</p>
+
+      <h3 class="bold-medium">How long does it take a transaction to end in outcome?</h3>
+      <p>The average amount of time for each of the key user groups that it takes for a received transaction to end in an outcome.</p>
+
+    </div>
+
     <div class="column-one-third">
-      <h2 class="bold-medium">About the service</h2>
+      <h3 class="bold-medium">Visit the service</h2>
       <p>See how it appears to users:
         <ul class="list">
           <li><a href="#">Start page</a></li>
@@ -52,232 +82,10 @@
         </ul>
       </p>
     </div>
-    <div class="column-two-thirds">
-      <h3 class="bold-medium">What is the purpose of the service?</h3>
-      <p>Why the service was built, its policy objectives and the user need it meets.</p>
-      <h3 class="bold-medium">How does the service work?</h3>
-      <p>The processes and back-office operations that allow the service to operate.</p>
-      <h3 class="bold-medium">Who are the typical users of the service?</h3>
-      <p>Each of the service’s key user groups with their respective demographic, geographic distribution and other relevant details. </p>
-      <h3 class="bold-medium">How frequently is the service used?</h3>
-      <p>On average, how often each of the key user groups uses the service.</p>
-      <h3 class="bold-medium">How long does it take a transaction to end in outcome?</h3>
-      <p>The average amount of time for each of the key user groups that it takes for a received transaction to end in an outcome.</p>
-    </div>
+
   </div>
 
-  <hr>    
-
-  <!-- transactions received data -->
-
-  <div class="grid-row data-block">
-
-    <div class="column-one-third">
-      <h2 class="data">
-        <span class="data-item bold-xxlarge">{{ to_3_sf(volume_summary.total_received) }}</span>
-        <span class="data-item bold-medium">transactions received</span>
-      </h2> 
-      <br>
-      <details class="font-xsmall">
-        <summary><span class="summary">How this number is calculated</span></summary>
-        <div class="panel panel-border-narrow">
-          <p>
-            A transaction is the specific instance of a user’s interaction with a service by which they update their status with government. It starts when it is received by the service and ends when it has an outcome.
-          </p>
-          <p>
-            A channel is the way the service receives the transaction. It is the initial method of contact even if additional information is collected in other ways afterwards.
-          </p>  
-        </div>
-      </details>     
-    </div>
-
-    <div class="column-two-thirds">
-
-      <h3 class="heading-medium">Channels used to access the service</h3>
-      <ul class="list bold-medium">
-        <li>
-          Online <span class="blue">{{ to_3_sf(volume_summary.received_online) }} <span class="lede">({{ volume_summary.received_online_pct_total }}%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            The transaction must be received online. Doesn’t include services where you use an online tool to fill out a paper form or transactions received via web chat.
-          </p> 
-        </li>
-        <li>
-          Phone <span class="blue">{{ to_3_sf(volume_summary.received_phone) }} <span class="lede">({{ volume_summary.received_phone_pct_total }}%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            The transaction must be received via the phone. Doesn’t include IVR or purely informational calls that don’t affect the outcome of a transaction.
-          </p> 
-        </li>
-        <li>
-          Paper <span class="blue">{{ to_3_sf(volume_summary.received_paper) }} <span class="lede">({{ volume_summary.received_paper_pct_total }}%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            The transaction must be received via a paper form. The form can be sent in any way including by post, email, fax or uploading.
-          </p> 
-        </li>
-        <li>
-          Face-to-face <span class="blue">{{ to_3_sf(volume_summary.received_face_to_face) }} <span class="lede">({{ volume_summary.received_face_to_face_pct_total }}%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            The transaction must be received through a face-to-face meeting with someone working for the service. Doesn’t include handing in a paper form in person.
-          </p> 
-        </li>
-        <li>
-          Other <span class="blue">{{ to_3_sf(volume_summary.received_other) }} <span class="lede">({{ volume_summary.received_other_pct_total }}%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            Any other way the user provides the information needed to complete a transaction that doesn’t fit into the Online, Phone, Paper and Face-to-face channels.
-          </p> 
-        </li>
-      </ul> 
-
-    </div>
-    
-  </div><!--transactions received block-->
-
-  <!-- transactions ending in an outcome data -->
-
-  <div class="grid-row data-block">
-
-    <div class="column-one-third">
-      <h2 class="data">
-        <span class="data-item bold-xxlarge">{{ to_3_sf(transactions_with_outcome_count) }}</span>
-        <span class="data-item bold-medium">transactions ending in an outcome</span>
-      </h2>
-      <br>
-      <details class="font-xsmall">
-        <summary><span class="summary">How this number is calculated</span></summary>
-        <div class="panel panel-border-narrow">
-          <p>
-            The delivery of the service is measured by the number of outcomes it produces.
-          </p>  
-          <p>
-            Depending on the service, some transactions may take time to reach an outcome and therefore won’t be directly related to those received in the same period.
-          </p>
-          <p>  
-            For example, if a service is seasonal and a transaction takes several months to reach an outcome it could show a many transactions received with no outcomes in the first month and more outcomes than received in later months.
-          </p> 
-        </div>
-      </details>     
-    </div>
-
-    <div class="column-two-thirds">
-      <h3 class="heading-medium" style="margin-top: 0">Delivery of the service</h3>
-      <ul class="list bold-medium">
-        <li>
-          Transactions ending in an outcome <span class="blue">{{ to_3_sf(transactions_with_outcome_count) }}</span>
-          <br>
-          <p class="font-xsmall">
-            The number of transactions where no further changes to the user’s relationship with government will be made in response to their request. 
-          </p>
-          <p class="font-xsmall">
-            A transaction can end in an outcome even if some activities take place afterwards as long as there are no further changes in the user’s relationship with government. For example:
-          </p>   
-          <ul class="list list-bullet font-xsmall">
-            <li>the decision on whether to award a benefit is counted as the outcome rather than the ongoing payments</li>
-          </ul>
-        </li>
-        <li>
-          Transactions ending in user's intended outcome <span class="blue">{{ to_3_sf(transactions_with_users_intended_outcome_count) }} <span class="lede">({{ pct_users_intended_outcome }}%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            A subset of the transactions ending in an outcome where the outcome is what the user set out to achieve. For example:
-          </p>  
-          <ul class="list list-bullet font-xsmall">
-            <li>applying for a visa and being granted that visa</li>
-            <li>sending money to a prisoner and the prisoner receiving the money</li>
-            <li>reporting a crime and having the report accepted and processed</li>
-          </ul>
-        </li>       
-      </ul>
-    </div>
-    
-  </div><!--transactions ending in an oucome block-->
-
-  <!-- calls data -->
-  <div class="grid-row data-block">
-
-    <div class="column-one-third">
-      <h2 class="data">
-        <span class="data-item bold-xxlarge">700k</span>
-        <span class="data-item bold-medium">calls received</span>
-      </h2> 
-      <br>
-      <details class="font-xsmall">
-        <summary><span class="summary">How this number is calculated</span></summary>
-        <div class="panel panel-border-narrow">
-          <p>
-            These are the total number of calls received by the service including calls that aren’t counted as a received transaction.
-          </p> 
-          <p>
-            The 'reasons people called' are the initial reasons that triggered the user to contact the service via the phone, even if they then go on to discuss other subjects.
-          </p>  
-        </div>
-      </details>    
-    </div>
-
-    <div class="column-two-thirds">
-      <h3 class="bold-medium">Reasons people called the service</h3>
-      <p style="margin: 0 0 20px">Based on a sample of 1,000 calls</p>
-      <ul class="list bold-medium">
-        <li>
-          To get information <span class="blue">400 <span class="lede">(40%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            Calls to get advice or guidance about the service. For example:
-          </p>  
-          <ul class="list list-bullet font-xsmall">
-            <li>to get information they couldn’t find online</li>
-            <li>to find out why they've been sent unexpected information</li>
-            <li>to check that they’re eligible and how the service's rules apply to them</li>
-            <li>to check that something is still valid, such as a licence or visa</li>
-            <li>to ask what to do if they’ve lost something, such as a licence or visa</li>
-          </ul>
-        </li>
-        <li>
-          To chase progress <span class="blue">250 <span class="lede">(25%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            Calls to find out about a decision or action that the user expects the service to take. For example:
-          </p>  
-          <ul class="list list-bullet font-xsmall">
-            <li>to find out what’s happening in response to information they’ve provided</li>
-            <li>to ask about the status of an application</li>
-            <li>to find out when a payment will be made</li>
-            <li>to ask why they haven’t heard from the service</li>
-          </ul>
-        </li>
-        <li>
-          To challenge a decision <span class="blue">200 <span class="lede">(20%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            Calls to dispute an instruction or request from the service or to appeal an outcome. For example:
-          </p>  
-          <ul class="list list-bullet font-xsmall">
-            <li>to appeal an outcome or decision</li>
-          </ul>
-        </li>
-        <li>
-          Other <span class="blue">150 <span class="lede">(15%)</span></span>
-          <br>
-          <p class="font-xsmall">
-            Calls that don’t fit into the three previous categories. For example:
-          </p>  
-          <ul class="list list-bullet font-xsmall">
-            <li>to do a transaction</li>
-            <li>to get help using the service</li>
-            <li>to respond to contact from the service, such as a letter or call</li>
-            <li>to check that they’ve done the right thing</li>
-            <li>to update their information when their situation changes</li>
-            <li>to deregister from the service</li>
-            <li>to tell the service its information is incorrect</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    
-  </div><!--calls block-->
+ 
 
 </main>
 

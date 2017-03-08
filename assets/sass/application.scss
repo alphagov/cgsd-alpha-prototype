@@ -49,6 +49,16 @@
   
 }
 
+// Breadcrumbs image link change 
+
+.breadcrumbs {
+
+  li {
+    background-image: url('../images/separator.png');
+  }
+
+}
+
 // Stuff from product pages sass
 
 .section-header {
