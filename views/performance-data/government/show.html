@@ -10,18 +10,16 @@
 
   <div class="grid-row">
     <div class="column-two-thirds">
-      <h1 class="heading-xlarge mb_0">Overview</h1>     
+      <h1 class="heading-xlarge" style="margin-bottom: 30px">
+        {{ transaction_counts.length }} {{ filter }} in 
+        {% if filter == 'departments' %} UK Government {% endif %}
+        {% if filter == 'agencies' %} Organisation {% endif %}
+        {% if filter == 'services' %} Organisation {% endif %}
+      </h1>     
     </div>
   </div>
 
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <p class="font-small">Year from 1 January 2016 to 31 December 2016</p>
-    </div>
-    <div class="column-one-third"> 
-      <p class="download-csv"><a href="javascript:void()">Download all data (CSV 10KB)</a></p>
-    </div>
-  </div>    
+  
 
   <div class="grid-row filter-panel-horizontal">
 
@@ -100,10 +98,13 @@
   <!--end of filter-->  
 
   <div class="grid-row">
-    <div class="column-one-third">
-      <p>Showing <strong>{{ transaction_counts.length }}</strong> {{ filter }}</p>
+    <div class="column-two-thirds">
+      <p class="font-small">Year from 1 January 2016 to 31 December 2016</p>
     </div>
-  </div>    
+    <div class="column-one-third"> 
+      <p class="download-csv"><a href="javascript:void()">Download all data (CSV 10KB)</a></p>
+    </div>
+  </div>   
 
   <div class="grid-row">
     <ul class="filter-cards column-full">
