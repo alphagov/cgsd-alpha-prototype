@@ -78,7 +78,8 @@ module.exports = class ViewController extends Controller {
             tasks: tasks,
             filter: 'departments',
             transaction_counts: transaction_counts_by_dept,
-            to_3_sf: default_service.to3SF
+            to_3_sf: default_service.to3SF,
+            url_builder: default_service.urlBuilder
           }
         )
       }
@@ -130,7 +131,8 @@ module.exports = class ViewController extends Controller {
             filter: 'agencies',
             organisation: req.query.organisation,
             transaction_counts: transaction_counts_by_dept,
-            to_3_sf: default_service.to3SF
+            to_3_sf: default_service.to3SF,
+            url_builder: default_service.urlBuilder
           }
         )
       }
@@ -182,7 +184,8 @@ module.exports = class ViewController extends Controller {
             filter: 'services',
             organisation: req.query.organisation,
             transaction_counts: transaction_counts_by_task,
-            to_3_sf: default_service.to3SF
+            to_3_sf: default_service.to3SF,
+            url_builder: default_service.urlBuilder
           }
         )
       }

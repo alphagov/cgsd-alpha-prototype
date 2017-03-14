@@ -54,4 +54,18 @@ module.exports = class DefaultService extends Service {
       return (number / 1000).toFixed(1) + 'k'
     }
   }
+
+  urlBuilder(organisation_type, friendly_id, agency_count) {
+    if (organisation_type == 'department') {
+      if (agency_count > 0) {
+        return 'agencies?' + 'organisation=' + friendly_id
+      } else {
+        return 'services?' + 'organisation=' + friendly_id + '&type=department'  
+      }
+    } else if (organisation_type == 'agency') {
+      return 'services?' + 'organisation=' + friendly_id + '&type=agency'
+    } else { // must be a service
+      return friendly_id
+    }
+  }
 }
