@@ -111,7 +111,7 @@
       {% for row in transaction_counts %}
       <li class="column-full">
         <div class="column-one-quarter">
-          <h2 class="bold-medium"><a href="{{ row.friendly_id }}">{{ row.name }}</a></h2>
+          <h2 class="bold-medium"><a href="{{ url_builder(organisation_type, row.friendly_id, row.agencies_count) }}">{{ row.name }}</a></h2>
           <ul class="list font-xsmall">
             {% if filter == 'departments' %}
               <li><strong>{{ row.agencies_count}}</strong> agencies</li>
