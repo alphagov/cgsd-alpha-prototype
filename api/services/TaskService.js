@@ -99,8 +99,7 @@ module.exports = class TaskService extends Service {
 
     if (filter) {
       if (filter_type == 'department') {
-        sql += "INNER JOIN agency ON agency.id = task.agency \
-                INNER JOIN department ON department.id = agency.department \
+        sql += "INNER JOIN department ON department.id = task.department \
                 WHERE department.friendly_id = '{department}'\
                ";
         sql = sql.replace(/{department}/, filter)
