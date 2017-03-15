@@ -24,7 +24,7 @@ module.exports = [
   },
 
   /**
-   * Render the home page
+   * Show the home page
    */
   {
     method: 'GET',
@@ -33,7 +33,7 @@ module.exports = [
   },
 
   /**
-   * Search
+   * Redirect based on search term
    */
   {
     method: 'GET',
@@ -42,7 +42,7 @@ module.exports = [
   },
 
   /**
-   * Render performance data view (department or agency)
+   * Show information about a service, agency or department
    */
   {
     method: 'GET',
@@ -51,7 +51,7 @@ module.exports = [
   },
 
   /**
-   * Render performance data view (government)
+   * List departments in UK Government
    */
   {
     method: 'GET',
@@ -60,7 +60,7 @@ module.exports = [
   },
 
   /**
-   * Render performance data view (agencies)
+   * List agencies in UK Government or for a department
    */
   {
     method: 'GET',
@@ -69,7 +69,7 @@ module.exports = [
   },
   
   /**
-   * Render performance data view (agencies)
+   * List services in UK Government or for a department or agency
    */
   {
     method: 'GET',
@@ -78,22 +78,7 @@ module.exports = [
   },
 
   /**
-   * Render the glossary pages
-   */
-  {
-    method: 'GET',
-    path: '/performance-data/guidancecalls',
-    handler: 'ViewController.guidancecalls'
-  },
-
-  {
-    method: 'GET',
-    path: '/performance-data/guidancecasework',
-    handler: 'ViewController.guidancecasework'
-  },
-
-  /**
-   * Render the search page
+   * Show the search page
    */
   {
     method: 'GET',
