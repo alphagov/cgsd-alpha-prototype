@@ -42,24 +42,6 @@ module.exports = [
   },
 
   /**
-   * Render the prototype-v0 home page
-   */
-  {
-    method: 'GET',
-    path: '/prototype-v0',
-    handler: 'ViewController.prototypeV0Home'
-  },
-
-  /**
-   * Render a prototype-v0 task view
-   */
-  {
-    method: 'GET',
-    path: '/prototype-v0/:dept_or_agency/:task',
-    handler: 'ViewController.taskView'
-  },
-
-  /**
    * Render performance data view (department or agency)
    */
   {
