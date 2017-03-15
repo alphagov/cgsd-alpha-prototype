@@ -19,15 +19,6 @@ module.exports = class ViewController extends Controller {
     res.redirect('/performance-data/' + req.query.selectedId);
   }
 
-  taskPerformanceView(req, res) {
-    res.render(
-      'performance-data/tasks/show.html',
-      {
-         asset_path: '/govuk_modules/govuk_template/assets/'
-      }
-    )
-  }
-
   government(req, res) {
     var uk_government_service = this.app.services.UKGovernmentService;
     var department_service = this.app.services.DepartmentService;

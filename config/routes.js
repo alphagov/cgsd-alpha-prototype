@@ -42,14 +42,6 @@ module.exports = [
   },
 
   /**
-   * Tasks
-   */
-  {
-    method: 'GET',
-    path: '/tasks',
-    handler: 'ViewController.taskPerformanceView'
-  },
-  /**
    * Render the prototype-v0 home page
    */
   {
