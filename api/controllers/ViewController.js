@@ -15,6 +15,27 @@ module.exports = class ViewController extends Controller {
     )
   }
 
+  searchpage(req, res) {
+    this.app.orm.Department.query(
+      "SELECT friendly_id, name \
+       FROM department \
+       UNION SELECT friendly_id, name \
+       FROM agency \
+       UNION SELECT friendly_id, name \
+       FROM task \
+       ORDER BY name ASC",
+      [],
+      function(err, results) {
+        res.render(
+          'performance-data/searchpage.html',
+          {
+            asset_path: '/govuk_modules/govuk_template/assets/',
+            search_options: results.rows
+          })
+      }
+    );
+  }
+  
   search(req, res) {
     res.redirect('/performance-data/' + req.query.selectedId);
   }
@@ -360,26 +381,5 @@ module.exports = class ViewController extends Controller {
             )
           })
       })
-  }
-
-  searchpage(req, res) {
-    this.app.orm.Department.query(
-      "SELECT friendly_id, name \
-       FROM department \
-       UNION SELECT friendly_id, name \
-       FROM agency \
-       UNION SELECT friendly_id, name \
-       FROM task \
-       ORDER BY name ASC",
-      [],
-      function(err, results) {
-        res.render(
-          'performance-data/searchpage.html',
-          {
-            asset_path: '/govuk_modules/govuk_template/assets/',
-            search_options: results.rows
-          })
-      }
-    );
   }
 }
