@@ -75,6 +75,7 @@ module.exports = class ViewController extends Controller {
           {
             asset_path: '/govuk_modules/govuk_template/assets/',
             organisation_type: 'department', // remember there is a service to determine this
+            organisation_name: 'UK Goverment',
             tasks: tasks,
             filter: 'departments',
             transaction_counts: transaction_counts_by_dept,
@@ -93,6 +94,8 @@ module.exports = class ViewController extends Controller {
 
     var Promise = require('bluebird');
     Promise.join(
+      department_service.getDepartmentByFriendlyId(req.query.organisation)
+        .then( department => { return department }),
       this.app.orm.Agency.find({ where : {}, sort: 'name ASC' })
         .then( agencies => { return agencies }),
       this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
@@ -121,12 +124,21 @@ module.exports = class ViewController extends Controller {
 
             return counts; })
         }),
-      function (agencies, tasks, transaction_counts_by_dept) {
+      function (department, agencies, tasks, transaction_counts_by_dept) {
+        var name;
+
+        if (department) {
+          name = department.name;
+        } else {
+          name = 'UK Government'
+        }
+
         res.render(
           'performance-data/government/show.html',
           {
             asset_path: '/govuk_modules/govuk_template/assets/',
             organisation_type: 'agency', // remember there is a service to determine this
+            organisation_name: name,
             tasks: tasks,
             filter: 'agencies',
             organisation: req.query.organisation,
@@ -141,11 +153,16 @@ module.exports = class ViewController extends Controller {
 
   services(req, res) {
     var task_service = this.app.services.TaskService;
+    var department_service = this.app.services.DepartmentService;
     var agency_service = this.app.services.AgencyService;
     var default_service = this.app.services.DefaultService;
 
     var Promise = require('bluebird');
     Promise.join(
+      department_service.getDepartmentByFriendlyId(req.query.organisation)
+        .then( department => { return department }),
+      agency_service.getAgencyByFriendlyId(req.query.organisation)
+        .then( agency => { return agency }),
       this.app.orm.Agency.find({ where : {}, sort: 'name ASC' })
         .then( agencies => { return agencies }),
       this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
@@ -174,12 +191,23 @@ module.exports = class ViewController extends Controller {
 
             return counts; })
         }),
-      function (agencies, tasks, transaction_counts_by_task) {
+      function (department, agency, agencies, tasks, transaction_counts_by_task) {
+        var name;
+
+        if (department) {
+          name = department.name;
+        } else if (agency) {
+          name = agency.name;
+        } else {
+          name = 'UK Government'
+        }
+
         res.render(
           'performance-data/government/show.html',
           {
             asset_path: '/govuk_modules/govuk_template/assets/',
             organisation_type: 'task', // remember there is a service to determine this
+            organisation_name: name,
             tasks: tasks,
             filter: 'services',
             organisation: req.query.organisation,

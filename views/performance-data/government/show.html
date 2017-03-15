@@ -11,10 +11,7 @@
   <div class="grid-row">
     <div class="column-two-thirds">
       <h1 class="heading-xlarge" style="margin-bottom: 30px">
-        {{ transaction_counts.length }} {{ filter }} in 
-        {% if filter == 'departments' %} UK Government {% endif %}
-        {% if filter == 'agencies' %} Organisation {% endif %}
-        {% if filter == 'services' %} Organisation {% endif %}
+        {{ transaction_counts.length }} {{ filter }} in {{ organisation_name }}
       </h1>     
     </div>
   </div>
