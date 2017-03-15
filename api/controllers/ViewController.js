@@ -362,14 +362,6 @@ module.exports = class ViewController extends Controller {
       })
   }
 
-  guidancecalls(req, res) {
-    res.render('performance-data/guidancecalls.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
-  }
-
-  guidancecasework(req, res) {
-    res.render('performance-data/guidancecasework.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
-  }
-
   searchpage(req, res) {
     this.app.orm.Department.query(
       "SELECT friendly_id, name \
@@ -390,9 +382,4 @@ module.exports = class ViewController extends Controller {
       }
     );
   }
-
-  channels(req, res) {
-    res.render('performance-data/channels.html', { asset_path: '/govuk_modules/govuk_template/assets/' })
-  }
-
 }
