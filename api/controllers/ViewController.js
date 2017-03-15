@@ -121,9 +121,17 @@ module.exports = class ViewController extends Controller {
         }),
       function (department,transaction_counts_by_agency) {
         var name;
+        var breadcrumbs = [{
+            name: 'View data',
+            url: 'government'
+        }];
 
         if (department) {
           name = department.name;
+          //breadcrumbs.push({
+          //  name: department.name, 
+          //  url: default_service.urlBuilder('agency', department.friendly_id, 1)
+          // });
         } else {
           name = 'UK Government'
         }
@@ -132,6 +140,7 @@ module.exports = class ViewController extends Controller {
           'performance-data/government/show.html',
           {
             asset_path: '/govuk_modules/govuk_template/assets/',
+            breadcrumbs: breadcrumbs,
             organisation_type: 'agency', // remember there is a service to determine this
             organisation_name: name,
             filter: 'agencies',
@@ -183,10 +192,19 @@ module.exports = class ViewController extends Controller {
         }),
       function (department, agency, transaction_counts_by_task) {
         var name;
+        var breadcrumbs = [{
+            name: 'View data',
+            url: 'government'
+        }];
 
         if (department) {
           name = department.name;
         } else if (agency) {
+          breadcrumbs.push({
+            name: agency.department.name, 
+            url: default_service.urlBuilder('department', agency.department.friendly_id, 1)
+          });
+
           name = agency.name;
         } else {
           name = 'UK Government'
@@ -196,6 +214,7 @@ module.exports = class ViewController extends Controller {
           'performance-data/government/show.html',
           {
             asset_path: '/govuk_modules/govuk_template/assets/',
+            breadcrumbs: breadcrumbs, 
             organisation_type: 'task', // remember there is a service to determine this
             organisation_name: name,
             filter: 'services',
@@ -220,20 +239,39 @@ module.exports = class ViewController extends Controller {
         if (task == undefined) { throw true };
         var Promise = require('bluebird');
         Promise.join(
+          task,
           task_volume_service.getTotalVolumeByTask([task.id])
             .then( task_volume_records => { return task_volume_records.rows }),
           task_service.sumTransactionsWithOutcome(task.friendly_id)
             .then( transactions_with_outcome_count => { return transactions_with_outcome_count.rows[0].sum }),
           task_service.sumTransactionsWithUsersIntendedOutcome(task.friendly_id)
             .then( transactions_with_users_intended_outcome_count => { return transactions_with_users_intended_outcome_count.rows[0].sum }),
-          function(task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count) {
+          function(task, task_volume_records, transactions_with_outcome_count, transactions_with_users_intended_outcome_count) {
             var task_volume_summary = new TaskVolumeSummary(task_volume_records);
             var pct_users_intended_outcome = default_service.pct_of(
                   transactions_with_users_intended_outcome_count, transactions_with_outcome_count);
+
+            var breadcrumbs = [{
+                name: 'View data',
+                url: 'government'
+            }];
+            breadcrumbs.push({
+              name: task.department.name, 
+              url: default_service.urlBuilder('department', task.department.friendly_id, 1)
+            });
+
+            if (task.agency) {
+              breadcrumbs.push({
+                name: task.agency.name, 
+                url: default_service.urlBuilder('agency', task.agency.friendly_id, 1)
+              });
+            }
+
             res.render(
               'performance-data/tasks/show.html',
               {
                 asset_path: '/govuk_modules/govuk_template/assets/',
+                breadcrumbs: breadcrumbs,
                 department: task.department,
                 agency: task.agency,
                 task: task,

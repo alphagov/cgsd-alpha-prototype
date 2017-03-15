@@ -10,12 +10,9 @@
 
   <div class="breadcrumbs">
     <ol>
-      <li><a href="/performance-data/government/">Overview</a></li>
-      <li><a href="{{department.friendly_id }}">{{ department.name }}</a></li> 
-      {% if agency %}
-      <li><a href="{{ agency.friendly_id }}">{{ agency.name }}</a></li>
-      {% endif %}     
-      <li>{{ task.name }}</li>
+      {% for crumb in breadcrumbs %}
+        <li><a href="{{ crumb.url }}">{{ crumb.name }}</a></li>
+      {% endfor %}
     </ol>
   </div>
 
@@ -26,13 +23,6 @@
         {{ task.name }}
       </h1>
       <dl class="metadata">
-        <!-- <dt>Part of:</dt>
-        <dd>
-        {% if agency %}
-        <a href="{{ agency.friendly_id }}">{{ agency.name }}</a>,
-        {% endif %}
-        <a href="{{department.friendly_id }}">{{ department.name }}</a>, <a href="/performance-data/government">UK Government</a>
-        </dd> -->
         <dt>Data provider:</dt>
         <dd>
           {% if agency %}
@@ -49,7 +39,7 @@
     </div>
   </div>
 
-  <hr>  
+  <br><br><br> 
 
   <div class="grid-row">
     

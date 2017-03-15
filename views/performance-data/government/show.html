@@ -7,12 +7,29 @@
 {% block content %}
 
 <main id="content" role="main">
+  <div class="breadcrumbs">
+    <ol>
+      {% for crumb in breadcrumbs %}
+        <li><a href="{{ crumb.url }}">{{ crumb.name }}</a></li>
+      {% endfor %}
+    </ol>
+  </div>
 
   <div class="grid-row">
     <div class="column-two-thirds">
-      <h1 class="heading-xlarge" style="margin-bottom: 30px">
+      <h1 class="heading-xlarge"> 
         {{ transaction_counts.length }} {{ filter }} in {{ organisation_name }}
       </h1>     
+    </div>
+    <div class="column-third">
+      <div class="notice">
+        <i class="icon icon-file-download">
+          <span class="visuallyhidden">Download file</span>
+        </i>
+        <strong class="bold-small">
+          <a href="#">Download data (CSV 10KB)</a>
+        </strong>
+      </div>
     </div>
   </div>
 
@@ -22,7 +39,7 @@
 
     <form action="/filter" method="get" class="column-full filter-row mt_-5">
       <fieldset>
-        <label>Show</label>
+        <label>Showing</label>
         <div class="form-group inline-forms width-data-type" id="filter-select-box">
           <select class="form-control" name="select-org-type" id="select-org-type">
             <option value="departments" {% if filter == 'departments' %} selected {% endif %}>Departments</option>
@@ -90,18 +107,16 @@
         </select>
         <span class="reverse-sort font-xsmall"><a href="javascript:void()">⇅ Reverse order</a></span>
       </fieldset>
+
+      <div class="grid-row">
+        <div class="column-full">
+          <p class="font-small mt_20 mb_0">Showing year from 1 January 2016 to 31 December 2016</p>
+        </div>
+      </div>
+
   </div>
 
-  <!--end of filter-->  
-
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <p class="font-small">Year from 1 January 2016 to 31 December 2016</p>
-    </div>
-    <div class="column-one-third"> 
-      <p class="download-csv"><a href="javascript:void()">Download all data (CSV 10KB)</a></p>
-    </div>
-  </div>   
+  <!--end of filter-->    
 
   <div class="grid-row">
     <ul class="filter-cards column-full">

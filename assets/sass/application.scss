@@ -49,12 +49,32 @@
   
 }
 
-// Breadcrumbs image link change 
+// Changes to things in gov uk elements
+
+.heading-xlarge {
+  margin: 10px 0 25px;
+}
 
 .breadcrumbs {
 
   li {
     background-image: url('../images/separator.png');
+  }
+
+}
+
+.icon-file-download {
+  width: 24px;
+  height: 32px;
+  background-image: url("../images/icon-file-download.png");
+  background-size: 100%;
+}
+
+.notice {
+  margin-top: 18px;
+
+  strong {
+    padding-left: 50px;
   }
 
 }
