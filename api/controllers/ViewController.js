@@ -19,11 +19,6 @@ module.exports = class ViewController extends Controller {
     res.redirect('/performance-data/' + req.query.selectedId);
   }
 
-  filter(req, res) {
-    // use req.body for accessing POSTed content
-    res.redirect('/performance-data/government');
-  }
-
   taskPerformanceView(req, res) {
     res.render(
       'performance-data/tasks/show.html',

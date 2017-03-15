@@ -42,15 +42,6 @@ module.exports = [
   },
 
   /**
-   * Filter
-   */
-  {
-    method: 'GET',
-    path: '/filter',
-    handler: 'ViewController.filter'
-  },
-
-  /**
    * Tasks
    */
   {
