@@ -42,7 +42,7 @@ module.exports = class TaskService extends Service {
   }
 
   /**
-   * Sum transactions by department
+   * Sum transactions by UK Government, department or agency
    */
   sumTransactionCountsByTask(filter, filter_type) {
     var sql;

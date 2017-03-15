@@ -88,9 +88,9 @@ module.exports = class AgencyService extends Service {
   }
 
   /**
-   * Sum transactions by department
+   * Sum transactions by agency for a given department
    */
-  sumTransactionCountsByDept(department) {
+  sumTransactionCountsByAgency(department) {
     var sql;
     sql = "SELECT agency.friendly_id, \
             agency.name, \

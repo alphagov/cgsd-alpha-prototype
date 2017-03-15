@@ -21,16 +21,9 @@ module.exports = class ViewController extends Controller {
 
   government(req, res) {
     var uk_government_service = this.app.services.UKGovernmentService;
-    var department_service = this.app.services.DepartmentService;
     var default_service = this.app.services.DefaultService;
     var Promise = require('bluebird');
     Promise.join(
-      this.app.orm.Department.find({ where : {}, sort: 'name ASC' })
-        .then( departments => { return departments }), // then call anonymous function passing in one argument called 'departments'
-      this.app.orm.Agency.find({ where : {}, sort: 'name ASC' })
-        .then( agencies => { return agencies }),
-      this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
-        .then( tasks  => { return tasks }),
       uk_government_service.sumTransactionCountsByDept()
         .then( transaction_counts_by_dept => { return transaction_counts_by_dept.rows })
         .then( function(transaction_counts_by_dept) {
@@ -55,14 +48,13 @@ module.exports = class ViewController extends Controller {
 
             return counts; })
         }),
-      function (departments, agencies, tasks, transaction_counts_by_dept) {
+      function (transaction_counts_by_dept) {
         res.render(
           'performance-data/government/show.html',
           {
             asset_path: '/govuk_modules/govuk_template/assets/',
             organisation_type: 'department', // remember there is a service to determine this
-            organisation_name: 'UK Goverment',
-            tasks: tasks,
+            organisation_name: 'UK Government',
             filter: 'departments',
             transaction_counts: transaction_counts_by_dept,
             to_3_sf: default_service.to3SF,
@@ -82,14 +74,10 @@ module.exports = class ViewController extends Controller {
     Promise.join(
       department_service.getDepartmentByFriendlyId(req.query.organisation)
         .then( department => { return department }),
-      this.app.orm.Agency.find({ where : {}, sort: 'name ASC' })
-        .then( agencies => { return agencies }),
-      this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
-        .then( tasks  => { return tasks }),
-      agency_service.sumTransactionCountsByDept(req.query.organisation)
-        .then( transaction_counts_by_dept => { return transaction_counts_by_dept.rows })
-        .then( function(transaction_counts_by_dept) {
-          return transaction_counts_by_dept.map(function(counts) {
+      agency_service.sumTransactionCountsByAgency(req.query.organisation)
+        .then( transaction_counts_by_agency => { return transaction_counts_by_agency.rows })
+        .then( function(transaction_counts_by_agency) {
+          return transaction_counts_by_agency.map(function(counts) {
             counts.pct_users_intended_outcome = default_service.pct_of(
               counts.transactions_with_users_intended_outcome_count, counts.transactions_with_outcome_count);
 
@@ -110,7 +98,7 @@ module.exports = class ViewController extends Controller {
 
             return counts; })
         }),
-      function (department, agencies, tasks, transaction_counts_by_dept) {
+      function (department,transaction_counts_by_agency) {
         var name;
 
         if (department) {
@@ -125,10 +113,9 @@ module.exports = class ViewController extends Controller {
             asset_path: '/govuk_modules/govuk_template/assets/',
             organisation_type: 'agency', // remember there is a service to determine this
             organisation_name: name,
-            tasks: tasks,
             filter: 'agencies',
             organisation: req.query.organisation,
-            transaction_counts: transaction_counts_by_dept,
+            transaction_counts: transaction_counts_by_agency,
             to_3_sf: default_service.to3SF,
             url_builder: default_service.urlBuilder
           }
@@ -149,10 +136,6 @@ module.exports = class ViewController extends Controller {
         .then( department => { return department }),
       agency_service.getAgencyByFriendlyId(req.query.organisation)
         .then( agency => { return agency }),
-      this.app.orm.Agency.find({ where : {}, sort: 'name ASC' })
-        .then( agencies => { return agencies }),
-      this.app.orm.Task.find({ where : {}, sort: 'name ASC' })
-        .then( tasks  => { return tasks }),
       task_service.sumTransactionCountsByTask(req.query.organisation, req.query.type)
         .then( transaction_counts_by_task => { return transaction_counts_by_task.rows })
         .then( function(transaction_counts_by_task) {
@@ -177,7 +160,7 @@ module.exports = class ViewController extends Controller {
 
             return counts; })
         }),
-      function (department, agency, agencies, tasks, transaction_counts_by_task) {
+      function (department, agency, transaction_counts_by_task) {
         var name;
 
         if (department) {
@@ -194,7 +177,6 @@ module.exports = class ViewController extends Controller {
             asset_path: '/govuk_modules/govuk_template/assets/',
             organisation_type: 'task', // remember there is a service to determine this
             organisation_name: name,
-            tasks: tasks,
             filter: 'services',
             organisation: req.query.organisation,
             transaction_counts: transaction_counts_by_task,
