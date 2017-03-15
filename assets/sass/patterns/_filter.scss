@@ -2,7 +2,7 @@
 
 .filter-panel-horizontal {
   background-color: $panel-colour;
-  padding: 20px 5px;
+  padding: 20px 5px 15px;
   margin: 0;
 
   @media screen and (max-width: 640px) {
@@ -220,7 +220,7 @@
   }
 
   li:first-of-type {
-    border-top: 1px solid $grey-2;
+    border-top: 1px solid $white;
   }
 
   li:last-of-type {
