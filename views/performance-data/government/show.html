@@ -37,7 +37,7 @@
 
   <div class="grid-row filter-panel-horizontal">
 
-    <form action="/filter" method="get" class="column-full filter-row mt_-5">
+    <form action="/filter" method="get" class="column-full filter-row">
       <fieldset>
         <label>Showing</label>
         <div class="form-group inline-forms width-data-type" id="filter-select-box">
@@ -139,12 +139,50 @@
             <span class="data-item bold-large">{{ to_3_sf(row.transactions_received_count) }}</span>
             <span class="data-item bold-xsmall">transactions received</span>
           </h3>
+          <p class="font-xsmall metric-guidance">
+            Transactions are split by the channel through which they’re received. The channel is the initial method of contact even if additional information is collected in other ways afterwards.
+          </p>
           <ul class="list font-xsmall">
-            <li><strong>{{ row.pct_received_online }}%</strong> online</li>
-            <li><strong>{{ row.pct_received_phone }}%</strong> phone</li>
-            <li><strong>{{ row.pct_received_paper }}%</strong> paper</li>
-            <li><strong>{{ row.pct_received_face_to_face }}%</strong> face-to-face</li>
-            <li><strong>{{ row.pct_received_other }}%</strong> other</li>
+            <li>
+              <span class="metric-name">
+                <strong>{{ row.pct_received_online }}%</strong> online
+              </span>  
+              <p class="font-xsmall metric-guidance">
+                Transactions received online. Doesn’t include services where you use an online tool to fill out a paper form or transactions received via web chat.
+              </p>
+            </li>
+            <li>
+              <span class="metric-name">
+                <strong>{{ row.pct_received_phone }}%</strong> phone
+              </span>  
+              <p class="font-xsmall metric-guidance">
+                Transactions received via the phone. Doesn’t include IVR or purely informational calls that don’t affect the outcome of a transaction.
+              </p>
+            </li>
+            <li>
+              <span class="metric-name">
+                <strong>{{ row.pct_received_paper }}%</strong> paper
+              </span>
+              <p class="font-xsmall metric-guidance">
+                Transactions received via a paper form. The form can be sent in any way including by post, email, fax or uploading.
+              </p>
+            </li>
+            <li>
+              <span class="metric-name">
+                <strong>{{ row.pct_received_face_to_face }}%</strong> face-to-face
+              </span>  
+              <p class="font-xsmall metric-guidance">
+                The transaction must be received through a face-to-face meeting with someone working for the service. Doesn’t include handing in a paper form in person.
+              </p>
+            </li>
+            <li>
+              <span class="metric-name">
+                <strong>{{ row.pct_received_other }}%</strong> other
+              </span>  
+              <p class="font-xsmall metric-guidance">
+                Any other way the user provides the information needed to complete a transaction that doesn’t fit into the Online, Phone, Paper and Face-to-face channels.
+              </p>
+            </li>
           </ul>
         </div>
         <div class="column-one-quarter">
@@ -152,8 +190,18 @@
             <span class="data-item bold-large">{{ to_3_sf(row.transactions_with_outcome_count) }}</span>
             <span class="data-item bold-xsmall">transactions ending in an outcome</span>
           </h3>
+          <p class="font-xsmall metric-guidance">
+            The number of transactions where no further changes to the user’s relationship with government will be made in response to their request. 
+          </p>
           <ul class="list font-xsmall">
-            <li><strong>{{ row.pct_users_intended_outcome }}%</strong> end in user's intended outcome</li>
+            <li>
+              <span class="metric-name">
+                <strong>{{ row.pct_users_intended_outcome }}%</strong> end in user's intended outcome
+              </span>  
+              <p class="font-xsmall metric-guidance">
+                A subset of the transactions ending in an outcome where the outcome is what the user set out to achieve.
+              </p>
+            </li>
           </ul>
         </div>
         <div class="column-one-quarter">
@@ -161,18 +209,60 @@
             <span class="data-item bold-large">7.2m</span>
             <span class="data-item bold-xsmall">calls received</span>
           </h3>
+          <p class="font-xsmall metric-guidance">
+            The total number of calls to the service. These calls should be categorised into one of four groups based on the thing that triggered the user to contact the service via the phone.
+          </p>
           <ul class="list font-xsmall">
-            <li><strong>40%</strong> to get information</li>
-            <li><strong>25%</strong> to chase progress</li>
-            <li><strong>20%</strong> to challenge a decision</li>
-            <li><strong>15%</strong> other</li>
+            <li>
+              <span class="metric-name">
+                <strong>40%</strong> to get information
+              </span>  
+              <p class="font-xsmall metric-guidance">
+                Calls to get advice or guidance about the service.
+              </p>
+            </li>
+            <li>
+              <span class="metric-name">
+                <strong>25%</strong> to chase progress
+              </span>  
+              <p class="font-xsmall metric-guidance">
+                Calls to find out about a decision or action that the user expects the service to take. 
+              </p>
+            </li>
+            <li>
+              <span class="metric-name">
+                <strong>20%</strong> to challenge a decision
+              </span>  
+              <p class="font-xsmall metric-guidance">
+                Calls to dispute an instruction or request from the service or to appeal an outcome.
+              </p>
+            </li>
+            <li>
+              <span class="metric-name">
+                <strong>15%</strong> other
+              </span>  
+              <p class="font-xsmall metric-guidance">
+                Calls that don’t fit into the three previous categories.
+              </p>
+            </li>
             <li class="secondary-text-colour">Based on sample of 10,000 calls</li>
           </ul>
-        </div>  
+        </div> 
+        <div class="grid-row">
+          <div class="column-full">
+            <div class="show-guidance font-xsmall mb_0">
+              <button type="button">
+                <span>Show metric info</span>
+                <span style="display: none">Hide metric info</span>
+              </button>
+            </div>  
+          </div>  
+        </div>     
       </li>
       {% endfor %}
 
     </ul>
+    
   </div>
 
 </main>

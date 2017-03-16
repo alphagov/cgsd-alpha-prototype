@@ -2,7 +2,7 @@
 
 .filter-panel-horizontal {
   background-color: $panel-colour;
-  padding: 20px 5px 15px;
+  padding: 10px 0;
   margin: 0;
 
   @media screen and (max-width: 640px) {
@@ -161,14 +161,13 @@
 
 }
 
-
 // filter cards
 
 .filter-cards {
 
   li {
     border-bottom: 1px solid $grey-2;
-    padding: 15px 0 30px;
+    padding: 15px 0 0;
 
     @media screen and (max-width: 640px) {
       padding-bottom: 0;
@@ -217,6 +216,30 @@
 
     }
 
+    .show-guidance {
+    margin-top: 10px; 
+      
+      button {
+        font-weight: 400;
+        text-transform: none;
+        font-size: 14px;
+        line-height: 1.1428571429;
+        font-family: 'nta', Arial, sans-serif;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: $secondary-text-colour;
+        padding: 0.5em 0;
+        margin-bottom: 0;
+        text-decoration: underline
+      }
+
+      button:hover {
+        color: $black;
+      }
+
+    }
+
   }
 
   li:first-of-type {
@@ -227,4 +250,8 @@
     border-bottom: none;
   }
 
+}
+
+.bold {
+  font-weight: bold;
 }
