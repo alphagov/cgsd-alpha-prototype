@@ -15,6 +15,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 
   var filter = window.location.pathname.split( '/' )[2];
+  var query_string = window.location.href.split('?')[1];
 
   if (filter == "agencies") {
     $(".filter-org-default").hide();
@@ -36,19 +37,28 @@ $(document).ready(function() {
 	// show a different org list depending on what you select
 	$("#select-org-type").change(function(){
     var selected_option = $("#select-org-type").val();
+    var url;
 
     if (selected_option == "agencies") {
       $(".filter-org-default").hide();
       $(".filter-org-type").show();
       $("optgroup#departments").show();
       $("optgroup#agencies").hide();
-      window.location.href = "agencies"
+      url = "agencies";
+      if (query_string != undefined) {
+        url += ('?' + query_string);
+      }
+      window.location.href = url; 
     } else if (selected_option == "services") {
       $(".filter-org-default").hide();
       $(".filter-org-type").show();
       $("optgroup#departments").show();
       $("optgroup#agencies").show();
-      window.location.href = "services"
+      url = "services";
+      if (query_string != undefined) {
+        url += ('?' + query_string);
+      }
+      window.location.href = url;
     } else {
     	$(".filter-org-default").show();
       $(".filter-org-type").hide();
