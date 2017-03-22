@@ -60,10 +60,10 @@ module.exports = class DefaultService extends Service {
       if (agency_count > 0) {
         return 'agencies?' + 'organisation=' + friendly_id
       } else {
-        return 'services?' + 'organisation=' + friendly_id + '&type=department'  
+        return 'services?' + 'organisation=' + friendly_id  
       }
     } else if (organisation_type == 'agency') {
-      return 'services?' + 'organisation=' + friendly_id + '&type=agency'
+      return 'services?' + 'organisation=' + friendly_id
     } else { // must be a service
       return friendly_id
     }

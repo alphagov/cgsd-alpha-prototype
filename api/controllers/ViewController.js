@@ -166,7 +166,7 @@ module.exports = class ViewController extends Controller {
         .then( department => { return department }),
       agency_service.getAgencyByFriendlyId(req.query.organisation)
         .then( agency => { return agency }),
-      task_service.sumTransactionCountsByTask(req.query.organisation, req.query.type)
+      task_service.sumTransactionCountsByTask(req.query.organisation)
         .then( transaction_counts_by_task => { return transaction_counts_by_task.rows })
         .then( function(transaction_counts_by_task) {
           return transaction_counts_by_task.map(function(counts) {

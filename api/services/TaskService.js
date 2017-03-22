@@ -44,7 +44,7 @@ module.exports = class TaskService extends Service {
   /**
    * Sum transactions by UK Government, department or agency
    */
-  sumTransactionCountsByTask(filter, filter_type) {
+  sumTransactionCountsByTask(filter) {
     var sql;
 
     sql = "SELECT task.friendly_id AS friendly_id, \
@@ -95,22 +95,11 @@ module.exports = class TaskService extends Service {
             ) \
      FROM task \
      INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
+     LEFT OUTER JOIN department ON department.id = task.department \
+     LEFT OUTER JOIN agency ON agency.id = task.agency \
+     WHERE department.friendly_id = $1 \
+     OR agency.friendly_id = $2 \
      ";
-
-    if (filter) {
-      if (filter_type == 'department') {
-        sql += "INNER JOIN department ON department.id = task.department \
-                WHERE department.friendly_id = '{department}'\
-               ";
-        sql = sql.replace(/{department}/, filter)
-      } else {
-        sql += "INNER JOIN agency ON agency.id = task.agency \
-                WHERE agency.friendly_id = '{agency}'\
-               ";
-        sql = sql.replace(/{agency}/, filter)
-
-      };
-    }
 
     sql += "GROUP BY task.id, task.name \
       ORDER BY transactions_received_count DESC \
@@ -118,7 +107,7 @@ module.exports = class TaskService extends Service {
 
     return this.app.orm.Task.query(
       sql,
-      []
+      [filter, filter]
     );
   }
 }
