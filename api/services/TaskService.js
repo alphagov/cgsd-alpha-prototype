@@ -46,6 +46,7 @@ module.exports = class TaskService extends Service {
    */
   sumTransactionCountsByTask(filter) {
     var sql;
+    var bindings = [];
 
     sql = "SELECT task.friendly_id AS friendly_id, \
             task.name, \
@@ -95,11 +96,16 @@ module.exports = class TaskService extends Service {
             ) \
      FROM task \
      INNER JOIN taskvolumerecord ON taskvolumerecord.task = task.id \
-     LEFT OUTER JOIN department ON department.id = task.department \
-     LEFT OUTER JOIN agency ON agency.id = task.agency \
-     WHERE department.friendly_id = $1 \
-     OR agency.friendly_id = $2 \
      ";
+
+    if (filter) {
+      bindings = [ filter, filter]
+      sql += "LEFT OUTER JOIN department ON department.id = task.department \
+              LEFT OUTER JOIN agency ON agency.id = task.agency \
+              WHERE department.friendly_id = $1 \
+              OR agency.friendly_id = $2 \
+             "
+    }
 
     sql += "GROUP BY task.id, task.name \
       ORDER BY transactions_received_count DESC \
@@ -107,7 +113,7 @@ module.exports = class TaskService extends Service {
 
     return this.app.orm.Task.query(
       sql,
-      [filter, filter]
+      bindings
     );
   }
 }
